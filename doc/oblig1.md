@@ -63,5 +63,27 @@
     * Når du skal merge, så må en annen reviewe merge requesten din, altså ikke godkjenn requesten selv.
     * Etter merge er gjennomført, så skal branchen fjernes.
 
+## Oversikt over MVP, A3:
+
+* **kort beskrivelse av det overordnede målet for applikasjonen**
+    * Målet for MVP er å lage et funksjonelt spill med grunnleggende features. Spillet på dette stadiget må ha oversiktlig struktur og god dokumentasjon slik at det blir enkelt å legge til forbedringer og videreutvikle spillet.
+* **Krav til Minimum Viable Product (MVP)**
+    1. Vise enkelt spillebrett
+    2. Vise spiller og motspiller
+    3. flytte spiller
+    4. hoppe, enkel fysikk/gravity, interagere med terreng
+    5. spiller kan slå
+    6. spiller kan dø, falle av plattform på brettet
+    7. Spiller kan ta skade
+    8. Start-skjerm/"winner" skjerm, enkel instruks skjerm
+
+* **En liste over brukerhistorier til systemet basert på MVP-kravene (ha gjerne konkrete personas i tankene)**
+    A. Som Utvikler trenger jeg å kunne skille objekter på brettet for å kunne styre spillerens bevegelsesoppførsel. 
+    B. Som spiller må jeg kunne skille mellom de to spillerene på brettet slik at jeg kan vite hvilken spiller jeg kontrollerer.
+    C. Som spiller trenger jeg gode instrukser for å vite hvordan jeg skal spille spillet
+    D. Som tester/utvikler er det viktig at koden er oversiktlig og godt dokumentert slik at jeg kan legge til/endre og teste koden
+* **For hver brukerhistorie, skal dere ha akseptansekriterier og arbeidsoppgaver, samt beskrivelse av hvilke krav brukerhistorien oppfyller (dette lager dere kun for historier dere er ferdige med, holder på med, eller skal til å begynne med)**
+
+* **En prioritert liste over hvilke brukerhistorier dere vil ha med i første iterasjon (altså frem til levering av denne oppgaven).**
 
  
