@@ -5,7 +5,8 @@
 * Discord-server er laget.
 * Ifht. bakgrunn går alle datateknologi og har tatt mye av de samme fagene. Jonas har jobbet som utvikler, dog ikke innen spill, men stiller med erfaring fra prosjektmetodikk og utvikling. Kristian har verv innen webkom som gir han erfaring med ""?
 
-**Team:** *Teamnavn* – *medlemmer*...
+**Team:** *karan med varan* *medlemmer: Kristian Elde Johansen, Lauritz Angeltveit, Mathias Hop Ness, Vetle Larsen, Jonas Bergaas, Sune Eriksson Lianes*
+
 
 ## Oppgave A2: Konsept
 * Kort og enkelt er konseptet et "fighting" spill der to spillere kjemper mot hverandre til en av spillerne dør. 
