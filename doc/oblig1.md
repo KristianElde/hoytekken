@@ -1,4 +1,10 @@
 # Rapport – innlevering 1
+
+## A0: Organisering
+* Gruppenavn er laget: Karan med varan
+* Discord-server er laget.
+* Ifht. bakgrunn går alle datateknologi og har tatt mye av de samme fagene. Jonas har jobbet som utvikler, dog ikke innen spill, men stiller med erfaring fra prosjektmetodikk og utvikling. Kristian har verv innen webkom som gir han erfaring med ""?
+
 **Team:** *Teamnavn* – *medlemmer*...
 
 **Oppgave A2: Konsept**
