@@ -7,7 +7,7 @@
 
 **Team:** *Teamnavn* – *medlemmer*...
 
-**Oppgave A2: Konsept**
+## Oppgave A2: Konsept
 * Kort og enkelt er konseptet et "fighting" spill der to spillere kjemper mot hverandre til en av spillerne dør. 
 
 * Figurer og kontroller
