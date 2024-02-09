@@ -1,7 +1,14 @@
 # Rapport – innlevering 1
-**Team:** *Teamnavn* – *medlemmer*...
 
-**Oppgave A2: Konsept**
+## A0: Organisering
+* Gruppenavn er laget: Karan med varan
+* Discord-server er laget.
+* Ifht. bakgrunn går alle datateknologi og har tatt mye av de samme fagene. Av de som er relevant er det INF100, INF101, INF102, INF122, INF113. Jonas har jobbet som utvikler, dog ikke innen spill, men stiller med erfaring fra prosjektmetodikk og utvikling. Kristian har verv innen webkom som gir han erfaring med git og teamarbeid.
+
+**Team:** *karan med varan* *medlemmer: Kristian Elde Johansen, Lauritz Angeltveit, Mathias Hop Ness, Vetle Larsen, Jonas Bergaas, Sune Eriksson Lianes*
+
+
+## Oppgave A2: Konsept
 * Kort og enkelt er konseptet et "fighting" spill der to spillere kjemper mot hverandre til en av spillerne dør. 
 
 * Figurer og kontroller
