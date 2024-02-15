@@ -111,3 +111,10 @@
 - **For hver brukerhistorie, skal dere ha akseptansekriterier og arbeidsoppgaver, samt beskrivelse av hvilke krav brukerhistorien oppfyller (dette lager dere kun for historier dere er ferdige med, holder på med, eller skal til å begynne med)**
 
 - **En prioritert liste over hvilke brukerhistorier dere vil ha med i første iterasjon (altså frem til levering av denne oppgaven).**
+
+
+## A4:
+ 
+* Prosjektoppsettet kompilerer og viser ting på skjermen for alle.
+* Vi har prøvd litt parprogrammering og programmering hver for oss, for å teste ut rammeverket. Blant annet fulgt guiden på libdgx-siden, prøve med andre lyder og bilder, og legge til kontroller.
+* Dette er gjort i egne mapper, har dermed ikke endret noen av koden i selve repoet.
