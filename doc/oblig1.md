@@ -113,8 +113,11 @@
 - **En prioritert liste over hvilke brukerhistorier dere vil ha med i første iterasjon (altså frem til levering av denne oppgaven).**
 
 
-## A4:
+## Oppgave A4: Kode
  
-* Prosjektoppsettet kompilerer og viser ting på skjermen for alle.
-* Vi har prøvd litt parprogrammering og programmering hver for oss, for å teste ut rammeverket. Blant annet fulgt guiden på libdgx-siden, prøve med andre lyder og bilder, og legge til kontroller.
+* Prosjektoppsettet kompilerer og viser krokodillen på skjermen for alle.
+* Vi har prøvd litt parprogrammering og programmering hver for oss, for å teste ut rammeverket. 
+* Startet med å følge guiden på libdgx-siden (https://libgdx.com/wiki/start/a-simple-game) for å lage et enkelt spill.
+* Lagt til andre bilder og lyder for å sjekke hvordan det fungerer.
+* Lagt til kontroller ved mus og keyboard.
 * Dette er gjort i egne mapper, har dermed ikke endret noen av koden i selve repoet.
