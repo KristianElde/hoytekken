@@ -99,14 +99,21 @@
   7. Spiller kan ta skade
   8. Start-skjerm/"winner" skjerm, enkel instruks skjerm
 
-- **Prioritert liste over brukerhistorier med tilhørende akseptansekrav**
+- **Liste over brukerhistorier med tilhørende akseptansekrav**
 
-1. Som Utvikler trenger jeg å kunne skille objekter på brettet for å kunne styre spillerens bevegelsesoppførsel.
 
-2. Som spiller må jeg kunne skille mellom de to spillerene på brettet slik at jeg kan vite hvilken spiller jeg kontrollerer.
-3. Som spiller trenger jeg gode instrukser for å vite hvordan jeg skal spille spillet
+- (A) Som Utvikler trenger jeg å kunne skille objekter, platformer og bakgrunn på spillbrettet for å kunne bestemme reglene for bevegelsesmønsteret til karakterene når de interagerer med de "fysiske" objektene på skjermen. For å oppfylle dette kravet er det viktig at en skriver kode som følger objektorienterte prinsipper. Det er også viktig at det visuelle på skjermen har tydelige skiller mellom hva som er hva.
 
-4. Som tester/utvikler er det viktig at koden er oversiktlig og godt dokumentert slik at jeg kan legge til/endre og teste koden
+- (B) Som spiller må jeg kunne skille mellom de to karakterene på brettet slik at jeg kan vite hvilken spiller jeg kontrollerer. For å oppfylle dette kravet, må karakterene ha forskjellige farger og/eller utsende.
+
+- (C) Som spiller trenger jeg instrukser for hvordan jeg skal bevege spiller og interagere med spillebrettet for å vite hvordan jeg skal spille spillet. For å oppfylle dette kravet må vi implementere visuelle instrukser på skjermen som forklarer hvilke taster man skal bruke for å gjøre ulike handlinger og instruksjoner om hva som er målet med spillet.
+
+- (D) Som utvikler/tester er det viktig at at alle som skriver kode følger grunnleggende prinsipper som gjør det enkelt for forskjellige utviklere å lese og gjøre endringer på koden. For å oppfylle dette kravet må metoder og klasser være dokumentert og det blir brukt beskrivende navn på variabler og metoder, koden må også overholde regler om abstraksjon/innkapsulering og følge model-view-controller strukturen. 
+
+- (E) Som spiller er det viktig at jeg får visuell bekreftelse når de to spillkarakterene interagerer med hverandre i form av slag/ta skade. For å oppfylle dette kravet trenger vi å implementere en form for animasjon ved vellykkede slag og/eller en form for HUD med en "healthbar" som tilhører hver av de to spillerene.
+
+- (F) Som spiller, ønsker jeg å vite når karakteren min er dø og når spillet starter eller er ferdig. 
+For å oppfylle dette kravet er det viktig at når en av spillerne går tom for liv eller faller utenfor plattformen skal det komme en visuell bekreftelse på skjermen som gjør det tydelig at spillet er ferdig og hvem som har vunnet "kampen". Disse bekreftelsene vil kommer i form av "Start"- og "Winner/Gameover"- skjermer.
 
 - **For hver brukerhistorie, skal dere ha akseptansekriterier og arbeidsoppgaver, samt beskrivelse av hvilke krav brukerhistorien oppfyller (dette lager dere kun for historier dere er ferdige med, holder på med, eller skal til å begynne med)**
 
