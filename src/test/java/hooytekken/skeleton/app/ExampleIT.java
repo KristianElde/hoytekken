@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package hooytekken.skeleton.app;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,46 +22,47 @@ public class ExampleIT {
 	 */
 	@BeforeAll
 	static void setUpBeforeAll() {
-        HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
-        ApplicationListener listener = new ApplicationListener() {
+		HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
+		ApplicationListener listener = new ApplicationListener() {
 
 			@Override
 			public void create() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void resize(int width, int height) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void render() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void pause() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void resume() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void dispose() {
 				// TODO Auto-generated method stub
-				
-			}};
-        new HeadlessApplication(listener, config);
-        }
+
+			}
+		};
+		new HeadlessApplication(listener, config);
+	}
 
 	/**
 	 * Setup method called before each of the test methods
