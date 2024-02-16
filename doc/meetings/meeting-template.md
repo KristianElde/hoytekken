@@ -2,9 +2,12 @@
 ## Dato: xx.xx.xxxx
 
 ## Deltakere:
-* Navn
-* Navn
-* Navn etc.
+* Sune
+* Lauritz
+* Kristian
+* Mathias
+* Jonas
+* Vetle
 
 ## Tema:
 * Tema1
