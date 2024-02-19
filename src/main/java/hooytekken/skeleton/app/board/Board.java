@@ -12,7 +12,7 @@ public class Board<T> implements BoardInterface<T>{
     private int rows;
     private int cols;
     private T defaultValue;
-    private List<List<T>> grid;
+    private List<List<T>> board;
 
     /**
      * Creates a new board with the given dimensions and default value.
@@ -25,12 +25,12 @@ public class Board<T> implements BoardInterface<T>{
         this.cols = cols;
         this.defaultValue = defaultValue;
 
-        grid = new ArrayList<>();
+        board = new ArrayList<>();
 
         for (int i = 0; i < rows; i ++) {
-            grid.add(i, new ArrayList<>());
+            board.add(i, new ArrayList<>());
             for (int j = 0; j < cols; j++){
-                grid.get(i).add(j, defaultValue);
+                board.get(i).add(j, defaultValue);
             }
         }
     }
@@ -59,7 +59,7 @@ public class Board<T> implements BoardInterface<T>{
         List<Tile<T>> tiles = new ArrayList<>();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                tiles.add(new Tile<>(new TilePosition(i, j), grid.get(i).get(j)));
+                tiles.add(new Tile<>(new TilePosition(i, j), board.get(i).get(j)));
             }
         }
         return tiles.iterator();
@@ -67,12 +67,12 @@ public class Board<T> implements BoardInterface<T>{
 
     @Override
     public T getTile(TilePosition pos) {
-        return grid.get(pos.row()).get(pos.col());
+        return board.get(pos.row()).get(pos.col());
     }
 
     @Override
     public void setTile(TilePosition pos, T value) {
-        grid.get(pos.row()).set(pos.col(), value);
+        board.get(pos.row()).set(pos.col(), value);
     }
 
     @Override
