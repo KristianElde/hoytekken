@@ -9,6 +9,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
+
+import hooytekken.skeleton.app.controller.HtekkenController;
+
 import com.badlogic.gdx.graphics.Texture;
 
 public class HelloWorld implements ApplicationListener {
@@ -25,6 +28,8 @@ public class HelloWorld implements ApplicationListener {
 		// Called at startup
 
 		batch = new SpriteBatch();
+		
+		HtekkenController controller = new HtekkenController();
 		font = new BitmapFont();
 		font.setColor(Color.RED);
 		spriteImage = new Texture(Gdx.files.internal("obligator.png"));
