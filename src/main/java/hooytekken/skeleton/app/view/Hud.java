@@ -51,6 +51,17 @@ public class Hud {
         return new Label(text, defaultLabelStyle);
     }
 
+    private void addLabelsToList(List<Label> labels, Table table) {
+        Integer counter = 0;
+        for (Label label : labels) {
+            counter++;
+            table.add(label).expandX().padTop(5);
+            if (counter == 3) {
+                table.row();
+            }
+        }
+    }
+
     public Stage getStage() {
         return stage;
     }
