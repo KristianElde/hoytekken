@@ -1,8 +1,14 @@
 package hooytekken.skeleton.app.view;
 
+import java.util.List;
+
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -20,8 +26,13 @@ public class Hud {
     private Integer battleTimer;
     private Integer enemyHealth;
 
+    private List<Label> labelList;
+    private final LabelStyle defaultLabelStyle = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+
     private Table upperTable;
 
+    // hvilke interface kan være smarte?
+    // for label kanskje
     public Hud(SpriteBatch sb) {
         playerHealth = INIT_HEALTH;
         enemyHealth = INIT_HEALTH;
@@ -34,6 +45,10 @@ public class Hud {
         upperTable.setFillParent(true);
 
         stage.addActor(upperTable);
+    }
+
+    private Label createLabel(String text) {
+        return new Label(text, defaultLabelStyle);
     }
 
     public Stage getStage() {
