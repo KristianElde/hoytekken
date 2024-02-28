@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hooytekken.skeleton.app.Hoytekken;
+
 public class Hud {
     private Stage stage;
     private Viewport port;
@@ -18,12 +20,34 @@ public class Hud {
     private Integer enemyHealth;
 
     public Hud(SpriteBatch sb) {
-        port = new FitViewport(0, 0, new OrthographicCamera());
+        playerHealth = INIT_HEALTH;
+        enemyHealth = INIT_HEALTH;
+        battleTimer = INIT_TIME;
+
+        port = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(port, sb);
+
     }
 
     public Stage getStage() {
         return stage;
+    }
+
+    // getters and setters might be removed for better alternative later
+    public Integer getPlayerHealth() {
+        return playerHealth;
+    }
+
+    public void setPlayerHealth(Integer health) {
+        playerHealth = health;
+    }
+
+    public Integer getEnemyHealth() {
+        return enemyHealth;
+    }
+
+    public void setEnemyHealth(Integer health) {
+        enemyHealth = health;
     }
 
 }
