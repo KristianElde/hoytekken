@@ -1,5 +1,6 @@
 package hooytekken.skeleton.app.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
@@ -44,6 +45,9 @@ public class Hud {
         upperTable.top();
         upperTable.setFillParent(true);
 
+        labelList = initLabels();
+        addLabelsToTable(labelList, upperTable);
+
         stage.addActor(upperTable);
     }
 
@@ -51,7 +55,20 @@ public class Hud {
         return new Label(text, defaultLabelStyle);
     }
 
-    private void addLabelsToList(List<Label> labels, Table table) {
+    // better to save labels as field variables?
+    private List<Label> initLabels() {
+        List<Label> list = new ArrayList<>();
+        list.add(createLabel("PLAYER"));
+        list.add(createLabel("TIME"));
+        list.add(createLabel("ENEMY"));
+        // next lines might have to change due to updating the variable
+        list.add(createLabel(String.format("%02d", playerHealth)));
+        list.add(createLabel(String.format("%03d", battleTimer)));
+        list.add(createLabel(String.format("%02d", enemyHealth)));
+        return list;
+    }
+
+    private void addLabelsToTable(List<Label> labels, Table table) {
         Integer counter = 0;
         for (Label label : labels) {
             counter++;
