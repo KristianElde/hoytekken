@@ -32,8 +32,7 @@ public class Hud {
 
     private Table upperTable;
 
-    // hvilke interface kan være smarte?
-    // for label kanskje
+    // what interfaces can be used for abstraction?
     public Hud(SpriteBatch sb) {
         playerHealth = INIT_HEALTH;
         enemyHealth = INIT_HEALTH;
@@ -99,5 +98,4 @@ public class Hud {
     public void setEnemyHealth(Integer health) {
         enemyHealth = health;
     }
-
 }
