@@ -10,9 +10,20 @@ public class Hud {
     private Stage stage;
     private Viewport port;
 
+    private static final Integer INIT_HEALTH = 99;
+    private static final Integer INIT_TIME = 0;
+
+    private Integer playerHealth;
+    private Integer battleTimer;
+    private Integer enemyHealth;
+
     public Hud(SpriteBatch sb) {
         port = new FitViewport(0, 0, new OrthographicCamera());
         stage = new Stage(port, sb);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
 }
