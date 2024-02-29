@@ -1,8 +1,29 @@
 package hooytekken.skeleton.app.view;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import hooytekken.skeleton.app.Hoytekken;
 
 public class GameScreen implements Screen {
+    private Hoytekken game;
+
+    private Texture img;
+    private OrthographicCamera gameCam;
+    private Viewport gamePort;
+
+    public GameScreen(Hoytekken game) {
+        this.game = game;
+
+        img = new Texture("obligator.png"); 
+        gameCam = new OrthographicCamera();
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        
+
+    }
 
     @Override
     public void show() {
