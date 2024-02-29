@@ -2,7 +2,7 @@ package hooytekken.skeleton.app;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-// import hooytekken.skeleton.app.view.GameScreen;
+import hooytekken.skeleton.app.view.GameScreen;
 
 public class Hoytekken extends Game {
     public static final int TILE_SIZE = 32;
@@ -15,7 +15,7 @@ public class Hoytekken extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        // setScreen(new GameScreen(this));
+        setScreen(new GameScreen(this));
 
     }
 
