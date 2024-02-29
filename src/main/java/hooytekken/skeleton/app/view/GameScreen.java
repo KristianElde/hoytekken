@@ -9,13 +9,16 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
 import hooytekken.skeleton.app.Hoytekken;
 
+/**
+ * class represents an active game screen
+ */
 public class GameScreen implements Screen {
     private Hoytekken game;
 
     private Texture img;
+
     private OrthographicCamera gameCam;
     private Viewport gamePort;
 
@@ -25,6 +28,10 @@ public class GameScreen implements Screen {
 
     private Hud hud;
 
+    /**
+     * Constructor for the game screen
+     * @param game the game object
+     */
     public GameScreen(Hoytekken game) {
         this.game = game;
 
@@ -42,14 +49,14 @@ public class GameScreen implements Screen {
         gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
     }
 
-    @Override
-    public void show() {
-        //ignore implementation
-    }
-
     private void update(float delta) {
         gameCam.update();
         renderer.setView(gameCam);
+    }
+
+    @Override
+    public void show() {
+        //ignore implementation
     }
 
     @Override
