@@ -16,6 +16,8 @@ public class GameScreen implements Screen {
     private OrthographicCamera gameCam;
     private Viewport gamePort;
 
+    private Hud hud;
+
     public GameScreen(Hoytekken game) {
         this.game = game;
 
@@ -23,7 +25,9 @@ public class GameScreen implements Screen {
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
+        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
+        hud = new Hud(game.batch);
     }
 
     @Override
@@ -35,6 +39,13 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(Gdx.gl.GL_COLOR_BUFFER_BIT);
+
+        game.batch.setProjectionMatrix(hud.getStage().getCamera().combined);
+        hud.getStage().draw();
+
+        game.batch.begin();
+        game.batch.draw(img, 0, 0);
+        game.batch.end();
     }
 
     @Override
