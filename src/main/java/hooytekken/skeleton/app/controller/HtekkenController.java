@@ -10,10 +10,10 @@ import com.badlogic.gdx.InputProcessor;
  * handles input from the user
  */
 public class HtekkenController extends InputAdapter {
-    //ControllableModel model;
+    ControllableModel model;
 
-    public HtekkenController(/*ControllableModel model*/) {
-//        this.model = model;
+    public HtekkenController(ControllableModel model) {
+        this.model = model;
         Gdx.input.setInputProcessor(this);
     }
 
@@ -21,14 +21,14 @@ public class HtekkenController extends InputAdapter {
     public boolean keyDown(int keycode) {
 
         //Player1, LEFT, RIGHT, UP keys
-        if (keycode == Input.Keys.LEFT) //model.setDirection(player1, LEFT);
-        if (keycode == Input.Keys.RIGHT) //model.setDirection(player1, LEFT);
-        if (keycode == Input.Keys.UP) //model.jump(player2);
+        if (keycode == Input.Keys.LEFT) //model.setDirection(1, LEFT);
+        if (keycode == Input.Keys.RIGHT) //model.setDirection(1, RIGHT);
+        if (keycode == Input.Keys.UP) //model.jump(1);
 
         //Player2, A, D, W keys
-        if (keycode == Input.Keys.A) //model.setDirection(player2, LEFT);
-        if (keycode == Input.Keys.D) //model.setDirection(player2, RIGHT);
-        if (keycode == Input.Keys.W) {} //model.jump(player2);
+        if (keycode == Input.Keys.A) //model.setDirection(2, LEFT);
+        if (keycode == Input.Keys.D) //model.setDirection(2, RIGHT);
+        if (keycode == Input.Keys.W) {} //model.jump(2);
 
 
         return false;
@@ -38,8 +38,8 @@ public class HtekkenController extends InputAdapter {
     public boolean keyUp(int keycode) {
         
         //Stop applying force to the player when the key is released
-        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT) //model.setDirection(player1, STATIC);
-        if (keycode == Input.Keys.A || keycode == Input.Keys.D) {}//model.setDirection(player2, STATIC);
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT) //model.setDirection(1, STATIC);
+        if (keycode == Input.Keys.A || keycode == Input.Keys.D) {}//model.setDirection(2, STATIC);
 
         return false;
     }
