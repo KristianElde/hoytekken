@@ -1,6 +1,7 @@
 package hooytekken.skeleton.app.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 
@@ -18,7 +19,18 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-        System.out.println("Key Down: " + keycode);
+
+        //Player1, LEFT, RIGHT, UP keys
+        if (keycode == Input.Keys.LEFT) //model.setDirection(player1, LEFT);
+        if (keycode == Input.Keys.RIGHT) //model.setDirection(player1, LEFT);
+        if (keycode == Input.Keys.UP) //model.jump(player2);
+
+        //Player2, A, D, W keys
+        if (keycode == Input.Keys.A) //model.setDirection(player2, LEFT);
+        if (keycode == Input.Keys.D) //model.setDirection(player2, RIGHT);
+        if (keycode == Input.Keys.W){} //model.jump(player2);
+
+
         return false;
     }
 
