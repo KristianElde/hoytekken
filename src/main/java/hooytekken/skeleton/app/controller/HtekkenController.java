@@ -28,7 +28,7 @@ public class HtekkenController extends InputAdapter {
         //Player2, A, D, W keys
         if (keycode == Input.Keys.A) //model.setDirection(player2, LEFT);
         if (keycode == Input.Keys.D) //model.setDirection(player2, RIGHT);
-        if (keycode == Input.Keys.W){} //model.jump(player2);
+        if (keycode == Input.Keys.W) {} //model.jump(player2);
 
 
         return false;
@@ -36,7 +36,11 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean keyUp(int keycode) {
-        System.out.println("Key Up: " + keycode);
+        
+        //Stop applying force to the player when the key is released
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT) //model.setDirection(player1, STATIC);
+        if (keycode == Input.Keys.A || keycode == Input.Keys.D) {}//model.setDirection(player2, STATIC);
+
         return false;
     }
 
