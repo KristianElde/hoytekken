@@ -61,6 +61,17 @@ public class PlayerTest {
         assertTrue(player.getBody().getPosition().y < initY);
         assertEquals(initX - randX, player.getBody().getPosition().x);
         assertEquals(initY - randY, player.getBody().getPosition().y);
+    }
+
+    @Test
+    void testDamageTaken() {
+        int initHealth = player.getHealth();
+
+        // make sure player stays alive
+        int dmg1 = rand.nextInt(1, initHealth);
+        player.takeDamage(dmg1);
+        assertEquals(initHealth - dmg1, player.getHealth());
+        assertTrue(player.isAlive());
 
     }
 
