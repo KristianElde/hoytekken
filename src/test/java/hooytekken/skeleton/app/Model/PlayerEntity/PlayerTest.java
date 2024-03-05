@@ -51,6 +51,12 @@ public class PlayerTest {
         assertEquals(initY + randY, player.getBody().getPosition().y);
 
         // move back to origin
+        player.move(-randX, -randY);
+        assertEquals(player.getBody().getPosition().x, initX);
+        assertEquals(player.getBody().getPosition().y, initY);
+
+        // move backwards
+
     }
 
 }
