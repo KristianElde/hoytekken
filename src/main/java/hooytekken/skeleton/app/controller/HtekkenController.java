@@ -1,72 +1,48 @@
 package hooytekken.skeleton.app.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 
 /**
  * Controller for the game
  * handles input from the user
  */
-public class HtekkenController implements InputProcessor {
-    //ControllableModel model;
+public class HtekkenController extends InputAdapter {
+    ControllableModel model;
 
-    public HtekkenController(/*ControllableModel model*/) {
-//        this.model = model;
+    public HtekkenController(ControllableModel model) {
+        this.model = model;
         Gdx.input.setInputProcessor(this);
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        System.out.println("Key Down: " + keycode);
+
+        //Player1, LEFT, RIGHT, UP keys
+        if (keycode == Input.Keys.LEFT) //model.setDirection(1, LEFT);
+        if (keycode == Input.Keys.RIGHT) //model.setDirection(1, RIGHT);
+        if (keycode == Input.Keys.UP) //model.jump(1);
+
+        //Player2, A, D, W keys
+        if (keycode == Input.Keys.A) //model.setDirection(2, LEFT);
+        if (keycode == Input.Keys.D) //model.setDirection(2, RIGHT);
+        if (keycode == Input.Keys.W) {} //model.jump(2);
+
+
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        System.out.println("Key Up: " + keycode);
+        
+        //Stop applying force to the player when the key is released
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT) //model.setDirection(1, STATIC);
+        if (keycode == Input.Keys.A || keycode == Input.Keys.D) {}//model.setDirection(2, STATIC);
+
         return false;
     }
 
-    @Override
-    public boolean keyTyped(char character) {
-        //ignore implementation key typed
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        //ignore implementation mouse click
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        ///ignore implementation mouse click up
-        return false;
-    }
-
-    @Override
-    public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
-        //ignore implementation mouse click cancelled
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        //ignore implementation mouse dragged
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        //ignore implementation mouse moved
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(float amountX, float amountY) {
-        //ignore implementation mouse scrolled
-        return false;
-    }
-    
+     
 }
