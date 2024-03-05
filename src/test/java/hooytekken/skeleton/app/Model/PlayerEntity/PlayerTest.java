@@ -1,6 +1,7 @@
 package hooytekken.skeleton.app.Model.PlayerEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -72,6 +73,12 @@ public class PlayerTest {
         player.takeDamage(dmg1);
         assertEquals(initHealth - dmg1, player.getHealth());
         assertTrue(player.isAlive());
+
+        // make sure player cant survive
+        int dmg2 = rand.nextInt(100, 500);
+        player.takeDamage(dmg2);
+        assertEquals(0, player.getHealth());
+        assertFalse(player.isAlive());
 
     }
 
