@@ -16,7 +16,7 @@ Klassisk 2D-fighting spill i tekken og Street Fighter-stil.
 ## Om koden
 
 - Kompileres med `mvn package`.
-- Krever Java 21 eller senere
+- Krever Java 17 eller senere
 
 ## Ressurser
 
