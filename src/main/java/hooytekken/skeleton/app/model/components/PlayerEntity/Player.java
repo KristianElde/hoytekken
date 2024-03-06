@@ -90,4 +90,9 @@ public class Player extends Sprite implements IPlayer {
     public int getHealth() {
         return health;
     }
+
+    @Override
+    public boolean fallenOffTheMap() {
+        return getBody().getPosition().y < 0;
+    }
 }

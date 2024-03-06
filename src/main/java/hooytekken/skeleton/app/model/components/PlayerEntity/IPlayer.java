@@ -50,4 +50,6 @@ public interface IPlayer {
      */
     boolean isAlive();
 
+    boolean fallenOffTheMap();
+
 }
