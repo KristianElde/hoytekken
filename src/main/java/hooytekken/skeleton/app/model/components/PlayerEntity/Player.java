@@ -91,19 +91,19 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void punch(Player that) {
+    public void punch(Player that, int dmg) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'punch'");
     }
 
     @Override
-    public void kick(Player that) {
+    public void kick(Player that, int dmg) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'kick'");
     }
 
     @Override
-    public void block(int incomingAttack) {
+    public void block(Player that, int incomingAttack) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'block'");
     }

@@ -1,9 +1,9 @@
 package hooytekken.skeleton.app.model.components.PlayerEntity;
 
 public interface ICombat {
-    void punch(Player that);
+    void punch(Player that, int dmg);
 
-    void kick(Player that);
+    void kick(Player that, int dmg);
 
-    void block(int incomingAttack);
+    void block(Player that, int incomingAttack);
 }
