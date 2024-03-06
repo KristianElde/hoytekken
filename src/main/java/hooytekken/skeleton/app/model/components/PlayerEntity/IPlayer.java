@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 /**
  * Interface defining common behavior for a player in the game.
  */
-public interface IPlayer {
+public interface IPlayer extends ICombat {
 
     /**
      * 
