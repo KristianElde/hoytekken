@@ -16,6 +16,7 @@ import hooytekken.skeleton.app.Hoytekken;
  */
 public class GameScreen implements Screen {
     private Hoytekken game;
+    private ViewableModel model;
 
     private Texture img;
 
@@ -32,8 +33,9 @@ public class GameScreen implements Screen {
      * Constructor for the game screen
      * @param game the game object
      */
-    public GameScreen(Hoytekken game) {
+    public GameScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
+        this.model = model;
 
         img = new Texture("obligator.png"); 
 
