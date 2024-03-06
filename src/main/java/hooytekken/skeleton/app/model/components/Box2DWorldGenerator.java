@@ -12,11 +12,18 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hooytekken.skeleton.app.Hoytekken;
 
-
+/**
+ * Generates game layers from the map
+ */
 public class Box2DWorldGenerator {
     private World world;
     private TiledMap map;
-    
+
+    /**
+     * Constructor for the box2d world generator
+     * @param world world to generate the bodies in
+     * @param map map to generate the bodies from
+     */
     public Box2DWorldGenerator(World world, TiledMap map) {
         this.world = world;
         this.map = map;
@@ -42,10 +49,10 @@ public class Box2DWorldGenerator {
     /**
      * Generate a layer of box2d bodies
      * @param layerIndex Which layer to generate
-     * @param bdef 
-     * @param shape
-     * @param fdef
-     * @param body
+     * @param bdef body definition
+     * @param shape shape of the body
+     * @param fdef fixture definition
+     * @param body body to generate
      */
     private void generateLayer(int layerIndex, BodyDef bdef, PolygonShape shape, FixtureDef fdef, Body body) {
 
