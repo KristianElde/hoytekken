@@ -1,8 +1,11 @@
 package hooytekken.skeleton.app.model;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
@@ -17,6 +20,9 @@ public class HTekkenModel implements ViewableModel {
 
     private String map;
 
+    private TmxMapLoader mapLoader;
+    private TiledMap tiledmap;
+
     /**
      * Constructor for the model
      * @param map string for chosen map
@@ -27,6 +33,11 @@ public class HTekkenModel implements ViewableModel {
 
         this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE);
         this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO);
+
+        mapLoader = new TmxMapLoader();
+        tiledmap = mapLoader.load(map);
+
+        new Box2DWorldGenerator(gameWorld, tiledmap);
     }
 
     /**
@@ -56,5 +67,10 @@ public class HTekkenModel implements ViewableModel {
     @Override
     public String getMap() {
         return this.map;
+    }
+
+    @Override
+    public TiledMap getTiledMap() {
+        return tiledmap;
     }
 }

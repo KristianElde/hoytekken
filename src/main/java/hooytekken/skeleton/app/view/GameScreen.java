@@ -52,16 +52,13 @@ public class GameScreen implements Screen {
 
         hud = new Hud(game.batch);
 
-        mapLoader = new TmxMapLoader();
-        map = mapLoader.load(model.getMap());
+        map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
         gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
-        world = model.getGameWorld();
         b2dr = new Box2DDebugRenderer();
 
-        new Box2DWorldGenerator(world, map);
 
     }
 
@@ -85,7 +82,7 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(world, gameCam.combined);
+        b2dr.render(this.model.getGameWorld(), gameCam.combined);
 
         game.batch.setProjectionMatrix(gameCam.combined);
         hud.getStage().draw();

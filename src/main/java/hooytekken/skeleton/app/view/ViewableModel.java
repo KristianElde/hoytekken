@@ -1,5 +1,6 @@
 package hooytekken.skeleton.app.view;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
@@ -33,4 +34,10 @@ public interface ViewableModel {
      * @return the map path string
      */
     public String getMap();
+
+    /**
+     * Getter for the tiled map
+     * @return the tiled map
+     */
+    public TiledMap getTiledMap();
 }
