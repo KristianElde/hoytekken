@@ -92,17 +92,30 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(Player that, int dmg) {
-        that.takeDamage(dmg);
+        if (this.isAlive() && that.isAlive()) {
+            // need some distance control aswell
+            that.takeDamage(dmg);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean kick(Player that, int dmg) {
-        that.takeDamage(dmg);
+        if (this.isAlive() && that.isAlive()) {
+            // need some distance control aswell
+            that.takeDamage(dmg);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean block(Player that, int incomingAttack) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'block'");
+        if (this.isAlive() && incomingAttack > 50) {
+            this.takeDamage(incomingAttack / 3);
+            return false;
+        }
+        return true;
     }
 }
