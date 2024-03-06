@@ -42,26 +42,21 @@ public class PlayerTest {
     void testMove() {
         float initX = player.getBody().getPosition().x;
         float initY = player.getBody().getPosition().y;
-        float randX = rand.nextFloat(0.1f, 1.0f);
-        float randY = rand.nextFloat(0.1f, 1.0f);
+        float randX = rand.nextFloat(0.5f, 1.0f);
+        float randY = rand.nextFloat(0.5f, 1.0f);
 
         // move forward
         player.move(randX, randY);
         world.step(1 / 60f, 6, 2); // updates the world objects
         assertTrue(player.getBody().getPosition().x > initX);
-        // assertTrue(player.getBody().getPosition().y > initY);
-
-        // move back to origin
-        // player.move(-randX, -randY);
-        // assertEquals(player.getBody().getPosition().x, initX);
-        // assertEquals(player.getBody().getPosition().y, initY);
+        assertTrue(player.getBody().getPosition().y > initY);
 
         // move backwards
         // player.move(-randX, -randY);
-        // assertTrue(player.getBody().getPosition().x < initX);
-        // assertTrue(player.getBody().getPosition().y < initY);
-        // assertEquals(initX - randX, player.getBody().getPosition().x);
-        // assertEquals(initY - randY, player.getBody().getPosition().y);
+        // world.step(1 / 60f, 6, 2);
+        // float tolerance = 0.01f; // margin for error due to physics
+        // assertEquals(initX, player.getBody().getPosition().x, tolerance);
+        // assertEquals(initY, player.getBody().getPosition().y, tolerance);
     }
 
     @Test
