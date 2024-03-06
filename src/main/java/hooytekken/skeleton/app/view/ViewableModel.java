@@ -4,6 +4,9 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
+/**
+ * Interface for the viewable model
+ */
 public interface ViewableModel {
     
     /**
