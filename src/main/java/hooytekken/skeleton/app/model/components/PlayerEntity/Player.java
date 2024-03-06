@@ -96,8 +96,15 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
+    private boolean isWithinRange(Player that) {
+        return true;
+    }
+
     @Override
     public boolean punch(Player that, int dmg) {
+        if (!isWithinRange(that)) {
+            return false;
+        }
         if (this.isAlive() && that.isAlive()) {
             // need some distance control aswell
             that.takeDamage(dmg);
@@ -108,6 +115,9 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean kick(Player that, int dmg) {
+        if (!isWithinRange(that)) {
+            return false;
+        }
         if (this.isAlive() && that.isAlive()) {
             // need some distance control aswell
             that.takeDamage(dmg);
