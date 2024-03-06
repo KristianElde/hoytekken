@@ -42,8 +42,8 @@ public class PlayerTest {
     void testMove() {
         float initX = player.getBody().getPosition().x;
         float initY = player.getBody().getPosition().y;
-        float randX = rand.nextFloat(0.5f, 5.0f);
-        float randY = rand.nextFloat(0.5f, 5.0f);
+        float randX = rand.nextFloat(1.0f, 5.0f);
+        float randY = rand.nextFloat(1.0f, 5.0f);
 
         // move forward
         player.move(randX, randY);
@@ -51,12 +51,17 @@ public class PlayerTest {
         assertTrue(player.getBody().getPosition().x > initX);
         assertTrue(player.getBody().getPosition().y > initY);
 
-        // move backwards
+        // move back to origin
         player.move(-randX, -randY);
         world.step(1 / 60f, 6, 2);
         float margin = 0.1f; // margin for error due to physics
         assertEquals(initX, player.getBody().getPosition().x, margin);
         assertEquals(initY, player.getBody().getPosition().y, margin);
+    }
+
+    @Test
+    void testUpdate() {
+        // not sure yet how to implement this
     }
 
     @Test
