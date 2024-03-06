@@ -30,7 +30,7 @@ public class HTekkenModel implements ViewableModel {
     }
 
     /**
-     * Constructor for the model
+     * Constructor for the model, uses default map
      */
     public HTekkenModel() {
         this(DEFAULT_MAP);
@@ -38,19 +38,16 @@ public class HTekkenModel implements ViewableModel {
 
     @Override
     public void updateModel(float dt) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateModel'");
+        // TODO: connect to the game loop
     }
 
     @Override
     public World getGameWorld() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getGameWorld'");
+        return this.gameWorld;
     }
 
     @Override
     public IPlayer getPlayer(int playerNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPlayer'");
+        return playerNumber == 1 ? player1 : player2;
     }
 }
