@@ -1,5 +1,6 @@
 package hooytekken.skeleton.app.model.components.PlayerEntity;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
@@ -49,5 +50,12 @@ public interface IPlayer {
      * @return true if the player is alive, false otherwise
      */
     boolean isAlive();
+
+    /**
+     * Draws the player on the screen.
+     * 
+     * @param batch the batch to draw the player on
+     */
+    void draw(Batch batch);
 
 }

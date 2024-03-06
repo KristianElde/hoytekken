@@ -38,7 +38,9 @@ public class HTekkenModel implements ViewableModel {
 
     @Override
     public void updateModel(float dt) {
-        // TODO: connect to the game loop
+        gameWorld.step(1/60f, 6, 2);
+        player1.update(dt);
+        player2.update(dt);
     }
 
     @Override
