@@ -24,4 +24,10 @@ public interface ViewableModel {
      * @return the player
      */
     public IPlayer getPlayer(int playerNumber);
+
+    /**
+     * Getter for the map
+     * @return the map path string
+     */
+    public String getMap();
 }

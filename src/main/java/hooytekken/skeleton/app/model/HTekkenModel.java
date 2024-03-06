@@ -50,4 +50,9 @@ public class HTekkenModel implements ViewableModel {
     public IPlayer getPlayer(int playerNumber) {
         return playerNumber == 1 ? player1 : player2;
     }
+
+    @Override
+    public String getMap() {
+        return this.map;
+    }
 }
