@@ -106,7 +106,6 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
-            // need some distance control aswell
             that.takeDamage(dmg);
             return true;
         }
@@ -119,7 +118,6 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
-            // need some distance control aswell
             that.takeDamage(dmg);
             return true;
         }
