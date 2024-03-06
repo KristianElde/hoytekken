@@ -14,10 +14,8 @@ import hooytekken.skeleton.app.Hoytekken;
 /**
  * class represents an active game screen
  */
-public class GameScreen implements Screen {
+public class MenuScreen implements Screen {
     private Hoytekken game;
-
-    private Texture img;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
@@ -25,27 +23,26 @@ public class GameScreen implements Screen {
     private TmxMapLoader mapLoader;
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
+    private Texture welcome;
 
-    private Hud hud;
+    private static final float WELCOME_TEXT_WIDTH = 300;
+    private static final float WELCOME_TEXT_HEIGHT = 300;
 
     /**
      * Constructor for the game screen
      * 
      * @param game the game object
      */
-    public GameScreen(Hoytekken game) {
+    public MenuScreen(Hoytekken game) {
         this.game = game;
-
-        img = new Texture("obligator.png");
 
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
-        hud = new Hud(game.batch);
-
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("defaultMap.tmx");
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
+        welcome = new Texture("Welcome.png");
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
@@ -70,10 +67,13 @@ public class GameScreen implements Screen {
         renderer.render();
 
         game.batch.setProjectionMatrix(gameCam.combined);
-        hud.getStage().draw();
 
         game.batch.begin();
-        game.batch.draw(img, 200, 100);
+
+        game.batch.draw(welcome, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
+                (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
+                WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
+
         game.batch.end();
     }
 
