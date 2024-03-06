@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
 /**
  * class represents an active game screen
@@ -46,13 +47,14 @@ public class GameScreen implements Screen {
         hud = new Hud(game.batch);
 
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("defaultMap.tmx");
+        map = mapLoader.load(model.getMap());
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
     private void update(float delta) {
+        model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
     }
