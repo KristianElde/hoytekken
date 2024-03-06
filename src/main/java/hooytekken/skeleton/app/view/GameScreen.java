@@ -7,9 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
 /**
@@ -29,6 +32,9 @@ public class GameScreen implements Screen {
     private OrthoCachedTiledMapRenderer renderer;
 
     private Hud hud;
+
+    private World world;
+    private Box2DDebugRenderer b2dr;
 
     /**
      * Constructor for the game screen
@@ -52,6 +58,11 @@ public class GameScreen implements Screen {
 
         gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
+        world = model.getGameWorld();
+        b2dr = new Box2DDebugRenderer();
+
+        new Box2DWorldGenerator(world, map);
+
     }
 
     private void update(float delta) {
@@ -74,11 +85,13 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
+        b2dr.render(world, gameCam.combined);
+
         game.batch.setProjectionMatrix(gameCam.combined);
         hud.getStage().draw();
 
         game.batch.begin();
-        game.batch.draw(img, 0, 0);
+        //game.batch.draw(img, 0, 0);
         this.model.getPlayer(1).draw(game.batch);
         this.model.getPlayer(2).draw(game.batch);
         game.batch.end();
