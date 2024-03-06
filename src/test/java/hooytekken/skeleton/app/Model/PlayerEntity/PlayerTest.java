@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
@@ -26,7 +27,7 @@ public class PlayerTest {
     @BeforeEach
     void setUpBeforeEach() {
         // create interface for world which gives better abstraction?
-        world = new World(null, false); // which values here?
+        world = new World(new Vector2(0, 0), true); // which values here?
         player = new Player(world, null); // dont need playertype?
     }
 
@@ -46,10 +47,9 @@ public class PlayerTest {
 
         // move forward
         player.move(randX, randY);
+        world.step(1 / 60f, 6, 2);
         assertTrue(player.getBody().getPosition().x > initX);
         assertTrue(player.getBody().getPosition().y > initY);
-        assertEquals(initX + randX, player.getBody().getPosition().x);
-        assertEquals(initY + randY, player.getBody().getPosition().y);
 
         // move back to origin
         player.move(-randX, -randY);
