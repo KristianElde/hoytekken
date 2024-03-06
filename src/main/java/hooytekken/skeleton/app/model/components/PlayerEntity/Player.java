@@ -28,6 +28,12 @@ public class Player extends Sprite implements IPlayer {
     // Health, if health is 0, player is dead
     private int health = 100;
 
+    // if attack is over limit, block is unsuccessful
+    private int blockLimit = 30;
+
+    // if block is unsuccessful, divide attack by this
+    private int blockSupresser = 2;
+
     private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
     public Player(World world, PlayerType type) {
@@ -112,8 +118,8 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean block(Player that, int incomingAttack) {
-        if (this.isAlive() && incomingAttack > 50) {
-            this.takeDamage(incomingAttack / 3);
+        if (this.isAlive() && incomingAttack > blockLimit) {
+            this.takeDamage(incomingAttack / blockSupresser);
             return false;
         }
         return true;
