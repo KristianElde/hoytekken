@@ -73,10 +73,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void takeDamage(int damage) {
-        this.health -= damage;
-
-        if (this.health <= 0) {
+        if (this.health - damage <= 0) {
             this.isAlive = false;
+            this.health = 0;
+        } else {
+            this.health -= damage;
         }
     }
 
