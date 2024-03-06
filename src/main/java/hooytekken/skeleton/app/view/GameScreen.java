@@ -50,7 +50,8 @@ public class GameScreen implements Screen {
         map = mapLoader.load(model.getMap());
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+
     }
 
     private void update(float delta) {
@@ -77,7 +78,7 @@ public class GameScreen implements Screen {
         hud.getStage().draw();
 
         game.batch.begin();
-        game.batch.draw(img, 200, 100);
+        game.batch.draw(img, 0, 0);
         this.model.getPlayer(1).draw(game.batch);
         this.model.getPlayer(2).draw(game.batch);
         game.batch.end();

@@ -18,10 +18,9 @@ public class Hoytekken extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
+        HTekkenModel model = new HTekkenModel();  
 
         //setScreen(new MenuScreen(this));
-
-        HTekkenModel model = new HTekkenModel();  
         setScreen(new GameScreen(this, model));
     }
 
