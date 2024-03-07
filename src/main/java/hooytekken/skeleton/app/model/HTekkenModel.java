@@ -84,7 +84,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public boolean jump(int player) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'jump'");
+        IPlayer p = getPlayer(player);
+        p.move(0, 5);
+        return true;
+    }
+
+    private boolean movePlayer(int player) {
+        return false;
     }
 }
