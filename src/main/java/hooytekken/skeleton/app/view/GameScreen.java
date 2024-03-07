@@ -47,7 +47,6 @@ public class GameScreen implements Screen {
 
         img = new Texture("obligator.png");
 
-        gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
         hud = new Hud(game.batch);
@@ -55,10 +54,9 @@ public class GameScreen implements Screen {
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
         b2dr = new Box2DDebugRenderer();
-
 
     }
 
@@ -88,7 +86,7 @@ public class GameScreen implements Screen {
         hud.getStage().draw();
 
         game.batch.begin();
-        //game.batch.draw(img, 0, 0);
+        // game.batch.draw(img, 0, 0);
         this.model.getPlayer(1).draw(game.batch);
         this.model.getPlayer(2).draw(game.batch);
         game.batch.end();

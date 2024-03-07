@@ -10,12 +10,15 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.controller.HtekkenController;
+import hooytekken.skeleton.app.model.HTekkenModel;
 
 /**
  * class represents an active game screen
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
+    private HTekkenModel model;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
@@ -33,7 +36,7 @@ public class MenuScreen implements Screen {
      * 
      * @param game the game object
      */
-    public MenuScreen(Hoytekken game) {
+    public MenuScreen(Hoytekken game, HTekkenModel model) {
         this.game = game;
 
         gameCam = new OrthographicCamera();

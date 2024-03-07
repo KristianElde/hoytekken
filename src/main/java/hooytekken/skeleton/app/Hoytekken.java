@@ -2,6 +2,7 @@ package hooytekken.skeleton.app;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hooytekken.skeleton.app.controller.HtekkenController;
@@ -17,14 +18,16 @@ public class Hoytekken extends Game {
 
     public SpriteBatch batch;
     public HTekkenModel model;
+    public OrthographicCamera gameCam;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
+        gameCam = new OrthographicCamera();
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
 
-        setScreen(new MenuScreen(this));
+        setScreen(new MenuScreen(this, model));
     }
 
     /**
