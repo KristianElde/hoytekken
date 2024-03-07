@@ -25,7 +25,7 @@ public class Hoytekken extends Game {
     public void create() {
         model = new HTekkenModel();
         batch = new SpriteBatch();
-        gameCam = new OrthographicCamera();
+        gameCam = new OrthographicCamera(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM);
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
 

@@ -45,7 +45,7 @@ public class GameScreen implements Screen {
 
         img = new Texture("obligator.png");
 
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
+        gamePort = new FitViewport(game.gameCam);
 
         hud = new Hud(game.batch);
 
