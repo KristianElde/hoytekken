@@ -18,7 +18,6 @@ public class HtekkenController extends InputAdapter {
     public HtekkenController(ControllableModel model) {
         this.model = model;
         Gdx.input.setInputProcessor(this);
-        new InputListener();
     }
 
     @Override
