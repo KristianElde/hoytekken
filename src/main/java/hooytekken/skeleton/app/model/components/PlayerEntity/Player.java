@@ -31,6 +31,12 @@ public class Player extends Sprite implements IPlayer {
     // Health, if health is 0, player is dead
     private int health = 100;
 
+    // if attack is over limit, block is unsuccessful
+    private int blockLimit = 30;
+
+    // if block is unsuccessful, divide attack by this
+    private int blockSupresser = 2;
+
     private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
     public Player(World world, PlayerType type) {
@@ -98,8 +104,51 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
+
+    private boolean isWithinRange(Player that) {
+        Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
+        Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
+
+        float distance = thisPos.dst(thatPos);
+        float range = PLAYER_RADIUS * 2; // attack-length is the same as length of body
+        return distance <= range;
+    }
+
+    @Override
+    public boolean punch(Player that, int dmg) {
+        if (!isWithinRange(that)) {
+            return false;
+        }
+        if (this.isAlive() && that.isAlive()) {
+            that.takeDamage(dmg);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean kick(Player that, int dmg) {
+        if (!isWithinRange(that)) {
+            return false;
+        }
+        if (this.isAlive() && that.isAlive()) {
+            that.takeDamage(dmg);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean block(Player that, int incomingAttack) {
+        if (this.isAlive() && incomingAttack > blockLimit && isWithinRange(that)) {
+            this.takeDamage(incomingAttack / blockSupresser);
+            return false;
+        }
+        return true;
+
     @Override
     public boolean fallenOffTheMap() {
         return getBody().getPosition().y < 0;
+
     }
 }
