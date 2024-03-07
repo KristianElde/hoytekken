@@ -66,7 +66,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        // ignore implementation
+        render(0);
     }
 
     @Override

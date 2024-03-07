@@ -55,7 +55,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-        // ignore implementation
+        render(0);
     }
 
     @Override
