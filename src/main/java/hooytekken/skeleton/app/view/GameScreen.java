@@ -90,13 +90,12 @@ public class GameScreen implements Screen {
         hud.setPlayerHealth(this.model.getPlayer(1).getHealth());
         hud.setEnemyHealth(this.model.getPlayer(2).getHealth());
 
-        hud.getStage().draw();
-
         game.batch.begin();
         // game.batch.draw(img, 0, 0);
         this.model.getPlayer(1).draw(game.batch);
         this.model.getPlayer(2).draw(game.batch);
         game.batch.end();
+        hud.getStage().draw();
     }
 
     @Override
