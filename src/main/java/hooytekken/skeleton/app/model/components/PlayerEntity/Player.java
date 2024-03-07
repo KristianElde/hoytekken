@@ -97,7 +97,12 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private boolean isWithinRange(Player that) {
-        return true;
+        Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
+        Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
+
+        float distance = thisPos.dst(thatPos);
+        float range = 1.0f; // change this
+        return distance <= range;
     }
 
     @Override
