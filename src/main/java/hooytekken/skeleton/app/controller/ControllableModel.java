@@ -6,10 +6,11 @@ import hooytekken.skeleton.app.model.components.ForceDirection;
  * Interface for the model that can be controlled
  */
 public interface ControllableModel {
-    
+
     /**
      * Set the direction of the given player
-     * @param player the player to set the direction for
+     * 
+     * @param player    the player to set the direction for
      * @param direction the direction to apply force
      * @return true if the direction was set, false otherwise
      */
@@ -17,8 +18,19 @@ public interface ControllableModel {
 
     /**
      * Make the given player jump
+     * 
      * @param player the player to make jump
      * @return true if the player jumped, false otherwise
      */
     public boolean jump(int player);
+
+    /**
+     * Perform actions against the other player
+     * 
+     * @param player the player to perform the action on
+     * @param action the action to perform
+     * 
+     * @return true if the action was performed, false otherwise
+     */
+    public boolean performAction(int player, ActionType action);
 }
