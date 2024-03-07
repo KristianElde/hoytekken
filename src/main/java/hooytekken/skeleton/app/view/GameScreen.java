@@ -24,6 +24,8 @@ public class GameScreen implements Screen {
     private ViewableModel model;
 
     private Texture img;
+
+    private OrthographicCamera gameCam;
     private Viewport gamePort;
 
     private TmxMapLoader mapLoader;
@@ -46,16 +48,15 @@ public class GameScreen implements Screen {
 
         img = new Texture("obligator.png");
 
-        // gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM,
-        // Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
+        gameCam = new OrthographicCamera();
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
         hud = new Hud(game.batch);
 
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        // game.gameCam.position.set(gamePort.getWorldWidth() / 2,
-        // gamePort.getWorldHeight() / 2, 0);
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
         b2dr = new Box2DDebugRenderer();
 
@@ -63,13 +64,13 @@ public class GameScreen implements Screen {
 
     private void update(float delta) {
         model.updateModel(delta);
-        game.gameCam.update();
-        renderer.setView(game.gameCam);
+        gameCam.update();
+        renderer.setView(gameCam);
     }
 
     @Override
     public void show() {
-        render(0);
+        // ignore implementation
     }
 
     @Override
@@ -81,9 +82,9 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), game.gameCam.combined);
+        b2dr.render(this.model.getGameWorld(), gameCam.combined);
 
-        game.batch.setProjectionMatrix(game.gameCam.combined);
+        game.batch.setProjectionMatrix(gameCam.combined);
 
         // Update health
         hud.setPlayerHealth(this.model.getPlayer(1).getHealth());
@@ -100,7 +101,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        // gamePort.update(width, height);
+        gamePort.update(width, height);
     }
 
     @Override

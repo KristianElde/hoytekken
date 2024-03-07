@@ -10,16 +10,14 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
-import hooytekken.skeleton.app.controller.HtekkenController;
-import hooytekken.skeleton.app.model.HTekkenModel;
 
 /**
  * class represents an active game screen
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
-    private HTekkenModel model;
 
+    private OrthographicCamera gameCam;
     private Viewport gamePort;
 
     private TmxMapLoader mapLoader;
@@ -35,29 +33,28 @@ public class MenuScreen implements Screen {
      * 
      * @param game the game object
      */
-    public MenuScreen(Hoytekken game, HTekkenModel model) {
+    public MenuScreen(Hoytekken game) {
         this.game = game;
 
-        // gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM,
-        // Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
+        gameCam = new OrthographicCamera();
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("defaultMap.tmx");
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
         welcome = new Texture("Welcome.png");
 
-        // game.gameCam.position.set(gamePort.getWorldWidth() / 2,
-        // gamePort.getWorldHeight() / 2, 0);
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
     private void update(float delta) {
-        game.gameCam.update();
-        renderer.setView(game.gameCam);
+        gameCam.update();
+        renderer.setView(gameCam);
     }
 
     @Override
     public void show() {
-        render(0);
+        // ignore implementation
     }
 
     @Override
@@ -69,7 +66,7 @@ public class MenuScreen implements Screen {
 
         renderer.render();
 
-        game.batch.setProjectionMatrix(game.gameCam.combined);
+        game.batch.setProjectionMatrix(gameCam.combined);
 
         game.batch.begin();
 
@@ -82,7 +79,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        // gamePort.update(width, height);
+        gamePort.update(width, height);
     }
 
     @Override

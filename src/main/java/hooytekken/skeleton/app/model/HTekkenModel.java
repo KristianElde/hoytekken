@@ -9,7 +9,6 @@ import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
-import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
@@ -18,7 +17,6 @@ import hooytekken.skeleton.app.view.ViewableModel;
 public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
-    private GameState gameState;
 
     private IPlayer player1;
     private IPlayer player2;
@@ -37,7 +35,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
      * @param map string for chosen map
      */
     public HTekkenModel(String map) {
-        this.gameState = GameState.MAIN_MENU;
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
 
@@ -59,7 +56,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public void updateModel(float dt) {
-        gameWorld.step(1 / 60f, 6, 2);
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
         player1.update(dt);
@@ -122,16 +118,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         } else if (direction == ForceDirection.STATIC) {
             p.move(0, 0);
         }
-    }
-
-    @Override
-    public GameState getGameState() {
-        return gameState;
-    }
-
-    @Override
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
     }
 
     public boolean performAction(int player, ActionType actionType) {
