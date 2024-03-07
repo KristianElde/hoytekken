@@ -24,22 +24,33 @@ public class HtekkenController extends InputAdapter {
     @Override
     public boolean keyDown(int keycode) {
 
-        // Player1, LEFT, RIGHT, UP keys
+        // Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.LEFT)
             model.setDirection(1, ForceDirection.LEFT);
         if (keycode == Input.Keys.RIGHT)
             model.setDirection(1, ForceDirection.RIGHT);
-        if (keycode == Input.Keys.UP) {
+        if (keycode == Input.Keys.UP)
             model.jump(1);
-        }
+        if (keycode == Input.Keys.P)
+            model.performAction(1, ActionType.PUNCH);
+        if (keycode == Input.Keys.K)
+            model.performAction(1, ActionType.KICK);
+        if (keycode == Input.Keys.B)
+            model.performAction(1, ActionType.BLOCK);
 
-        // Player2, A, D, W keys
+        // Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
             model.setDirection(2, ForceDirection.LEFT);
         if (keycode == Input.Keys.D)
             model.setDirection(2, ForceDirection.RIGHT);
-        if (keycode == Input.Keys.W) {
+        if (keycode == Input.Keys.W)
             model.jump(2);
+        if (keycode == Input.Keys.Q)
+            model.performAction(2, ActionType.PUNCH);
+        if (keycode == Input.Keys.E)
+            model.performAction(2, ActionType.KICK);
+        if (keycode == Input.Keys.S) {
+            model.performAction(2, ActionType.BLOCK);
         }
 
         return false;

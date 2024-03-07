@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
@@ -58,6 +59,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public void updateModel(float dt) {
+        gameWorld.step(1 / 60f, 6, 2);
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
         player1.update(dt);
@@ -114,9 +116,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private void directionToSpeed(int player, ForceDirection direction) {
         IPlayer p = getPlayer(player);
         if (direction == ForceDirection.LEFT) {
-            p.move(-1, 0);
+            p.move(-0.1f, 0);
         } else if (direction == ForceDirection.RIGHT) {
-            p.move(1, 0);
+            p.move(0.1f, 0);
         } else if (direction == ForceDirection.STATIC) {
             p.move(0, 0);
         }
@@ -131,4 +133,40 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+
+    public boolean performAction(int player, ActionType actionType) {
+        IPlayer attacker = getPlayer(player);
+        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
+
+        // Player class, TODO: Fix this
+        Player att = (Player) attacker;
+        Player vic = (Player) victim;
+
+        int damage = 0;
+        switch (actionType) {
+            case KICK:
+                damage = 10;
+                if (att.kick(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
+            case PUNCH:
+                damage = 10;
+                if (att.punch(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
+            case BLOCK:
+                damage = 10;
+                if (att.block(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
+        }
+        return false;
+    }
+
 }
