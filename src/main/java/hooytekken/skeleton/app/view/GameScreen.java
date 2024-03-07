@@ -7,15 +7,20 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
+import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
 /**
  * class represents an active game screen
  */
 public class GameScreen implements Screen {
     private Hoytekken game;
+    private ViewableModel model;
 
     private Texture img;
 
@@ -28,13 +33,17 @@ public class GameScreen implements Screen {
 
     private Hud hud;
 
+    private World world;
+    private Box2DDebugRenderer b2dr;
+
     /**
      * Constructor for the game screen
      * 
      * @param game the game object
      */
-    public GameScreen(Hoytekken game) {
+    public GameScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
+        this.model = model;
 
         img = new Texture("obligator.png");
 
@@ -43,14 +52,18 @@ public class GameScreen implements Screen {
 
         hud = new Hud(game.batch);
 
-        mapLoader = new TmxMapLoader();
-        map = mapLoader.load("defaultMap.tmx");
+        map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+
+        b2dr = new Box2DDebugRenderer();
+
+
     }
 
     private void update(float delta) {
+        model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
     }
@@ -69,11 +82,15 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
+        b2dr.render(this.model.getGameWorld(), gameCam.combined);
+
         game.batch.setProjectionMatrix(gameCam.combined);
         hud.getStage().draw();
 
         game.batch.begin();
-        game.batch.draw(img, 200, 100);
+        //game.batch.draw(img, 0, 0);
+        this.model.getPlayer(1).draw(game.batch);
+        this.model.getPlayer(2).draw(game.batch);
         game.batch.end();
     }
 
