@@ -23,7 +23,7 @@ public class HtekkenController extends InputAdapter {
     @Override
     public boolean keyDown(int keycode) {
 
-        //Player1, LEFT, RIGHT, UP keys
+        //Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.LEFT) 
             model.setDirection(1, ForceDirection.LEFT);
         if (keycode == Input.Keys.RIGHT) 
@@ -37,7 +37,7 @@ public class HtekkenController extends InputAdapter {
         if (keycode == Input.Keys.B)
             //model.block(1);
 
-        //Player2, A, D, W keys
+        //Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
             model.setDirection(2, ForceDirection.LEFT);
         if (keycode == Input.Keys.D) 
@@ -48,8 +48,9 @@ public class HtekkenController extends InputAdapter {
             //model.punch(2);
         if (keycode == Input.Keys.E)
             //model.kick(2);
-        if (keycode == Input.Keys.S)
+        if (keycode == Input.Keys.S) {
             //model.block(2);
+        }
 
         return false;
     }
