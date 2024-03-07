@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
@@ -16,6 +17,7 @@ import hooytekken.skeleton.app.view.ViewableModel;
 public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
+    private GameState gameState;
 
     private IPlayer player1;
     private IPlayer player2;
@@ -30,6 +32,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     /**
      * Constructor for the model
+     * 
      * @param map string for chosen map
      */
     public HTekkenModel(String map) {
@@ -54,7 +57,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public void updateModel(float dt) {
-        gameWorld.step(1/60f, 6, 2);
+        gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
         player1.update(dt);
         player2.update(dt);
@@ -86,12 +89,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         if (player == 1) {
             p1Direction = direction;
             return true;
-        }
-        else if (player == 2) {
+        } else if (player == 2) {
             p2Direction = direction;
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -118,5 +119,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         } else if (direction == ForceDirection.STATIC) {
             p.move(0, 0);
         }
+    }
+
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    @Override
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }
