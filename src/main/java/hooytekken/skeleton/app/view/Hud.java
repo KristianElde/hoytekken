@@ -20,7 +20,7 @@ public class Hud {
     private Stage stage;
     private Viewport port;
 
-    private static final Integer INIT_HEALTH = 99;
+    private static final Integer INIT_HEALTH = 100;
     private static final Integer INIT_TIME = 0;
 
     private Integer playerHealth;
@@ -88,7 +88,7 @@ public class Hud {
     }
 
     public void setPlayerHealth(Integer health) {
-        playerHealth = health;
+        labelList.get(3).setText(String.format("%02d", health));
     }
 
     public Integer getEnemyHealth() {
@@ -96,6 +96,6 @@ public class Hud {
     }
 
     public void setEnemyHealth(Integer health) {
-        enemyHealth = health;
+        labelList.get(5).setText(String.format("%02d", health));
     }
 }
