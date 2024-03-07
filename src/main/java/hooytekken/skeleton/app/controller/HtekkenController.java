@@ -31,14 +31,11 @@ public class HtekkenController extends InputAdapter {
         if (keycode == Input.Keys.UP) 
             model.jump(1);
         if (keycode == Input.Keys.P)
-            //model.punch(1);
-            System.out.println("Punch player 1");
+            model.performAction(1, ActionType.PUNCH);
         if (keycode == Input.Keys.K)
-            //model.kick(1);
-            System.out.println("Kick player 1");
+            model.performAction(1, ActionType.KICK);
         if (keycode == Input.Keys.B)
-            //model.block(1);
-            System.out.println("Block player 1");
+            model.performAction(1, ActionType.BLOCK);
 
         //Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
