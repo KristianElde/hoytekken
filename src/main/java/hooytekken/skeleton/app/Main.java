@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("hoytekken");
-        cfg.setWindowedMode(480, 320);
+        cfg.setWindowedMode(800, 600);
 
         new Lwjgl3Application(new Hoytekken(), cfg);
     }

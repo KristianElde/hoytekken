@@ -23,8 +23,6 @@ public class GameScreen implements Screen {
     private ViewableModel model;
 
     private Texture img;
-
-    private OrthographicCamera gameCam;
     private Viewport gamePort;
 
     private TmxMapLoader mapLoader;
@@ -47,30 +45,30 @@ public class GameScreen implements Screen {
 
         img = new Texture("obligator.png");
 
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        // gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM,
+        // Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
 
         hud = new Hud(game.batch);
 
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+        // game.gameCam.position.set(gamePort.getWorldWidth() / 2,
+        // gamePort.getWorldHeight() / 2, 0);
 
         b2dr = new Box2DDebugRenderer();
-
 
     }
 
     private void update(float delta) {
         model.updateModel(delta);
-        gameCam.update();
-        renderer.setView(gameCam);
+        game.gameCam.update();
+        renderer.setView(game.gameCam);
     }
 
     @Override
     public void show() {
-        // ignore implementation
+        render(0);
     }
 
     @Override
@@ -82,13 +80,13 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
+        b2dr.render(this.model.getGameWorld(), game.gameCam.combined);
 
-        game.batch.setProjectionMatrix(gameCam.combined);
+        game.batch.setProjectionMatrix(game.gameCam.combined);
         hud.getStage().draw();
 
         game.batch.begin();
-        //game.batch.draw(img, 0, 0);
+        // game.batch.draw(img, 0, 0);
         this.model.getPlayer(1).draw(game.batch);
         this.model.getPlayer(2).draw(game.batch);
         game.batch.end();
@@ -96,7 +94,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        gamePort.update(width, height);
+        // gamePort.update(width, height);
     }
 
     @Override
