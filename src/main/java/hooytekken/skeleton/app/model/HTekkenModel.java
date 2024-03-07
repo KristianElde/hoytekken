@@ -5,13 +5,15 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
+import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 import hooytekken.skeleton.app.view.ViewableModel;
 
-public class HTekkenModel implements ViewableModel {
+public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
 
@@ -72,5 +74,17 @@ public class HTekkenModel implements ViewableModel {
     @Override
     public TiledMap getTiledMap() {
         return tiledmap;
+    }
+
+    @Override
+    public boolean setDirection(int player, ForceDirection direction) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDirection'");
+    }
+
+    @Override
+    public boolean jump(int player) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'jump'");
     }
 }
