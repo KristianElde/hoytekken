@@ -98,13 +98,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public boolean jump(int player) {
-        //IPlayer p = getPlayer(player);
-        if (player == 1) {
-            player1.move(0, 5);
-        } else {
-            player2.move(0, 5);
-        }
-        //p.move(0, 5);
+        IPlayer p = getPlayer(player);
+        p.move(0, 5);
         return true;
     }
 
