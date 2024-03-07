@@ -28,6 +28,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
+    public enum ActionType {
+        KICK,
+        PUNCH,
+        BLOCK
+    }
+
     /**
      * Constructor for the model
      * 
@@ -119,7 +125,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         }
     }
 
-    public boolean kick(int player) {
+    public boolean performAction(int player, ActionType actionType) {
         IPlayer attacker = getPlayer(player);
         IPlayer victim = getPlayer(player == 1 ? 2 : 1);
 
@@ -127,44 +133,31 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         Player att = (Player) attacker;
         Player vic = (Player) victim;
 
-        if (att.kick(vic, 10)) {
-            System.out.println(vic.getHealth() + " health left");
-            return true;
-        } else {
-            return false;
+        int damage = 0;
+        switch (actionType) {
+            case KICK:
+                damage = 10;
+                if (att.kick(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
+            case PUNCH:
+                damage = 10;
+                if (att.punch(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
+            case BLOCK:
+                damage = 10;
+                if (att.block(vic, damage)) {
+                    System.out.println(vic.getHealth() + " health left");
+                    return true;
+                }
+                break;
         }
-    }
-
-    public boolean punch(int player) {
-        IPlayer attacker = getPlayer(player);
-        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
-
-        // get player class
-        Player att = (Player) attacker;
-        Player vic = (Player) victim;
-
-        if (att.punch(vic, 10)) {
-            System.out.println(vic.getHealth() + " health left");
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean block(int player) {
-        IPlayer attacker = getPlayer(player);
-        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
-
-        // get player class
-        Player att = (Player) attacker;
-        Player vic = (Player) victim;
-
-        if (att.block(vic, 10)) {
-            System.out.println(vic.getHealth() + " health left");
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
 }
