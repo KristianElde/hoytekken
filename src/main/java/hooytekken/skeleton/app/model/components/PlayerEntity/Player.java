@@ -67,6 +67,7 @@ public class Player extends Sprite implements IPlayer {
     public void update(float dt) {
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
+
     }
 
     public Body getBody() {
