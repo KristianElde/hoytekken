@@ -28,9 +28,10 @@ public class HtekkenController extends InputAdapter {
             model.setDirection(1, ForceDirection.LEFT);
         if (keycode == Input.Keys.RIGHT) 
             model.setDirection(1, ForceDirection.RIGHT);
-        if (keycode == Input.Keys.UP) {
+        if (keycode == Input.Keys.UP) 
             model.jump(1);
-        }
+        if (keycode == Input.Keys.P)
+            //model.punch(1);
 
         //Player2, A, D, W keys
         if (keycode == Input.Keys.A)
