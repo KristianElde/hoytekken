@@ -20,4 +20,5 @@ Klassisk 2D-fighting spill i tekken og Street Fighter-stil.
 
 ## Ressurser
 
-Ingen ressurser foreløpig.
+KANBAN-board:
+https://trello.com/b/4yo34C69/karan-med-varan
