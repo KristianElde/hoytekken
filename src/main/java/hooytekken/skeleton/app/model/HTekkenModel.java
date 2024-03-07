@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
@@ -27,12 +28,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
-
-    public enum ActionType {
-        KICK,
-        PUNCH,
-        BLOCK
-    }
 
     /**
      * Constructor for the model
@@ -129,7 +124,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         IPlayer attacker = getPlayer(player);
         IPlayer victim = getPlayer(player == 1 ? 2 : 1);
 
-        // get player class
+        // Player class, TODO: Fix this
         Player att = (Player) attacker;
         Player vic = (Player) victim;
 
