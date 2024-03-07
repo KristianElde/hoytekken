@@ -55,8 +55,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     @Override
     public void updateModel(float dt) {
         gameWorld.step(1/60f, 6, 2);
+        movePlayers();
         player1.update(dt);
         player2.update(dt);
+
     }
 
     @Override
@@ -81,7 +83,17 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public boolean setDirection(int player, ForceDirection direction) {
-        return true;
+        if (player == 1) {
+            p1Direction = direction;
+            return true;
+        }
+        else if (player == 2) {
+            p2Direction = direction;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
@@ -96,7 +108,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         return true;
     }
 
-    private boolean movePlayer(int player) {
-        return false;
+    private boolean movePlayers() {
+        directionToSpeed(1, p1Direction);
+        directionToSpeed(2, p2Direction);
+        return true;
+    }
+
+    private void directionToSpeed(int player, ForceDirection direction) {
+        IPlayer p = getPlayer(player);
+        if (direction == ForceDirection.LEFT) {
+            p.move(-1, 0);
+        } else if (direction == ForceDirection.RIGHT) {
+            p.move(1, 0);
+        } else if (direction == ForceDirection.STATIC) {
+            p.move(0, 0);
+        }
     }
 }
