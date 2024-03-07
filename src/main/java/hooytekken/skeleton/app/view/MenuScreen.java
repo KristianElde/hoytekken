@@ -38,7 +38,8 @@ public class MenuScreen implements Screen {
     public MenuScreen(Hoytekken game, HTekkenModel model) {
         this.game = game;
 
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM,
+                Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
 
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("defaultMap.tmx");
