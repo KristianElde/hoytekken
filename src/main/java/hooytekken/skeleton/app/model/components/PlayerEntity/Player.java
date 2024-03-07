@@ -131,7 +131,7 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean block(Player that, int incomingAttack) {
-        if (this.isAlive() && incomingAttack > blockLimit) {
+        if (this.isAlive() && incomingAttack > blockLimit && isWithinRange(that)) {
             this.takeDamage(incomingAttack / blockSupresser);
             return false;
         }
