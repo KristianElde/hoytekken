@@ -16,23 +16,21 @@ public class Hoytekken extends Game {
     public static final float PPM = 100;
 
     public SpriteBatch batch;
+    public HTekkenModel model;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
-         
 
-        //setScreen(new MenuScreen(this));
-        setScreen(new GameScreen(this, model));
+        setScreen(new MenuScreen(this));
     }
 
     /**
      * Sets the screens content to a games screen.
      */
-    public void startGame() {
-        //setScreen(new GameScreen(this));
-    }
+    public void render() {
 
+    }
 }
