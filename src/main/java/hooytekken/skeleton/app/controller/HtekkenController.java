@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * Controller for the game
@@ -23,19 +24,19 @@ public class HtekkenController extends InputAdapter {
     @Override
     public boolean keyDown(int keycode) {
 
-        //Player1, LEFT, RIGHT, UP keys
-        if (keycode == Input.Keys.LEFT) 
+        // Player1, LEFT, RIGHT, UP keys
+        if (keycode == Input.Keys.LEFT)
             model.setDirection(1, ForceDirection.LEFT);
-        if (keycode == Input.Keys.RIGHT) 
+        if (keycode == Input.Keys.RIGHT)
             model.setDirection(1, ForceDirection.RIGHT);
         if (keycode == Input.Keys.UP) {
             model.jump(1);
         }
 
-        //Player2, A, D, W keys
+        // Player2, A, D, W keys
         if (keycode == Input.Keys.A)
             model.setDirection(2, ForceDirection.LEFT);
-        if (keycode == Input.Keys.D) 
+        if (keycode == Input.Keys.D)
             model.setDirection(2, ForceDirection.RIGHT);
         if (keycode == Input.Keys.W) {
             model.jump(2);
@@ -46,13 +47,23 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean keyUp(int keycode) {
-        
-        //Stop applying force to the player when the key is released
-        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT) model.setDirection(1, ForceDirection.STATIC);
-        if (keycode == Input.Keys.A || keycode == Input.Keys.D) model.setDirection(2, ForceDirection.STATIC);
+
+        // Stop applying force to the player when the key is released
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT)
+            model.setDirection(1, ForceDirection.STATIC);
+        if (keycode == Input.Keys.A || keycode == Input.Keys.D)
+            model.setDirection(2, ForceDirection.STATIC);
 
         return false;
     }
 
-     
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (model.getGameState() == GameState.MAIN_MENU) {
+            model.setGameState(GameState.ACTIVE_GAME);
+            return true;
+        }
+        return false;
+    }
+
 }
