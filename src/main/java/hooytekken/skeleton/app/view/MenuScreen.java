@@ -7,22 +7,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
-import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
-import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
 /**
  * class represents an active game screen
  */
-public class GameScreen implements Screen {
+public class MenuScreen implements Screen {
     private Hoytekken game;
-    private ViewableModel model;
-
-    private Texture img;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
@@ -30,40 +23,31 @@ public class GameScreen implements Screen {
     private TmxMapLoader mapLoader;
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
+    private Texture welcome;
 
-    private Hud hud;
-
-    private World world;
-    private Box2DDebugRenderer b2dr;
+    private static final float WELCOME_TEXT_WIDTH = 300;
+    private static final float WELCOME_TEXT_HEIGHT = 300;
 
     /**
      * Constructor for the game screen
      * 
      * @param game the game object
      */
-    public GameScreen(Hoytekken game, ViewableModel model) {
+    public MenuScreen(Hoytekken game) {
         this.game = game;
-        this.model = model;
-
-        img = new Texture("obligator.png");
 
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
-        hud = new Hud(game.batch);
-
-        map = model.getTiledMap();
+        mapLoader = new TmxMapLoader();
+        map = mapLoader.load("defaultMap.tmx");
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
+        welcome = new Texture("Welcome.png");
 
-        gameCam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
-
-        b2dr = new Box2DDebugRenderer();
-
-
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
     private void update(float delta) {
-        model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
     }
@@ -82,15 +66,14 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
-
         game.batch.setProjectionMatrix(gameCam.combined);
-        hud.getStage().draw();
 
         game.batch.begin();
-        //game.batch.draw(img, 0, 0);
-        this.model.getPlayer(1).draw(game.batch);
-        this.model.getPlayer(2).draw(game.batch);
+
+        game.batch.draw(welcome, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
+                (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
+                WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
+
         game.batch.end();
     }
 

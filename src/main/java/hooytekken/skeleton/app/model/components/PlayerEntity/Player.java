@@ -2,6 +2,7 @@ package hooytekken.skeleton.app.model.components.PlayerEntity;
 
 import hooytekken.skeleton.app.Hoytekken;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -15,9 +16,11 @@ import com.badlogic.gdx.physics.box2d.World;
  * The player class
  */
 public class Player extends Sprite implements IPlayer {
+    private static final String DEFAULT_SKIN = "obligator.png";
+
     private World world;
     private Body body;
-    private TextureRegion playerTexture;
+    private Texture playerTexture;
 
     // The type of player (player one or player two)
     private PlayerType type;
@@ -40,8 +43,11 @@ public class Player extends Sprite implements IPlayer {
         this.world = world;
         this.type = type;
 
+        this.playerTexture = new Texture(DEFAULT_SKIN);
+
         definePlayer();
         setBounds(0, 0, 45 / Hoytekken.PPM, 45 / Hoytekken.PPM);
+        setRegion(playerTexture);
     }
 
     private void definePlayer() {
@@ -65,8 +71,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     public void update(float dt) {
-        setPosition(body.getPosition().x - playerTexture.getRegionWidth() / 2,
-                body.getPosition().y - playerTexture.getRegionHeight() / 2);
+        setPosition(body.getPosition().x - getWidth() / 2,
+                body.getPosition().y - getHeight() / 2);
+
     }
 
     public Body getBody() {
@@ -79,10 +86,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void takeDamage(int damage) {
-        this.health -= damage;
-
-        if (this.health <= 0) {
+        if (this.health - damage <= 0) {
             this.isAlive = false;
+            this.health = 0;
+        } else {
+            this.health -= damage;
         }
     }
 
@@ -95,6 +103,7 @@ public class Player extends Sprite implements IPlayer {
     public int getHealth() {
         return health;
     }
+
 
     private boolean isWithinRange(Player that) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
@@ -136,5 +145,10 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         return true;
+
+    @Override
+    public boolean fallenOffTheMap() {
+        return getBody().getPosition().y < 0;
+
     }
 }
