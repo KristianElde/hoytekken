@@ -48,6 +48,8 @@ public class HtekkenController extends InputAdapter {
             //model.punch(2);
         if (keycode == Input.Keys.E)
             //model.kick(2);
+        if (keycode == Input.Keys.S)
+            //model.block(2);
 
         return false;
     }
