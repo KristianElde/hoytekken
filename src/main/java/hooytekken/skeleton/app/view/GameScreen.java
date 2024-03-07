@@ -23,8 +23,6 @@ public class GameScreen implements Screen {
     private ViewableModel model;
 
     private Texture img;
-
-    private OrthographicCamera gameCam;
     private Viewport gamePort;
 
     private TmxMapLoader mapLoader;
@@ -47,14 +45,14 @@ public class GameScreen implements Screen {
 
         img = new Texture("obligator.png");
 
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
 
         hud = new Hud(game.batch);
 
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
 
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+        game.gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
         b2dr = new Box2DDebugRenderer();
 
@@ -62,8 +60,8 @@ public class GameScreen implements Screen {
 
     private void update(float delta) {
         model.updateModel(delta);
-        gameCam.update();
-        renderer.setView(gameCam);
+        game.gameCam.update();
+        renderer.setView(game.gameCam);
     }
 
     @Override
@@ -80,9 +78,9 @@ public class GameScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
+        b2dr.render(this.model.getGameWorld(), game.gameCam.combined);
 
-        game.batch.setProjectionMatrix(gameCam.combined);
+        game.batch.setProjectionMatrix(game.gameCam.combined);
         hud.getStage().draw();
 
         game.batch.begin();

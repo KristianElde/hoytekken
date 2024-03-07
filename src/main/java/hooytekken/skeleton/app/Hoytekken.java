@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hooytekken.skeleton.app.controller.HtekkenController;
 import hooytekken.skeleton.app.model.HTekkenModel;
+import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.view.GameScreen;
 import hooytekken.skeleton.app.view.MenuScreen;
 
@@ -22,6 +23,7 @@ public class Hoytekken extends Game {
 
     @Override
     public void create() {
+        model = new HTekkenModel();
         batch = new SpriteBatch();
         gameCam = new OrthographicCamera();
         HTekkenModel model = new HTekkenModel();
@@ -30,10 +32,12 @@ public class Hoytekken extends Game {
         setScreen(new MenuScreen(this, model));
     }
 
-    /**
-     * Sets the screens content to a games screen.
-     */
+    @Override
     public void render() {
-
+        if (model.getGameState() == GameState.MAIN_MENU) {
+            setScreen(new MenuScreen(this, model));
+        } else if (model.getGameState() == GameState.ACTIVE_GAME) {
+            setScreen(new GameScreen(this, model));
+        }
     }
 }

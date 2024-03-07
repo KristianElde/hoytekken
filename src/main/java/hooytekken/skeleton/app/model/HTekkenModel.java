@@ -36,6 +36,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
      * @param map string for chosen map
      */
     public HTekkenModel(String map) {
+        this.gameState = GameState.MAIN_MENU;
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
 

@@ -20,7 +20,6 @@ public class MenuScreen implements Screen {
     private Hoytekken game;
     private HTekkenModel model;
 
-    private OrthographicCamera gameCam;
     private Viewport gamePort;
 
     private TmxMapLoader mapLoader;
@@ -39,20 +38,19 @@ public class MenuScreen implements Screen {
     public MenuScreen(Hoytekken game, HTekkenModel model) {
         this.game = game;
 
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, game.gameCam);
 
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("defaultMap.tmx");
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
         welcome = new Texture("Welcome.png");
 
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+        game.gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
     private void update(float delta) {
-        gameCam.update();
-        renderer.setView(gameCam);
+        game.gameCam.update();
+        renderer.setView(game.gameCam);
     }
 
     @Override
@@ -69,7 +67,7 @@ public class MenuScreen implements Screen {
 
         renderer.render();
 
-        game.batch.setProjectionMatrix(gameCam.combined);
+        game.batch.setProjectionMatrix(game.gameCam.combined);
 
         game.batch.begin();
 
