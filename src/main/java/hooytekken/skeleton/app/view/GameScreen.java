@@ -2,6 +2,7 @@ package hooytekken.skeleton.app.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -76,13 +77,18 @@ public class GameScreen implements Screen {
         update(delta);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(Gdx.gl.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
 
         b2dr.render(this.model.getGameWorld(), game.gameCam.combined);
 
         game.batch.setProjectionMatrix(game.gameCam.combined);
+
+        // Update health
+        hud.setPlayerHealth(this.model.getPlayer(1).getHealth());
+        hud.setEnemyHealth(this.model.getPlayer(2).getHealth());
+
         hud.getStage().draw();
 
         game.batch.begin();
