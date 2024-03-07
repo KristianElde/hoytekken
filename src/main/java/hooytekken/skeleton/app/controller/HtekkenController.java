@@ -18,7 +18,6 @@ public class HtekkenController extends InputAdapter {
     public HtekkenController(ControllableModel model) {
         this.model = model;
         Gdx.input.setInputProcessor(this);
-        new InputListener();
     }
 
     @Override
@@ -42,7 +41,6 @@ public class HtekkenController extends InputAdapter {
             model.jump(2);
         }
 
-        System.out.println("Key pressed: " + keycode);
         return false;
     }
 
