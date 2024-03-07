@@ -101,7 +101,7 @@ public class Player extends Sprite implements IPlayer {
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_RADIUS * 2; // punch can reach the lenght of body
+        float range = PLAYER_RADIUS * 2; // attack-length is the same as length of body
         return distance <= range;
     }
 
