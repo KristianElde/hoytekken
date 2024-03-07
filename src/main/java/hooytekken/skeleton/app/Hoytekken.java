@@ -26,6 +26,8 @@ public class Hoytekken extends Game {
         model = new HTekkenModel();
         batch = new SpriteBatch();
         gameCam = new OrthographicCamera(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM);
+        gameCam.position.set(gameCam.viewportWidth / 2, gameCam.viewportHeight / 2, 0);
+        gameCam.update();
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
 
