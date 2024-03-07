@@ -32,10 +32,13 @@ public class HtekkenController extends InputAdapter {
             model.jump(1);
         if (keycode == Input.Keys.P)
             //model.punch(1);
+            System.out.println("Punch player 1");
         if (keycode == Input.Keys.K)
             //model.kick(1);
+            System.out.println("Kick player 1");
         if (keycode == Input.Keys.B)
             //model.block(1);
+            System.out.println("Block player 1");
 
         //Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
@@ -46,10 +49,13 @@ public class HtekkenController extends InputAdapter {
             model.jump(2);
         if (keycode == Input.Keys.Q)
             //model.punch(2);
+            System.out.println("Punch player 2");
         if (keycode == Input.Keys.E)
             //model.kick(2);
+            System.out.println("Kick player 2");
         if (keycode == Input.Keys.S) {
             //model.block(2);
+            System.out.println("Block player 2");
         }
 
         return false;
