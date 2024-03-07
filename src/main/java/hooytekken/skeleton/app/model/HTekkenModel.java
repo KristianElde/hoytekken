@@ -25,6 +25,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private TmxMapLoader mapLoader;
     private TiledMap tiledmap;
 
+    private ForceDirection p1Direction = ForceDirection.STATIC;
+    private ForceDirection p2Direction = ForceDirection.STATIC;
+
     /**
      * Constructor for the model
      * @param map string for chosen map
@@ -78,14 +81,18 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public boolean setDirection(int player, ForceDirection direction) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDirection'");
+        return true;
     }
 
     @Override
     public boolean jump(int player) {
-        IPlayer p = getPlayer(player);
-        p.move(0, 5);
+        //IPlayer p = getPlayer(player);
+        if (player == 1) {
+            player1.move(0, 5);
+        } else {
+            player2.move(0, 5);
+        }
+        //p.move(0, 5);
         return true;
     }
 

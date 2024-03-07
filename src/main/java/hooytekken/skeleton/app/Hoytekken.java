@@ -1,8 +1,10 @@
 package hooytekken.skeleton.app;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import hooytekken.skeleton.app.controller.HtekkenController;
 import hooytekken.skeleton.app.model.HTekkenModel;
 import hooytekken.skeleton.app.view.GameScreen;
 import hooytekken.skeleton.app.view.MenuScreen;
@@ -18,7 +20,9 @@ public class Hoytekken extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        HTekkenModel model = new HTekkenModel();  
+        HTekkenModel model = new HTekkenModel();
+        new HtekkenController(model);
+         
 
         //setScreen(new MenuScreen(this));
         setScreen(new GameScreen(this, model));
