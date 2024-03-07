@@ -145,6 +145,7 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         return true;
+    }
 
     @Override
     public boolean fallenOffTheMap() {
