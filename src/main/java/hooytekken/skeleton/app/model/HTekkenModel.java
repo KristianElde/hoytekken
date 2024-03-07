@@ -30,6 +30,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     /**
      * Constructor for the model
+     * 
      * @param map string for chosen map
      */
     public HTekkenModel(String map) {
@@ -54,7 +55,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
 
     @Override
     public void updateModel(float dt) {
-        gameWorld.step(1/60f, 6, 2);
+        gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
         player1.update(dt);
         player2.update(dt);
@@ -86,12 +87,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         if (player == 1) {
             p1Direction = direction;
             return true;
-        }
-        else if (player == 2) {
+        } else if (player == 2) {
             p2Direction = direction;
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -119,4 +118,53 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
             p.move(0, 0);
         }
     }
+
+    public boolean kick(int player) {
+        IPlayer attacker = getPlayer(player);
+        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
+
+        // get player class
+        Player att = (Player) attacker;
+        Player vic = (Player) victim;
+
+        if (att.kick(vic, 10)) {
+            System.out.println(vic.getHealth() + " health left");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean punch(int player) {
+        IPlayer attacker = getPlayer(player);
+        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
+
+        // get player class
+        Player att = (Player) attacker;
+        Player vic = (Player) victim;
+
+        if (att.punch(vic, 10)) {
+            System.out.println(vic.getHealth() + " health left");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean block(int player) {
+        IPlayer attacker = getPlayer(player);
+        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
+
+        // get player class
+        Player att = (Player) attacker;
+        Player vic = (Player) victim;
+
+        if (att.block(vic, 10)) {
+            System.out.println(vic.getHealth() + " health left");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
