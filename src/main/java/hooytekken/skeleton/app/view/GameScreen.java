@@ -37,6 +37,7 @@ public class GameScreen implements Screen {
      * Constructor for the game screen
      * 
      * @param game the game object
+     * @param model the viewable model
      */
     public GameScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
