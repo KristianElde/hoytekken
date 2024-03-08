@@ -38,6 +38,7 @@ public class GameOverScreen implements Screen {
      * Constructor for the game over screen
      * 
      * @param game the game object
+     * @param model the viewable model
      */
     public GameOverScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
