@@ -66,7 +66,7 @@
 - Oppdatere Kanban-brettet jevnlig (Trello).
 
 
-# Prosjektrapport
+# Krav og spesifikasjon
 
 
 # Produkt og kode
