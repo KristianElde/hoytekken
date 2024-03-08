@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.controller.ActionType;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * Class representing the instructions screen.
@@ -90,6 +91,17 @@ public class InstructionsScreen implements Screen {
         stage.addActor(table);
     }
 
+    private void handleStateSwitch() {
+        if (model.getGameState() != GameState.GAME_OVER) {
+            game.setScreen(new MenuScreen(game, model));
+        }
+    }
+
+    private void update(float delta) {
+        gameCam.update();
+        handleStateSwitch();
+    }
+
     @Override
     public void show() {
         //ingore implementation
@@ -97,6 +109,8 @@ public class InstructionsScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        update(delta);
+        
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
