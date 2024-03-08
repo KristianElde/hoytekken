@@ -28,20 +28,22 @@
 ### 1.7 Kodestilansvarlig
     Denne rollen ble tildelt til Mathias. Vi ser for oss at denne rollen blir mer relevant nå som ting begynner å falle på plass. Da blir det viktig å gå over deler av koden som kan forbedres og gjøre den mer lesbar. 
     
+## 2. Prosjektmetodikk
+    Metoden vi har benyttet av oss er Kanban. Vi har brukt trello som vårt kanban-brett, der vi har kolonner som: Backlog, doing, review, done, archive og discarded. Kortene flyttes fra venstre til høyre på tavlen etter hvert som arbeidet skrider frem gjennom de ulike stadiene av prosessen. Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen. Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi unngå overbelastning og forsinkelser. Dette har fungert veldig bra for oss, og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort. Denne metoden sørger også for at vi har god tilbakemeldingssykluser, der vi har regelmessig møte en gang i uken, hvor vi vurderer kanban-brettet, fremgang og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha en fungerende prototype som vi kan revidere og forbedre senere i prosessen.  
 
-## 2. Gruppedynamikk
-    
-    Dynamikken i gruppen er bra. Vi er gode venner som har det morsomt når vi jobber sammen. Dette ser vi som positivt, da vi tror det er viktig å ha det gøy når man jobber med et prosjekt som dette. Dette skaper høyde under taket for å komme med forbedringsforslag, kreative innspill og nye ideer. 
-
-## 3. Kommunikasjon
+## 3. Gruppedynamikk
+     
+## 4. Kommunikasjon
 
     Kommunikasjon har fungert veldig bra så langt! Vi er flinke til å oppdatere hverandre på discord og trello.. Det vi må jobbe med fremover er å bli flinkere på å oppdatere de andre og forklare koden man har skrevet nøye til de andre. Dette kan skyldes fordi vi skriver kode forskjellig, og at det kan bli forvirrende.
 
-## 4. Retroperspektiv
+## 5. Retrospektiv
+    
+    
 
-## 5. Arbeidsfordeling
+## 6. Arbeidsfordeling
 
-## 6. Forbedringspunkter
+## 7. Forbedringspunkter
 
 
 
