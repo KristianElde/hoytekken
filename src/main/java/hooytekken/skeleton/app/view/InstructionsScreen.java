@@ -1,8 +1,16 @@
 package hooytekken.skeleton.app.view;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.controller.ActionType;
 
 /**
  * Class representing the instructions screen.
@@ -10,6 +18,11 @@ import hooytekken.skeleton.app.Hoytekken;
 public class InstructionsScreen implements Screen {
     private Hoytekken game;
     private ViewableModel model;
+
+    private OrthographicCamera gameCam;
+    private FitViewport gamePort;
+
+    private Stage stage;
 
     /**
      * Constructor for the instructions screen.
@@ -21,6 +34,40 @@ public class InstructionsScreen implements Screen {
         this.game = game;
         this.model = mode; 
         
+        gameCam = new OrthographicCamera();
+        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
+
+        stage = new Stage(gamePort, game.batch);
+
+        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+        Table table = new Table();
+        table.center();
+        table.setFillParent(true);
+
+        Label actionLabel = new Label("Actions", font);
+        Label player1 = new Label("Player1", font);
+        Label player2 = new Label("Player2", font);
+
+        Label movement = new Label("Movement", font);
+        Label keysAWD = new Label("Keys: A, W, D", font);
+        Label keysArrows = new Label("Keys: Left, Up, Right", font);
+
+        Label punch = new Label("Punch", font);
+        Label keyQ = new Label("Key: Q", font);
+        Label KeyP = new Label("Key: P", font);
+
+        Label kick = new Label("Kick", font);
+        Label keyE = new Label("Key: E", font);
+        Label keyK = new Label("Key: K", font);
+
+        Label block = new Label("Block", font);
+        Label keyS = new Label("Key: S", font);
+        Label keyB = new Label("Key: B", font);
+
+        
+
+        //table.add(gameOverLabel).expandX();
+        stage.addActor(table);
     }
 
     @Override
