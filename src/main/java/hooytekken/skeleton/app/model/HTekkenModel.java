@@ -63,7 +63,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         movePlayers();
         player1.update(dt);
         player2.update(dt);
-
+        if (isGameOver()) {
+            setGameState(GameState.GAME_OVER);
+        }
     }
 
     @Override
@@ -166,6 +168,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     @Override
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    private boolean isGameOver() {
+        if (player1.isAlive() && player2.isAlive())
+            return false;
+        return true;
     }
 
 }
