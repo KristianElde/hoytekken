@@ -9,6 +9,7 @@ import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
@@ -17,6 +18,7 @@ import hooytekken.skeleton.app.view.ViewableModel;
 public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
+    private GameState gameState;
 
     private IPlayer player1;
     private IPlayer player2;
@@ -37,6 +39,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     public HTekkenModel(String map) {
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
+        this.gameState = GameState.MAIN_MENU;
 
         this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
         this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
@@ -60,7 +63,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         movePlayers();
         player1.update(dt);
         player2.update(dt);
-
+        if (isGameOver()) {
+            setGameState(GameState.GAME_OVER);
+        }
     }
 
     @Override
@@ -153,6 +158,22 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    @Override
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    private boolean isGameOver() {
+        if (player1.isAlive() && player2.isAlive())
+            return false;
+        return true;
     }
 
 }

@@ -12,20 +12,22 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.model.HTekkenModel;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * class represents an active game screen
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
+    private ViewableModel model;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
 
-    private TmxMapLoader mapLoader;
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
-    private Texture welcome;
+    private Texture welcomeImg;
 
     private static final float WELCOME_TEXT_WIDTH = 300;
     private static final float WELCOME_TEXT_HEIGHT = 300;
@@ -35,23 +37,30 @@ public class MenuScreen implements Screen {
      * 
      * @param game the game object
      */
-    public MenuScreen(Hoytekken game) {
+    public MenuScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
+        this.model = model;
 
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
-        mapLoader = new TmxMapLoader();
-        map = mapLoader.load("defaultMap.tmx");
+        map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-        welcome = new Texture("Welcome.png");
+        welcomeImg = new Texture("Welcome.png");
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+    }
+
+    private void handleStateSwitch() {
+        if (model.getGameState() != GameState.MAIN_MENU) {
+            game.setScreen(new GameScreen(game, model));
+        }
     }
 
     private void update(float delta) {
         gameCam.update();
         renderer.setView(gameCam);
+        handleStateSwitch();
     }
 
     @Override
@@ -72,7 +81,7 @@ public class MenuScreen implements Screen {
 
         game.batch.begin();
 
-        game.batch.draw(welcome, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
+        game.batch.draw(welcomeImg, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
                 (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
                 WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * Controller for the game
@@ -65,4 +66,12 @@ public class HtekkenController extends InputAdapter {
         return false;
     }
 
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (model.getGameState() == GameState.MAIN_MENU) {
+            model.setGameState(GameState.ACTIVE_GAME);
+            return true;
+        }
+        return false;
+    }
 }

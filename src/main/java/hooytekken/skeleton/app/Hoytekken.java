@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hooytekken.skeleton.app.controller.HtekkenController;
 import hooytekken.skeleton.app.model.HTekkenModel;
-import hooytekken.skeleton.app.view.GameScreen;
+import hooytekken.skeleton.app.view.MenuScreen;
 
 public class Hoytekken extends Game {
     public static final int TILE_SIZE = 32;
@@ -21,15 +21,6 @@ public class Hoytekken extends Game {
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
 
-        // setScreen(new MenuScreen(this));
-        setScreen(new GameScreen(this, model));
+        setScreen(new MenuScreen(this, model));
     }
-
-    /**
-     * Sets the screens content to a games screen.
-     */
-    public void startGame() {
-        // setScreen(new GameScreen(this));
-    }
-
 }
