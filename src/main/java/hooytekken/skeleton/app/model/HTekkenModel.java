@@ -9,6 +9,7 @@ import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
@@ -17,6 +18,7 @@ import hooytekken.skeleton.app.view.ViewableModel;
 public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
+    private GameState gameState;
 
     private IPlayer player1;
     private IPlayer player2;
@@ -153,6 +155,16 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    @Override
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 
 }
