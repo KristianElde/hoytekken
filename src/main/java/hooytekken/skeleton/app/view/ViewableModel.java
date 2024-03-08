@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 /**
  * Interface for the viewable model
@@ -28,10 +29,10 @@ public interface ViewableModel {
     /**
      * Getter for the player
      * 
-     * @param playerNumber the player number
+     * @param player the player number
      * @return the player
      */
-    public IPlayer getPlayer(int playerNumber);
+    public IPlayer getPlayer(PlayerType player);
 
     /**
      * Getter for the map

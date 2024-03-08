@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 /**
  * class represents an active game screen
@@ -36,7 +37,7 @@ public class GameScreen implements Screen {
     /**
      * Constructor for the game screen
      * 
-     * @param game the game object
+     * @param game  the game object
      * @param model the viewable model
      */
     public GameScreen(Hoytekken game, ViewableModel model) {
@@ -89,13 +90,13 @@ public class GameScreen implements Screen {
         game.batch.setProjectionMatrix(gameCam.combined);
 
         // Update health
-        hud.setPlayerHealth(this.model.getPlayer(1).getHealth());
-        hud.setEnemyHealth(this.model.getPlayer(2).getHealth());
+        hud.setPlayerHealth(this.model.getPlayer(PlayerType.PLAYER_ONE).getHealth());
+        hud.setEnemyHealth(this.model.getPlayer(PlayerType.PLAYER_TWO).getHealth());
 
         game.batch.begin();
         // game.batch.draw(img, 0, 0);
-        this.model.getPlayer(1).draw(game.batch);
-        this.model.getPlayer(2).draw(game.batch);
+        this.model.getPlayer(PlayerType.PLAYER_ONE).draw(game.batch);
+        this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
         game.batch.end();
         hud.getStage().draw();
     }
