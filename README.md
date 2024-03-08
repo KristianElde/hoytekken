@@ -23,3 +23,7 @@ Klassisk 2D-fighting spill i tekken og Street Fighter-stil.
 
 KANBAN-board:
 https://trello.com/b/4yo34C69/karan-med-varan
+
+Map:
+https://www.spriters-resource.com/pc_computer/platagosuperplatformgamemaker/sheet/103669/
+Credit: Patashnik (Submitter)
