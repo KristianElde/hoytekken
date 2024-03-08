@@ -13,8 +13,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
-import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
-import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 
 /**
  * class represents an active game screen
