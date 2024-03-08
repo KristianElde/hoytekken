@@ -28,9 +28,12 @@ public class GameOverScreen implements Screen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
 
-    private Hud hud;
+    private Texture welcomeImg;
 
     private Box2DDebugRenderer b2dr;
+
+    private static final float WELCOME_TEXT_WIDTH = 300;
+    private static final float WELCOME_TEXT_HEIGHT = 300;
 
     /**
      * Constructor for the game screen
@@ -44,10 +47,10 @@ public class GameOverScreen implements Screen {
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
-        hud = new Hud(game.batch);
-
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
+
+        welcomeImg = new Texture("game-over.jpg");
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
@@ -82,20 +85,15 @@ public class GameOverScreen implements Screen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
-
         game.batch.setProjectionMatrix(gameCam.combined);
 
-        // Update health
-        hud.setPlayerHealth(this.model.getPlayer(1).getHealth());
-        hud.setEnemyHealth(this.model.getPlayer(2).getHealth());
-
         game.batch.begin();
-        // game.batch.draw(img, 0, 0);
-        this.model.getPlayer(1).draw(game.batch);
-        this.model.getPlayer(2).draw(game.batch);
+
+        game.batch.draw(welcomeImg, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
+                (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
+                WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
+
         game.batch.end();
-        hud.getStage().draw();
     }
 
     @Override

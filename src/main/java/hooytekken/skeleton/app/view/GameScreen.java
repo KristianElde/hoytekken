@@ -66,6 +66,7 @@ public class GameScreen implements Screen {
         model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
+        handleStateSwitch();
     }
 
     @Override

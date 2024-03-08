@@ -27,7 +27,7 @@ public class MenuScreen implements Screen {
 
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
-    private Texture welcome;
+    private Texture welcomeImg;
 
     private static final float WELCOME_TEXT_WIDTH = 300;
     private static final float WELCOME_TEXT_HEIGHT = 300;
@@ -46,7 +46,7 @@ public class MenuScreen implements Screen {
 
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-        welcome = new Texture("Welcome.png");
+        welcomeImg = new Texture("Welcome.png");
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
@@ -81,7 +81,7 @@ public class MenuScreen implements Screen {
 
         game.batch.begin();
 
-        game.batch.draw(welcome, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
+        game.batch.draw(welcomeImg, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
                 (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
                 WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
 
