@@ -167,6 +167,8 @@
 
     I forrige innlevering lagde vi en liste med krav for MVP'en til spillet vårt. Det vi har jobbet med fram til nå er å oppfylle alle disse kravene. Vi har greid å implementere alle aspektene som vi ville ha i MVP'en, og det er vi veldig fornøyde med. Vi har derimot ikke hatt fokus på perfekt implementasjon. Det vil si at vi har vært mest opptatt av å ha med en basic-variant av mange av kravene i MVP'en, og så kan vi heller komme tilbake og finpusse på ting senere i prosessen. Et eksempel på dette er funksjonalitet for det å flytte på spillerne. På dette tidspunktet er flytting litt for sensitivt, men det viktigste for oss har vært å implementere det raskt og heller finjustere det senere. Vi vil påsta at vi har oppnådd et produkt som kan kalles for MVC, men vi har heller ikke kommet noe særlig lenger enn det.
 
+    Vi har hverken endret noen krav til MVP, eller endret på prioriteringsrekkefølgen.
+
 ## Prioriteringer til nå
 
     Frem til nå har vi prioritert enkle implementasjoner av de fleste features. I starten av prosjektet har vi syntes at det har vært litt vanskelig å jobbe på forskjellige ting samtidig fordi man ofte endrer samme filer, og dermed lett kan gå i beina på hverandre. Av denne grunnen har det vært viktig for oss å prioritere funskjonalitet som mange deler av spillet avhenger av. På denne måten kan vi raskere komme til det stadiet hvor det er enklere å jobbe på ulike oppgaver samtidig. Nå mener vi at vi er kommet betraktelig nærmere en tilstand hvor dette er mulig.
