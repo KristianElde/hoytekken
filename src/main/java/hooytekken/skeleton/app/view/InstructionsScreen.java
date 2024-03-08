@@ -92,7 +92,7 @@ public class InstructionsScreen implements Screen {
     }
 
     private void handleStateSwitch() {
-        if (model.getGameState() != GameState.GAME_OVER) {
+        if (model.getGameState() != GameState.INSTRUCTIONS) {
             game.setScreen(new MenuScreen(game, model));
         }
     }
@@ -110,7 +110,7 @@ public class InstructionsScreen implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
-        
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
