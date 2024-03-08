@@ -38,8 +38,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
 
-        this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE);
-        this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO);
+        this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
+        this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
 
         mapLoader = new TmxMapLoader();
         tiledmap = mapLoader.load(map);
