@@ -28,7 +28,7 @@ public class PlayerTest {
     void setUpBeforeEach() {
         // create interface for world which gives better abstraction?
         world = new World(new Vector2(0, 0), true); // no gravity right now
-        player = new Player(world, null); // dont need playertype?
+        player = new Player(world, null, 99); // dont need playertype?
     }
 
     @Test
