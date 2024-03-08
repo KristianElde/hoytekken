@@ -37,6 +37,9 @@ public class Player extends Sprite implements IPlayer {
     // if block is unsuccessful, divide attack by this
     private int blockSupresser = 2;
 
+    // max health
+    private int maxHealth = 100;
+
     private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
     public Player(World world, PlayerType type) {
@@ -71,6 +74,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     public void update(float dt) {
+        if (fallenOffTheMap()) {
+            takeDamage(100);
+        }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
 
@@ -103,7 +109,6 @@ public class Player extends Sprite implements IPlayer {
     public int getHealth() {
         return health;
     }
-
 
     private boolean isWithinRange(Player that) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
@@ -150,6 +155,5 @@ public class Player extends Sprite implements IPlayer {
     @Override
     public boolean fallenOffTheMap() {
         return getBody().getPosition().y < 0;
-
     }
 }
