@@ -68,7 +68,11 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (model.getGameState() == GameState.MAIN_MENU) {
+        if (model.getGameState() == GameState.INSTRUCTIONS) {
+            model.setGameState(GameState.MAIN_MENU);
+            return true;
+        }
+        else if (model.getGameState() == GameState.MAIN_MENU) {
             model.setGameState(GameState.ACTIVE_GAME);
             return true;
         }
