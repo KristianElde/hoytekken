@@ -35,7 +35,17 @@ public interface ControllableModel {
      */
     public boolean performAction(int player, ActionType action);
 
+    /**
+     * Gets the gamestate that the game is currently in
+     * 
+     * @return a GameState-object that represents the current gamestate
+     */
     public GameState getGameState();
 
-    public void setGameState();
+    /**
+     * Updates the current gamestate
+     * 
+     * @param gameState is the gamestate that the game gets set to
+     */
+    public void setGameState(GameState gameState);
 }
