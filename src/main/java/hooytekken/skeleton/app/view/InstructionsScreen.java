@@ -2,48 +2,60 @@ package hooytekken.skeleton.app.view;
 
 import com.badlogic.gdx.Screen;
 
+import hooytekken.skeleton.app.Hoytekken;
+
+/**
+ * Class representing the instructions screen.
+ */
 public class InstructionsScreen implements Screen {
+    private Hoytekken game;
+    private ViewableModel model;
+
+    /**
+     * Constructor for the instructions screen.
+     * 
+     * @param game the game object
+     * @param mode the viewable model
+     */
+    public InstructionsScreen(Hoytekken game, ViewableModel mode) {
+        this.game = game;
+        this.model = mode; 
+        
+    }
 
     @Override
     public void show() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'show'");
+        //ingore implementation
     }
 
     @Override
     public void render(float delta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'render'");
+        //ingore implementation
     }
 
     @Override
     public void resize(int width, int height) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'resize'");
+        //ingore implementation
     }
 
     @Override
     public void pause() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pause'");
+        //ingore implementation
     }
 
     @Override
     public void resume() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'resume'");
+        //ingore implementation
     }
 
     @Override
     public void hide() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'hide'");
+        //ingore implementation
     }
 
     @Override
     public void dispose() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dispose'");
+        //ingore implementation
     }
     
 }
