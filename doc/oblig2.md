@@ -91,3 +91,10 @@
     - Hoytekken Game/ApplicationListener. Denne klassen limer knytter alle delene av prosjektet sammen og kjøres i main.
 
     - Testing. Som nevnt over, er prosessen av testing satt på vent. Dette er ikke idealt, og vi hadde ambisjoner om å få skrevet tester til alt av spillermekanikk til MVP, men dette blir nødt til å vente.
+    - All av kode, klasser, interface, metoder, osv... er dokumentert med Javadoc. Det er potensiale til å rydde i koden på visse steder ved å bl.a sortere metoder etter bruksområder.
+    - I første omgang har vi kode som fungerer (skjedd mye på en uke/halvannen), vi ser det er forbedringer på områder til å skrive finere løsninger.
+
+## kjente feil
+    - Bug med kontroller bevegelse. Kommer av samtidig input left/right, hvor direction blir satt tilbake til static. Fikses med en getter av direction og sjekke hvilken retning spiller beveger seg.
+    - Tester vil ikke kjøre.
+    - Game Over skjerm kan bytte tilbake til Main menu, men restarter ikke faktisk spillet i form av å lage nye spillere. Fikses ved å legge til funksjonalitet for å restarte spillet.
