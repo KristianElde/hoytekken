@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * class represents an active game screen
@@ -58,6 +59,12 @@ public class GameScreen implements Screen {
 
         b2dr = new Box2DDebugRenderer();
 
+    }
+
+    private void handleStateSwitch() {
+        if (model.getGameState() != GameState.ACTIVE_GAME) {
+            game.setScreen(new GameOverScreen(game, model));
+        }
     }
 
     private void update(float delta) {

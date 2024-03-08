@@ -20,7 +20,7 @@ import hooytekken.skeleton.app.model.components.GameState;
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
-    private HTekkenModel model;
+    private ViewableModel model;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
@@ -37,7 +37,7 @@ public class MenuScreen implements Screen {
      * 
      * @param game the game object
      */
-    public MenuScreen(Hoytekken game, HTekkenModel model) {
+    public MenuScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
         this.model = model;
 

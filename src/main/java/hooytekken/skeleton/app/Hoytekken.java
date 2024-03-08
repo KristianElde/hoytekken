@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hooytekken.skeleton.app.controller.HtekkenController;
 import hooytekken.skeleton.app.model.HTekkenModel;
-import hooytekken.skeleton.app.view.GameScreen;
 import hooytekken.skeleton.app.view.MenuScreen;
 
 public class Hoytekken extends Game {
@@ -22,7 +21,6 @@ public class Hoytekken extends Game {
         HTekkenModel model = new HTekkenModel();
         new HtekkenController(model);
 
-        // setScreen(new MenuScreen(this));
         setScreen(new MenuScreen(this, model));
     }
 }
