@@ -120,6 +120,10 @@ MVP-krav som inngår i brukerhistorie:
 
 2. Som spiller trenger jeg instrukser for hvordan jeg skal bevege spiller og interagere med spillebrettet for å vite hvordan jeg skal spille spillet. For å oppfylle dette kravet må vi implementere visuelle instrukser på skjermen som forklarer hvilke taster man skal bruke for å gjøre ulike handlinger og instruksjoner om hva som er målet med spillet.
 
+MVP-krav som inngår i brukerhistorie:
+
+- 8. Start-skjerm/"winner" skjerm, enkel instruks skjerm
+
 ---
 
 3. Som spiller er det viktig at jeg får visuell bekreftelse når de to spillkarakterene interagerer med hverandre i form av slag/ta skade. For å oppfylle dette kravet trenger vi å implementere en form for animasjon ved vellykkede slag og/eller en form for HUD med en "healthbar" som tilhører hver av de to spillerene.
