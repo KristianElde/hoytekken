@@ -1,5 +1,5 @@
 # Rapport – innlevering 2
-**Team:** *Teamnavn* – *medlemmer*...
+**Team:** *Karan med varan* – *Sune* – *Mathias* – *Kristian* – *Vetle* – *Jonas* – *Lauritz*
 
 
 # Prosjektrapport
@@ -46,9 +46,6 @@
     
     Vi har identifisert at det har oppstått en skeiv fordeling av merge/commits til main. Dette skyldes en kombinasjon av at noen har jobbet mer med kode enn andre og at noen har vært flinkere til å comitte oftere enn andre. Mathias og Sune har vi blitt enige om at skulle sette seg ned å skrive grunnstukturen i koden sammen, og dette har ført til at de har hatt flere commits enn de andre. Dette er noe vi må jobbe med fremover, og vi har blitt enige om at alle skal comitte oftere, og at vi skal fordele arbeidet jevnere utover gruppen.
     
-## 6. Arbeidsfordeling
-
-## 7. Forbedringspunkter
 
 
 
