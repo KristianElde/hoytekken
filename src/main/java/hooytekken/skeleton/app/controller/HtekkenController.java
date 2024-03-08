@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 
 import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 /**
  * Controller for the game
@@ -13,6 +14,9 @@ import hooytekken.skeleton.app.model.components.GameState;
  */
 public class HtekkenController extends InputAdapter {
     ControllableModel model;
+
+    private PlayerType playerOne = PlayerType.PLAYER_ONE;
+    private PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
     /**
      * Constructor for the controller
@@ -30,31 +34,31 @@ public class HtekkenController extends InputAdapter {
 
         // Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.LEFT)
-            model.setDirection(1, ForceDirection.LEFT);
+            model.setDirection(playerOne, ForceDirection.LEFT);
         if (keycode == Input.Keys.RIGHT)
-            model.setDirection(1, ForceDirection.RIGHT);
+            model.setDirection(playerOne, ForceDirection.RIGHT);
         if (keycode == Input.Keys.UP)
-            model.jump(1);
+            model.jump(playerOne);
         if (keycode == Input.Keys.P)
-            model.performAction(1, ActionType.PUNCH);
+            model.performAction(playerOne, ActionType.PUNCH);
         if (keycode == Input.Keys.K)
-            model.performAction(1, ActionType.KICK);
+            model.performAction(playerOne, ActionType.KICK);
         if (keycode == Input.Keys.B)
-            model.performAction(1, ActionType.BLOCK);
+            model.performAction(playerOne, ActionType.BLOCK);
 
         // Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
-            model.setDirection(2, ForceDirection.LEFT);
+            model.setDirection(playerTwo, ForceDirection.LEFT);
         if (keycode == Input.Keys.D)
-            model.setDirection(2, ForceDirection.RIGHT);
+            model.setDirection(playerTwo, ForceDirection.RIGHT);
         if (keycode == Input.Keys.W)
-            model.jump(2);
+            model.jump(playerTwo);
         if (keycode == Input.Keys.Q)
-            model.performAction(2, ActionType.PUNCH);
+            model.performAction(playerTwo, ActionType.PUNCH);
         if (keycode == Input.Keys.E)
-            model.performAction(2, ActionType.KICK);
+            model.performAction(playerTwo, ActionType.KICK);
         if (keycode == Input.Keys.S) {
-            model.performAction(2, ActionType.BLOCK);
+            model.performAction(playerTwo, ActionType.BLOCK);
         }
 
         return false;
@@ -65,9 +69,9 @@ public class HtekkenController extends InputAdapter {
 
         // Stop applying force to the player when the key is released
         if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT)
-            model.setDirection(1, ForceDirection.STATIC);
+            model.setDirection(playerOne, ForceDirection.STATIC);
         if (keycode == Input.Keys.A || keycode == Input.Keys.D)
-            model.setDirection(2, ForceDirection.STATIC);
+            model.setDirection(playerTwo, ForceDirection.STATIC);
 
         return false;
     }
@@ -77,12 +81,10 @@ public class HtekkenController extends InputAdapter {
         if (model.getGameState() == GameState.INSTRUCTIONS) {
             model.setGameState(GameState.MAIN_MENU);
             return true;
-        }
-        else if (model.getGameState() == GameState.MAIN_MENU) {
+        } else if (model.getGameState() == GameState.MAIN_MENU) {
             model.setGameState(GameState.ACTIVE_GAME);
             return true;
-        }
-        else if (model.getGameState() == GameState.GAME_OVER) {
+        } else if (model.getGameState() == GameState.GAME_OVER) {
             model.setGameState(GameState.MAIN_MENU);
             return true;
         }
