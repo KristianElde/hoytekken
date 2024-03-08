@@ -19,6 +19,7 @@ import hooytekken.skeleton.app.model.HTekkenModel;
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
+    private HTekkenModel model;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
@@ -37,6 +38,7 @@ public class MenuScreen implements Screen {
      */
     public MenuScreen(Hoytekken game, HTekkenModel model) {
         this.game = game;
+        this.model = model;
 
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
@@ -48,9 +50,14 @@ public class MenuScreen implements Screen {
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
+    private void handleStateSwitch() {
+        model.getGameState();
+    }
+
     private void update(float delta) {
         gameCam.update();
         renderer.setView(gameCam);
+
     }
 
     @Override
