@@ -35,10 +35,9 @@
     I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist seg å være en av de sterkeste sidene ved vårt teamarbeid. Effektiviteten og samarbeidet innad i gruppen har bidratt til en positiv og engasjerende arbeidsatmosfære, noe som har vært essensielt for fremdriften og moralen i prosjektet. Den positive stemningen i gruppen har også lagt grunnlaget for en kultur hvor det er lav terskel for å fremme forslag til forbedringer, kreative løsninger og innovative ideer. Dette har vist seg å være en verdifull ressurs for prosjektets utvikling, da det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har vi oppnådd en dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt og motivert til å bidra med sitt beste.
 
     Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeidet.
-    
-## 4. Kommunikasjon
 
-    Kommunikasjon har fungert veldig bra så langt! Vi er flinke til å oppdatere hverandre på discord og trello.. Det vi må jobbe med fremover er å bli flinkere på å oppdatere de andre og forklare koden man har skrevet nøye til de andre. Dette kan skyldes fordi vi skriver kode forskjellig, og at det kan bli forvirrende.
+## 4. Kommunikasjon
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver. Vi har også støtt på forbedring i kommunikasjonen, spesielt i forbindelse med å forklare koden vi har skrevet til de andre. For å forbedre dette, har vi blitt enige om å bedre dokumentasjonen og øke forståelsen gjennom kodegjennomgang på møtene våre. Dette vil hjelpe i å minimere forvirringer og misforståelser, og sikre at alle har en god forståelse av prosjektet og koden.
 
 ## 5. Retrospektiv
     
