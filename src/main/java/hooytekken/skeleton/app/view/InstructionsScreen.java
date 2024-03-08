@@ -1,7 +1,9 @@
 package hooytekken.skeleton.app.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -64,9 +66,27 @@ public class InstructionsScreen implements Screen {
         Label keyS = new Label("Key: S", font);
         Label keyB = new Label("Key: B", font);
 
-        
 
-        //table.add(gameOverLabel).expandX();
+        table.add(actionLabel).expandX();
+        table.add(player1).expandX();
+        table.add(player2).expandX();
+        table.row();
+        table.add(movement).expandX();
+        table.add(keysAWD).expandX();
+        table.add(keysArrows).expandX();
+        table.row();
+        table.add(punch).expandX();
+        table.add(keyQ).expandX();
+        table.add(KeyP).expandX();
+        table.row();
+        table.add(kick).expandX();
+        table.add(keyE).expandX();
+        table.add(keyK).expandX();
+        table.row();
+        table.add(block).expandX();
+        table.add(keyS).expandX();
+        table.add(keyB).expandX();
+
         stage.addActor(table);
     }
 
@@ -77,7 +97,10 @@ public class InstructionsScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        //ingore implementation
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        stage.draw();
     }
 
     @Override
