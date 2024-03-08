@@ -157,30 +157,27 @@
 
 ## 7. Forbedringspunkter fra retrospektiv
 
-- Klarere retningslinjer for dokumentasjon av kode.
-- Jevne ut committs/merges (bli flinkere på å committe jevnlig under arbeid).
-- Oppdatere Kanban-brettet jevnlig (Trello).
+    - Klarere retningslinjer for dokumentasjon av kode.
+    - Jevne ut committs/merges (bli flinkere på å committe jevnlig under arbeid).
+    - Oppdatere Kanban-brettet jevnlig (Trello).
 
 # Krav og spesifikasjon
 
 ## Progresjon i forhold til MVP
 
-I forrige innlevering lagde vi en liste med krav for MVP'en til spillet vårt. Det vi har jobbet med fram til nå er å oppfylle alle disse kravene. Vi har greid å implementere alle aspektene som vi ville ha i MVP'en, og det er vi veldig fornøyde med. Vi har derimot ikke hatt fokus på perfekt implementasjon. Det vil si at vi har vært mest opptatt av å ha med en basic-variant av mange av kravene i MVP'en, og så kan vi heller komme tilbake og finpusse på ting senere i prosessen. Et eksempel på dette er funksjonalitet for det å flytte på spillerne. På dette tidspunktet er flytting litt for sensitivt, men det viktigste for oss har vært å implementere det raskt og heller finjustere det senere. Vi vil påsta at vi har oppnådd et produkt som kan kalles for MVC, men vi har heller ikke kommet noe særlig lenger enn det.
+    I forrige innlevering lagde vi en liste med krav for MVP'en til spillet vårt. Det vi har jobbet med fram til nå er å oppfylle alle disse kravene. Vi har greid å implementere alle aspektene som vi ville ha i MVP'en, og det er vi veldig fornøyde med. Vi har derimot ikke hatt fokus på perfekt implementasjon. Det vil si at vi har vært mest opptatt av å ha med en basic-variant av mange av kravene i MVP'en, og så kan vi heller komme tilbake og finpusse på ting senere i prosessen. Et eksempel på dette er funksjonalitet for det å flytte på spillerne. På dette tidspunktet er flytting litt for sensitivt, men det viktigste for oss har vært å implementere det raskt og heller finjustere det senere. Vi vil påsta at vi har oppnådd et produkt som kan kalles for MVC, men vi har heller ikke kommet noe særlig lenger enn det.
+
+    Vi har hverken endret noen krav til MVP, eller endret på prioriteringsrekkefølgen.
 
 ## Prioriteringer til nå
 
-Frem til nå har vi prioritert enkle implementasjoner av de fleste features. I starten av prosjektet har vi syntes at det har vært litt vanskelig å jobbe på forskjellige ting samtidig fordi man ofte endrer samme filer, og dermed lett kan gå i beina på hverandre. Av denne grunnen har det vært viktig for oss å prioritere funskjonalitet som mange deler av spillet avhenger av. På denne måten kan vi raskere komme til det stadiet hvor det er enklere å jobbe på ulike oppgaver samtidig. Nå mener vi at vi er kommet betraktelig nærmere en tilstand hvor dette er mulig.
-
-Det aller første vi måtte ha på plass var selve prosjektstrukturen med MVC-prinsippet.
+    Frem til nå har vi prioritert enkle implementasjoner av de fleste features. I starten av prosjektet har vi syntes at det har vært litt vanskelig å jobbe på forskjellige ting samtidig fordi man ofte endrer samme filer, og dermed lett kan gå i beina på hverandre. Av denne grunnen har det vært viktig for oss å prioritere funskjonalitet som mange deler av spillet avhenger av. På denne måten kan vi raskere komme til det stadiet hvor det er enklere å jobbe på ulike oppgaver samtidig. Nå mener vi at vi er kommet betraktelig nærmere en tilstand hvor dette er mulig.
 
 ## Prioriterte oppgaver fremover
 
-- Testing blir en av de høyest prioriterte oppgavene fremover. Nå har vi veldig få tester, og vi sliter litt med å få testene våre til å fungere.
-
-## Kjente bugs
-
-- Hopping må kun tillates når man står på bakken. Nå kan man fly ved å hoppe i luften.
--
+    - Testing blir en av de høyest prioriterte oppgavene fremover. Nå har vi veldig få tester, og vi sliter litt med å få de testene vi har til å fungere.
+    - Bedre grafikk er noe vi må legge en del innsats i fremover. Til nå bruker vi bare "Obligator.png" som placeholder for spillerkarakterene. Fremover skal vi få inn både karakterer, og tilhørende animasjoner.
+    - Legge til funksjonalitet for blokkering av slag og spark.
 
 # Produkt og kode
 
@@ -230,3 +227,4 @@ Det aller første vi måtte ha på plass var selve prosjektstrukturen med MVC-pr
     - Game Over skjerm kan bytte tilbake til Main menu, men restarter ikke faktisk spillet i form av å lage nye
     spillere. Fikses ved å legge til funksjonalitet for å restarte spillet.
     - Block fungerer ikke enda, må implementeres med en state for å holde en kontinuerlig block.
+    - Hopping må kun tillates når man står på bakken. Nå kan man fly ved å hoppe i luften.
