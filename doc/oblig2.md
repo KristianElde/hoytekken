@@ -1,5 +1,50 @@
-# Rapport – innlevering 2
-**Team:** *Teamnavn* – *medlemmer*...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 6. Arbeidsfordeling
 
@@ -14,8 +59,8 @@
     Det som nå er veldig fint er at vi ser på det som enklere å fordele oppgaver ganske likt utover gruppa. Det var vanskeligere å gi ut små oppgaver til hver enkelt i starten før mappet og selve fundamentet til koden var på plass. Nå som det er ordnet kan vi fordele arbeidet på en bedre måte og det er lettere for alle mann å ta på seg oppgaver (som for eksempel å ta seg av en bevegelsesmetode). 
 
 
-## 7. Forbedringspunkter
+## 7. Forbedringspunkter fra retrospektiv
 
-- Bli flinkere til å committe eget arbeid (Gjør det jevnlig mens man skriver eller koder).
-- Bli bedre på å oppdatere og gi arbeidsoppgaver på Trello.
-- 
+- Klarere retningslinjer for dokumentasjon av kode.
+- Jevne ut committs/merges (bli flinkere på å committe jevnlig under arbeid).
+- Oppdatere Kanban-brettet jevnlig (Trello).
