@@ -14,6 +14,12 @@ import hooytekken.skeleton.app.model.components.GameState;
 public class HtekkenController extends InputAdapter {
     ControllableModel model;
 
+    /**
+     * Constructor for the controller
+     * keeps model and sets input processor for the game
+     * 
+     * @param model the model to control
+     */
     public HtekkenController(ControllableModel model) {
         this.model = model;
         Gdx.input.setInputProcessor(this);

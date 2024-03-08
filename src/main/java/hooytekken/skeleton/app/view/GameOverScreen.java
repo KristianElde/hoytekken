@@ -23,7 +23,7 @@ import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.model.components.GameState;
 
 /**
- * class represents an active game screen
+ * class represents a game over screen
  */
 public class GameOverScreen implements Screen {
     private Hoytekken game;
@@ -35,9 +35,10 @@ public class GameOverScreen implements Screen {
     private Stage stage;
 
     /**
-     * Constructor for the game screen
+     * Constructor for the game over screen
      * 
      * @param game the game object
+     * @param model the viewable model
      */
     public GameOverScreen(Hoytekken game, ViewableModel model) {
         this.game = game;

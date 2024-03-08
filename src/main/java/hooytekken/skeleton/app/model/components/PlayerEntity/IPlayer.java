@@ -9,8 +9,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 public interface IPlayer extends ICombat {
 
     /**
-     * 
-     * 
+     * Updates the player.
      * 
      */
     void update(float deltaTime);

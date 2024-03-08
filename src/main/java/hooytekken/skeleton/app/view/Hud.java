@@ -16,6 +16,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hooytekken.skeleton.app.Hoytekken;
 
+/**
+ * class represents the heads-up display for the game
+ */
 public class Hud {
     private Stage stage;
     private Viewport port;
@@ -32,7 +35,10 @@ public class Hud {
 
     private Table upperTable;
 
-    // what interfaces can be used for abstraction?
+    /**
+     * Constructor for the heads-up display
+     * @param sb
+     */
     public Hud(SpriteBatch sb) {
         playerHealth = INIT_HEALTH;
         enemyHealth = INIT_HEALTH;
@@ -78,23 +84,44 @@ public class Hud {
         }
     }
 
+    /**
+     * Getter for the stage
+     * @return the stage
+     */
     public Stage getStage() {
         return stage;
     }
 
     // getters and setters might be removed for better alternative later
+
+    /**
+     * Getter for the player's health
+     * @return Integer representing the player's health
+     */
     public Integer getPlayerHealth() {
         return playerHealth;
     }
 
+    /**
+     * Setter for the player's health
+     * @param health
+     */
     public void setPlayerHealth(Integer health) {
         labelList.get(3).setText(String.format("%02d", health));
     }
 
+    /**
+     * Getter for other enemy's health
+     * @return Integer representing the enemy's health
+     */
     public Integer getEnemyHealth() {
         return enemyHealth;
     }
 
+    /**
+     * Setter for the enemy's health
+     * @param health
+     */
     public void setEnemyHealth(Integer health) {
         labelList.get(5).setText(String.format("%02d", health));
     }

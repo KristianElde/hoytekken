@@ -1,5 +1,8 @@
 package hooytekken.skeleton.app.model.components.PlayerEntity;
 
+/**
+ * Interface for the combat actions that a player can perform
+ */
 public interface ICombat {
     /**
      * A player will punch another player and

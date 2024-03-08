@@ -15,6 +15,9 @@ import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 import hooytekken.skeleton.app.view.ViewableModel;
 
+/**
+ * The model for the game
+ */
 public class HTekkenModel implements ViewableModel, ControllableModel {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;

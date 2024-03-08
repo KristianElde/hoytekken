@@ -42,6 +42,13 @@ public class Player extends Sprite implements IPlayer {
 
     private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
+    /**
+     * Constructor for the player
+     * 
+     * @param world the world
+     * @param type the type of player
+     * @param health the health of the player
+     */
     public Player(World world, PlayerType type, int health) {
         this.world = world;
         this.type = type;
@@ -75,6 +82,7 @@ public class Player extends Sprite implements IPlayer {
         body.createFixture(fdef);
     }
 
+    @Override
     public void update(float dt) {
         if (fallenOffTheMap()) {
             takeDamage(maxHealth);
@@ -84,10 +92,12 @@ public class Player extends Sprite implements IPlayer {
 
     }
 
+    @Override
     public Body getBody() {
         return body;
     }
 
+    @Override
     public void move(float deltaX, float deltaY) {
         if (deltaY != 0) 
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
