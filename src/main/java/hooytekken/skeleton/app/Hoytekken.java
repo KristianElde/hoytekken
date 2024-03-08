@@ -25,12 +25,4 @@ public class Hoytekken extends Game {
         // setScreen(new MenuScreen(this));
         setScreen(new MenuScreen(this, model));
     }
-
-    /**
-     * Sets the screens content to a games screen.
-     */
-    public void startGame() {
-        // setScreen(new GameScreen(this));
-    }
-
 }
