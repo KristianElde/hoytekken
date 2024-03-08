@@ -9,3 +9,10 @@
 
     Det skal også sies angående committs at det personer i gruppa som har jobbet med koden på en egen branch, gjort committs på denne branchen for at vi som gruppe senere ikke har hatt bruk for det som har blitt gjort på den aktuelle branchen. Her mister jo selvfølgelig også den enkelte committs som ikke vises i vårt repo. 
 
+    Det som nå er veldig fint er at vi ser på det som enklere å fordele oppgaver ganske likt utover gruppa. Det var vanskeligere å gi ut små oppgaver til hver enkelt i starten før mappet og selve fundamentet til koden var på plass. Nå som det er ordnet kan vi fordele arbeidet på en bedre måte og det er lettere for alle mann å ta på seg oppgaver (som for eksempel å ta seg av en bevegelsesmetode). 
+
+## 7. Forbedringspunkter
+
+- Bli flinkere til å committe eget arbeid (Gjør det jevnlig mens man skriver eller koder).
+- Bli bedre på å oppdatere og gi arbeidsoppgaver på Trello.
+- 
