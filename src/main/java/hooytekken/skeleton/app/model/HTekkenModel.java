@@ -39,6 +39,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     public HTekkenModel(String map) {
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
+        this.gameState = GameState.MAIN_MENU;
 
         this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
         this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);

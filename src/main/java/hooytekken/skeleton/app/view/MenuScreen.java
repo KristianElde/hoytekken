@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.model.HTekkenModel;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * class represents an active game screen
@@ -51,13 +52,15 @@ public class MenuScreen implements Screen {
     }
 
     private void handleStateSwitch() {
-        model.getGameState();
+        if (model.getGameState() != GameState.MAIN_MENU) {
+            game.setScreen(new GameScreen(game, model));
+        }
     }
 
     private void update(float delta) {
         gameCam.update();
         renderer.setView(gameCam);
-
+        handleStateSwitch();
     }
 
     @Override
