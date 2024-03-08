@@ -1,6 +1,7 @@
 package hooytekken.skeleton.app.controller;
 
 import hooytekken.skeleton.app.model.components.ForceDirection;
+import hooytekken.skeleton.app.model.components.GameState;
 
 /**
  * Interface for the model that can be controlled
@@ -33,4 +34,8 @@ public interface ControllableModel {
      * @return true if the action was performed, false otherwise
      */
     public boolean performAction(int player, ActionType action);
+
+    public GameState getGameState();
+
+    public void setGameState();
 }
