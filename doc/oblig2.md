@@ -37,12 +37,15 @@
     Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeidet.
 
 ## 4. Kommunikasjon
-    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver. Vi har også støtt på forbedring i kommunikasjonen, spesielt i forbindelse med å forklare koden vi har skrevet til de andre. For å forbedre dette, har vi blitt enige om å bedre dokumentasjonen og øke forståelsen gjennom kodegjennomgang på møtene våre. Dette vil hjelpe i å minimere forvirringer og misforståelser, og sikre at alle har en god forståelse av prosjektet og koden.
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver. Vi har også støtt på forbedringpunkter i kommunikasjonen, spesielt i forbindelse med å forklare koden vi har skrevet til de andre. For å forbedre dette, har vi blitt enige om å bedre dokumentasjonen og øke forståelsen gjennom kodegjennomgang på møtene våre. Dette vil hjelpe i å minimere forvirringer og misforståelser, og sikre at alle har en god forståelse av prosjektet og koden.
 
 ## 5. Retrospektiv
-    
-    
+    I vårt retrospektiv har vi fokusert på å evaluere prosjektstrukturen og kommunikasjonen innad i teamet. Vi har klart å etablere en solid struktur gjennom bruk av Kanban og regelmessige møter, som har bidratt til en jevn arbeidsflyt og effektiv oppgavehåndtering. Vår evne til å holde alle oppdatert via Discord og Trello har vært avgjørende for denne suksessen.
 
+    Likevel ser vi rom for forbedringer. Selv om kommunikasjonen har vært god, har vi identifisert et behov for klarere retningslinjer for dokumentasjon og deling av arbeidsprosesser. Dette vil forbedre forståelsen og effektiviteten i teamet ytterligere.
+    
+    Vi har også identifisert at det har oppstått en skeiv fordeling av merge/commits til main. Dette skyldes en kombinasjon av at noen har jobbet mer med kode enn andre og at noen har vært flinkere til å comitte oftere enn andre. Mathias og Sune har vi blitt enige om at skulle sette seg ned å skrive grunnstukturen i koden sammen, og dette har ført til at de har hatt flere commits enn de andre. Dette er noe vi må jobbe med fremover, og vi har blitt enige om at alle skal comitte oftere, og at vi skal fordele arbeidet jevnere utover gruppen.
+    
 ## 6. Arbeidsfordeling
 
 ## 7. Forbedringspunkter
