@@ -64,3 +64,13 @@
 - Klarere retningslinjer for dokumentasjon av kode.
 - Jevne ut committs/merges (bli flinkere på å committe jevnlig under arbeid).
 - Oppdatere Kanban-brettet jevnlig (Trello).
+
+
+# Prosjektrapport
+
+
+# Produkt og kode
+
+## Utbedring av feil
+    Ingen spesifike feil fra Oblig 1 som har blitt rettet til nå, dette fordi vi ikke hadde startet med kode fundamentet under skrivingen av Oblig 1. Det har derimot vært stor progressjon på kodeaspektet av prosjektet ila uke 9 og 10.
+
