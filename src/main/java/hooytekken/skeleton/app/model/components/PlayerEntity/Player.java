@@ -17,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
+    private static final float MAX_VELOCITY = 2;
 
     private World world;
     private Body body;
@@ -89,7 +90,10 @@ public class Player extends Sprite implements IPlayer {
     }
 
     public void move(float deltaX, float deltaY) {
-        body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
+        if (deltaY != 0) 
+            body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
+        else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
+            body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
     }
 
     @Override
