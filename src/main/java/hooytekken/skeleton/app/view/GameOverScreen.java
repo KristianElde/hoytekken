@@ -52,8 +52,11 @@ public class GameOverScreen implements Screen {
         table.center();
         table.setFillParent(true);
         Label gameOverLabel = new Label("Game Over", font);
+        Label restart = new Label("Click to restart", font);
 
         table.add(gameOverLabel).expandX();
+        table.row();
+        table.add(restart).expandX().padTop(10f);
         stage.addActor(table);
     }
 

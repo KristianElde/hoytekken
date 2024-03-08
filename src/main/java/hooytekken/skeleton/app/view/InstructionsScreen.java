@@ -67,6 +67,7 @@ public class InstructionsScreen implements Screen {
         Label keyS = new Label("Key: S", font);
         Label keyB = new Label("Key: B", font);
 
+        Label cont = new Label("Click to continue", font);
 
         table.add(actionLabel).expandX();
         table.add(player1).expandX();
@@ -87,6 +88,8 @@ public class InstructionsScreen implements Screen {
         table.add(block).expandX();
         table.add(keyS).expandX();
         table.add(keyB).expandX();
+        table.row();
+        table.add(cont).expandX().padTop(100);
 
         stage.addActor(table);
     }

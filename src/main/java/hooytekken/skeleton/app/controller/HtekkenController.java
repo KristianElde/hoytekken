@@ -76,6 +76,10 @@ public class HtekkenController extends InputAdapter {
             model.setGameState(GameState.ACTIVE_GAME);
             return true;
         }
+        else if (model.getGameState() == GameState.GAME_OVER) {
+            model.setGameState(GameState.MAIN_MENU);
+            return true;
+        }
         return false;
     }
 }
