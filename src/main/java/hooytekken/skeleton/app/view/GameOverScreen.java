@@ -18,7 +18,7 @@ import hooytekken.skeleton.app.model.components.GameState;
 /**
  * class represents an active game screen
  */
-public class GameScreen implements Screen {
+public class GameOverScreen implements Screen {
     private Hoytekken game;
     private ViewableModel model;
 
@@ -30,7 +30,6 @@ public class GameScreen implements Screen {
 
     private Hud hud;
 
-    private World world;
     private Box2DDebugRenderer b2dr;
 
     /**
@@ -38,7 +37,7 @@ public class GameScreen implements Screen {
      * 
      * @param game the game object
      */
-    public GameScreen(Hoytekken game, ViewableModel model) {
+    public GameOverScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
         this.model = model;
 
@@ -57,8 +56,8 @@ public class GameScreen implements Screen {
     }
 
     private void handleStateSwitch() {
-        if (model.getGameState() != GameState.ACTIVE_GAME) {
-            game.setScreen(new GameOverScreen(game, model));
+        if (model.getGameState() != GameState.GAME_OVER) {
+            game.setScreen(new MenuScreen(game, model));
         }
     }
 
@@ -66,6 +65,7 @@ public class GameScreen implements Screen {
         model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
+        handleStateSwitch();
     }
 
     @Override
