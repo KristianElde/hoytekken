@@ -2,6 +2,7 @@ package hooytekken.skeleton.app.controller;
 
 import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 /**
  * Interface for the model that can be controlled
@@ -15,7 +16,7 @@ public interface ControllableModel {
      * @param direction the direction to apply force
      * @return true if the direction was set, false otherwise
      */
-    public boolean setDirection(int player, ForceDirection direction);
+    public boolean setDirection(PlayerType player, ForceDirection direction);
 
     /**
      * Make the given player jump
@@ -23,7 +24,7 @@ public interface ControllableModel {
      * @param player the player to make jump
      * @return true if the player jumped, false otherwise
      */
-    public boolean jump(int player);
+    public boolean jump(PlayerType player);
 
     /**
      * Perform actions against the other player
@@ -33,7 +34,7 @@ public interface ControllableModel {
      * 
      * @return true if the action was performed, false otherwise
      */
-    public boolean performAction(int player, ActionType action);
+    public boolean performAction(PlayerType player, ActionType action);
 
     /**
      * Gets the gamestate that the game is currently in
