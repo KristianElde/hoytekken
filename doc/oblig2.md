@@ -98,3 +98,4 @@
     - Bug med kontroller bevegelse. Kommer av samtidig input left/right, hvor direction blir satt tilbake til static. Fikses med en getter av direction og sjekke hvilken retning spiller beveger seg.
     - Tester vil ikke kjøre.
     - Game Over skjerm kan bytte tilbake til Main menu, men restarter ikke faktisk spillet i form av å lage nye spillere. Fikses ved å legge til funksjonalitet for å restarte spillet.
+    - Block fungerer ikke enda, må implementeres med en state for å holde en kontinuerlig block.
