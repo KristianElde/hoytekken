@@ -38,8 +38,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         this.map = map;
         this.gameWorld = new World(new Vector2(0, -20), true);
 
-        this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE);
-        this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO);
+        this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
+        this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
 
         mapLoader = new TmxMapLoader();
         tiledmap = mapLoader.load(map);
@@ -112,9 +112,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private void directionToSpeed(int player, ForceDirection direction) {
         IPlayer p = getPlayer(player);
         if (direction == ForceDirection.LEFT) {
-            p.move(-0.1f, 0);
+            p.move(-0.5f, 0);
         } else if (direction == ForceDirection.RIGHT) {
-            p.move(0.1f, 0);
+            p.move(0.5f, 0);
         } else if (direction == ForceDirection.STATIC) {
             p.move(0, 0);
         }

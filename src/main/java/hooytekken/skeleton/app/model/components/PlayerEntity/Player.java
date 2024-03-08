@@ -4,7 +4,6 @@ import hooytekken.skeleton.app.Hoytekken;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -17,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
+    private static final float MAX_VELOCITY = 2;
 
     private World world;
     private Body body;
@@ -29,7 +29,7 @@ public class Player extends Sprite implements IPlayer {
     private boolean isAlive = true;
 
     // Health, if health is 0, player is dead
-    private int health = 100;
+    private int health;
 
     // if attack is over limit, block is unsuccessful
     private int blockLimit = 30;
@@ -37,11 +37,16 @@ public class Player extends Sprite implements IPlayer {
     // if block is unsuccessful, divide attack by this
     private int blockSupresser = 2;
 
+    // max health
+    private int maxHealth;
+
     private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
-    public Player(World world, PlayerType type) {
+    public Player(World world, PlayerType type, int health) {
         this.world = world;
         this.type = type;
+        this.health = health;
+        this.maxHealth = health;
 
         this.playerTexture = new Texture(DEFAULT_SKIN);
 
@@ -71,6 +76,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     public void update(float dt) {
+        if (fallenOffTheMap()) {
+            takeDamage(maxHealth);
+        }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
 
@@ -81,7 +89,10 @@ public class Player extends Sprite implements IPlayer {
     }
 
     public void move(float deltaX, float deltaY) {
-        body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
+        if (deltaY != 0) 
+            body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
+        else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
+            body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
     }
 
     @Override
@@ -103,7 +114,6 @@ public class Player extends Sprite implements IPlayer {
     public int getHealth() {
         return health;
     }
-
 
     private boolean isWithinRange(Player that) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
@@ -150,6 +160,5 @@ public class Player extends Sprite implements IPlayer {
     @Override
     public boolean fallenOffTheMap() {
         return getBody().getPosition().y < 0;
-
     }
 }
