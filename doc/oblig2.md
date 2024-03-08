@@ -74,3 +74,6 @@
 ## Utbedring av feil
     Ingen spesifike feil fra Oblig 1 som har blitt rettet til nå, dette fordi vi ikke hadde startet med kode fundamentet under skrivingen av Oblig 1. Det har derimot vært stor progressjon på kodeaspektet av prosjektet ila uke 9 og 10.
 
+## README.md
+    Readme.md er opp til dato for spesifkasjoner for å kjøre programmet. 
+    Vi har per nå problemer med å kjøre tester. Testene vil bare kjøre lokalt på Sune sin egen branch, disse testene er derfor kommentert ut (for nå) og prosessen av testing og testskriving er satt på vent inntil vi får fikset dette problemet. Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet skal kompilere på Linux også.
