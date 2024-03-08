@@ -151,3 +151,30 @@
 - Klarere retningslinjer for dokumentasjon av kode.
 - Jevne ut committs/merges (bli flinkere på å committe jevnlig under arbeid).
 - Oppdatere Kanban-brettet jevnlig (Trello).
+
+
+# Prosjektrapport
+
+
+# Produkt og kode
+
+## Utbedring av feil
+    Ingen spesifike feil fra Oblig 1 som har blitt rettet til nå, dette fordi vi ikke hadde startet med kode fundamentet under skrivingen av Oblig 1. Det har derimot vært stor progressjon på kodeaspektet av prosjektet ila uke 9 og 10.
+
+## README.md
+    Readme.md er opp til dato for spesifkasjoner for å kjøre programmet. 
+    Vi har per nå problemer med å kjøre tester. Testene vil bare kjøre lokalt på Sune sin egen branch, disse testene er derfor kommentert ut (for nå) og prosessen av testing og testskriving er satt på vent inntil vi får fikset dette problemet. Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet skal kompilere på Linux også.
+
+## Klassediagram
+    (spesifikasjon til hvor klassediagram ligger)
+    (kort om klassediagram)
+
+## Kode
+    Prosjektet baserer seg på MVC (model-view-controller) struktur. Denne strukturen tok litt tid i starten å anvende på vårt prosjekt pga at denne strukturen ikke er så vanlig for LibGDX rammeverket. Etter å prøve litt forskjellige løsninger, har vi kommet frem til en løsning som vi er fornøyde med. 
+
+    - Controller klasse håndterer alt av Input.
+    - View er en samling av Screen klasser, hver screen representerer en GameState. (Active, Main_menu, Gameover)
+    - Modellen holder på alt av mekanikk og logikk i spillet. Denne kobles opp mot controller og Screeens med Viewable- og ControllableModelInterface som dikterer hvilke deler av prosjektet som skal ha tilgang til hvilke deler av modellen.
+    - Hoytekken Game/ApplicationListener. Denne klassen limer knytter alle delene av prosjektet sammen og kjøres i main.
+
+    - Testing. Som nevnt over, er prosessen av testing satt på vent. Dette er ikke idealt, og vi hadde ambisjoner om å få skrevet tester til alt av spillermekanikk til MVP, men dette blir nødt til å vente.
