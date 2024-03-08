@@ -81,3 +81,13 @@
 ## Klassediagram
     (spesifikasjon til hvor klassediagram ligger)
     (kort om klassediagram)
+
+## Kode
+    Prosjektet baserer seg på MVC (model-view-controller) struktur. Denne strukturen tok litt tid i starten å anvende på vårt prosjekt pga at denne strukturen ikke er så vanlig for LibGDX rammeverket. Etter å prøve litt forskjellige løsninger, har vi kommet frem til en løsning som vi er fornøyde med. 
+
+    - Controller klasse håndterer alt av Input.
+    - View er en samling av Screen klasser, hver screen representerer en GameState. (Active, Main_menu, Gameover)
+    - Modellen holder på alt av mekanikk og logikk i spillet. Denne kobles opp mot controller og Screeens med Viewable- og ControllableModelInterface som dikterer hvilke deler av prosjektet som skal ha tilgang til hvilke deler av modellen.
+    - Hoytekken Game/ApplicationListener. Denne klassen limer knytter alle delene av prosjektet sammen og kjøres i main.
+
+    - Testing. Som nevnt over, er prosessen av testing satt på vent. Dette er ikke idealt, og vi hadde ambisjoner om å få skrevet tester til alt av spillermekanikk til MVP, men dette blir nødt til å vente.
