@@ -23,8 +23,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private World gameWorld;
     private GameState gameState;
 
-    private IPlayer player1;
-    private IPlayer player2;
+    private Player playerOne;
+    private Player playerTwo;
 
     private String map;
 
@@ -44,8 +44,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         this.gameWorld = new World(new Vector2(0, -20), true);
         this.gameState = GameState.INSTRUCTIONS;
 
-        this.player1 = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
-        this.player2 = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+        this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
+        this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
 
         mapLoader = new TmxMapLoader();
         tiledmap = mapLoader.load(map);
@@ -64,8 +64,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-        player1.update(dt);
-        player2.update(dt);
+        playerOne.update(dt);
+        playerTwo.update(dt);
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
@@ -77,8 +77,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     }
 
     @Override
-    public IPlayer getPlayer(int playerNumber) {
-        return playerNumber == 1 ? player1 : player2;
+    public Player getPlayer(PlayerType player) {
+        return player == PlayerType.PLAYER_ONE ? playerOne : playerTwo;
     }
 
     @Override
@@ -92,11 +92,11 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     }
 
     @Override
-    public boolean setDirection(int player, ForceDirection direction) {
-        if (player == 1) {
+    public boolean setDirection(PlayerType player, ForceDirection direction) {
+        if (player == PlayerType.PLAYER_ONE) {
             p1Direction = direction;
             return true;
-        } else if (player == 2) {
+        } else if (player == PlayerType.PLAYER_TWO) {
             p2Direction = direction;
             return true;
         } else {
@@ -105,20 +105,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     }
 
     @Override
-    public boolean jump(int player) {
+    public boolean jump(PlayerType player) {
         IPlayer p = getPlayer(player);
         p.move(0, 5);
         return true;
     }
 
     private boolean movePlayers() {
-        directionToSpeed(1, p1Direction);
-        directionToSpeed(2, p2Direction);
+        directionToSpeed(PlayerType.PLAYER_ONE, p1Direction);
+        directionToSpeed(PlayerType.PLAYER_TWO, p2Direction);
         return true;
     }
 
-    private void directionToSpeed(int player, ForceDirection direction) {
-        IPlayer p = getPlayer(player);
+    private void directionToSpeed(PlayerType player, ForceDirection direction) {
+        Player p = getPlayer(player);
         if (direction == ForceDirection.LEFT) {
             p.move(-0.5f, 0);
         } else if (direction == ForceDirection.RIGHT) {
@@ -128,34 +128,30 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         }
     }
 
-    public boolean performAction(int player, ActionType actionType) {
-        IPlayer attacker = getPlayer(player);
-        IPlayer victim = getPlayer(player == 1 ? 2 : 1);
-
-        // Player class, TODO: Fix this
-        Player att = (Player) attacker;
-        Player vic = (Player) victim;
+    public boolean performAction(PlayerType player, ActionType actionType) {
+        Player attacker = getPlayer(player);
+        Player victim = player == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
         int damage = 0;
         switch (actionType) {
             case KICK:
                 damage = 10;
-                if (att.kick(vic, damage)) {
-                    System.out.println(vic.getHealth() + " health left");
+                if (attacker.kick(victim, damage)) {
+                    System.out.println(victim.getHealth() + " health left");
                     return true;
                 }
                 break;
             case PUNCH:
                 damage = 10;
-                if (att.punch(vic, damage)) {
-                    System.out.println(vic.getHealth() + " health left");
+                if (attacker.punch(victim, damage)) {
+                    System.out.println(victim.getHealth() + " health left");
                     return true;
                 }
                 break;
             case BLOCK:
                 damage = 10;
-                if (att.block(vic, damage)) {
-                    System.out.println(vic.getHealth() + " health left");
+                if (attacker.block(victim, damage)) {
+                    System.out.println(victim.getHealth() + " health left");
                     return true;
                 }
                 break;
@@ -174,7 +170,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     }
 
     private boolean isGameOver() {
-        if (player1.isAlive() && player2.isAlive())
+        if (playerOne.isAlive() && playerTwo.isAlive())
             return false;
         return true;
     }
