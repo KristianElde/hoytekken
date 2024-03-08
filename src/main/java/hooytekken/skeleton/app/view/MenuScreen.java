@@ -16,7 +16,7 @@ import hooytekken.skeleton.app.model.HTekkenModel;
 import hooytekken.skeleton.app.model.components.GameState;
 
 /**
- * class represents an active game screen
+ * class represents a menu screen
  */
 public class MenuScreen implements Screen {
     private Hoytekken game;
@@ -33,9 +33,10 @@ public class MenuScreen implements Screen {
     private static final float WELCOME_TEXT_HEIGHT = 300;
 
     /**
-     * Constructor for the game screen
+     * Constructor for the menu screen
      * 
      * @param game the game object
+     * @param model the viewable model
      */
     public MenuScreen(Hoytekken game, ViewableModel model) {
         this.game = game;
