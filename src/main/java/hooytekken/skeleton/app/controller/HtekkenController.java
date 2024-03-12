@@ -4,9 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
+
 import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+
+//Import Hoytekken class from the view package
+import hooytekken.skeleton.app.Hoytekken;
 
 /**
  * Controller for the game
@@ -85,7 +89,7 @@ public class HtekkenController extends InputAdapter {
             model.setGameState(GameState.ACTIVE_GAME);
             return true;
         } else if (model.getGameState() == GameState.GAME_OVER) {
-            model.setGameState(GameState.MAIN_MENU);
+            ((Hoytekken)Gdx.app.getApplicationListener()).create();
             return true;
         }
         return false;
