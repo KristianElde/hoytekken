@@ -1,4 +1,4 @@
-package hooytekken.skeleton.app.model.components;
+package hooytekken.skeleton.app.model.components.collisionComponents;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
