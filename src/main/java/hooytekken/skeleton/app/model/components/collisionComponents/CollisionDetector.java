@@ -6,11 +6,16 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+
 /**
  * Class to detect collisions between objects
  */
 public class CollisionDetector implements ContactListener {
     private HandleCollisions model;
+
+    private final PlayerType playerOne = PlayerType.PLAYER_ONE;
+    private final PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
     /**
      * Constructor for the collision detector
@@ -23,13 +28,17 @@ public class CollisionDetector implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
-        Fixture fixtureA = contact.getFixtureA();
-        Fixture fixtureB = contact.getFixtureB();
-        System.out.println("Collision between " + fixtureA.getBody().getUserData() + " and " + fixtureB.getBody().getUserData());
+        Object userDataA = contact.getFixtureA().getBody().getUserData();
+        Object userDataB = contact.getFixtureB().getBody().getUserData();
+        System.out.println("Collision between " + userDataA + " and " + userDataB);
 
-        //TODO: handle collision
-        // check which player is involved in the collision
-        // if player feet collides with ground, set player to grounded, reset double jump
+        if (userDataA.equals(playerOne + "feet")
+            || userDataB.equals(playerOne + "feet")) 
+            model.resetDoubleJump(playerOne);
+
+        if (userDataA.equals(playerTwo + "feet")
+            || userDataB.equals(playerTwo + "feet")) 
+            model.resetDoubleJump(playerTwo);
     }
 
     @Override
