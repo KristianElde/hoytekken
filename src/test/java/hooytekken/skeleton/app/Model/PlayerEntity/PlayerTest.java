@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Random;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,11 @@ public class PlayerTest {
     private World world;
     private Player player;
     private Random rand = new Random();
+
+    @BeforeAll
+    static void setUpBeforeAll() {
+
+    }
 
     @BeforeEach
     void setUpBeforeEach() {
