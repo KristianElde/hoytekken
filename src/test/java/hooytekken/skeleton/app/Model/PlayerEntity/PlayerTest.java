@@ -77,11 +77,11 @@ public class PlayerTest {
         assertEquals(initY, player.getBody().getPosition().y, margin);
     }
 
-    // @Test
-    // void testUpdate() {
-    // // not sure yet how to implement this
+    @Test
+    void testUpdate() {
+        // not sure yet how to implement this
 
-    // }
+    }
 
     @Test
     void testDamageTaken() {
