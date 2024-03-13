@@ -22,6 +22,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 
 /**
@@ -29,7 +30,7 @@ import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
  */
 public class PlayerTest {
     private World world;
-    private Player player;
+    private IPlayer player;
     private Random rand = new Random();
 
     @BeforeAll
