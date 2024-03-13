@@ -1,19 +1,11 @@
-package hooytekken.skeleton.app.view;
-
-import javax.swing.text.TabSet;
+package hooytekken.skeleton.app.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -21,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.view.ViewableModel;
 
 /**
  * class represents a game over screen
@@ -37,7 +30,7 @@ public class GameOverScreen implements Screen {
     /**
      * Constructor for the game over screen
      * 
-     * @param game the game object
+     * @param game  the game object
      * @param model the viewable model
      */
     public GameOverScreen(Hoytekken game, ViewableModel model) {

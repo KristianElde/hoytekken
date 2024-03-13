@@ -1,4 +1,4 @@
-package hooytekken.skeleton.app.view;
+package hooytekken.skeleton.app.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -12,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hooytekken.skeleton.app.Hoytekken;
-import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.view.ViewableModel;
 
 /**
  * Class representing the instructions screen.
@@ -35,8 +35,8 @@ public class InstructionsScreen implements Screen {
      */
     public InstructionsScreen(Hoytekken game, ViewableModel mode) {
         this.game = game;
-        this.model = mode; 
-        
+        this.model = mode;
+
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
 
@@ -107,7 +107,7 @@ public class InstructionsScreen implements Screen {
 
     @Override
     public void show() {
-        //ingore implementation
+        // ingore implementation
     }
 
     @Override
@@ -122,27 +122,27 @@ public class InstructionsScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        //ingore implementation
+        // ingore implementation
     }
 
     @Override
     public void pause() {
-        //ingore implementation
+        // ingore implementation
     }
 
     @Override
     public void resume() {
-        //ingore implementation
+        // ingore implementation
     }
 
     @Override
     public void hide() {
-        //ingore implementation
+        // ingore implementation
     }
 
     @Override
     public void dispose() {
-        //ingore implementation
+        // ingore implementation
     }
-    
+
 }
