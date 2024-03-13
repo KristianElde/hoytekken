@@ -20,6 +20,8 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
+    private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 45 / Hoytekken.PPM;
 
     private World world;
     private Body body;
@@ -42,8 +44,6 @@ public class Player extends Sprite implements IPlayer {
 
     // max health
     private int maxHealth;
-
-    private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
 
     /**
      * Constructor for the player
@@ -78,18 +78,8 @@ public class Player extends Sprite implements IPlayer {
         body.setUserData(this);
 
         FixtureDef fdef = new FixtureDef();
-        //CircleShape shape = new CircleShape();
-        //shape.setRadius(PLAYER_RADIUS);
-        //change shape to a rectangle instead of a circle
-        
         PolygonShape shape = new PolygonShape();
-
-        // Set the shape to be a box of the desired width and height
-        float width = 45 / Hoytekken.PPM; // replace with desired width
-        float height = 45 / Hoytekken.PPM; // replace with desired height
-        shape.setAsBox(width / 2, height / 2); // setAsBox takes half-width and half-height as arguments
-
-
+        shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2); 
         fdef.shape = shape;
         body.createFixture(fdef);
     }
@@ -142,7 +132,7 @@ public class Player extends Sprite implements IPlayer {
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_RADIUS * 2; // attack-length is the same as length of body
+        float range = PLAYER_WIDTH; // attack-length is the same as length of body
         return distance <= range;
     }
 
