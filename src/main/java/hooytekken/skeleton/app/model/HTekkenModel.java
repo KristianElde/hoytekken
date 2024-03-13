@@ -8,18 +8,19 @@ import com.badlogic.gdx.physics.box2d.World;
 import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
-import hooytekken.skeleton.app.model.components.CollisionDetector;
 import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+import hooytekken.skeleton.app.model.components.collisionComponents.CollisionDetector;
+import hooytekken.skeleton.app.model.components.collisionComponents.HandleCollisions;
 import hooytekken.skeleton.app.view.ViewableModel;
 
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, ControllableModel {
+public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
     private GameState gameState;
@@ -175,6 +176,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private boolean isGameOver() {
         if (playerOne.isAlive() && playerTwo.isAlive())
             return false;
+        return true;
+    }
+
+    @Override
+    public boolean resetDoubleJump() {
+        // TODO: implement method
         return true;
     }
 
