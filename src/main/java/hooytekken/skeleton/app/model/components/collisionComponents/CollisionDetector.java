@@ -10,6 +10,16 @@ import com.badlogic.gdx.physics.box2d.Manifold;
  * Class to detect collisions between objects
  */
 public class CollisionDetector implements ContactListener {
+    private HandleCollisions model;
+
+    /**
+     * Constructor for the collision detector
+     * 
+     * @param model the model to handle the collisions
+     */
+    public CollisionDetector(HandleCollisions model) {
+        this.model = model;
+    }
 
     @Override
     public void beginContact(Contact contact) {
