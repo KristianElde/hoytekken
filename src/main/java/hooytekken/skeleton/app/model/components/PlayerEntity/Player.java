@@ -22,7 +22,7 @@ public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
-    private static final float PLAYER_HEIGHT = 45 / Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
 
     private World world;
     private Body body;
@@ -62,7 +62,7 @@ public class Player extends Sprite implements IPlayer {
         this.playerTexture = new Texture(DEFAULT_SKIN);
 
         definePlayer();
-        setBounds(0, 0, 45 / Hoytekken.PPM, 45 / Hoytekken.PPM);
+        setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(playerTexture);
     }
 
