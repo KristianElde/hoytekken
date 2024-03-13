@@ -11,6 +11,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.backends.headless.HeadlessApplication;
+import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -26,7 +30,10 @@ public class PlayerTest {
 
     @BeforeAll
     static void setUpBeforeAll() {
-
+        HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
+        ApplicationListener listener = new ApplicationAdapter() {
+        };
+        new HeadlessApplication(listener, config);
     }
 
     @BeforeEach
