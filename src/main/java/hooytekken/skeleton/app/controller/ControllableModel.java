@@ -20,11 +20,11 @@ public interface ControllableModel {
 
     /**
      * Get the force direction of the given player
-     * 
      * @param player the player to get the direction for
-     * @return the ForceDirection of the player
+     * @return the force direction of the given player
+     * @throws IllegalArgumentException if the player is not found
      */
-    public ForceDirection getDirection(PlayerType player);
+    public ForceDirection getDirection(PlayerType player) throws IllegalArgumentException;
 
     /**
      * Make the given player jump
