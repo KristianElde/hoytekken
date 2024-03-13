@@ -105,6 +105,17 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     }
 
     @Override
+    public ForceDirection getDirection(PlayerType player) {
+        if (player == PlayerType.PLAYER_ONE) {
+            return p1Direction;
+        } else if (player == PlayerType.PLAYER_TWO) {
+            return p2Direction;
+        } else {
+            throw new IllegalArgumentException("Player: " + player +" not found");
+        }
+    }
+
+    @Override
     public boolean jump(PlayerType player) {
         IPlayer p = getPlayer(player);
         p.move(0, 5);

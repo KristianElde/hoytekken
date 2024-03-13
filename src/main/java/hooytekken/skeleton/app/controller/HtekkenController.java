@@ -72,12 +72,16 @@ public class HtekkenController extends InputAdapter {
     public boolean keyUp(int keycode) {
 
         // Stop applying force to the player when the key is released
-        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.RIGHT)
+        if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
+        || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
             model.setDirection(playerOne, ForceDirection.STATIC);
-        if (keycode == Input.Keys.A || keycode == Input.Keys.D)
+            return true;
+        } else if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
+        || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
             model.setDirection(playerTwo, ForceDirection.STATIC);
+            return true;
+        } else return false;
 
-        return false;
     }
 
     @Override

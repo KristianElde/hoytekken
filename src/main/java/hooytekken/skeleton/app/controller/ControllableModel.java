@@ -19,6 +19,14 @@ public interface ControllableModel {
     public boolean setDirection(PlayerType player, ForceDirection direction);
 
     /**
+     * Get the force direction of the given player
+     * @param player the player to get the direction for
+     * @return the force direction of the given player
+     * @throws IllegalArgumentException if the player is not found
+     */
+    public ForceDirection getDirection(PlayerType player) throws IllegalArgumentException;
+
+    /**
      * Make the given player jump
      * 
      * @param player the player to make jump
