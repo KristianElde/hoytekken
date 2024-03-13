@@ -53,6 +53,7 @@ public class PlayerTest {
     @Test
     void sanityTest() {
         assertNotNull(player);
+        assertNotNull(player.getBody());
         assertTrue(player.isAlive());
         assertEquals(99, player.getHealth());
     }
