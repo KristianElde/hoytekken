@@ -1,4 +1,4 @@
-package hooytekken.skeleton.app.view;
+package hooytekken.skeleton.app.view.screens;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ public class Hud {
 
     /**
      * Constructor for the heads-up display
+     * 
      * @param sb
      */
     public Hud(SpriteBatch sb) {
@@ -86,6 +87,7 @@ public class Hud {
 
     /**
      * Getter for the stage
+     * 
      * @return the stage
      */
     public Stage getStage() {
@@ -96,6 +98,7 @@ public class Hud {
 
     /**
      * Getter for the player's health
+     * 
      * @return Integer representing the player's health
      */
     public Integer getPlayerHealth() {
@@ -104,6 +107,7 @@ public class Hud {
 
     /**
      * Setter for the player's health
+     * 
      * @param health
      */
     public void setPlayerHealth(Integer health) {
@@ -112,6 +116,7 @@ public class Hud {
 
     /**
      * Getter for other enemy's health
+     * 
      * @return Integer representing the enemy's health
      */
     public Integer getEnemyHealth() {
@@ -120,6 +125,7 @@ public class Hud {
 
     /**
      * Setter for the enemy's health
+     * 
      * @param health
      */
     public void setEnemyHealth(Integer health) {
