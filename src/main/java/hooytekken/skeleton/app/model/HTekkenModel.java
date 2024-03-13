@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.controller.ControllableModel;
 import hooytekken.skeleton.app.model.components.Box2DWorldGenerator;
+import hooytekken.skeleton.app.model.components.CollisionDetector;
 import hooytekken.skeleton.app.model.components.ForceDirection;
 import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
@@ -51,6 +52,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         tiledmap = mapLoader.load(map);
 
         new Box2DWorldGenerator(gameWorld, tiledmap);
+
+        this.gameWorld.setContactListener(new CollisionDetector());
     }
 
     /**
