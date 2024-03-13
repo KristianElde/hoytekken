@@ -180,7 +180,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     @Override
-    public boolean resetDoubleJump() {
+    public boolean resetDoubleJump(PlayerType player) {
         // TODO: implement method
         return true;
     }

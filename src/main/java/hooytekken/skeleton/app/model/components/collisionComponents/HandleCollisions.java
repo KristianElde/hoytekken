@@ -1,5 +1,7 @@
 package hooytekken.skeleton.app.model.components.collisionComponents;
 
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+
 public interface HandleCollisions {
     
     /**
@@ -7,5 +9,5 @@ public interface HandleCollisions {
      * 
      * @return true if the collision was handled, false otherwise
      */
-    public boolean resetDoubleJump();
+    public boolean resetDoubleJump(PlayerType player);
 }
