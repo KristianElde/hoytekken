@@ -1,9 +1,11 @@
 package hooytekken.skeleton.app.Model.PlayerEntity;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 // import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import java.util.Random;
 
@@ -13,8 +15,10 @@ import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -38,6 +42,8 @@ public class PlayerTest {
 
     @BeforeEach
     void setUpBeforeEach() {
+        Gdx.gl = mock(GL20.class);
+
         // create interface for world which gives better abstraction?
         world = new World(new Vector2(0, 0), true); // no gravity right now
         player = new Player(world, null, 99); // dont need playertype?
@@ -47,7 +53,7 @@ public class PlayerTest {
     void sanityTest() {
         assertNotNull(player);
         assertTrue(player.isAlive());
-        assertEquals(100, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
