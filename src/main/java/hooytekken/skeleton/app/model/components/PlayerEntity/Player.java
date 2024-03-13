@@ -132,7 +132,7 @@ public class Player extends Sprite implements IPlayer {
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_WIDTH; // attack-length is the same as length of body
+        float range = PLAYER_WIDTH * 1.8f; 
         return distance <= range;
     }
 
