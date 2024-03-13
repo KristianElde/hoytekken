@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -82,6 +83,12 @@ public class Player extends Sprite implements IPlayer {
         shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2); 
         fdef.shape = shape;
         body.createFixture(fdef);
+
+        //foot sensor
+        EdgeShape feet = new EdgeShape();
+        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2), new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
+        fdef.shape = feet;
+        body.createFixture(fdef).setUserData(this.type + "feet");
     }
 
     @Override
