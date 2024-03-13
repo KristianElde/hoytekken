@@ -6,6 +6,9 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+/**
+ * Class to detect collisions between objects
+ */
 public class CollisionDetector implements ContactListener {
 
     @Override
@@ -13,6 +16,10 @@ public class CollisionDetector implements ContactListener {
         Fixture fixtureA = contact.getFixtureA();
         Fixture fixtureB = contact.getFixtureB();
         System.out.println("Collision between " + fixtureA.getBody().getUserData() + " and " + fixtureB.getBody().getUserData());
+
+        //TODO: handle collision
+        // check which player is involved in the collision
+        // if player feet collides with ground, set player to grounded, reset double jump
     }
 
     @Override
