@@ -1,10 +1,11 @@
 package hooytekken.skeleton.app.model.components.collisionComponents;
 
-<<<<<<< HEAD
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
-=======
->>>>>>> 126c7ad (new interface handle collision implemented to model)
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+
+
 public interface HandleCollisions {
     
     /**
@@ -12,9 +13,5 @@ public interface HandleCollisions {
      * 
      * @return true if the collision was handled, false otherwise
      */
-<<<<<<< HEAD
     public boolean resetDoubleJump(PlayerType player);
-=======
-    public boolean resetDoubleJump();
->>>>>>> 126c7ad (new interface handle collision implemented to model)
 }
