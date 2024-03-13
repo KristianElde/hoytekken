@@ -7,8 +7,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
@@ -17,6 +18,8 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
+    private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
 
     private World world;
     private Body body;
@@ -40,8 +43,6 @@ public class Player extends Sprite implements IPlayer {
     // max health
     private int maxHealth;
 
-    private static final float PLAYER_RADIUS = 20 / Hoytekken.PPM;
-
     /**
      * Constructor for the player
      * 
@@ -58,7 +59,7 @@ public class Player extends Sprite implements IPlayer {
         this.playerTexture = new Texture(DEFAULT_SKIN);
 
         definePlayer();
-        setBounds(0, 0, 45 / Hoytekken.PPM, 45 / Hoytekken.PPM);
+        setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(playerTexture);
     }
 
@@ -75,11 +76,17 @@ public class Player extends Sprite implements IPlayer {
         body.setUserData(this);
 
         FixtureDef fdef = new FixtureDef();
-        CircleShape shape = new CircleShape();
-        shape.setRadius(PLAYER_RADIUS);
-
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2); 
         fdef.shape = shape;
         body.createFixture(fdef);
+
+        //foot sensor
+        EdgeShape feet = new EdgeShape();
+        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2), new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
+        fdef.shape = feet;
+        fdef.isSensor = true;
+        body.createFixture(fdef).setUserData(this.type + "feet");
     }
 
     @Override
@@ -130,7 +137,7 @@ public class Player extends Sprite implements IPlayer {
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_RADIUS * 2; // attack-length is the same as length of body
+        float range = PLAYER_WIDTH * 1.8f; 
         return distance <= range;
     }
 
