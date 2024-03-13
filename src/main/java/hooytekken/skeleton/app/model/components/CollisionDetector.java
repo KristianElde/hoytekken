@@ -12,6 +12,7 @@ public class CollisionDetector implements ContactListener {
     public void beginContact(Contact contact) {
         Fixture fixtureA = contact.getFixtureA();
         Fixture fixtureB = contact.getFixtureB();
+        System.out.println("Collision between " + fixtureA.getBody().getUserData() + " and " + fixtureB.getBody().getUserData());
     }
 
     @Override
