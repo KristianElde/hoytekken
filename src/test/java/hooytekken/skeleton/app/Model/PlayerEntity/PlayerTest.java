@@ -80,6 +80,7 @@ public class PlayerTest {
     @Test
     void testUpdate() {
         // not sure yet how to implement this
+        // player.update(0);
 
     }
 
