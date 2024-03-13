@@ -45,8 +45,8 @@ public class Player extends Sprite implements IPlayer {
     /**
      * Constructor for the player
      * 
-     * @param world the world
-     * @param type the type of player
+     * @param world  the world
+     * @param type   the type of player
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
@@ -83,7 +83,7 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void update(float dt) {
+    public void update() {
         if (fallenOffTheMap()) {
             takeDamage(maxHealth);
         }
@@ -99,7 +99,7 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
-        if (deltaY != 0) 
+        if (deltaY != 0)
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
         else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);

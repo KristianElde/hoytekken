@@ -12,7 +12,7 @@ public interface IPlayer extends ICombat {
      * Updates the player.
      * 
      */
-    void update(float deltaTime);
+    void update();
 
     /**
      * Retrieves the physical body representing the player.
