@@ -54,4 +54,9 @@ public class ModelTest {
         assertNotNull(player1);
         assertNotEquals(player1, player2);
     }
+
+    @Test
+    void gameStateTest() {
+
+    }
 }
