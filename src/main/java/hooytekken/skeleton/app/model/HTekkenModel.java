@@ -13,12 +13,14 @@ import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.IPlayer;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
+import hooytekken.skeleton.app.model.components.collisionComponents.CollisionDetector;
+import hooytekken.skeleton.app.model.components.collisionComponents.HandleCollisions;
 import hooytekken.skeleton.app.view.ViewableModel;
 
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, ControllableModel {
+public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private World gameWorld;
     private GameState gameState;
@@ -51,6 +53,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
         tiledmap = mapLoader.load(map);
 
         new Box2DWorldGenerator(gameWorld, tiledmap);
+
+        this.gameWorld.setContactListener(new CollisionDetector(this));
     }
 
     /**
@@ -183,6 +187,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel {
     private boolean isGameOver() {
         if (playerOne.isAlive() && playerTwo.isAlive())
             return false;
+        return true;
+    }
+
+    @Override
+    public boolean resetDoubleJump(PlayerType player) {
+        // TODO: implement method
         return true;
     }
 
