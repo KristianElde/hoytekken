@@ -163,13 +163,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
                     return true;
                 }
                 break;
-            case BLOCK:
-                damage = 10;
-                if (attacker.block(victim, damage)) {
-                    System.out.println(victim.getHealth() + " health left");
-                    return true;
-                }
-                break;
         }
         return false;
     }
