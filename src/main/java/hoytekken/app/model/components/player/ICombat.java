@@ -10,10 +10,9 @@ public interface ICombat {
      * Will only hit if other player is in range.
      * 
      * @param that the player to punch
-     * @param dmg  the damage to inflict
      * @return bool on if player was hit
      */
-    boolean punch(Player that, int dmg);
+    boolean punch(Player that);
 
     /**
      * A player will kick another player and
@@ -21,10 +20,9 @@ public interface ICombat {
      * Will only hit if other player is in range.
      * 
      * @param that the player to kick
-     * @param dmg  the damage to inflict
      * @return bool on if player was hit
      */
-    boolean kick(Player that, int dmg);
+    boolean kick(Player that);
 
     /**
      * A player will try to block an attack.

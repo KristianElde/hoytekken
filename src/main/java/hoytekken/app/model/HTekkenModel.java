@@ -147,18 +147,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         Player attacker = getPlayer(player);
         Player victim = player == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
-        int damage = 0;
         switch (actionType) {
             case KICK:
-                damage = 10;
-                if (attacker.kick(victim, damage)) {
+                if (attacker.kick(victim)) {
                     System.out.println(victim.getHealth() + " health left");
                     return true;
                 }
                 break;
             case PUNCH:
-                damage = 10;
-                if (attacker.punch(victim, damage)) {
+                if (attacker.punch(victim)) {
                     System.out.println(victim.getHealth() + " health left");
                     return true;
                 }
