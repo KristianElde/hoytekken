@@ -1,6 +1,7 @@
 package hooytekken.skeleton.app.Model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
@@ -52,5 +53,8 @@ public class ModelTest {
         assertNotNull(model.getGameWorld());
         assertNotNull(model.getMap());
         assertNotNull(model.getTiledMap());
+        assertNotNull(player1);
+        assertNotNull(player1);
+        assertNotEquals(player1, player2);
     }
 }
