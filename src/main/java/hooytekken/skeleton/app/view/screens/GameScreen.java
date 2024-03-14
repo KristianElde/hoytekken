@@ -66,6 +66,13 @@ public class GameScreen implements Screen {
     private int getWinningPlayer() {
         boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
         boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
+
+        if (playerOneWon && !playerTwoWon) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
     }
 
     private void update(float delta) {
