@@ -139,6 +139,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         
     }
 
+    private void resetJumpCounter() {
+        jumpCounter = 0;
+    }
+
     private boolean movePlayers() {
         directionToSpeed(PlayerType.PLAYER_ONE, p1Direction);
         directionToSpeed(PlayerType.PLAYER_TWO, p2Direction);
