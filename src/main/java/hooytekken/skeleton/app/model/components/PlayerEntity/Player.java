@@ -78,13 +78,14 @@ public class Player extends Sprite implements IPlayer {
 
         FixtureDef fdef = new FixtureDef();
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2); 
+        shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2);
         fdef.shape = shape;
         body.createFixture(fdef).setUserData(this.type + "body");
 
-        //foot sensor
+        // foot sensor
         EdgeShape feet = new EdgeShape();
-        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2), new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
+        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2),
+                new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
         fdef.shape = feet;
         fdef.isSensor = true;
         body.createFixture(fdef).setUserData(this.type + "feet");
@@ -138,7 +139,7 @@ public class Player extends Sprite implements IPlayer {
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_WIDTH * 1.8f; 
+        float range = PLAYER_WIDTH * 1.8f;
         return distance <= range;
     }
 

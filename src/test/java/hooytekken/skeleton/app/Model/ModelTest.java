@@ -3,6 +3,7 @@ package hooytekken.skeleton.app.Model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -16,7 +17,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
 
+import hooytekken.skeleton.app.Hoytekken;
 import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.model.HTekkenModel;
 import hooytekken.skeleton.app.model.components.GameState;
@@ -45,6 +48,23 @@ public class ModelTest {
 
     }
 
+    private boolean isWithinRange(Player p1, Player p2) {
+        float playerWidth = 45 / Hoytekken.PPM;
+
+        Vector2 p1Pos = new Vector2(p1.getBody().getPosition().x, p1.getBody().getPosition().y);
+        Vector2 p2Pos = new Vector2(p2.getBody().getPosition().x, p2.getBody().getPosition().y);
+
+        float distance = p1Pos.dst(p2Pos);
+        float range = playerWidth * 1.8f;
+        return distance <= range;
+    }
+
+    private void movePlayersBeside() {
+        while (!isWithinRange(player1, player2)) {
+            player2.move(1, 0);
+        }
+    }
+
     @Test
     void sanityTest() {
         assertNotNull(model.getGameState());
@@ -61,9 +81,17 @@ public class ModelTest {
         assertEquals(GameState.INSTRUCTIONS, model.getGameState());
         model.setGameState(GameState.ACTIVE_GAME);
         assertEquals(GameState.ACTIVE_GAME, model.getGameState());
-        // while (player2.isAlive()) {
-        // model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
-        // }
-        // assertEquals(GameState.GAME_OVER, model.getGameState());
+        while (player2.isAlive()) {
+            model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+        }
+        assertEquals(GameState.GAME_OVER, model.getGameState());
+    }
+
+    @Test
+    void performActionTest() {
+        model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+        movePlayersBeside();
+        assertEquals(89, player2.getHealth());
+        assertEquals(99, player1.getHealth());
     }
 }
