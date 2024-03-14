@@ -128,10 +128,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             jumpCounter++;
             IPlayer p = getPlayer(player);
             p.move(0, 5);
+            return true;
         }
+        else {
+            return false;
+        }
+
         // IPlayer p = getPlayer(player);
         // p.move(0, 5);
-        return true;
+        
     }
 
     private boolean movePlayers() {
