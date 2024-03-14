@@ -11,11 +11,13 @@ import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 
+import hooytekken.skeleton.app.controller.ActionType;
 import hooytekken.skeleton.app.model.HTekkenModel;
 import hooytekken.skeleton.app.model.components.GameState;
 import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
@@ -59,5 +61,9 @@ public class ModelTest {
         assertEquals(GameState.INSTRUCTIONS, model.getGameState());
         model.setGameState(GameState.ACTIVE_GAME);
         assertEquals(GameState.ACTIVE_GAME, model.getGameState());
+        // while (player2.isAlive()) {
+        // model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+        // }
+        // assertEquals(GameState.GAME_OVER, model.getGameState());
     }
 }
