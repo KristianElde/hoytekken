@@ -1,5 +1,7 @@
 package hoytekken.app.model.components.player;
 
+import static org.mockito.ArgumentMatchers.floatThat;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -43,6 +45,11 @@ public class Player extends Sprite implements IPlayer {
 
     // max health
     private int maxHealth;
+
+    private int punchDmg = 10;
+    private int kickDmg = 7;
+    private float punchRange = 1.8f;
+    private float kickRange = 2.2f;
 
     /**
      * Constructor for the player
@@ -134,18 +141,21 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
-    private boolean isWithinRange(Player that) {
+    private boolean isWithinRange(Player that, float rangeFactor) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
         float distance = thisPos.dst(thatPos);
-        float range = PLAYER_WIDTH * 1.8f;
+        float range = PLAYER_WIDTH * rangeFactor;
         return distance <= range;
     }
 
     @Override
-    public boolean punch(Player that, int dmg) {
-        if (!isWithinRange(that)) {
+    public boolean punch(Player that) {
+        int dmg = punchDmg;
+        float rangeFactor = punchRange;
+
+        if (!isWithinRange(that, rangeFactor)) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
@@ -156,8 +166,10 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public boolean kick(Player that, int dmg) {
-        if (!isWithinRange(that)) {
+    public boolean kick(Player that) {
+        int dmg = kickDmg;
+        float rangeFactor = kickRange;
+        if (!isWithinRange(that, rangeFactor)) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
@@ -169,11 +181,8 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean block(Player that, int incomingAttack) {
-        if (this.isAlive() && incomingAttack > blockLimit && isWithinRange(that)) {
-            this.takeDamage(incomingAttack / blockSupresser);
-            return false;
-        }
-        return true;
+        // implement this
+        return false;
     }
 
     @Override

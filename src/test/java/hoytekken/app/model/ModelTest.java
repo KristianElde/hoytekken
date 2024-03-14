@@ -119,7 +119,7 @@ public class ModelTest {
 
         // Check that opponents health is reduced by kick when opponent is inside range
         assertEquals(99, player1.getHealth());
-        assertEquals(89, player2.getHealth());
+        assertEquals(92, player2.getHealth());
     }
 
 }

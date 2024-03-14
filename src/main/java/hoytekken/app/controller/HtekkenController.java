@@ -44,12 +44,13 @@ public class HtekkenController extends InputAdapter {
             model.performAttackAction(playerOne, ActionType.PUNCH);
         if (keycode == Input.Keys.K)
             model.performAttackAction(playerOne, ActionType.KICK);
-        if (keycode == Input.Keys.B)
+        if (keycode == Input.Keys.B) {
             // implement this
+        }
 
-            // Player2, A, D, W, PUNCH, BLOCK, KICK keys
-            if (keycode == Input.Keys.A)
-                model.setDirection(playerTwo, ForceDirection.LEFT);
+        // Player2, A, D, W, PUNCH, BLOCK, KICK keys
+        if (keycode == Input.Keys.A)
+            model.setDirection(playerTwo, ForceDirection.LEFT);
         if (keycode == Input.Keys.D)
             model.setDirection(playerTwo, ForceDirection.RIGHT);
         if (keycode == Input.Keys.W)
