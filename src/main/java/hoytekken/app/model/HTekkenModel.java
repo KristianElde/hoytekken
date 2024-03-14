@@ -46,7 +46,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      */
     public HTekkenModel(String map) {
         this.map = map;
-        this.gameWorld = new World(new Vector2(0, -20), true);
+        this.gameWorld = new World(new Vector2(0, -10), true);
         this.gameState = GameState.INSTRUCTIONS;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
@@ -143,7 +143,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         jumpCounter = 0;
         return true;
     }
-    
+
     private boolean movePlayers() {
         directionToSpeed(PlayerType.PLAYER_ONE, p1Direction);
         directionToSpeed(PlayerType.PLAYER_TWO, p2Direction);
