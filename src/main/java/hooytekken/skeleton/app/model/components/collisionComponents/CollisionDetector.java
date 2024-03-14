@@ -28,10 +28,11 @@ public class CollisionDetector implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
+        //user data for the two fixtures that collided
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
-        System.out.println("Collision between " + userDataA + " and " + userDataB);
 
+        //if a players feet collide with another object, reset their double jump
         if (userDataA.equals(playerOne + "feet")
             || userDataB.equals(playerOne + "feet")) 
             model.resetDoubleJump(playerOne);
