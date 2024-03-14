@@ -143,7 +143,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
-    public boolean performAction(PlayerType player, ActionType actionType) {
+    public boolean performAttackAction(PlayerType player, ActionType actionType) {
         Player attacker = getPlayer(player);
         Player victim = player == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
@@ -163,6 +163,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
                     return true;
                 }
                 break;
+
         }
         return false;
     }

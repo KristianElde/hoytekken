@@ -41,11 +41,11 @@ public class HtekkenController extends InputAdapter {
         if (keycode == Input.Keys.UP)
             model.jump(playerOne);
         if (keycode == Input.Keys.P)
-            model.performAction(playerOne, ActionType.PUNCH);
+            model.performAttackAction(playerOne, ActionType.PUNCH);
         if (keycode == Input.Keys.K)
-            model.performAction(playerOne, ActionType.KICK);
+            model.performAttackAction(playerOne, ActionType.KICK);
         if (keycode == Input.Keys.B)
-            model.performAction(playerOne, ActionType.BLOCK);
+            model.performAttackAction(playerOne, ActionType.BLOCK);
 
         // Player2, A, D, W, PUNCH, BLOCK, KICK keys
         if (keycode == Input.Keys.A)
@@ -55,11 +55,11 @@ public class HtekkenController extends InputAdapter {
         if (keycode == Input.Keys.W)
             model.jump(playerTwo);
         if (keycode == Input.Keys.Q)
-            model.performAction(playerTwo, ActionType.PUNCH);
+            model.performAttackAction(playerTwo, ActionType.PUNCH);
         if (keycode == Input.Keys.E)
-            model.performAction(playerTwo, ActionType.KICK);
+            model.performAttackAction(playerTwo, ActionType.KICK);
         if (keycode == Input.Keys.S) {
-            model.performAction(playerTwo, ActionType.BLOCK);
+            model.performAttackAction(playerTwo, ActionType.BLOCK);
         }
 
         return false;
