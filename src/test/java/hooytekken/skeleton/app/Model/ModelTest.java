@@ -14,12 +14,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 
+import hooytekken.skeleton.app.Model.PlayerEntity.PlayerTest;
 import hooytekken.skeleton.app.model.HTekkenModel;
 import hooytekken.skeleton.app.model.components.GameState;
+import hooytekken.skeleton.app.model.components.PlayerEntity.Player;
+import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 public class ModelTest {
     private HTekkenModel model;
+    private World world;
+    private Player player1;
+    private Player player2;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -32,7 +40,11 @@ public class ModelTest {
 
     @BeforeEach
     void setUpBeforeEach() {
-        this.model = new HTekkenModel();
+        model = new HTekkenModel();
+        world = new World(new Vector2(0, 0), true);
+        player1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        player2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
     }
 
     @Test
