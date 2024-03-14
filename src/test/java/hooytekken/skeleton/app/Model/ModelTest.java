@@ -41,7 +41,6 @@ public class ModelTest {
     @BeforeEach
     void setUpBeforeEach() {
         model = new HTekkenModel();
-        world = new World(new Vector2(0, 0), true);
         player1 = model.getPlayer(PlayerType.PLAYER_ONE);
         player2 = model.getPlayer(PlayerType.PLAYER_TWO);
 
