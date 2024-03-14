@@ -65,10 +65,11 @@ public class Box2DWorldGenerator {
                 (rect.getY() + rect.getHeight()/2) / Hoytekken.PPM);
 
             body = world.createBody(bdef);
+            body.setUserData(this);
 
             shape.setAsBox((rect.getWidth()/2) / Hoytekken.PPM, (rect.getHeight()/2) / Hoytekken.PPM);
             fdef.shape = shape;
-            body.createFixture(fdef);
+            body.createFixture(fdef).setUserData(layerIndex == 0 ? "mainplatform" : "otherplatform");
         }
     }
 }
