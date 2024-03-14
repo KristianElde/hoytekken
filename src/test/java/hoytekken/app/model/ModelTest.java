@@ -89,7 +89,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionTest() {
+    void performActionTestPunch() {
         model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is not reduced by punch when opponent is out of
@@ -103,7 +103,23 @@ public class ModelTest {
         // Check that opponents health is reduced by punch when opponent is inside range
         assertEquals(99, player1.getHealth());
         assertEquals(89, player2.getHealth());
+    }
 
+    @Test
+    void performActionTestKick() {
+        model.performAction(PlayerType.PLAYER_ONE, ActionType.KICK);
+
+        // Check that opponents health is not reduced by kick when opponent is out of
+        // range
+        assertEquals(99, player1.getHealth());
+        assertEquals(99, player2.getHealth());
+
+        movePlayersBeside();
+        model.performAction(PlayerType.PLAYER_ONE, ActionType.KICK);
+
+        // Check that opponents health is reduced by kick when opponent is inside range
+        assertEquals(99, player1.getHealth());
+        assertEquals(89, player2.getHealth());
     }
 
 }
