@@ -33,7 +33,7 @@ public class GameOverScreen implements Screen {
      * @param game  the game object
      * @param model the viewable model
      */
-    public GameOverScreen(Hoytekken game, ViewableModel model) {
+    public GameOverScreen(Hoytekken game, ViewableModel model, int winningPlayer) {
         this.game = game;
         this.model = model;
 
