@@ -1,4 +1,4 @@
-package hoytekken.app.Model.player;
+package hoytekken.app.model.components.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 // import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,9 +21,6 @@ import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
 
 /**
  * Unit tests for the Player class

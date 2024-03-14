@@ -1,4 +1,4 @@
-package hoytekken.app.Model;
+package hoytekken.app.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
