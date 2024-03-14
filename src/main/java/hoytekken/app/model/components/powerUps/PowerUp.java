@@ -7,4 +7,13 @@ public final class PowerUp {
         this.pUpType = pUpType;
     }
 
+    static PowerUp newPowerUp(PowerUpType type) {
+        PowerUp pUp = switch (type) {
+            case EXTRA_DAMAGE -> new PowerUp(type);
+            case EXTRA_HEALTH -> new PowerUp(type);
+            case DOUBLE_SPEED -> new PowerUp(type);
+        }
+        return pUp;
+    }
+
 }
