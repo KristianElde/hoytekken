@@ -12,7 +12,8 @@ public final class PowerUp {
             case EXTRA_DAMAGE -> new PowerUp(type);
             case EXTRA_HEALTH -> new PowerUp(type);
             case DOUBLE_SPEED -> new PowerUp(type);
-        }
+            default -> throw new IllegalArgumentException("Undefined type for PowerUp");
+        };
         return pUp;
     }
 
