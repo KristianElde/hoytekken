@@ -43,7 +43,7 @@ public interface ControllableModel {
      * 
      * @return true if the action was performed, false otherwise
      */
-    public boolean performAction(PlayerType player, ActionType action);
+    public boolean performAttackAction(PlayerType player, ActionType action);
 
     /**
      * Gets the gamestate that the game is currently in

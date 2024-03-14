@@ -5,6 +5,5 @@ package hoytekken.app.controller;
  */
 public enum ActionType {
     KICK,
-    PUNCH,
-    BLOCK
+    PUNCH
 }

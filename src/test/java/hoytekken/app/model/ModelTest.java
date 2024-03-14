@@ -3,7 +3,6 @@ package hoytekken.app.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
@@ -21,7 +19,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
-import hoytekken.app.model.HTekkenModel;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
@@ -61,7 +58,8 @@ public class ModelTest {
 
     private void movePlayersBeside() {
         while (!isWithinRange(player1, player2)) {
-            player2.move(1, 0);
+            player1.move(1, 0);
+            model.getGameWorld().step(1 / 60f, 6, 2);
         }
     }
 
@@ -76,24 +74,52 @@ public class ModelTest {
         assertNotEquals(player1, player2);
     }
 
-    /*
-     * @Test
-     * void gameStateTest() {
-     * assertEquals(GameState.INSTRUCTIONS, model.getGameState());
-     * model.setGameState(GameState.ACTIVE_GAME);
-     * assertEquals(GameState.ACTIVE_GAME, model.getGameState());
-     * while (player2.isAlive()) {
-     * model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
-     * }
-     * assertEquals(GameState.GAME_OVER, model.getGameState());
-     * }
-     * 
-     * @Test
-     * void performActionTest() {
-     * model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
-     * movePlayersBeside();
-     * assertEquals(89, player2.getHealth());
-     * assertEquals(99, player1.getHealth());
-     * }
-     */
+    @Test
+    void gameStateTest() {
+        assertEquals(GameState.INSTRUCTIONS, model.getGameState());
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertEquals(GameState.ACTIVE_GAME, model.getGameState());
+
+        movePlayersBeside();
+        while (player2.isAlive()) {
+            model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+            model.updateModel(0);
+        }
+        assertEquals(GameState.GAME_OVER, model.getGameState());
+    }
+
+    @Test
+    void performActionTestPunch() {
+        model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+
+        // Check that opponents health is not reduced by punch when opponent is out of
+        // range
+        assertEquals(99, player1.getHealth());
+        assertEquals(99, player2.getHealth());
+
+        movePlayersBeside();
+        model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+
+        // Check that opponents health is reduced by punch when opponent is inside range
+        assertEquals(99, player1.getHealth());
+        assertEquals(89, player2.getHealth());
+    }
+
+    @Test
+    void performActionTestKick() {
+        model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
+
+        // Check that opponents health is not reduced by kick when opponent is out of
+        // range
+        assertEquals(99, player1.getHealth());
+        assertEquals(99, player2.getHealth());
+
+        movePlayersBeside();
+        model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
+
+        // Check that opponents health is reduced by kick when opponent is inside range
+        assertEquals(99, player1.getHealth());
+        assertEquals(89, player2.getHealth());
+    }
+
 }
