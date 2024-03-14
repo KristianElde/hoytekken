@@ -59,7 +59,8 @@ public class GameScreen implements Screen {
 
     private void handleStateSwitch() {
         if (model.getGameState() != GameState.ACTIVE_GAME) {
-            game.setScreen(new GameOverScreen(game, model));
+            int winningPlayer = getWinningPlayer();
+            game.setScreen(new GameOverScreen(game, model, winningPlayer));
         }
     }
 
