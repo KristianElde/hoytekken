@@ -138,11 +138,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         // p.move(0, 5);
         
     }
-
-    private void resetJumpCounter() {
+    @Override
+    public boolean resetDoubleJump(PlayerType player) {
         jumpCounter = 0;
+        return true;
     }
-
+    
     private boolean movePlayers() {
         directionToSpeed(PlayerType.PLAYER_ONE, p1Direction);
         directionToSpeed(PlayerType.PLAYER_TWO, p2Direction);
@@ -207,10 +208,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
-    @Override
-    public boolean resetDoubleJump(PlayerType player) {
-        // TODO: implement method
-        return true;
-    }
+    
 
 }
