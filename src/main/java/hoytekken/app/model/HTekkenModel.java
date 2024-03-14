@@ -24,6 +24,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private static final int MAX_JUMPS = 2;
     private int jumpCounter = 0;
+
     private World gameWorld;
     private GameState gameState;
 
@@ -123,8 +124,13 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public boolean jump(PlayerType player) {
-        IPlayer p = getPlayer(player);
-        p.move(0, 5);
+        if (jumpCounter < MAX_JUMPS) {
+            jumpCounter++;
+            IPlayer p = getPlayer(player);
+            p.move(0, 5);
+        }
+        // IPlayer p = getPlayer(player);
+        // p.move(0, 5);
         return true;
     }
 
