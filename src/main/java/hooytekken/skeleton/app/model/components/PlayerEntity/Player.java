@@ -2,6 +2,7 @@ package hooytekken.skeleton.app.model.components.PlayerEntity;
 
 import hooytekken.skeleton.app.Hoytekken;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -56,7 +57,7 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
 
-        this.playerTexture = new Texture(DEFAULT_SKIN);
+        this.playerTexture = new Texture(Gdx.files.internal(DEFAULT_SKIN));
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
