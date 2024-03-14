@@ -25,7 +25,6 @@ import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
 public class ModelTest {
     private HTekkenModel model;
-    private World world;
     private Player player1;
     private Player player2;
 
