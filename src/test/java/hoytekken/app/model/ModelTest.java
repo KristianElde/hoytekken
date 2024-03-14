@@ -58,7 +58,8 @@ public class ModelTest {
 
     private void movePlayersBeside() {
         while (!isWithinRange(player1, player2)) {
-            player2.move(1, 0);
+            player1.move(1, 0);
+            model.getGameWorld().step(1 / 60f, 6, 2);
         }
     }
 
@@ -78,8 +79,11 @@ public class ModelTest {
         assertEquals(GameState.INSTRUCTIONS, model.getGameState());
         model.setGameState(GameState.ACTIVE_GAME);
         assertEquals(GameState.ACTIVE_GAME, model.getGameState());
+
+        movePlayersBeside();
         while (player2.isAlive()) {
             model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+            model.updateModel(0);
         }
         assertEquals(GameState.GAME_OVER, model.getGameState());
     }
@@ -87,9 +91,19 @@ public class ModelTest {
     @Test
     void performActionTest() {
         model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
-        movePlayersBeside();
-        assertEquals(89, player2.getHealth());
+
+        // Check that opponents health is not reduced by punch when opponent is out of
+        // range
         assertEquals(99, player1.getHealth());
+        assertEquals(99, player2.getHealth());
+
+        movePlayersBeside();
+        model.performAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
+
+        // Check that opponents health is reduced by punch when opponent is inside range
+        assertEquals(99, player1.getHealth());
+        assertEquals(89, player2.getHealth());
+
     }
 
 }
