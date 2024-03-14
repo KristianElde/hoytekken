@@ -63,6 +63,11 @@ public class GameScreen implements Screen {
         }
     }
 
+    private int getWinningPlayer() {
+        boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
+        boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
+    }
+
     private void update(float delta) {
         model.updateModel(delta);
         gameCam.update();
