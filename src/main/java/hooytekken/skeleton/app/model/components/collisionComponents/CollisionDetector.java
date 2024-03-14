@@ -29,8 +29,8 @@ public class CollisionDetector implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
-        Object userDataA = contact.getFixtureA().getBody().getUserData();
-        Object userDataB = contact.getFixtureB().getBody().getUserData();
+        Object userDataA = contact.getFixtureA().getUserData();
+        Object userDataB = contact.getFixtureB().getUserData();
         System.out.println("Collision between " + userDataA + " and " + userDataB);
 
         if (userDataA.equals(playerOne + "feet")
