@@ -2,10 +2,6 @@ package hooytekken.skeleton.app.model.components.collisionComponents;
 
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
-import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
-import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
-
-
 public interface HandleCollisions {
     
     /**

@@ -8,7 +8,6 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 
 import hooytekken.skeleton.app.model.components.PlayerEntity.PlayerType;
 
-
 /**
  * Class to detect collisions between objects
  */
@@ -42,8 +41,6 @@ public class CollisionDetector implements ContactListener {
             || userDataB.equals(playerTwo + "feet")) 
             model.resetDoubleJump(playerTwo);
     }
-
-
 
     @Override
     public void endContact(Contact contact) {
