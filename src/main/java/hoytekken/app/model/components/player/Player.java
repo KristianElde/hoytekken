@@ -14,7 +14,6 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.controller.ActionType;
 
 /**
  * The player class
@@ -48,9 +47,9 @@ public class Player extends Sprite implements IPlayer {
     private int maxHealth;
 
     private int punchDmg = 10;
-    private int kickDmg = 5;
+    private int kickDmg = 7;
     private float punchRange = 1.8f;
-    private float kickRange = 2.0f;
+    private float kickRange = 2.2f;
 
     /**
      * Constructor for the player
