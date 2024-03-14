@@ -46,7 +46,6 @@ public class ModelTest {
     @Test
     void sanityTest() {
         assertNotNull(model.getGameState());
-        assertEquals(GameState.INSTRUCTIONS, model.getGameState());
         assertNotNull(model.getGameWorld());
         assertNotNull(model.getMap());
         assertNotNull(model.getTiledMap());
@@ -57,6 +56,8 @@ public class ModelTest {
 
     @Test
     void gameStateTest() {
-
+        assertEquals(GameState.INSTRUCTIONS, model.getGameState());
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertEquals(GameState.ACTIVE_GAME, model.getGameState());
     }
 }
