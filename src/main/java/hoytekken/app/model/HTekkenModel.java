@@ -132,7 +132,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             return true;
         }
         else {
-            
+            playerTwoJumpCounter++;
+            IPlayer p2 = getPlayer(player);
+            p2.move(0, 5);
+            return true;
         }
 
 
