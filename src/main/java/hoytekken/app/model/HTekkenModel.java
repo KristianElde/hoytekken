@@ -23,7 +23,8 @@ import hoytekken.app.view.ViewableModel;
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private static final int MAX_JUMPS = 2;
-    private int jumpCounter = 0;
+    private int playerOneJumpCounter = 0;
+    private int playerTwoJumpCounter = 0;
 
     private World gameWorld;
     private GameState gameState;
@@ -124,15 +125,26 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public boolean jump(PlayerType player) {
-        if (jumpCounter < MAX_JUMPS) {
-            jumpCounter++;
-            IPlayer p = getPlayer(player);
-            p.move(0, 5);
+        if (playerOneJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_ONE) {
+            playerOneJumpCounter++;
+            IPlayer p1 = getPlayer(player);
+            p1.move(0, 5);
             return true;
         }
         else {
-            return false;
+            
         }
+
+
+        // if (jumpCounter < MAX_JUMPS) {
+        //     jumpCounter++;
+        //     IPlayer p = getPlayer(player);
+        //     p.move(0, 5);
+        //     return true;
+        // }
+        // else {
+        //     return false;
+        // }
 
         // IPlayer p = getPlayer(player);
         // p.move(0, 5);
