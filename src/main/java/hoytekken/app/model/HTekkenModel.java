@@ -46,7 +46,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      */
     public HTekkenModel(String map) {
         this.map = map;
-        this.gameWorld = new World(new Vector2(0, -10), true);
+        this.gameWorld = new World(new Vector2(0, -14), true);
         this.gameState = GameState.INSTRUCTIONS;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
