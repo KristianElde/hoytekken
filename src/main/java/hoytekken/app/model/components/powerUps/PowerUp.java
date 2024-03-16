@@ -7,11 +7,11 @@ public final class PowerUp {
         this.pUpType = pUpType;
     }
 
-    static PowerUp newPowerUp(PowerUpType type) {
+    static PowerUp newPowerUp(Character type) {
         PowerUp pUp = switch (type) {
-            case EXTRA_DAMAGE -> new PowerUp(type);
-            case EXTRA_HEALTH -> new PowerUp(type);
-            case DOUBLE_SPEED -> new PowerUp(type);
+            case 'D' -> new PowerUp(PowerUpType.EXTRA_DAMAGE);
+            case 'H' -> new PowerUp(PowerUpType.EXTRA_HEALTH);
+            case 'S' -> new PowerUp(PowerUpType.DOUBLE_SPEED);
             default -> throw new IllegalArgumentException("Undefined type for PowerUp");
         };
         return pUp;
