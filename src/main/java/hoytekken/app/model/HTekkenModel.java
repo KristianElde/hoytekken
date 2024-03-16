@@ -155,7 +155,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
     @Override
     public boolean resetDoubleJump(PlayerType player) {
-        jumpCounter = 0;
+        if (player == PlayerType.PLAYER_ONE) {
+            playerOneJumpCounter = 0;
+        }
+        else {
+            playerTwoJumpCounter = 0;
+        }
         return true;
     }
 
