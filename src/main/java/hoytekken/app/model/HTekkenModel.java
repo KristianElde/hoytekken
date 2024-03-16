@@ -131,28 +131,18 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             p1.move(0, 5);
             return true;
         }
-        else {
+        else if (playerTwoJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_TWO){
             playerTwoJumpCounter++;
             IPlayer p2 = getPlayer(player);
             p2.move(0, 5);
             return true;
         }
-
-
-        // if (jumpCounter < MAX_JUMPS) {
-        //     jumpCounter++;
-        //     IPlayer p = getPlayer(player);
-        //     p.move(0, 5);
-        //     return true;
-        // }
-        // else {
-        //     return false;
-        // }
-
-        // IPlayer p = getPlayer(player);
-        // p.move(0, 5);
-        
+        else {
+            return false;
+        }
     }
+
+    
     @Override
     public boolean resetDoubleJump(PlayerType player) {
         if (player == PlayerType.PLAYER_ONE) {
