@@ -2,6 +2,8 @@ package hoytekken.app.model;
 
 import java.util.HashMap;
 
+import javax.swing.Box;
+
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
@@ -238,8 +240,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public void setGameMap(String mapName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setGameMap'");
+        String gameMap = gameMaps.get(mapName);
+        if (gameMap != null) {
+            this.map = gameMap;
+            this.tiledmap = mapLoader.load(gameMap);
+            new Box2DWorldGenerator(gameWorld, tiledmap);
+        }
     }
 
 }
