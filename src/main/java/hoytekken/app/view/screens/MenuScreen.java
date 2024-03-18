@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -40,7 +38,6 @@ public class MenuScreen implements Screen {
     private Stage stage;
 
     private Label.LabelStyle font;
-   //private BitmapFont font;
 
     /**
      * Constructor for the menu screen
@@ -59,29 +56,23 @@ public class MenuScreen implements Screen {
 
         background = new Texture(Gdx.files.internal(BG_PATH));
 
-        //font = new BitmapFont();
         stage = new Stage(gamePort, game.batch);
 
-        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+        font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
         Table table = new Table();
         table.bottom();
         table.setFillParent(true);
+
         Label instructionsLabel = new Label(INSTRUCTIONS, font);
         Label exitLabel = new Label(EXIT, font);
         Label playLabel = new Label(PLAY, font);
+
         table.add(exitLabel).expandX();
         table.add(playLabel).expandX();
         table.add(instructionsLabel).expandX();
 
         stage.addActor(table);
     }
-
-    /*private void drawShadedText(String text, float x, float y) {
-        font.setColor(Color.BLACK);
-        font.draw(game.batch, text, x + 10/Hoytekken.PPM, y + 10 / Hoytekken.PPM);
-        font.setColor(Color.WHITE);
-        font.draw(game.batch, text, x/Hoytekken.PPM, y/ Hoytekken.PPM);
-    }*/
 
     private void handleStateSwitch() {
         if (model.getGameState() != GameState.MAIN_MENU) {
@@ -113,7 +104,6 @@ public class MenuScreen implements Screen {
 
         game.batch.begin();
         game.batch.draw(background, 0, 0, gamePort.getWorldWidth(), gamePort.getWorldHeight());
-        //drawShadedText(PLAY, gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2);
         game.batch.end();
 
         stage.draw();
