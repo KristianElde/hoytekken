@@ -71,7 +71,11 @@ public class HtekkenController extends InputAdapter {
             }
             if (keycode == Input.Keys.NUM_1) {
                 model.setGameState(GameState.ACTIVE_GAME);
-                model.setGameMap("map1.tmx");
+                model.setGameMap("map1");
+            }
+            if (keycode == Input.Keys.NUM_2) {
+                model.setGameState(GameState.ACTIVE_GAME);
+                model.setGameMap("map2");
             }
         }
 
