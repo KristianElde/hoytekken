@@ -56,7 +56,7 @@ public class GameOverScreen implements Screen {
     }
 
     private void handleStateSwitch() {
-        if (model.getGameState() != GameState.GAME_OVER) {
+        if (model.getGameState() == GameState.MAIN_MENU) {
             game.setScreen(new MenuScreen(game, model));
         }
     }

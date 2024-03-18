@@ -95,7 +95,7 @@ public class InstructionsScreen implements Screen {
     }
 
     private void handleStateSwitch() {
-        if (model.getGameState() != GameState.INSTRUCTIONS) {
+        if (model.getGameState() == GameState.MAIN_MENU) {
             game.setScreen(new MenuScreen(game, model));
         }
     }
