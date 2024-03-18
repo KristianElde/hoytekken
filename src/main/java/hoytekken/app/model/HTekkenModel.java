@@ -36,7 +36,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             put("map4", "fourthKMVmap1.tmx");
         }
     };
-    }
 
     private World gameWorld;
     private GameState gameState;
