@@ -23,7 +23,6 @@ public class Hud {
     private Stage stage;
     private Viewport port;
 
-    private static final Integer INIT_HEALTH = 100;
     private static final Integer INIT_TIME = 0;
 
     private Integer playerHealth;
@@ -41,8 +40,6 @@ public class Hud {
      * @param sb
      */
     public Hud(SpriteBatch sb) {
-        playerHealth = INIT_HEALTH;
-        enemyHealth = INIT_HEALTH;
         battleTimer = INIT_TIME;
 
         port = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, new OrthographicCamera());
