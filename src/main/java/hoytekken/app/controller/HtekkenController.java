@@ -45,7 +45,7 @@ public class HtekkenController extends InputAdapter {
             if (keycode == Input.Keys.K)
                 model.performAttackAction(playerOne, ActionType.KICK);
             if (keycode == Input.Keys.DOWN) {
-                model.activateBlock(playerOne);
+                model.getPlayer(playerOne).activateBlock();
             }
 
             // Player2, A, D, W, PUNCH, BLOCK, KICK keys
@@ -60,7 +60,7 @@ public class HtekkenController extends InputAdapter {
             if (keycode == Input.Keys.E)
                 model.performAttackAction(playerTwo, ActionType.KICK);
             if (keycode == Input.Keys.S) {
-                model.activateBlock(playerTwo);
+                model.getPlayer(playerTwo).activateBlock();
             }
         } else if (model.getGameState() == GameState.MAIN_MENU) {
             if (keycode == Input.Keys.I) {
@@ -103,7 +103,7 @@ public class HtekkenController extends InputAdapter {
             }
             // Deactivate block when DOWN-key is released
             if (keycode == Input.Keys.DOWN) {
-                model.deactivateBlock(playerOne);
+                model.getPlayer(playerOne).deactivateBlock();
                 return true;
             }
 
@@ -117,7 +117,7 @@ public class HtekkenController extends InputAdapter {
             }
             // Deactivate block when S-key is released
             if (keycode == Input.Keys.S) {
-                model.deactivateBlock(playerTwo);
+                model.getPlayer(playerTwo).deactivateBlock();
                 return true;
             }
         }
