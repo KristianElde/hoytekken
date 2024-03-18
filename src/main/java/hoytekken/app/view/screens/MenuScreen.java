@@ -4,10 +4,14 @@ import org.lwjgl.opengl.GL20;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -20,6 +24,9 @@ import hoytekken.app.view.ViewableModel;
  */
 public class MenuScreen implements Screen {
     private static final String BG_PATH = "background.png";
+    private static final String PLAY = "CLICK TO PLAY";
+    private static final String INSTRUCTIONS = "PRESS \'I\' FOR INSTRUCTIONS";
+    private static final String EXIT = "PRESS \'ESC\' TO EXIT";
 
     private Hoytekken game;
     private ViewableModel model;
@@ -28,6 +35,8 @@ public class MenuScreen implements Screen {
     private Viewport gamePort;
 
     private Texture background;
+
+    private BitmapFont font;
 
     /**
      * Constructor for the menu screen
@@ -46,6 +55,23 @@ public class MenuScreen implements Screen {
 
         background = new Texture(Gdx.files.internal(BG_PATH));
 
+        //font = new BitmapFont();
+
+        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+        Table table = new Table();
+        table.bottom();
+        table.setFillParent(true);
+        Label instructionsLabel = new Label(INSTRUCTIONS, font);
+        Label exitLabel = new Label(EXIT, font);
+        Label playLabel = new Label(PLAY, font);
+        table.add(instructionsLabel).expandX().padBottom(10);
+    }
+
+    private void drawShadedText(String text, float x, float y) {
+        font.setColor(Color.BLACK);
+        font.draw(game.batch, text, x + 10/Hoytekken.PPM, y + 10 / Hoytekken.PPM);
+        font.setColor(Color.WHITE);
+        font.draw(game.batch, text, x/Hoytekken.PPM, y/ Hoytekken.PPM);
     }
 
     private void handleStateSwitch() {
@@ -76,6 +102,7 @@ public class MenuScreen implements Screen {
 
         game.batch.begin();
         game.batch.draw(background, 0, 0, gamePort.getWorldWidth(), gamePort.getWorldHeight());
+        drawShadedText(PLAY, gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2);
         game.batch.end();
     }
 
