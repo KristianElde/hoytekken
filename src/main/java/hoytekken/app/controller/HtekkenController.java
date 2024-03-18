@@ -114,6 +114,7 @@ public class HtekkenController extends InputAdapter {
             return true;
         } else if (model.getGameState() == GameState.MAIN_MENU) {
             model.setGameState(GameState.ACTIVE_GAME);
+            model.setGameMap("map1");
             return true;
         } else if (model.getGameState() == GameState.GAME_OVER) {
             ((Hoytekken) Gdx.app.getApplicationListener()).create();
