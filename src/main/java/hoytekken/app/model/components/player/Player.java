@@ -115,8 +115,10 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
-        if (deltaY != 0)
+        if (deltaY != 0){
+            body.setLinearVelocity(body.getLinearVelocity().x, 0);
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
+        }
         else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
     }

@@ -22,6 +22,10 @@ import hoytekken.app.view.ViewableModel;
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
+    private static final int MAX_JUMPS = 2;
+    private int playerOneJumpCounter = 0;
+    private int playerTwoJumpCounter = 0;
+
     private World gameWorld;
     private GameState gameState;
 
@@ -43,7 +47,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      */
     public HTekkenModel(String map) {
         this.map = map;
-        this.gameWorld = new World(new Vector2(0, -20), true);
+        this.gameWorld = new World(new Vector2(0, -14), true);
         this.gameState = GameState.INSTRUCTIONS;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
@@ -121,8 +125,32 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public boolean jump(PlayerType player) {
-        IPlayer p = getPlayer(player);
-        p.move(0, 5);
+        if (playerOneJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_ONE) {
+            playerOneJumpCounter++;
+            IPlayer p1 = getPlayer(player);
+            p1.move(0, 5);
+            return true;
+        }
+        else if (playerTwoJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_TWO){
+            playerTwoJumpCounter++;
+            IPlayer p2 = getPlayer(player);
+            p2.move(0, 5);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    
+    @Override
+    public boolean resetDoubleJump(PlayerType player) {
+        if (player == PlayerType.PLAYER_ONE) {
+            playerOneJumpCounter = 0;
+        }
+        else {
+            playerTwoJumpCounter = 0;
+        }
         return true;
     }
 
@@ -181,10 +209,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
-    @Override
-    public boolean resetDoubleJump(PlayerType player) {
-        // TODO: implement method
-        return true;
-    }
+    
 
 }
