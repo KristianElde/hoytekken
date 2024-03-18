@@ -25,13 +25,6 @@ public class MenuScreen implements Screen {
     private OrthographicCamera gameCam;
     private Viewport gamePort;
 
-    private TiledMap map;
-    private OrthoCachedTiledMapRenderer renderer;
-    private Texture welcomeImg;
-
-    private static final float WELCOME_TEXT_WIDTH = 300;
-    private static final float WELCOME_TEXT_HEIGHT = 300;
-
     /**
      * Constructor for the menu screen
      * 
@@ -45,11 +38,6 @@ public class MenuScreen implements Screen {
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
 
-        map = model.getTiledMap();
-        renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-        welcomeImg = new Texture("Welcome.png");
-
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
     private void handleStateSwitch() {
@@ -60,7 +48,6 @@ public class MenuScreen implements Screen {
 
     private void update(float delta) {
         gameCam.update();
-        renderer.setView(gameCam);
         handleStateSwitch();
     }
 
@@ -76,15 +63,10 @@ public class MenuScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        renderer.render();
 
         game.batch.setProjectionMatrix(gameCam.combined);
 
         game.batch.begin();
-
-        game.batch.draw(welcomeImg, (Hoytekken.V_WIDTH / 2 - WELCOME_TEXT_WIDTH / 2) / Hoytekken.PPM,
-                (Hoytekken.V_HEIGHT / 2 - WELCOME_TEXT_HEIGHT / 2) / Hoytekken.PPM, WELCOME_TEXT_WIDTH / Hoytekken.PPM,
-                WELCOME_TEXT_HEIGHT / Hoytekken.PPM);
 
         game.batch.end();
     }
