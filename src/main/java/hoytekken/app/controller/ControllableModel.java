@@ -1,5 +1,7 @@
 package hoytekken.app.controller;
 
+import java.util.HashMap;
+
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.PlayerType;
@@ -58,4 +60,16 @@ public interface ControllableModel {
      * @param gameState is the gamestate that the game gets set to
      */
     public void setGameState(GameState gameState);
+
+    /**
+     * Method to get the maps for the game
+     * @return the maps for the game
+     */
+    public HashMap<String, String> getGameMaps();
+
+    /**
+     * Method to set the map for the game
+     * @param mapName the name of the map
+     */
+    public void setGameMap(String mapName);
 }

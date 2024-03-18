@@ -69,6 +69,22 @@ public class HtekkenController extends InputAdapter {
             if (keycode == Input.Keys.ESCAPE) {
                 Gdx.app.exit();
             }
+            if (keycode == Input.Keys.NUM_1) {
+                model.setGameState(GameState.ACTIVE_GAME);
+                model.setGameMap("map1");
+            }
+            if (keycode == Input.Keys.NUM_2) {
+                model.setGameState(GameState.ACTIVE_GAME);
+                model.setGameMap("map2");
+            }
+            if (keycode == Input.Keys.NUM_3) {
+                model.setGameState(GameState.ACTIVE_GAME);
+                model.setGameMap("map3");
+            }
+            if (keycode == Input.Keys.NUM_4) {
+                model.setGameState(GameState.ACTIVE_GAME);
+                model.setGameMap("map4");
+            }
         }
 
         return false;
@@ -98,6 +114,7 @@ public class HtekkenController extends InputAdapter {
             return true;
         } else if (model.getGameState() == GameState.MAIN_MENU) {
             model.setGameState(GameState.ACTIVE_GAME);
+            model.setGameMap("map1");
             return true;
         } else if (model.getGameState() == GameState.GAME_OVER) {
             ((Hoytekken) Gdx.app.getApplicationListener()).create();
