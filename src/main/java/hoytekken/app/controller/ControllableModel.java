@@ -63,13 +63,17 @@ public interface ControllableModel {
 
     /**
      * Method to get the maps for the game
+     * 
      * @return the maps for the game
      */
     public HashMap<String, String> getGameMaps();
 
     /**
      * Method to set the map for the game
+     * 
      * @param mapName the name of the map
      */
     public void setGameMap(String mapName);
+
+    void activateBlock(PlayerType player);
 }

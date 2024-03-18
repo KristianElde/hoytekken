@@ -67,9 +67,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
 
         mapLoader = new TmxMapLoader();
-        //tiledmap = mapLoader.load(map);
+        // tiledmap = mapLoader.load(map);
 
-        //new Box2DWorldGenerator(gameWorld, tiledmap);
+        // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
     }
@@ -245,9 +245,19 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             this.map = gameMap;
             this.tiledmap = mapLoader.load(gameMap);
             new Box2DWorldGenerator(gameWorld, tiledmap);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Map: " + mapName + " not found");
+        }
+    }
+
+    @Override
+    public void activateBlock(PlayerType player) {
+        if (player == PlayerType.PLAYER_ONE) {
+            playerOne.activateBlock();
+        } else if (player == PlayerType.PLAYER_TWO) {
+            playerTwo.activateBlock();
+        } else {
+            throw new IllegalArgumentException("Player: " + player + " not found");
         }
     }
 
