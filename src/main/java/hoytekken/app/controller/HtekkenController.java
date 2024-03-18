@@ -32,35 +32,36 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
+        if (model.getGameState() == GameState.ACTIVE_GAME) {
+            // Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
+            if (keycode == Input.Keys.LEFT)
+                model.setDirection(playerOne, ForceDirection.LEFT);
+            if (keycode == Input.Keys.RIGHT)
+                model.setDirection(playerOne, ForceDirection.RIGHT);
+            if (keycode == Input.Keys.UP)
+                model.jump(playerOne);
+            if (keycode == Input.Keys.P)
+                model.performAttackAction(playerOne, ActionType.PUNCH);
+            if (keycode == Input.Keys.K)
+                model.performAttackAction(playerOne, ActionType.KICK);
+            if (keycode == Input.Keys.B) {
+                // implement this
+            }
 
-        // Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
-        if (keycode == Input.Keys.LEFT)
-            model.setDirection(playerOne, ForceDirection.LEFT);
-        if (keycode == Input.Keys.RIGHT)
-            model.setDirection(playerOne, ForceDirection.RIGHT);
-        if (keycode == Input.Keys.UP)
-            model.jump(playerOne);
-        if (keycode == Input.Keys.P)
-            model.performAttackAction(playerOne, ActionType.PUNCH);
-        if (keycode == Input.Keys.K)
-            model.performAttackAction(playerOne, ActionType.KICK);
-        if (keycode == Input.Keys.B) {
-            // implement this
-        }
-
-        // Player2, A, D, W, PUNCH, BLOCK, KICK keys
-        if (keycode == Input.Keys.A)
-            model.setDirection(playerTwo, ForceDirection.LEFT);
-        if (keycode == Input.Keys.D)
-            model.setDirection(playerTwo, ForceDirection.RIGHT);
-        if (keycode == Input.Keys.W)
-            model.jump(playerTwo);
-        if (keycode == Input.Keys.Q)
-            model.performAttackAction(playerTwo, ActionType.PUNCH);
-        if (keycode == Input.Keys.E)
-            model.performAttackAction(playerTwo, ActionType.KICK);
-        if (keycode == Input.Keys.S) {
-            // implement this
+            // Player2, A, D, W, PUNCH, BLOCK, KICK keys
+            if (keycode == Input.Keys.A)
+                model.setDirection(playerTwo, ForceDirection.LEFT);
+            if (keycode == Input.Keys.D)
+                model.setDirection(playerTwo, ForceDirection.RIGHT);
+            if (keycode == Input.Keys.W)
+                model.jump(playerTwo);
+            if (keycode == Input.Keys.Q)
+                model.performAttackAction(playerTwo, ActionType.PUNCH);
+            if (keycode == Input.Keys.E)
+                model.performAttackAction(playerTwo, ActionType.KICK);
+            if (keycode == Input.Keys.S) {
+                // implement this
+            }
         }
 
         return false;
