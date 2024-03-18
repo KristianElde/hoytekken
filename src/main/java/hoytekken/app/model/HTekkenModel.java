@@ -1,5 +1,7 @@
 package hoytekken.app.model;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
@@ -26,6 +28,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
+    private HashMap<String, String> gameMaps = new HashMap<String, String>() {
+        {
+            put("map1", "defaultMap.tmx");
+            put("map2", "secondKMVmap.tmx");
+            put("map3", "thirdKMVmap.tmx");
+            put("map4", "fourthKMVmap1.tmx");
+        }
+    };
+    }
 
     private World gameWorld;
     private GameState gameState;
