@@ -89,7 +89,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionTestPunch() {
+    void performActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is not reduced by punch when opponent is out of
@@ -106,7 +106,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionTestKick() {
+    void performActionKickTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is not reduced by kick when opponent is out of
