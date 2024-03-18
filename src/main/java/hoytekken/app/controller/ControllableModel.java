@@ -76,4 +76,6 @@ public interface ControllableModel {
     public void setGameMap(String mapName);
 
     void activateBlock(PlayerType player);
+
+    void deactivateBlock(PlayerType player);
 }
