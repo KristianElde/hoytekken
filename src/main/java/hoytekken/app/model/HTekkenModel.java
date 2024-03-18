@@ -261,4 +261,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
+    @Override
+    public void deactivateBlock(PlayerType player) {
+        if (player == PlayerType.PLAYER_ONE) {
+            playerOne.deactivateBlock();
+        } else if (player == PlayerType.PLAYER_TWO) {
+            playerTwo.deactivateBlock();
+        } else {
+            throw new IllegalArgumentException("Player: " + player + " not found");
+        }
+    }
+
 }
