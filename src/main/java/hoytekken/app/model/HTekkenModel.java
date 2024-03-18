@@ -22,6 +22,7 @@ import hoytekken.app.view.ViewableModel;
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
+    private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -20);
     private World gameWorld;
     private GameState gameState;
 
@@ -43,7 +44,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      */
     public HTekkenModel(String map) {
         this.map = map;
-        this.gameWorld = new World(new Vector2(0, -20), true);
+        this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.INSTRUCTIONS;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
