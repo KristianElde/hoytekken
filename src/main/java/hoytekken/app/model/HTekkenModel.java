@@ -231,4 +231,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
+    @Override
+    public HashMap<String, String> getGameMaps() {
+        return this.gameMaps;
+    }
+
+    @Override
+    public void setGameMap(String mapName) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setGameMap'");
+    }
+
 }
