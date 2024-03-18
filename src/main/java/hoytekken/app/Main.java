@@ -8,10 +8,13 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
  * runs the Hoytekken Game application
  */
 public class Main {
+    private static final int WINDOW_WIDTH = 1920;
+    private static final int WINDOW_HEIGHT = 1280;
+
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("hoytekken");
-        cfg.setWindowedMode(1920, 1280);
+        cfg.setWindowedMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         new Lwjgl3Application(new Hoytekken(), cfg);
     }

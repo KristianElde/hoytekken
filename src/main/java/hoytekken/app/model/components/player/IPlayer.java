@@ -59,4 +59,11 @@ public interface IPlayer extends ICombat {
      */
     void draw(Batch batch);
 
+    /**
+     * Retrieves the jumping height of the player.
+     * 
+     * @return an int representing the deltaY of a jump
+     */
+    int getJumpingHeight();
+
 }

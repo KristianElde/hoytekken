@@ -22,6 +22,7 @@ import hoytekken.app.view.ViewableModel;
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
+    private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -20);
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
@@ -47,7 +48,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      */
     public HTekkenModel(String map) {
         this.map = map;
-        this.gameWorld = new World(new Vector2(0, -14), true);
+        this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.INSTRUCTIONS;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
@@ -128,27 +129,23 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         if (playerOneJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_ONE) {
             playerOneJumpCounter++;
             IPlayer p1 = getPlayer(player);
-            p1.move(0, 5);
+            p1.move(0, p1.getJumpingHeight());
             return true;
-        }
-        else if (playerTwoJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_TWO){
+        } else if (playerTwoJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_TWO) {
             playerTwoJumpCounter++;
             IPlayer p2 = getPlayer(player);
-            p2.move(0, 5);
+            p2.move(0, p2.getJumpingHeight());
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    
     @Override
     public boolean resetDoubleJump(PlayerType player) {
         if (player == PlayerType.PLAYER_ONE) {
             playerOneJumpCounter = 0;
-        }
-        else {
+        } else {
             playerTwoJumpCounter = 0;
         }
         return true;
@@ -208,7 +205,5 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             return false;
         return true;
     }
-
-    
 
 }
