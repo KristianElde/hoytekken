@@ -76,10 +76,18 @@ public interface ControllableModel {
     void setGameMap(String mapName);
 
     /**
+     * Sets the isBlocking variable for specified player to true.
      * 
-     * @param player
+     * @param player specifies wheter player1 or player2 gets isBlocking-field
+     *               variable set to true
      */
     void activateBlock(PlayerType player);
 
+    /**
+     * Sets the isBlocking variable for specified player to false.
+     * 
+     * @param player specifies wheter player1 or player2 gets isBlocking-field
+     *               variable set to false
+     */
     void deactivateBlock(PlayerType player);
 }
