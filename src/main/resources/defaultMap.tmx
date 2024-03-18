@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="8">
  <tileset firstgid="1" name="KMVmapKjeh" tilewidth="32" tileheight="32" tilecount="16384" columns="128">
-  <image source="PlataGoTilesetInUse.png" width="4096" height="4096"/>
+  <image source="PlataGoTilesetInUse-kopi.png" width="4096" height="4096"/>
  </tileset>
  <objectgroup id="4" name="mainPlatform">
   <object id="3" x="256.347" y="319.982" width="446.759" height="63.7573"/>
