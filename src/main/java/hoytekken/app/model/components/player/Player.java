@@ -161,6 +161,9 @@ public class Player extends Sprite implements IPlayer {
         if (!isWithinRange(that, rangeFactor)) {
             return false;
         }
+        if (that.getIsBlocking()) {
+            return false;
+        }
         if (this.isAlive() && that.isAlive()) {
             that.takeDamage(dmg);
             return true;
@@ -173,6 +176,9 @@ public class Player extends Sprite implements IPlayer {
         int dmg = kickDmg;
         float rangeFactor = kickRange;
         if (!isWithinRange(that, rangeFactor)) {
+            return false;
+        }
+        if (that.getIsBlocking()) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
