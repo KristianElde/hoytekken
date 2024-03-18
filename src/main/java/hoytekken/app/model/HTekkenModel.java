@@ -206,12 +206,13 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
-    public int getPlayerOneJumpCounter() {
+    /**
+     * Retrieves the jump count for player one. Only used for test purposes.
+     * 
+     * @return the current jump count for player one
+     */
+    int getPlayerOneJumpCounter() {
         return playerOneJumpCounter;
-    }
-
-    public int getPlayerTwoJumpCounter() {
-        return playerTwoJumpCounter;
     }
 
 }

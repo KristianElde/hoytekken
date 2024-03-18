@@ -123,7 +123,7 @@ public class ModelTest {
     }
 
     @Test
-    void jumpTest() {
+    void jumpCounterTest() {
         assertEquals(0, model.getPlayerOneJumpCounter());
 
         model.jump(PlayerType.PLAYER_ONE);
@@ -139,4 +139,8 @@ public class ModelTest {
         assertEquals(0, model.getPlayerOneJumpCounter());
     }
 
+    @Test
+    void test() {
+        assertEquals(1, 1);
+    }
 }
