@@ -122,4 +122,21 @@ public class ModelTest {
         assertEquals(92, player2.getHealth());
     }
 
+    @Test
+    void jumpTest() {
+        assertEquals(0, model.getPlayerOneJumpCounter());
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(1, model.getPlayerOneJumpCounter());
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(2, model.getPlayerOneJumpCounter());
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(2, model.getPlayerOneJumpCounter());
+
+        model.resetDoubleJump(PlayerType.PLAYER_ONE);
+        assertEquals(0, model.getPlayerOneJumpCounter());
+    }
+
 }

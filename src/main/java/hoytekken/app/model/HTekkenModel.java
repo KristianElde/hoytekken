@@ -206,4 +206,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
+    public int getPlayerOneJumpCounter() {
+        return playerOneJumpCounter;
+    }
+
+    public int getPlayerTwoJumpCounter() {
+        return playerTwoJumpCounter;
+    }
+
 }
