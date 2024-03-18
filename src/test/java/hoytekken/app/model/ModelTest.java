@@ -89,6 +89,11 @@ public class ModelTest {
     }
 
     @Test
+    void ForceDirectionTest() {
+        assertEquals(model.getDirection(PlayerType.PLAYER_ONE), model);
+    }
+
+    @Test
     void performActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
@@ -124,19 +129,19 @@ public class ModelTest {
 
     @Test
     void jumpCounterTest() {
-        assertEquals(0, model.getPlayerOneJumpCounter());
+        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
 
         model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(1, model.getPlayerOneJumpCounter());
+        assertEquals(1, model.getJumpCounter(PlayerType.PLAYER_ONE));
 
         model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getPlayerOneJumpCounter());
+        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
 
         model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getPlayerOneJumpCounter());
+        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
 
         model.resetDoubleJump(PlayerType.PLAYER_ONE);
-        assertEquals(0, model.getPlayerOneJumpCounter());
+        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
     }
 
     @Test
