@@ -249,27 +249,4 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
     }
-
-    @Override
-    public void activateBlock(PlayerType player) {
-        if (player == PlayerType.PLAYER_ONE) {
-            playerOne.activateBlock();
-        } else if (player == PlayerType.PLAYER_TWO) {
-            playerTwo.activateBlock();
-        } else {
-            throw new IllegalArgumentException("Player: " + player + " not found");
-        }
-    }
-
-    @Override
-    public void deactivateBlock(PlayerType player) {
-        if (player == PlayerType.PLAYER_ONE) {
-            playerOne.deactivateBlock();
-        } else if (player == PlayerType.PLAYER_TWO) {
-            playerTwo.deactivateBlock();
-        } else {
-            throw new IllegalArgumentException("Player: " + player + " not found");
-        }
-    }
-
 }
