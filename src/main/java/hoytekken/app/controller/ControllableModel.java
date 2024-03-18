@@ -18,7 +18,7 @@ public interface ControllableModel {
      * @param direction the direction to apply force
      * @return true if the direction was set, false otherwise
      */
-    public boolean setDirection(PlayerType player, ForceDirection direction);
+    boolean setDirection(PlayerType player, ForceDirection direction);
 
     /**
      * Get the force direction of the given player
@@ -27,7 +27,7 @@ public interface ControllableModel {
      * @return the force direction of the given player
      * @throws IllegalArgumentException if the player is not found
      */
-    public ForceDirection getDirection(PlayerType player) throws IllegalArgumentException;
+    ForceDirection getDirection(PlayerType player) throws IllegalArgumentException;
 
     /**
      * Make the given player jump
@@ -35,7 +35,7 @@ public interface ControllableModel {
      * @param player the player to make jump
      * @return true if the player jumped, false otherwise
      */
-    public boolean jump(PlayerType player);
+    boolean jump(PlayerType player);
 
     /**
      * Perform actions against the other player
@@ -45,36 +45,40 @@ public interface ControllableModel {
      * 
      * @return true if the action was performed, false otherwise
      */
-    public boolean performAttackAction(PlayerType player, ActionType action);
+    boolean performAttackAction(PlayerType player, ActionType action);
 
     /**
      * Gets the gamestate that the game is currently in
      * 
      * @return a GameState-object that represents the current gamestate
      */
-    public GameState getGameState();
+    GameState getGameState();
 
     /**
      * Updates the current gamestate
      * 
      * @param gameState is the gamestate that the game gets set to
      */
-    public void setGameState(GameState gameState);
+    void setGameState(GameState gameState);
 
     /**
      * Method to get the maps for the game
      * 
      * @return the maps for the game
      */
-    public HashMap<String, String> getGameMaps();
+    HashMap<String, String> getGameMaps();
 
     /**
      * Method to set the map for the game
      * 
      * @param mapName the name of the map
      */
-    public void setGameMap(String mapName);
+    void setGameMap(String mapName);
 
+    /**
+     * 
+     * @param player
+     */
     void activateBlock(PlayerType player);
 
     void deactivateBlock(PlayerType player);
