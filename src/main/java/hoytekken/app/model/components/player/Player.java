@@ -183,6 +183,21 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
+    public void activateBlock() {
+        isBlocking = true;
+    }
+
+    @Override
+    public void deactivateBlock() {
+        isBlocking = false;
+    }
+
+    @Override
+    public boolean getIsBlocking() {
+        return isBlocking;
+    }
+
+    @Override
     public boolean fallenOffTheMap() {
         return getBody().getPosition().y < 0;
     }
