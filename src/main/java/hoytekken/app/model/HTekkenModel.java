@@ -129,12 +129,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         if (playerOneJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_ONE) {
             playerOneJumpCounter++;
             IPlayer p1 = getPlayer(player);
-            p1.move(0, 5);
+            p1.move(0, p1.getJumpingHeight());
             return true;
         } else if (playerTwoJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_TWO) {
             playerTwoJumpCounter++;
             IPlayer p2 = getPlayer(player);
-            p2.move(0, 5);
+            p2.move(0, p2.getJumpingHeight());
             return true;
         } else {
             return false;
