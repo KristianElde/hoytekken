@@ -116,7 +116,7 @@ public class HtekkenController extends InputAdapter {
                 return true;
             }
             // Deactivate block when S-key is released
-            if (keycode == Input.Keys.DOWN) {
+            if (keycode == Input.Keys.S) {
                 model.deactivateBlock(playerTwo);
                 return true;
             }
