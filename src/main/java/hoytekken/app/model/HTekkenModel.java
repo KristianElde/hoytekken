@@ -123,7 +123,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     @Override
     public boolean jump(PlayerType player) {
         IPlayer p = getPlayer(player);
-        p.move(0, p.getJumpHeigth);
+        p.move(0, p.getJumpingHeight());
         return true;
     }
 

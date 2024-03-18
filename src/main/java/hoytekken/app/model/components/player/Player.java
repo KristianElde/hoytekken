@@ -23,6 +23,7 @@ public class Player extends Sprite implements IPlayer {
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
     private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
+    private static final int JUMPING_HEIGHT = 5;
 
     private World world;
     private Body body;
@@ -188,5 +189,10 @@ public class Player extends Sprite implements IPlayer {
     @Override
     public boolean fallenOffTheMap() {
         return getBody().getPosition().y < 0;
+    }
+
+    @Override
+    public int getJumpingHeight() {
+        return JUMPING_HEIGHT;
     }
 }

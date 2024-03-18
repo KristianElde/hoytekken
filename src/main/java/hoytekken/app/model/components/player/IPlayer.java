@@ -64,6 +64,6 @@ public interface IPlayer extends ICombat {
      * 
      * @return an int representing the deltaY of a jump
      */
-    int getJumpHeight();
+    int getJumpingHeight();
 
 }
