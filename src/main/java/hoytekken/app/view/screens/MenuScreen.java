@@ -19,11 +19,15 @@ import hoytekken.app.view.ViewableModel;
  * class represents a menu screen
  */
 public class MenuScreen implements Screen {
+    private static final String BG_PATH = "background.png";
+
     private Hoytekken game;
     private ViewableModel model;
 
     private OrthographicCamera gameCam;
     private Viewport gamePort;
+
+    private Texture background;
 
     /**
      * Constructor for the menu screen
@@ -37,6 +41,10 @@ public class MenuScreen implements Screen {
 
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+
+        background = new Texture(Gdx.files.internal(BG_PATH));
 
     }
 
@@ -67,7 +75,7 @@ public class MenuScreen implements Screen {
         game.batch.setProjectionMatrix(gameCam.combined);
 
         game.batch.begin();
-
+        game.batch.draw(background, 0, 0, gamePort.getWorldWidth(), gamePort.getWorldHeight());
         game.batch.end();
     }
 
