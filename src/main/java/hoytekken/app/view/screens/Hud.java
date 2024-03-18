@@ -23,6 +23,7 @@ public class Hud {
     private Stage stage;
     private Viewport port;
 
+    private static final Integer HUD_PADDING_TOP = 5;
     private static final Integer INIT_TIME = 0;
 
     private Integer playerHealth;
@@ -75,7 +76,7 @@ public class Hud {
         Integer counter = 0;
         for (Label label : labels) {
             counter++;
-            table.add(label).expandX().padTop(5);
+            table.add(label).expandX().padTop(HUD_PADDING_TOP);
             if (counter == 3) {
                 table.row();
             }
