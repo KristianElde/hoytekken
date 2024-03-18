@@ -138,6 +138,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public boolean jump(PlayerType player) {
+        if (getPlayer(player).getIsBlocking()) {
+            return false;
+        }
         if (playerOneJumpCounter < MAX_JUMPS && player == PlayerType.PLAYER_ONE) {
             playerOneJumpCounter++;
             IPlayer p1 = getPlayer(player);
