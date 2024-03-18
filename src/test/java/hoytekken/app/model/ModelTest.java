@@ -19,6 +19,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
+import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
@@ -89,7 +90,21 @@ public class ModelTest {
     }
 
     @Test
-    void performActionTestPunch() {
+    void ForceDirectionTest() {
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_TWO));
+
+        model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
+        assertEquals(ForceDirection.LEFT, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_TWO));
+
+        model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertEquals(ForceDirection.LEFT, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.RIGHT, model.getDirection(PlayerType.PLAYER_TWO));
+    }
+
+    @Test
+    void performActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is not reduced by punch when opponent is out of
@@ -106,7 +121,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionTestKick() {
+    void performActionKickTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is not reduced by kick when opponent is out of
@@ -120,6 +135,23 @@ public class ModelTest {
         // Check that opponents health is reduced by kick when opponent is inside range
         assertEquals(99, player1.getHealth());
         assertEquals(92, player2.getHealth());
+    }
+
+    @Test
+    void jumpCounterTest() {
+        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(1, model.getJumpCounter(PlayerType.PLAYER_ONE));
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+
+        model.jump(PlayerType.PLAYER_ONE);
+        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+
+        model.resetDoubleJump(PlayerType.PLAYER_ONE);
+        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
     }
 
 }
