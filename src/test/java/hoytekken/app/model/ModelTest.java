@@ -19,6 +19,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
+import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
@@ -90,7 +91,16 @@ public class ModelTest {
 
     @Test
     void ForceDirectionTest() {
-        assertEquals(model.getDirection(PlayerType.PLAYER_ONE), model);
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_TWO));
+
+        model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
+        assertEquals(ForceDirection.LEFT, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.STATIC, model.getDirection(PlayerType.PLAYER_TWO));
+
+        model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertEquals(ForceDirection.LEFT, model.getDirection(PlayerType.PLAYER_ONE));
+        assertEquals(ForceDirection.RIGHT, model.getDirection(PlayerType.PLAYER_TWO));
     }
 
     @Test
@@ -144,8 +154,4 @@ public class ModelTest {
         assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
     }
 
-    @Test
-    void test() {
-        assertEquals(1, 1);
-    }
 }
