@@ -246,6 +246,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             this.tiledmap = mapLoader.load(gameMap);
             new Box2DWorldGenerator(gameWorld, tiledmap);
         }
+        else {
+            throw new IllegalArgumentException("Map: " + mapName + " not found");
+        }
     }
 
 }
