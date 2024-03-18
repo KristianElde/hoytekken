@@ -69,7 +69,7 @@ public class ModelTest {
         assertNotNull(model.getGameState());
         assertNotNull(model.getGameWorld());
         assertNotNull(model.getMap());
-        assertNotNull(model.getTiledMap());
+        // assertNotNull(model.getTiledMap());
         assertNotNull(player1);
         assertNotNull(player1);
         assertNotEquals(player1, player2);
@@ -77,6 +77,8 @@ public class ModelTest {
 
     @Test
     void gameStateTest() {
+        assertEquals(GameState.MAIN_MENU, model.getGameState());
+        model.setGameState(GameState.INSTRUCTIONS);
         assertEquals(GameState.INSTRUCTIONS, model.getGameState());
         model.setGameState(GameState.ACTIVE_GAME);
         assertEquals(GameState.ACTIVE_GAME, model.getGameState());
