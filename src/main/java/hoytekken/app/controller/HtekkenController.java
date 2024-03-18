@@ -62,6 +62,13 @@ public class HtekkenController extends InputAdapter {
             if (keycode == Input.Keys.S) {
                 // implement this
             }
+        } else if (model.getGameState() == GameState.MAIN_MENU) {
+            if (keycode == Input.Keys.I) {
+                model.setGameState(GameState.INSTRUCTIONS);
+            }
+            if (keycode == Input.Keys.ESCAPE) {
+                Gdx.app.exit();
+            }
         }
 
         return false;
