@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 
 /**
@@ -76,18 +77,10 @@ public interface ControllableModel {
     void setGameMap(String mapName);
 
     /**
-     * Sets the isBlocking variable for specified player to true.
+     * Getter for the player
      * 
-     * @param player specifies wheter player1 or player2 gets isBlocking-field
-     *               variable set to true
+     * @param player the player number
+     * @return the player
      */
-    void activateBlock(PlayerType player);
-
-    /**
-     * Sets the isBlocking variable for specified player to false.
-     * 
-     * @param player specifies wheter player1 or player2 gets isBlocking-field
-     *               variable set to false
-     */
-    void deactivateBlock(PlayerType player);
+    public IPlayer getPlayer(PlayerType player);
 }
