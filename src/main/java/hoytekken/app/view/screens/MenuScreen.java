@@ -24,7 +24,6 @@ public class MenuScreen extends BaseScreen {
 
     private Texture background;
     private Stage stage;
-    private Label.LabelStyle font;
 
     /**
      * Constructor for the menu screen
@@ -38,8 +37,11 @@ public class MenuScreen extends BaseScreen {
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
         background = new Texture(Gdx.files.internal(BG_PATH));
         stage = new Stage(gamePort, game.batch);
+        createMenuTable();
+    }
 
-        font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+    private void createMenuTable() {
+        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
         Table table = new Table();
         table.bottom();
         table.setFillParent(true);
