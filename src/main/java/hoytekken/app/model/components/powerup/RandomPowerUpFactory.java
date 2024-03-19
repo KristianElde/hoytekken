@@ -6,10 +6,9 @@ public class RandomPowerUpFactory implements PowerUpFactory {
 
     @Override
     public PowerUp getNext() {
-        String pUpString = "SDH";
         Random rand = new Random();
-        int index = rand.nextInt(pUpString.length());
-        Character c = pUpString.charAt(index);
-        return PowerUp.newPowerUp(c);
+        int index = rand.nextInt(PowerUpType.values().length);
+        PowerUpType type = PowerUpType.values()[index];
+        return PowerUp.newPowerUp(type);
     }
 }
