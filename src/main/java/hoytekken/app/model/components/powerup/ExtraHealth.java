@@ -8,7 +8,7 @@ import hoytekken.app.model.components.player.Player;
 public class ExtraHealth extends PowerUp {
 
     protected ExtraHealth() {
-        super(new Texture(Gdx.files.internal(null)));
+        super(new Texture(Gdx.files.internal("extra_health.png")));
     }
 
     @Override
