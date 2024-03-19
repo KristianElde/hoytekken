@@ -17,7 +17,7 @@ public abstract class PowerUp {
     static PowerUp newPowerUp(Character type) {
         PowerUp pUp = switch (type) {
             case 'D' ->
-                new ExtraDamage(null, null);
+                new ExtraDamage();
             case 'H' ->
                 new ExtraHealth(null, null);
             case 'S' ->
