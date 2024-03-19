@@ -38,6 +38,9 @@ public class Player extends Sprite implements IPlayer {
     // Health, if health is 0, player is dead
     private int health;
 
+    // Max 3 lives
+    private int lives = 3;
+
     // if attack is over limit, block is unsuccessful
     private int blockLimit = 30;
 
