@@ -13,6 +13,7 @@ public class ExtraDamage extends PowerUp {
 
     @Override
     public void applyPowerUp(Player player) {
+        // setDamage in Player?
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'applyPowerUp'");
     }
