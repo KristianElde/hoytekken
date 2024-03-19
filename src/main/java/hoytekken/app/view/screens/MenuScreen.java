@@ -82,7 +82,8 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void dispose() {
-        // ignore implementation
+        stage.dispose();
+        background.dispose();
     }
 
 }
