@@ -42,7 +42,7 @@ public class CombatTest {
         playerOne = new Player(world, PlayerType.PLAYER_ONE, 99);
         playerTwo = new Player(world, PlayerType.PLAYER_TWO, 99);
 
-        // TODO: Potentially remove this hardcoded position, needed for withinRange
+        // TODO: Remove this hardcoded position, needed for withinRange
         playerOne.move(8f * Hoytekken.PPM, 0);
         playerTwo.move(-2f * Hoytekken.PPM, 0);
 
@@ -65,6 +65,12 @@ public class CombatTest {
 
     @Test
     void block() {
-        // TODO: Test that the player can block
+        // Activate block
+        playerTwo.activateBlock();
+        assertTrue(playerTwo.getIsBlocking(), "Player two should be blocking");
+
+        // Test that the player doesnt take damage while blocking
+        playerOne.punch(playerTwo);
+        assertTrue(playerTwo.getHealth() == 99, "Player two should have 99 health after being punched while blocking");
     }
 }
