@@ -9,6 +9,7 @@ public abstract class PowerUp {
     protected final Texture pUpTexture;
     protected final char symbol;
 
+    // constructor
     protected PowerUp(PowerUpType pUpType, Texture pUpTexture, char symbol) {
         this.symbol = symbol;
         this.pUpType = pUpType;
@@ -36,6 +37,11 @@ public abstract class PowerUp {
         return pUp;
     }
 
+    /**
+     * applies the power-up, affecting the player.
+     * 
+     * @param player Player to affect.
+     */
     public abstract void applyPowerUp(Player player);
 
 }
