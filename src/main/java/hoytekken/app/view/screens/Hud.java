@@ -108,8 +108,8 @@ public class Hud {
      * 
      * @param health
      */
-    public void setPlayerHealth(Integer health) {
-        labelList.get(3).setText(String.format("%02d", health));
+    public void setPlayerHealth(String health) {
+        labelList.get(3).setText(health);
     }
 
     /**
@@ -126,7 +126,7 @@ public class Hud {
      * 
      * @param health
      */
-    public void setEnemyHealth(Integer health) {
-        labelList.get(5).setText(String.format("%02d", health));
+    public void setEnemyHealth(String health) {
+        labelList.get(5).setText(health);
     }
 }

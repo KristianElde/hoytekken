@@ -102,8 +102,10 @@ public class GameScreen implements Screen {
         game.batch.setProjectionMatrix(gameCam.combined);
 
         // Update health
-        hud.setPlayerHealth(this.model.getPlayer(PlayerType.PLAYER_ONE).getHealth());
-        hud.setEnemyHealth(this.model.getPlayer(PlayerType.PLAYER_TWO).getHealth());
+        hud.setPlayerHealth(this.model.getPlayer(PlayerType.PLAYER_ONE).getHealth() + " - "
+                + this.model.getPlayer(PlayerType.PLAYER_ONE).getLives());
+        hud.setEnemyHealth(this.model.getPlayer(PlayerType.PLAYER_TWO).getHealth() + " - "
+                + this.model.getPlayer(PlayerType.PLAYER_TWO).getLives());
 
         game.batch.begin();
         // game.batch.draw(img, 0, 0);

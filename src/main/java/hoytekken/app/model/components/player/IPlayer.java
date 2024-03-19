@@ -66,4 +66,11 @@ public interface IPlayer extends ICombat {
      */
     int getJumpingHeight();
 
+    /**
+     * Retrieves the number of lives the player has.
+     * 
+     * @return the number of lives the player has
+     */
+    int getLives();
+
 }

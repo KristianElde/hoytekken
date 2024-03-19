@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
+import net.bytebuddy.asm.Advice.This;
 
 /**
  * The player class
@@ -37,6 +38,9 @@ public class Player extends Sprite implements IPlayer {
 
     // Health, if health is 0, player is dead
     private int health;
+
+    // Max 3 lives
+    private int lives = 3;
 
     // if attack is over limit, block is unsuccessful
     private int blockLimit = 30;
@@ -100,9 +104,21 @@ public class Player extends Sprite implements IPlayer {
         body.createFixture(fdef).setUserData(this.type + "feet");
     }
 
+    /**
+     * Set the position of the player
+     * 
+     */
+    private void startPosistion() {
+        body.setTransform((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
+                (32 * 14) / Hoytekken.PPM, 0);
+    }
+
     @Override
     public void update() {
-        if (fallenOffTheMap()) {
+        if (fallenOffTheMap() && this.lives > 0) {
+            takeDamage(maxHealth);
+            startPosistion();
+        } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
         setPosition(body.getPosition().x - getWidth() / 2,
@@ -126,11 +142,19 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void takeDamage(int damage) {
-        if (this.health - damage <= 0) {
-            this.isAlive = false;
-            this.health = 0;
-        } else {
+        if (this.isAlive) {
             this.health -= damage;
+
+            if (this.health <= 0) {
+                if (this.lives > 1) {
+                    this.lives--;
+                    this.health = maxHealth;
+                } else {
+                    this.isAlive = false;
+                    this.health = 0;
+                    this.lives = 0;
+                }
+            }
         }
     }
 
@@ -205,5 +229,10 @@ public class Player extends Sprite implements IPlayer {
     @Override
     public int getJumpingHeight() {
         return JUMPING_HEIGHT;
+    }
+
+    @Override
+    public int getLives() {
+        return lives;
     }
 }
