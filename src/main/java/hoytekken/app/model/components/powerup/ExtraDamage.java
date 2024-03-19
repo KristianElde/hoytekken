@@ -11,9 +11,14 @@ public class ExtraDamage extends PowerUp {
         super(new Texture(Gdx.files.internal("extra_damage.png")));
     }
 
+    static PowerUp createPowerUp() {
+        return new ExtraDamage();
+    }
+
     @Override
     public void applyPowerUp(Player player) {
         // setDamage in Player?
+        // player.setDamage(player.getDamage() + fixedAmount)
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'applyPowerUp'");
     }

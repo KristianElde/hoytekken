@@ -11,6 +11,10 @@ public class DoubleSpeed extends PowerUp {
         super(new Texture(Gdx.files.internal("double_speed.png")));
     }
 
+    static PowerUp createPowerUp() {
+        return new DoubleSpeed();
+    }
+
     @Override
     public void applyPowerUp(Player player) {
         // TODO Auto-generated method stub
