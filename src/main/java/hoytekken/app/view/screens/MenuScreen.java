@@ -3,19 +3,14 @@ package hoytekken.app.view.screens;
 import org.lwjgl.opengl.GL20;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.model.components.GameState;
 import hoytekken.app.view.ViewableModel;
 
 /**
@@ -28,9 +23,7 @@ public class MenuScreen extends BaseScreen {
     private static final String EXIT = "PRESS \'ESC\' TO EXIT";
 
     private Texture background;
-
     private Stage stage;
-
     private Label.LabelStyle font;
 
     /**
@@ -43,9 +36,7 @@ public class MenuScreen extends BaseScreen {
         super(game, model);
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-
         background = new Texture(Gdx.files.internal(BG_PATH));
-
         stage = new Stage(gamePort, game.batch);
 
         font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
