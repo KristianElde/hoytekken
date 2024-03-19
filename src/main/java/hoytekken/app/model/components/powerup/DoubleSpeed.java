@@ -1,14 +1,14 @@
 package hoytekken.app.model.components.powerup;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.Player;
 
 public class DoubleSpeed extends PowerUp {
 
-    protected DoubleSpeed(PowerUpType pUpType, Texture pUpTexture) {
-        super(pUpType, pUpTexture);
-        // TODO Auto-generated constructor stub
+    protected DoubleSpeed() {
+        super(PowerUpType.DOUBLE_SPEED, new Texture(Gdx.files.internal(null)));
     }
 
     @Override
