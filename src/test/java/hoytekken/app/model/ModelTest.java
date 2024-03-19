@@ -179,17 +179,32 @@ public class ModelTest {
     }
 
     @Test
-    void blockingPreventsAttackingActions() {
+    void blockingPreventsPunch() {
         movePlayersBeside();
 
         player1.activateBlock();
-        // Check that blocking prevents player from performing attack
+        // Check that blocking prevents player from performing punch
         assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
         assertEquals(99, player2.getHealth());
 
         player1.deactivateBlock();
-        // Check that deactivating block allows player to perform attack
+        // Check that deactivating block allows player to perform punch
         assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        assertEquals(89, player2.getHealth());
+    }
+
+    @Test
+    void blockingPreventsKick() {
+        movePlayersBeside();
+
+        player1.activateBlock();
+        // Check that blocking prevents player from performing kick
+        assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK));
+        assertEquals(99, player2.getHealth());
+
+        player1.deactivateBlock();
+        // Check that deactivating block allows player to perform kick
+        assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK));
         assertEquals(89, player2.getHealth());
     }
 
