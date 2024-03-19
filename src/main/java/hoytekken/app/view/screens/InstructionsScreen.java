@@ -20,10 +20,6 @@ import hoytekken.app.view.ViewableModel;
  * Class representing the instructions screen.
  */
 public class InstructionsScreen extends BaseScreen {
-    
-    private Label.LabelStyle font;
-    private Table table;
-
     private Stage stage;
 
     /**
@@ -36,56 +32,30 @@ public class InstructionsScreen extends BaseScreen {
         super(game, mode);
 
         stage = new Stage(gamePort, game.batch);
+        createInstructionsTable();
+    }
 
-        font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
-        table = new Table();
-        table.center();
-        table.setFillParent(true);
+    private void createInstructionsTable() {
+        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+        Table table = new Table();
+        table.center().setFillParent(true);
 
-        Label actionLabel = new Label("Actions", font);
-        Label player1 = new Label("Player1", font);
-        Label player2 = new Label("Player2", font);
+        String[][] instructions = {
+                {"Actions", "Player1", "Player2"},
+                {"Movement", "Keys: A, W, D", "Keys: Left, Up, Right"},
+                {"Punch", "Key: Q", "Key: P"},
+                {"Kick", "Key: E", "Key: K"},
+                {"Block", "Key: S", "Key: B"}
+        };
 
-        Label movement = new Label("Movement", font);
-        Label keysAWD = new Label("Keys: A, W, D", font);
-        Label keysArrows = new Label("Keys: Left, Up, Right", font);
+        for (String[] instructionSet : instructions) {
+            for (String instruction : instructionSet) {
+                table.add(new Label(instruction, font)).expandX();
+            }
+            table.row();
+        }
 
-        Label punch = new Label("Punch", font);
-        Label keyQ = new Label("Key: Q", font);
-        Label KeyP = new Label("Key: P", font);
-
-        Label kick = new Label("Kick", font);
-        Label keyE = new Label("Key: E", font);
-        Label keyK = new Label("Key: K", font);
-
-        Label block = new Label("Block", font);
-        Label keyS = new Label("Key: S", font);
-        Label keyB = new Label("Key: B", font);
-
-        Label cont = new Label("Click to continue", font);
-
-        table.add(actionLabel).expandX();
-        table.add(player1).expandX();
-        table.add(player2).expandX();
-        table.row();
-        table.add(movement).expandX();
-        table.add(keysAWD).expandX();
-        table.add(keysArrows).expandX();
-        table.row();
-        table.add(punch).expandX();
-        table.add(keyQ).expandX();
-        table.add(KeyP).expandX();
-        table.row();
-        table.add(kick).expandX();
-        table.add(keyE).expandX();
-        table.add(keyK).expandX();
-        table.row();
-        table.add(block).expandX();
-        table.add(keyS).expandX();
-        table.add(keyB).expandX();
-        table.row();
-        table.add(cont).expandX().padTop(100);
-
+        table.add(new Label("Click to continue", font)).expandX().padTop(100);
         stage.addActor(table);
     }
 
