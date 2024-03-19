@@ -11,10 +11,15 @@ public class ExtraHealth extends PowerUp {
         super(new Texture(Gdx.files.internal("extra_health.png")));
     }
 
+    static PowerUp createPowerUp() {
+        return new ExtraHealth();
+    }
+
     @Override
     public void applyPowerUp(Player player) {
         // make method for setting health in player (maybe make takedamage use this)
         // use it here to set a fixed amount of health
+        // player.setHealth(player.getHealth + fixedAmount)
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'applyPowerUp'");
     }
