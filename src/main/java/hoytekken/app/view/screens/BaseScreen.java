@@ -68,7 +68,7 @@ public abstract class BaseScreen implements Screen {
      */
     protected void handleStateSwitch() {
         if (model.getGameState() == GameState.MAIN_MENU 
-            /*&& !(this instanceof MenuScreen)*/) {
+            && !(this instanceof MenuScreen)) {
             game.setScreen(new MenuScreen(game, model));
         } else if (model.getGameState() == GameState.INSTRUCTIONS 
             && !(this instanceof InstructionsScreen)) {

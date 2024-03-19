@@ -21,17 +21,11 @@ import hoytekken.app.view.ViewableModel;
 /**
  * class represents a menu screen
  */
-public class MenuScreen implements Screen {
+public class MenuScreen extends BaseScreen {
     private static final String BG_PATH = "background.png";
     private static final String PLAY = "CLICK TO PLAY";
     private static final String INSTRUCTIONS = "PRESS \'I\' FOR INSTRUCTIONS";
     private static final String EXIT = "PRESS \'ESC\' TO EXIT";
-
-    private Hoytekken game;
-    private ViewableModel model;
-
-    private OrthographicCamera gameCam;
-    private Viewport gamePort;
 
     private Texture background;
 
@@ -46,11 +40,7 @@ public class MenuScreen implements Screen {
      * @param model the viewable model
      */
     public MenuScreen(Hoytekken game, ViewableModel model) {
-        this.game = game;
-        this.model = model;
-
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
+        super(game, model);
 
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
@@ -72,19 +62,6 @@ public class MenuScreen implements Screen {
         table.add(instructionsLabel).expandX();
 
         stage.addActor(table);
-    }
-
-    private void handleStateSwitch() {
-        if (model.getGameState() == GameState.ACTIVE_GAME) {
-            game.setScreen(new GameScreen(game, model));
-        } else if (model.getGameState() == GameState.INSTRUCTIONS) {
-            game.setScreen(new InstructionsScreen(game, model));
-        }
-    }
-
-    private void update(float delta) {
-        gameCam.update();
-        handleStateSwitch();
     }
 
     @Override
