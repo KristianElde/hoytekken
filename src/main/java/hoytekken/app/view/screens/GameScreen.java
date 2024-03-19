@@ -22,11 +22,9 @@ import hoytekken.app.view.ViewableModel;
 public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
+    private Box2DDebugRenderer b2dr;
 
     private Hud hud;
-
-    private World world;
-    private Box2DDebugRenderer b2dr;
 
     /**
      * Constructor for the game screen
@@ -38,14 +36,14 @@ public class GameScreen extends BaseScreen {
         super(game, model, true);
 
         hud = new Hud(game.batch);
+        initializeMapAndRenderers();
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+    }
 
+    private void initializeMapAndRenderers() {
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-
         b2dr = new Box2DDebugRenderer();
-
     }
 
     @Override
