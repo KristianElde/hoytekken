@@ -26,6 +26,9 @@ public class InstructionsScreen extends ScreenAdapter {
     private OrthographicCamera gameCam;
     private FitViewport gamePort;
 
+    private Label.LabelStyle font;
+    private Table table;
+
     private Stage stage;
 
     /**
@@ -43,8 +46,8 @@ public class InstructionsScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort, game.batch);
 
-        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
-        Table table = new Table();
+        font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+        table = new Table();
         table.center();
         table.setFillParent(true);
 
@@ -123,7 +126,7 @@ public class InstructionsScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        // ingore implementation
+        stage.dispose();
     }
 
 }
