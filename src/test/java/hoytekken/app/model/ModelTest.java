@@ -108,7 +108,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionPunchTest() {
+    void performAttackActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is not reduced by punch when opponent is out of
@@ -125,7 +125,7 @@ public class ModelTest {
     }
 
     @Test
-    void performActionKickTest() {
+    void performAttackActionKickTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is not reduced by kick when opponent is out of
@@ -169,12 +169,18 @@ public class ModelTest {
     }
 
     @Test
-    void blockingTest() {
+    void blockingPreventsAttackingActions() {
+
+    }
+
+    @Test
+    void blockingPreventsDamageTest() {
         movePlayersBeside();
 
         player1.activateBlock();
         model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
-        assertEquals(89, player1.getHealth());
+        // Check that attack does not inflict damage when victim is blocking
+        assertEquals(99, player1.getHealth());
     }
 
 }
