@@ -83,7 +83,10 @@ public class GameScreen extends BaseScreen {
 
     @Override
     public void dispose() {
-        // ignore implementation
+        map.dispose();
+        renderer.dispose();
+        b2dr.dispose();
+        hud.getStage().dispose();
     }
 
 }
