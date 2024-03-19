@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import hoytekken.app.model.components.player.Player;
 
 public abstract class PowerUp {
-    protected final Texture pUpTexture;
+    private final Texture pUpTexture;
 
     // constructor
-    protected PowerUp(Texture pUpTexture) {
+    PowerUp(Texture pUpTexture) {
         this.pUpTexture = pUpTexture;
     }
 
@@ -22,11 +22,11 @@ public abstract class PowerUp {
     static PowerUp newPowerUp(PowerUpType type) {
         PowerUp pUp = switch (type) {
             case EXTRA_DAMAGE ->
-                new ExtraDamage();
+                ExtraDamage.createPowerUp();
             case EXTRA_HEALTH ->
-                new ExtraHealth();
+                ExtraHealth.createPowerUp();
             case DOUBLE_SPEED ->
-                new DoubleSpeed();
+                DoubleSpeed.createPowerUp();
             default ->
                 throw new IllegalArgumentException("Undefined type for PowerUp");
         };
