@@ -17,11 +17,11 @@ public abstract class PowerUp {
     static PowerUp newPowerUp(Character type) {
         PowerUp pUp = switch (type) {
             case 'D' ->
-                new PowerUp(PowerUpType.EXTRA_DAMAGE, new Texture(Gdx.files.internal(null)));
+                new ExtraDamage(null, null);
             case 'H' ->
-                new PowerUp(PowerUpType.EXTRA_HEALTH, new Texture(Gdx.files.internal(null)));
+                new ExtraHealth(null, null);
             case 'S' ->
-                new PowerUp(PowerUpType.DOUBLE_SPEED, new Texture(Gdx.files.internal(null)));
+                new DoubleSpeed(null, null);
             default ->
                 throw new IllegalArgumentException("Undefined type for PowerUp");
         };
