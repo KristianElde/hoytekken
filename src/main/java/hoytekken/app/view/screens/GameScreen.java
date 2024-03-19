@@ -19,13 +19,7 @@ import hoytekken.app.view.ViewableModel;
 /**
  * class represents an active game screen
  */
-public class GameScreen implements Screen {
-    private Hoytekken game;
-    private ViewableModel model;
-
-    private OrthographicCamera gameCam;
-    private Viewport gamePort;
-
+public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
 
@@ -41,11 +35,7 @@ public class GameScreen implements Screen {
      * @param model the viewable model
      */
     public GameScreen(Hoytekken game, ViewableModel model) {
-        this.game = game;
-        this.model = model;
-
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        super(game, model, true);
 
         hud = new Hud(game.batch);
 
@@ -58,34 +48,12 @@ public class GameScreen implements Screen {
 
     }
 
-    private void handleStateSwitch() {
-        if (model.getGameState() == GameState.GAME_OVER) {
-            int winningPlayer = getWinningPlayer();
-            game.setScreen(new GameOverScreen(game, model, winningPlayer));
-        }
-    }
-
-    private int getWinningPlayer() {
-        boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
-        boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
-
-        if (playerOneWon && !playerTwoWon) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    private void update(float delta) {
+    @Override
+    protected void update(float delta) {
         model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
         handleStateSwitch();
-    }
-
-    @Override
-    public void show() {
-        // ignore implementation
     }
 
     @Override
@@ -113,26 +81,6 @@ public class GameScreen implements Screen {
         this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
         game.batch.end();
         hud.getStage().draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-        // ignore implementation
-    }
-
-    @Override
-    public void resume() {
-        // ignore implementation
-    }
-
-    @Override
-    public void hide() {
-        // ignore implementation
     }
 
     @Override
