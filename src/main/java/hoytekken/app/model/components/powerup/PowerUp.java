@@ -8,8 +8,10 @@ import hoytekken.app.model.components.player.Player;
 public abstract class PowerUp {
     protected final PowerUpType pUpType;
     protected final Texture pUpTexture;
+    protected final char symbol;
 
-    protected PowerUp(PowerUpType pUpType, Texture pUpTexture) {
+    protected PowerUp(PowerUpType pUpType, Texture pUpTexture, char symbol) {
+        this.symbol = symbol;
         this.pUpType = pUpType;
         this.pUpTexture = pUpTexture;
     }
