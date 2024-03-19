@@ -8,9 +8,8 @@ public class RandomPowerUpFactory implements PowerUpFactory {
     public PowerUp getNext() {
         String pUpString = "SDH";
         Random rand = new Random();
-        Character c = pUpString.charAt(rand.nextInt(pUpString.length()));
+        int index = rand.nextInt(pUpString.length());
+        Character c = pUpString.charAt(index);
         return PowerUp.newPowerUp(c);
-
     }
-
 }
