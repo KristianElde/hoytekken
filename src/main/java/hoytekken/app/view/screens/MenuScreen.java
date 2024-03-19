@@ -86,26 +86,6 @@ public class MenuScreen extends BaseScreen {
     }
 
     @Override
-    public void resize(int width, int height) {
-        gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-        // ignore implementation
-    }
-
-    @Override
-    public void resume() {
-        // ignore implementation
-    }
-
-    @Override
-    public void hide() {
-        // ignore implementation
-    }
-
-    @Override
     public void dispose() {
         // ignore implementation
     }
