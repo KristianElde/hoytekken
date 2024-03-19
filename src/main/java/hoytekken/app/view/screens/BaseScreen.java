@@ -70,7 +70,8 @@ public abstract class BaseScreen implements Screen {
     }
 
     /**
-     * Updates the screen. Class GameScreen should @override this method.
+     * Updates the screen. 
+     * Class GameScreen should OVERRIDE this method.
      * @param delta the time since the last update
      */
     protected void update(float delta) {
