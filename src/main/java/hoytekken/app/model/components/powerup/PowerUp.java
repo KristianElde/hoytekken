@@ -3,11 +3,11 @@ package hoytekken.app.model.components.powerup;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public final class PowerUp {
-    private final PowerUpType pUpType;
-    private final Texture pUpTexture;
+public abstract class PowerUp {
+    protected final PowerUpType pUpType;
+    protected final Texture pUpTexture;
 
-    private PowerUp(PowerUpType pUpType, Texture pUpTexture) {
+    protected PowerUp(PowerUpType pUpType, Texture pUpTexture) {
         this.pUpType = pUpType;
         this.pUpTexture = pUpTexture;
     }
