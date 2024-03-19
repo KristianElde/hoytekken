@@ -59,12 +59,6 @@ public class InstructionsScreen extends BaseScreen {
         stage.addActor(table);
     }
 
-    private void handleStateSwitch() {
-        if (model.getGameState() == GameState.MAIN_MENU) {
-            game.setScreen(new MenuScreen(game, model));
-        }
-    }
-
     private void update(float delta) {
         this.gameCam.update();
         handleStateSwitch();
