@@ -49,7 +49,7 @@ public abstract class BaseScreen implements Screen {
         if (playerOneWon && playerTwoWon) throw new IllegalStateException("Both players cannot win at the same time");
         if (!playerOneWon && !playerTwoWon) throw new IllegalStateException("No player has won");
 
-        return playerOneWon && !playerTwoWon ? 1 : 0;
+        return playerOneWon && !playerTwoWon ? 1 : 2;
     }
 
     /**
