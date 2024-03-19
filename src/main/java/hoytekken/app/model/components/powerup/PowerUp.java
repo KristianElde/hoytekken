@@ -1,4 +1,4 @@
-package hoytekken.app.model.components.powerUps;
+package hoytekken.app.model.components.powerup;
 
 public final class PowerUp {
     private final PowerUpType pUpType;
