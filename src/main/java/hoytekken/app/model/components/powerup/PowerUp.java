@@ -16,9 +16,12 @@ public final class PowerUp {
         PowerUp pUp = switch (type) {
             case 'D' ->
                 new PowerUp(PowerUpType.EXTRA_DAMAGE, new Texture(Gdx.files.internal(null)));
-            case 'H' -> new PowerUp(PowerUpType.EXTRA_HEALTH);
-            case 'S' -> new PowerUp(PowerUpType.DOUBLE_SPEED);
-            default -> throw new IllegalArgumentException("Undefined type for PowerUp");
+            case 'H' ->
+                new PowerUp(PowerUpType.EXTRA_HEALTH, new Texture(Gdx.files.internal(null)));
+            case 'S' ->
+                new PowerUp(PowerUpType.DOUBLE_SPEED, new Texture(Gdx.files.internal(null)));
+            default ->
+                throw new IllegalArgumentException("Undefined type for PowerUp");
         };
         return pUp;
     }
