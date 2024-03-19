@@ -19,13 +19,7 @@ import hoytekken.app.view.ViewableModel;
 /**
  * class represents a game over screen
  */
-public class GameOverScreen implements Screen {
-    private Hoytekken game;
-    private ViewableModel model;
-
-    private OrthographicCamera gameCam;
-    private Viewport gamePort;
-
+public class GameOverScreen extends BaseScreen {
     private Stage stage;
 
     /**
@@ -35,11 +29,7 @@ public class GameOverScreen implements Screen {
      * @param model the viewable model
      */
     public GameOverScreen(Hoytekken game, ViewableModel model, int winningPlayer) {
-        this.game = game;
-        this.model = model;
-
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
+        super(game, model);
 
         stage = new Stage(gamePort, game.batch);
         Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
@@ -55,22 +45,6 @@ public class GameOverScreen implements Screen {
         stage.addActor(table);
     }
 
-    private void handleStateSwitch() {
-        if (model.getGameState() == GameState.MAIN_MENU) {
-            game.setScreen(new MenuScreen(game, model));
-        }
-    }
-
-    private void update(float delta) {
-        gameCam.update();
-        handleStateSwitch();
-    }
-
-    @Override
-    public void show() {
-        // ignore implementation
-    }
-
     @Override
     public void render(float delta) {
         update(delta);
@@ -79,26 +53,6 @@ public class GameOverScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        // gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-        // ignore implementation
-    }
-
-    @Override
-    public void resume() {
-        // ignore implementation
-    }
-
-    @Override
-    public void hide() {
-        // ignore implementation
     }
 
     @Override

@@ -77,7 +77,7 @@ public abstract class BaseScreen implements Screen {
             /*&& !(this instanceof GameScreen)*/) {
             game.setScreen(new GameScreen(game, model));
         } else if (model.getGameState() == GameState.GAME_OVER 
-            /*&& !(this instanceof GameOverScreen)*/) {
+            && !(this instanceof GameOverScreen)) {
             int winningPlayer = getWinningPlayer();
             game.setScreen(new GameOverScreen(game, model, winningPlayer));
         }
