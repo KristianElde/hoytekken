@@ -184,20 +184,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     @Override
-    public boolean performAttackAction(PlayerType player, ActionType actionType) {
-        Player attacker = getPlayer(player);
-        Player victim = player == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
+    public boolean performAttackAction(PlayerType attacker, ActionType actionType) {
+        Player attackingPlayer = getPlayer(attacker);
+        Player victimPlayer = attacker == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
         switch (actionType) {
             case KICK:
-                if (attacker.kick(victim)) {
-                    System.out.println(victim.getHealth() + " health left");
+                if (attackingPlayer.kick(victimPlayer)) {
+                    System.out.println(victimPlayer.getHealth() + " health left");
                     return true;
                 }
                 break;
             case PUNCH:
-                if (attacker.punch(victim)) {
-                    System.out.println(victim.getHealth() + " health left");
+                if (attackingPlayer.punch(victimPlayer)) {
+                    System.out.println(victimPlayer.getHealth() + " health left");
                     return true;
                 }
                 break;
