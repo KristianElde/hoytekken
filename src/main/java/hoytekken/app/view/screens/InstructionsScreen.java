@@ -19,7 +19,7 @@ import hoytekken.app.view.ViewableModel;
 /**
  * Class representing the instructions screen.
  */
-public class InstructionsScreen implements Screen {
+public class InstructionsScreen extends ScreenAdapter {
     private Hoytekken game;
     private ViewableModel model;
 
@@ -107,11 +107,6 @@ public class InstructionsScreen implements Screen {
     }
 
     @Override
-    public void show() {
-        // ingore implementation
-    }
-
-    @Override
     public void render(float delta) {
         update(delta);
 
@@ -124,21 +119,6 @@ public class InstructionsScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-        // ingore implementation
-    }
-
-    @Override
-    public void resume() {
-        // ingore implementation
-    }
-
-    @Override
-    public void hide() {
-        // ingore implementation
     }
 
     @Override
