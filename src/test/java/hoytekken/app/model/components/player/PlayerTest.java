@@ -87,11 +87,20 @@ public class PlayerTest {
         assertTrue(player.isAlive());
 
         // make sure player cant survive
-        int dmg2 = rand.nextInt(100, 500);
-        player.takeDamage(dmg2);
-        assertEquals(0, player.getHealth());
-        assertFalse(player.isAlive());
+        for (int i = 3; i > 0; i--) {
+            System.out.println(i);
+            int dmg2 = rand.nextInt(100, 500);
+            player.takeDamage(dmg2);
+            assertEquals(i - 1, player.getLives());
 
+            if (i == 1) {
+                assertFalse(player.isAlive());
+            } else {
+                assertTrue(player.isAlive());
+            }
+        }
+
+        assertFalse(player.isAlive());
     }
 
 }

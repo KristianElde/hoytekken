@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
+import net.bytebuddy.asm.Advice.This;
 
 /**
  * The player class
@@ -151,6 +152,7 @@ public class Player extends Sprite implements IPlayer {
                 } else {
                     this.isAlive = false;
                     this.health = 0;
+                    this.lives = 0;
                 }
             }
         }
