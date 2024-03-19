@@ -1,8 +1,10 @@
 package hoytekken.app.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -28,6 +30,9 @@ public class ModelTest {
     private HTekkenModel model;
     private Player player1;
     private Player player2;
+    private static final int MAX_HP = 99;
+    private static final int PUNCH_DMG = 10;
+    private static final int KICK_DMG = 7;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -106,37 +111,37 @@ public class ModelTest {
     }
 
     @Test
-    void performActionPunchTest() {
+    void performAttackActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is not reduced by punch when opponent is out of
         // range
-        assertEquals(99, player1.getHealth());
-        assertEquals(99, player2.getHealth());
+        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(MAX_HP, player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is reduced by punch when opponent is inside range
-        assertEquals(99, player1.getHealth());
-        assertEquals(89, player2.getHealth());
+        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
     }
 
     @Test
-    void performActionKickTest() {
+    void performAttackActionKickTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is not reduced by kick when opponent is out of
         // range
-        assertEquals(99, player1.getHealth());
-        assertEquals(99, player2.getHealth());
+        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(MAX_HP, player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is reduced by kick when opponent is inside range
-        assertEquals(99, player1.getHealth());
-        assertEquals(92, player2.getHealth());
+        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(MAX_HP - KICK_DMG, player2.getHealth());
     }
 
     @Test
@@ -154,6 +159,56 @@ public class ModelTest {
 
         model.resetDoubleJump(PlayerType.PLAYER_ONE);
         assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+    }
+
+    @Test
+    void blockingPreventsDamageTest() {
+        movePlayersBeside();
+
+        player1.activateBlock();
+        model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
+        // Check that attack does not inflict damage when victim is blocking
+        assertEquals(MAX_HP, player1.getHealth());
+    }
+
+    @Test
+    void blockingPreventsJumpTest() {
+        // Check that jump() returns true
+        assertTrue(model.jump(PlayerType.PLAYER_ONE));
+
+        player1.activateBlock();
+        // Check that jump() returns false when isBlocking is set to true
+        assertFalse(model.jump(PlayerType.PLAYER_ONE));
+    }
+
+    @Test
+    void blockingPreventsPunch() {
+        movePlayersBeside();
+
+        player1.activateBlock();
+        // Check that blocking prevents player from performing punch
+        assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        assertEquals(MAX_HP, player2.getHealth());
+
+        player1.deactivateBlock();
+        // Check that deactivating block allows player to perform punch
+        assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
+    }
+
+    @Test
+    void blockingPreventsKick() {
+        movePlayersBeside();
+
+        player2.activateBlock();
+        // Check that blocking prevents player from performing kick
+        assertFalse(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
+        assertEquals(MAX_HP, player1.getHealth());
+
+        player2.deactivateBlock();
+        // Check that deactivating block allows player to perform kick
+        assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
+        assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
     }
 
 }

@@ -41,12 +41,12 @@ public interface ControllableModel {
     /**
      * Perform actions against the other player
      * 
-     * @param player the player to perform the action on
-     * @param action the action to perform
+     * @param attacker the player to perform the action
+     * @param action   the action to perform
      * 
      * @return true if the action was performed, false otherwise
      */
-    boolean performAttackAction(PlayerType player, ActionType action);
+    boolean performAttackAction(PlayerType attacker, ActionType action);
 
     /**
      * Gets the gamestate that the game is currently in
