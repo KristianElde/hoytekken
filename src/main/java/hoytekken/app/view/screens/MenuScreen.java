@@ -65,11 +65,6 @@ public class MenuScreen extends BaseScreen {
     }
 
     @Override
-    public void show() {
-        // ignore implementation
-    }
-
-    @Override
     public void render(float delta) {
         update(delta);
 
