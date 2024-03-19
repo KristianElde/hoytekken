@@ -183,6 +183,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
+    @Override
     public boolean performAttackAction(PlayerType player, ActionType actionType) {
         Player attacker = getPlayer(player);
         Player victim = player == PlayerType.PLAYER_ONE ? playerTwo : playerOne;

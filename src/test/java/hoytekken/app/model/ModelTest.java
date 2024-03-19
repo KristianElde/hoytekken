@@ -1,8 +1,10 @@
 package hoytekken.app.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -154,6 +156,25 @@ public class ModelTest {
 
         model.resetDoubleJump(PlayerType.PLAYER_ONE);
         assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+    }
+
+    @Test
+    void jumpTest() {
+        // Check that jump() returns true
+        assertTrue(model.jump(PlayerType.PLAYER_ONE));
+
+        player1.activateBlock();
+        // Check that jump() returns false when isBlocking is set to true
+        assertFalse(model.jump(PlayerType.PLAYER_ONE));
+    }
+
+    @Test
+    void blockingTest() {
+        movePlayersBeside();
+
+        player1.activateBlock();
+        model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
+        assertEquals(89, player1.getHealth());
     }
 
 }
