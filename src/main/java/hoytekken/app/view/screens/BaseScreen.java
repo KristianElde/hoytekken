@@ -84,9 +84,15 @@ public abstract class BaseScreen implements Screen {
     }
 
     /**
-     * Updates the screen. 
-     * Class GameScreen should OVERRIDE this method.
-     * @param delta the time since the last update
+     * Updates the screen's state and handles transitions based on the game's current state.
+     * This includes:
+     * <ul>
+     *   <li>Updating the camera's position and properties.</li>
+     *   <li>Handling state transitions, such as switching screens when the game state changes.</li>
+     * </ul>
+     * Subclass {@code GameScreen}, should override this method to provide specific update logic.
+     *
+     * @param delta The time in seconds since the last frame was rendered.
      */
     protected void update(float delta) {
         this.gameCam.update();
