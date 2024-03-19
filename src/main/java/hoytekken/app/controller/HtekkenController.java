@@ -44,8 +44,8 @@ public class HtekkenController extends InputAdapter {
                 model.performAttackAction(playerOne, ActionType.PUNCH);
             if (keycode == Input.Keys.K)
                 model.performAttackAction(playerOne, ActionType.KICK);
-            if (keycode == Input.Keys.B) {
-                // implement this
+            if (keycode == Input.Keys.DOWN) {
+                model.getPlayer(playerOne).activateBlock();
             }
 
             // Player2, A, D, W, PUNCH, BLOCK, KICK keys
@@ -60,7 +60,7 @@ public class HtekkenController extends InputAdapter {
             if (keycode == Input.Keys.E)
                 model.performAttackAction(playerTwo, ActionType.KICK);
             if (keycode == Input.Keys.S) {
-                // implement this
+                model.getPlayer(playerTwo).activateBlock();
             }
         } else if (model.getGameState() == GameState.MAIN_MENU) {
             if (keycode == Input.Keys.I) {
@@ -92,19 +92,37 @@ public class HtekkenController extends InputAdapter {
 
     @Override
     public boolean keyUp(int keycode) {
+        if (model.getGameState() == GameState.ACTIVE_GAME) {
+            // Player 1
 
-        // Stop applying force to the player when the key is released
-        if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
-                || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
-            model.setDirection(playerOne, ForceDirection.STATIC);
-            return true;
-        } else if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
-                || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
-            model.setDirection(playerTwo, ForceDirection.STATIC);
-            return true;
-        } else
-            return false;
+            // Stop applying force to the player when the key is released
+            if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
+                    || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
+                model.setDirection(playerOne, ForceDirection.STATIC);
+                return true;
+            }
+            // Deactivate block when DOWN-key is released
+            if (keycode == Input.Keys.DOWN) {
+                model.getPlayer(playerOne).deactivateBlock();
+                return true;
+            }
 
+            // Player2
+
+            // Stop applying force to the player when the key is released
+            if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
+                    || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
+                model.setDirection(playerTwo, ForceDirection.STATIC);
+                return true;
+            }
+            // Deactivate block when S-key is released
+            if (keycode == Input.Keys.S) {
+                model.getPlayer(playerTwo).deactivateBlock();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

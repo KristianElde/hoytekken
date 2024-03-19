@@ -51,6 +51,7 @@ public class Player extends Sprite implements IPlayer {
     private int kickDmg = 7;
     private float punchRange = 1.8f;
     private float kickRange = 2.2f;
+    private boolean isBlocking = false;
 
     /**
      * Constructor for the player
@@ -116,11 +117,10 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
-        if (deltaY != 0){
+        if (deltaY != 0) {
             body.setLinearVelocity(body.getLinearVelocity().x, 0);
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
-        }
-        else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
+        } else if (Math.abs(body.getLinearVelocity().x) < MAX_VELOCITY)
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
     }
 
@@ -158,7 +158,7 @@ public class Player extends Sprite implements IPlayer {
         int dmg = punchDmg;
         float rangeFactor = punchRange;
 
-        if (!isWithinRange(that, rangeFactor)) {
+        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
@@ -172,7 +172,7 @@ public class Player extends Sprite implements IPlayer {
     public boolean kick(Player that) {
         int dmg = kickDmg;
         float rangeFactor = kickRange;
-        if (!isWithinRange(that, rangeFactor)) {
+        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
@@ -183,9 +183,18 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public boolean block(Player that, int incomingAttack) {
-        // implement this
-        return false;
+    public void activateBlock() {
+        isBlocking = true;
+    }
+
+    @Override
+    public void deactivateBlock() {
+        isBlocking = false;
+    }
+
+    @Override
+    public boolean getIsBlocking() {
+        return isBlocking;
     }
 
     @Override

@@ -25,14 +25,19 @@ public interface ICombat {
     boolean kick(Player that);
 
     /**
-     * A player will try to block an attack.
-     * If the damage from the attack is higher than
-     * the players block limit, then some damage
-     * will be inflicted.
-     * 
-     * @param that           player to block from
-     * @param incomingAttack damage that player would inflict
-     * @return boolean on if the block was successful
+     * Sets the players isBlocking field variable to true.
      */
-    boolean block(Player that, int incomingAttack);
+    void activateBlock();
+
+    /**
+     * Sets the players isBlocking field variable to false.
+     */
+    void deactivateBlock();
+
+    /**
+     * Retireves a boolean representing if player is blocking or not.
+     * 
+     * @return value of the players isBlocking field variable.
+     */
+    boolean getIsBlocking();
 }
