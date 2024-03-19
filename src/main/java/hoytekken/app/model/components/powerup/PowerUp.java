@@ -19,9 +19,9 @@ public abstract class PowerUp {
             case 'D' ->
                 new ExtraDamage();
             case 'H' ->
-                new ExtraHealth(null, null);
+                new ExtraHealth();
             case 'S' ->
-                new DoubleSpeed(null, null);
+                new DoubleSpeed();
             default ->
                 throw new IllegalArgumentException("Undefined type for PowerUp");
         };
