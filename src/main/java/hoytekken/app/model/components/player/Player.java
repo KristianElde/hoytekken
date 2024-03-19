@@ -216,4 +216,9 @@ public class Player extends Sprite implements IPlayer {
     public int getJumpingHeight() {
         return JUMPING_HEIGHT;
     }
+
+    @Override
+    public int getLives() {
+        return lives;
+    }
 }
