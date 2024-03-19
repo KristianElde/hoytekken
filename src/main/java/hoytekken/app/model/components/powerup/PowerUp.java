@@ -15,6 +15,13 @@ public abstract class PowerUp {
         this.pUpTexture = pUpTexture;
     }
 
+    /**
+     * Creates a new power-up, without having to create an object.
+     * 
+     * @param type char to represent the type of power-up.
+     * @throws IllegalArgumentException for undefined types.
+     * @return A power-up.
+     */
     static PowerUp newPowerUp(Character type) {
         PowerUp pUp = switch (type) {
             case 'D' ->
