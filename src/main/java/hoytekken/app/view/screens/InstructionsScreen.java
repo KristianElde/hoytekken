@@ -41,8 +41,7 @@ public class InstructionsScreen extends ScreenAdapter {
         this.game = game;
         this.model = mode;
 
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
+        initializeCameraAndViewport();
 
         stage = new Stage(gamePort, game.batch);
 
@@ -96,6 +95,11 @@ public class InstructionsScreen extends ScreenAdapter {
         table.add(cont).expandX().padTop(100);
 
         stage.addActor(table);
+    }
+
+    private void initializeCameraAndViewport() {
+        gameCam = new OrthographicCamera();
+        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
     }
 
     private void handleStateSwitch() {
