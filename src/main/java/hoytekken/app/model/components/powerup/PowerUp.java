@@ -3,6 +3,8 @@ package hoytekken.app.model.components.powerup;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
+import hoytekken.app.model.components.player.Player;
+
 public abstract class PowerUp {
     protected final PowerUpType pUpType;
     protected final Texture pUpTexture;
@@ -25,5 +27,7 @@ public abstract class PowerUp {
         };
         return pUp;
     }
+
+    public abstract void applyPowerUp(Player player);
 
 }
