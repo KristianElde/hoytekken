@@ -180,12 +180,16 @@ public class ModelTest {
 
     @Test
     void blockingPreventsAttackingActions() {
+        movePlayersBeside();
+
         player1.activateBlock();
+        // Check that blocking prevents player from performing attack
         assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
         assertEquals(99, player2.getHealth());
 
         player1.deactivateBlock();
-        assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        // Check that deactivating block allows player to perform attack
+        assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
         assertEquals(89, player2.getHealth());
     }
 
