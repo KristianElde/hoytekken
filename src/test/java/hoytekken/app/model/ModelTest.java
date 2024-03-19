@@ -159,7 +159,17 @@ public class ModelTest {
     }
 
     @Test
-    void jumpTest() {
+    void blockingPreventsDamageTest() {
+        movePlayersBeside();
+
+        player1.activateBlock();
+        model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
+        // Check that attack does not inflict damage when victim is blocking
+        assertEquals(99, player1.getHealth());
+    }
+
+    @Test
+    void blockingPreventsJumpTest() {
         // Check that jump() returns true
         assertTrue(model.jump(PlayerType.PLAYER_ONE));
 
@@ -170,17 +180,13 @@ public class ModelTest {
 
     @Test
     void blockingPreventsAttackingActions() {
-
-    }
-
-    @Test
-    void blockingPreventsDamageTest() {
-        movePlayersBeside();
-
         player1.activateBlock();
-        model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
-        // Check that attack does not inflict damage when victim is blocking
-        assertEquals(99, player1.getHealth());
+        assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        assertEquals(99, player2.getHealth());
+
+        player1.deactivateBlock();
+        assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
+        assertEquals(89, player2.getHealth());
     }
 
 }
