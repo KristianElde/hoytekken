@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
 /**
@@ -39,6 +40,16 @@ public abstract class BaseScreen implements Screen {
      */
     public BaseScreen(Hoytekken game, ViewableModel model) {
         this(game, model, false);
+    }
+
+    private int getWinningPlayer() throws IllegalStateException{
+        boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
+        boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
+
+        if (playerOneWon && playerTwoWon) throw new IllegalStateException("Both players cannot win at the same time");
+        if (!playerOneWon && !playerTwoWon) throw new IllegalStateException("No player has won");
+
+        return playerOneWon && !playerTwoWon ? 1 : 0;
     }
 
     /**
