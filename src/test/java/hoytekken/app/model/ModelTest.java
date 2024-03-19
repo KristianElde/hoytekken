@@ -31,6 +31,8 @@ public class ModelTest {
     private Player player1;
     private Player player2;
     private static final int MAX_HP = 99;
+    private static final int PUNCH_DMG = 10;
+    private static final int KICK_DMG = 7;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -122,7 +124,7 @@ public class ModelTest {
 
         // Check that opponents health is reduced by punch when opponent is inside range
         assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(89, player2.getHealth());
+        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
     }
 
     @Test
@@ -139,7 +141,7 @@ public class ModelTest {
 
         // Check that opponents health is reduced by kick when opponent is inside range
         assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(92, player2.getHealth());
+        assertEquals(MAX_HP - KICK_DMG, player2.getHealth());
     }
 
     @Test
@@ -191,7 +193,7 @@ public class ModelTest {
         player1.deactivateBlock();
         // Check that deactivating block allows player to perform punch
         assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
-        assertEquals(89, player2.getHealth());
+        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
     }
 
     @Test
@@ -206,7 +208,7 @@ public class ModelTest {
         player2.deactivateBlock();
         // Check that deactivating block allows player to perform kick
         assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
-        assertEquals(92, player1.getHealth());
+        assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
     }
 
 }
