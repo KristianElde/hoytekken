@@ -19,13 +19,8 @@ import hoytekken.app.view.ViewableModel;
 /**
  * Class representing the instructions screen.
  */
-public class InstructionsScreen extends ScreenAdapter {
-    private Hoytekken game;
-    private ViewableModel model;
-
-    private OrthographicCamera gameCam;
-    private FitViewport gamePort;
-
+public class InstructionsScreen extends BaseScreen {
+    
     private Label.LabelStyle font;
     private Table table;
 
@@ -38,10 +33,7 @@ public class InstructionsScreen extends ScreenAdapter {
      * @param mode the viewable model
      */
     public InstructionsScreen(Hoytekken game, ViewableModel mode) {
-        this.game = game;
-        this.model = mode;
-
-        initializeCameraAndViewport();
+        super(game, mode);
 
         stage = new Stage(gamePort, game.batch);
 
@@ -97,11 +89,6 @@ public class InstructionsScreen extends ScreenAdapter {
         stage.addActor(table);
     }
 
-    private void initializeCameraAndViewport() {
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
-    }
-
     private void handleStateSwitch() {
         if (model.getGameState() == GameState.MAIN_MENU) {
             game.setScreen(new MenuScreen(game, model));
@@ -109,7 +96,7 @@ public class InstructionsScreen extends ScreenAdapter {
     }
 
     private void update(float delta) {
-        gameCam.update();
+        this.gameCam.update();
         handleStateSwitch();
     }
 
@@ -121,11 +108,6 @@ public class InstructionsScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        gamePort.update(width, height);
     }
 
     @Override
