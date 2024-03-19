@@ -103,9 +103,21 @@ public class Player extends Sprite implements IPlayer {
         body.createFixture(fdef).setUserData(this.type + "feet");
     }
 
+    /**
+     * Set the position of the player
+     * 
+     */
+    private void startPosistion() {
+        body.setTransform((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
+                (32 * 14) / Hoytekken.PPM, 0);
+    }
+
     @Override
     public void update() {
-        if (fallenOffTheMap()) {
+        if (fallenOffTheMap() && this.lives > 0) {
+            takeDamage(maxHealth);
+            startPosistion();
+        } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
         setPosition(body.getPosition().x - getWidth() / 2,
