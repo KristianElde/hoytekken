@@ -67,17 +67,20 @@ public abstract class BaseScreen implements Screen {
      * If the game state has changed, switches to the appropriate screen.
      */
     protected void handleStateSwitch() {
-        if (model.getGameState() == GameState.MAIN_MENU /*&& !(this instanceof MenuScreen)*/) {
+        if (model.getGameState() == GameState.MAIN_MENU 
+            /*&& !(this instanceof MenuScreen)*/) {
             game.setScreen(new MenuScreen(game, model));
-        } 
-        /*else if (model.getGameState() == GameState.INSTRUCTIONS && !(this instanceof InstructionsScreen)) {
+        } else if (model.getGameState() == GameState.INSTRUCTIONS 
+            && !(this instanceof InstructionsScreen)) {
             game.setScreen(new InstructionsScreen(game, model));
-        } else if (model.getGameState() == GameState.ACTIVE_GAME && !(this instanceof GameScreen)) {
+        } else if (model.getGameState() == GameState.ACTIVE_GAME 
+            /*&& !(this instanceof GameScreen)*/) {
             game.setScreen(new GameScreen(game, model));
-        } else if (model.getGameState() == GameState.GAME_OVER && !(this instanceof GameOverScreen)) {
+        } else if (model.getGameState() == GameState.GAME_OVER 
+            /*&& !(this instanceof GameOverScreen)*/) {
             int winningPlayer = getWinningPlayer();
             game.setScreen(new GameOverScreen(game, model, winningPlayer));
-        }*/
+        }
     }
 
     /**
