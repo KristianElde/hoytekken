@@ -76,11 +76,11 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
 
-        this.playerTexture = new Texture(Gdx.files.internal(DEFAULT_SKIN));
+        this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
-        setRegion(playerTexture);
+        setRegion(player1stand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
