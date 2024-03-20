@@ -211,28 +211,14 @@ public class Player extends Sprite implements IPlayer {
         int dmg = punchDmg;
         float rangeFactor = punchRange;
 
-        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
-            return false;
-        }
-        if (this.isAlive() && that.isAlive()) {
-            that.takeDamage(dmg);
-            return true;
-        }
-        return false;
+        return performAttack(that, dmg, rangeFactor);
     }
 
     @Override
     public boolean kick(Player that) {
         int dmg = kickDmg;
         float rangeFactor = kickRange;
-        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
-            return false;
-        }
-        if (this.isAlive() && that.isAlive()) {
-            that.takeDamage(dmg);
-            return true;
-        }
-        return false;
+        return performAttack(that, dmg, rangeFactor);
     }
 
     @Override
