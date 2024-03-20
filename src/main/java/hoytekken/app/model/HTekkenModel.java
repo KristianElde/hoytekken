@@ -26,7 +26,7 @@ import hoytekken.app.view.ViewableModel;
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     private static final String DEFAULT_MAP = "defaultMap.tmx";
-    private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -20);
+    private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
