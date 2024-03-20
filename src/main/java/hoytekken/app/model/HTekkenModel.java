@@ -28,7 +28,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final String DEFAULT_MAP = "defaultMap.tmx";
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
     private static final int MAX_JUMPS = 2;
-    private float frictionConstant = 3;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
     private HashMap<String, String> gameMaps = new HashMap<String, String>() {

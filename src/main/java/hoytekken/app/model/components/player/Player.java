@@ -25,6 +25,7 @@ public class Player extends Sprite implements IPlayer {
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
     private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
+    private static final float PLAYER_FRICTION_CONSTANT = 3;
 
     private World world;
     private Body body;
@@ -75,7 +76,7 @@ public class Player extends Sprite implements IPlayer {
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(playerTexture);
-        body.getFixtureList().get(0).setFriction(model.getFrictionConstant());
+        body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
     private void definePlayer() {
