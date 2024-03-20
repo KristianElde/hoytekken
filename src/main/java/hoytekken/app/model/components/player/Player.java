@@ -70,11 +70,8 @@ public class Player extends Sprite implements IPlayer {
     private void definePlayer() {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
-
-        bdef.position.set((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
-                (32 * 14) / Hoytekken.PPM);
-
         body = world.createBody(bdef);
+        startPosistion();
 
         // Set the user data to this object
         body.setUserData(this);
