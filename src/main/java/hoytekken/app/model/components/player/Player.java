@@ -114,9 +114,11 @@ public class Player extends Sprite implements IPlayer {
 
     /**
      * Set the position of the player
-     * 
      */
     private void startPosistion() {
+        // Reset velocity
+        body.setLinearVelocity(0, 0);
+        // Set the position of the player
         body.setTransform((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
                 (32 * 14) / Hoytekken.PPM, 0);
     }
