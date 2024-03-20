@@ -5,6 +5,8 @@ import static org.mockito.ArgumentMatchers.floatThat;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -23,13 +25,16 @@ public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
-    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60/ Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
 
     private World world;
     private Body body;
-    private Texture playerTexture;
+    private TextureRegion player1stand;
+
+    // The texture atlas for the player 
+    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
 
     // The type of player (player one or player two)
     private PlayerType type;
@@ -66,16 +71,17 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
+        super(atlas.findRegion("Character_1_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
         this.maxHealth = health;
 
-        this.playerTexture = new Texture(Gdx.files.internal(DEFAULT_SKIN));
+        this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
-        setRegion(playerTexture);
+        setRegion(player1stand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
