@@ -75,6 +75,7 @@ public class Player extends Sprite implements IPlayer {
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(playerTexture);
+        body.getFixtureList().get(0).setFriction(model.getFrictionConstant());
     }
 
     private void definePlayer() {

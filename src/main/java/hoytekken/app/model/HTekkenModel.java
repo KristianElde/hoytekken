@@ -72,6 +72,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
+
     }
 
     /**
