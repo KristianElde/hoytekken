@@ -25,14 +25,9 @@ public interface ICombat {
     boolean kick(Player that);
 
     /**
-     * Sets the players isBlocking field variable to true.
+     * Toggles the players isBlocking field variable.
      */
-    void activateBlock();
-
-    /**
-     * Sets the players isBlocking field variable to false.
-     */
-    void deactivateBlock();
+    void changeBlockingState();
 
     /**
      * Retireves a boolean representing if player is blocking or not.

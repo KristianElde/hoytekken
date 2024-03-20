@@ -1,9 +1,5 @@
 package hoytekken.app.model.components.player;
 
-import static org.mockito.ArgumentMatchers.floatThat;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,52 +12,50 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
-import net.bytebuddy.asm.Advice.This;
 
 /**
  * The player class
  */
 public class Player extends Sprite implements IPlayer {
-    private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
-    private static final float PLAYER_HEIGHT = 60/ Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
 
+    // Constants for player position
+    private static final int PLAYER_ONE_START_X = 10;
+    private static final int PLAYER_TWO_START_X = 20;
+    private static final int PLAYER_START_Y = 14;
+
+    // Constants for player shape
+    private static final Vector2[] feetVerts = new Vector2[] {
+            new Vector2(-PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
+            new Vector2(PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
+    };
+
+    // Constants for attack and defense
+    private static final int PUNCH_DAMAGE = 10;
+    private static final int KICK_DAMAGE = 7;
+    private static final float PUNCH_RANGE = 1.8f;
+    private static final float KICK_RANGE = 2.2f;
+
+    // Player Texture & World
     private World world;
     private Body body;
     private TextureRegion player1stand;
-
-    // The texture atlas for the player 
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
 
-    // The type of player (player one or player two)
+    // Constants for health management
+    private static final int MAX_LIVES = 3;
+
+    // Player State
     private PlayerType type;
-
-    // Check if the player is alive
     private boolean isAlive = true;
-
-    // Health, if health is 0, player is dead
-    private int health;
-
-    // Max 3 lives
-    private int lives = 3;
-
-    // if attack is over limit, block is unsuccessful
-    private int blockLimit = 30;
-
-    // if block is unsuccessful, divide attack by this
-    private int blockSupresser = 2;
-
-    // max health
-    private int maxHealth;
-
-    private int punchDmg = 10;
-    private int kickDmg = 7;
-    private float punchRange = 1.8f;
-    private float kickRange = 2.2f;
     private boolean isBlocking = false;
+    private int maxHealth;
+    private int health;
+    private int lives;
 
     /**
      * Constructor for the player
@@ -76,6 +70,7 @@ public class Player extends Sprite implements IPlayer {
         this.type = type;
         this.health = health;
         this.maxHealth = health;
+        this.lives = MAX_LIVES;
 
         this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
@@ -88,11 +83,8 @@ public class Player extends Sprite implements IPlayer {
     private void definePlayer() {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
-
-        bdef.position.set((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
-                (32 * 14) / Hoytekken.PPM);
-
         body = world.createBody(bdef);
+        resetPosistion();
 
         // Set the user data to this object
         body.setUserData(this);
@@ -103,10 +95,9 @@ public class Player extends Sprite implements IPlayer {
         fdef.shape = shape;
         body.createFixture(fdef).setUserData(this.type + "body");
 
-        // foot sensor
+        // Foot sensor
         EdgeShape feet = new EdgeShape();
-        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2),
-                new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
+        feet.set(feetVerts[0], feetVerts[1]);
         fdef.shape = feet;
         fdef.isSensor = true;
         body.createFixture(fdef).setUserData(this.type + "feet");
@@ -114,18 +105,21 @@ public class Player extends Sprite implements IPlayer {
 
     /**
      * Set the position of the player
-     * 
      */
-    private void startPosistion() {
-        body.setTransform((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
-                (32 * 14) / Hoytekken.PPM, 0);
+    private void resetPosistion() {
+        // Reset velocity
+        body.setLinearVelocity(0, 0);
+        // Set the position of the player
+        body.setTransform(
+                (32 * (type == PlayerType.PLAYER_ONE ? PLAYER_ONE_START_X : PLAYER_TWO_START_X)) / Hoytekken.PPM,
+                (32 * PLAYER_START_Y) / Hoytekken.PPM, 0);
     }
 
     @Override
     public void update() {
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
-            startPosistion();
+            resetPosistion();
         } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
@@ -157,6 +151,7 @@ public class Player extends Sprite implements IPlayer {
                 if (this.lives > 1) {
                     this.lives--;
                     this.health = maxHealth;
+                    resetPosistion();
                 } else {
                     this.isAlive = false;
                     this.health = 0;
@@ -185,43 +180,38 @@ public class Player extends Sprite implements IPlayer {
         return distance <= range;
     }
 
-    @Override
-    public boolean punch(Player that) {
-        int dmg = punchDmg;
-        float rangeFactor = punchRange;
-
-        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
+    /**
+     * Perform an attack on another player
+     * 
+     * @param that   the player that is being attacked
+     * @param damage the damage that is being dealt
+     * @param range  the range of the attack
+     * @return
+     */
+    private boolean performAttack(Player that, int damage, float range) {
+        if (!isWithinRange(that, range) || that.getIsBlocking() || this.getIsBlocking()) {
             return false;
         }
         if (this.isAlive() && that.isAlive()) {
-            that.takeDamage(dmg);
+            that.takeDamage(damage);
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean punch(Player that) {
+        return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(Player that) {
-        int dmg = kickDmg;
-        float rangeFactor = kickRange;
-        if (!isWithinRange(that, rangeFactor) || that.getIsBlocking() || this.getIsBlocking()) {
-            return false;
-        }
-        if (this.isAlive() && that.isAlive()) {
-            that.takeDamage(dmg);
-            return true;
-        }
-        return false;
+        return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
     @Override
-    public void activateBlock() {
-        isBlocking = true;
-    }
-
-    @Override
-    public void deactivateBlock() {
-        isBlocking = false;
+    public void changeBlockingState() {
+        isBlocking = !isBlocking;
     }
 
     @Override
