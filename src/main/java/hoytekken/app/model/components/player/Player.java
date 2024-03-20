@@ -138,6 +138,7 @@ public class Player extends Sprite implements IPlayer {
                 if (this.lives > 1) {
                     this.lives--;
                     this.health = maxHealth;
+                    startPosistion();
                 } else {
                     this.isAlive = false;
                     this.health = 0;
