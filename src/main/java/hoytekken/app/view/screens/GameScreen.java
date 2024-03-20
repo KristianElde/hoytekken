@@ -1,38 +1,24 @@
 package hoytekken.app.view.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
 /**
  * class represents an active game screen
  */
-public class GameScreen implements Screen {
-    private Hoytekken game;
-    private ViewableModel model;
-
-    private OrthographicCamera gameCam;
-    private Viewport gamePort;
-
+public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
+    private Box2DDebugRenderer b2dr;
 
     private Hud hud;
-
-    private World world;
-    private Box2DDebugRenderer b2dr;
 
     /**
      * Constructor for the game screen
@@ -41,51 +27,25 @@ public class GameScreen implements Screen {
      * @param model the viewable model
      */
     public GameScreen(Hoytekken game, ViewableModel model) {
-        this.game = game;
-        this.model = model;
-
-        gameCam = new OrthographicCamera();
-        gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        super(game, model, true);
 
         hud = new Hud(game.batch);
+        initializeMapAndRenderers();
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+    }
 
+    private void initializeMapAndRenderers() {
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-
-        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-
         b2dr = new Box2DDebugRenderer();
-
     }
 
-    private void handleStateSwitch() {
-        if (model.getGameState() == GameState.GAME_OVER) {
-            int winningPlayer = getWinningPlayer();
-            game.setScreen(new GameOverScreen(game, model, winningPlayer));
-        }
-    }
-
-    private int getWinningPlayer() {
-        boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
-        boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
-
-        if (playerOneWon && !playerTwoWon) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    private void update(float delta) {
+    @Override
+    protected void update(float delta) {
         model.updateModel(delta);
         gameCam.update();
         renderer.setView(gameCam);
         handleStateSwitch();
-    }
-
-    @Override
-    public void show() {
-        // ignore implementation
     }
 
     @Override
@@ -116,28 +76,11 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {
-        gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-        // ignore implementation
-    }
-
-    @Override
-    public void resume() {
-        // ignore implementation
-    }
-
-    @Override
-    public void hide() {
-        // ignore implementation
-    }
-
-    @Override
     public void dispose() {
-        // ignore implementation
+        map.dispose();
+        renderer.dispose();
+        b2dr.dispose();
+        hud.getStage().dispose();
     }
 
 }

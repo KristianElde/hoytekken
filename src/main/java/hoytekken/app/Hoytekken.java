@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hoytekken.app.controller.HtekkenController;
 import hoytekken.app.model.HTekkenModel;
-import hoytekken.app.view.screens.InstructionsScreen;
 import hoytekken.app.view.screens.MenuScreen;
 
 /**

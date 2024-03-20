@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
 /**
@@ -19,7 +20,13 @@ public abstract class BaseScreen implements Screen {
     protected FitViewport gamePort;
 
     /**
-     * Constructor for the base screen.
+     * Constructor for the base screen. Initializes the following:
+     * <ul>
+     *   <li>{@code this.game} Hoytekken</li>
+     *   <li>{@code this.model} ViewableModel</li>
+     *   <li>{@code this.gameCam} OrthographicCamera</li>
+     *   <li>{@code this.gamePort} FitViewport</li>
+     * </ul>
      * @param game the game object
      * @param model the viewable model
      * @param scaling whether the viewport should scale
@@ -33,12 +40,28 @@ public abstract class BaseScreen implements Screen {
     }
 
     /**
-     * Constructor for the base screen, ViewPort not Scaled.
+     * Constructor for the base screen. Initializes the following:
+     * <ul>
+     *   <li>{@code this.game} Hoytekken</li>
+     *   <li>{@code this.model} ViewableModel</li>
+     *   <li>{@code this.gameCam} OrthographicCamera</li>
+     *   <li>{@code this.gamePort} FitViewport, (ViewPort not scaled to {@code Hoytekken.PPM})</li>
+     * </ul>
      * @param game the game object
      * @param model the viewable model
      */
     public BaseScreen(Hoytekken game, ViewableModel model) {
         this(game, model, false);
+    }
+
+    private int getWinningPlayer() throws IllegalStateException{
+        boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
+        boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
+
+        if (playerOneWon && playerTwoWon) throw new IllegalStateException("Both players cannot win at the same time");
+        if (!playerOneWon && !playerTwoWon) throw new IllegalStateException("No player has won");
+
+        return playerOneWon && !playerTwoWon ? 1 : 2;
     }
 
     /**
@@ -56,23 +79,45 @@ public abstract class BaseScreen implements Screen {
      * If the game state has changed, switches to the appropriate screen.
      */
     protected void handleStateSwitch() {
-        if (model.getGameState() == GameState.MAIN_MENU /*&& !(this instanceof MenuScreen)*/) {
-            game.setScreen(new MenuScreen(game, model));
-        } 
-        /*else if (model.getGameState() == GameState.INSTRUCTIONS && !(this instanceof InstructionsScreen)) {
-            game.setScreen(new InstructionsScreen(game, model));
-        } else if (model.getGameState() == GameState.ACTIVE_GAME && !(this instanceof GameScreen)) {
-            game.setScreen(new GameScreen(game, model));
-        } else if (model.getGameState() == GameState.GAME_OVER && !(this instanceof GameOverScreen)) {
-            int winningPlayer = getWinningPlayer();
-            game.setScreen(new GameOverScreen(game, model, winningPlayer));
-        }*/
+        GameState currentState = model.getGameState();
+
+        switch (currentState) {
+            case MAIN_MENU:
+                if (!(this instanceof MenuScreen)) {
+                    game.setScreen(new MenuScreen(game, model));
+                }
+                break;
+            case INSTRUCTIONS:
+                if (!(this instanceof InstructionsScreen)) {
+                    game.setScreen(new InstructionsScreen(game, model));
+                }
+                break;
+            case ACTIVE_GAME:
+                if (!(this instanceof GameScreen)) {
+                    game.setScreen(new GameScreen(game, model));
+                }
+                break;
+            case GAME_OVER:
+                if (!(this instanceof GameOverScreen)) {
+                    int winningPlayer = getWinningPlayer();
+                    game.setScreen(new GameOverScreen(game, model, winningPlayer));
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     /**
-     * Updates the screen. 
-     * Class GameScreen should OVERRIDE this method.
-     * @param delta the time since the last update
+     * Updates the screen's state and handles transitions based on the game's current state.
+     * This includes:
+     * <ul>
+     *   <li>Updating the camera's position and properties.</li>
+     *   <li>Handling state transitions, such as switching screens when the game state changes.</li>
+     * </ul>
+     * Subclass {@code GameScreen}, should override this method to provide specific update logic.
+     *
+     * @param delta The time in seconds since the last frame was rendered.
      */
     protected void update(float delta) {
         this.gameCam.update();
