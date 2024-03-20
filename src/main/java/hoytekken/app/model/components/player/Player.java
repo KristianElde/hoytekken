@@ -31,6 +31,12 @@ public class Player extends Sprite implements IPlayer {
     private static final int PLAYER_TWO_START_X = 20;
     private static final int PLAYER_START_Y = 14;
 
+    // Constants for player shape
+    private static final Vector2[] feetVerts = new Vector2[] {
+            new Vector2(-PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
+            new Vector2(PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
+    };
+
     // Constants for attack and defense
     private static final int PUNCH_DAMAGE = 10;
     private static final int KICK_DAMAGE = 7;
@@ -87,10 +93,9 @@ public class Player extends Sprite implements IPlayer {
         fdef.shape = shape;
         body.createFixture(fdef).setUserData(this.type + "body");
 
-        // foot sensor
+        // Foot sensor
         EdgeShape feet = new EdgeShape();
-        feet.set(new Vector2(-PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2),
-                new Vector2(PLAYER_WIDTH / 2.1f, -PLAYER_HEIGHT / 2));
+        feet.set(feetVerts[0], feetVerts[1]);
         fdef.shape = feet;
         fdef.isSensor = true;
         body.createFixture(fdef).setUserData(this.type + "feet");
