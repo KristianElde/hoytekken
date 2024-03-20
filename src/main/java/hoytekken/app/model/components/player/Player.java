@@ -23,8 +23,8 @@ import net.bytebuddy.asm.Advice.This;
 public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
-    private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
-    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
+    private static final float PLAYER_WIDTH = 27 * 1.2f / Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60 * 1.2f / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
 
