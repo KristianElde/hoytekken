@@ -22,37 +22,27 @@ public class Player extends Sprite implements IPlayer {
     private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
-    private static final float PLAYER_HEIGHT = 60/ Hoytekken.PPM;
+    private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
-
-    private World world;
-    private Body body;
-    private TextureRegion player1stand;
-
-    // The texture atlas for the player 
-    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
-
-    // The type of player (player one or player two)
-    private PlayerType type;
-
-    // Check if the player is alive
-    private boolean isAlive = true;
-
-    // Health, if health is 0, player is dead
-    private int health;
-
-    // Max 3 lives
-    private int lives = 3;
-
-    // max health
-    private int maxHealth;
 
     private int punchDmg = 10;
     private int kickDmg = 7;
     private float punchRange = 1.8f;
     private float kickRange = 2.2f;
+
+    // Player Texture & World
+    private World world;
+    private Body body;
+    private Texture playerTexture;
+
+    // Player State
+    private PlayerType type;
+    private boolean isAlive = true;
     private boolean isBlocking = false;
+    private int maxHealth;
+    private int health;
+    private int lives;
 
     /**
      * Constructor for the player
