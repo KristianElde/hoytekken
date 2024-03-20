@@ -222,13 +222,8 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void activateBlock() {
-        isBlocking = true;
-    }
-
-    @Override
-    public void deactivateBlock() {
-        isBlocking = false;
+    public changeBlockingState() {
+        isBlocking = !isBlocking;
     }
 
     @Override
