@@ -187,6 +187,25 @@ public class Player extends Sprite implements IPlayer {
         return distance <= range;
     }
 
+    /**
+     * Perform an attack on another player
+     * 
+     * @param that   the player that is being attacked
+     * @param damage the damage that is being dealt
+     * @param range  the range of the attack
+     * @return
+     */
+    private boolean performAttack(Player that, int damage, float range) {
+        if (!isWithinRange(that, range) || that.getIsBlocking() || this.getIsBlocking()) {
+            return false;
+        }
+        if (this.isAlive() && that.isAlive()) {
+            that.takeDamage(damage);
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean punch(Player that) {
         int dmg = punchDmg;
