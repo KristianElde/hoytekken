@@ -1,7 +1,5 @@
 package hoytekken.app.model.components.player;
 
-import static org.mockito.ArgumentMatchers.floatThat;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -16,7 +14,6 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
-import net.bytebuddy.asm.Advice.This;
 
 /**
  * The player class
@@ -47,12 +44,6 @@ public class Player extends Sprite implements IPlayer {
 
     // Max 3 lives
     private int lives = 3;
-
-    // if attack is over limit, block is unsuccessful
-    private int blockLimit = 30;
-
-    // if block is unsuccessful, divide attack by this
-    private int blockSupresser = 2;
 
     // max health
     private int maxHealth;
