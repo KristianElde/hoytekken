@@ -26,6 +26,11 @@ public class Player extends Sprite implements IPlayer {
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
 
+    // Constants for player position
+    private static final int PLAYER_ONE_START_X = 10;
+    private static final int PLAYER_TWO_START_X = 20;
+    private static final int PLAYER_START_Y = 14;
+
     // Constants for attack and defense
     private static final int PUNCH_DAMAGE = 10;
     private static final int KICK_DAMAGE = 7;
@@ -98,8 +103,9 @@ public class Player extends Sprite implements IPlayer {
         // Reset velocity
         body.setLinearVelocity(0, 0);
         // Set the position of the player
-        body.setTransform((32 * (type == PlayerType.PLAYER_ONE ? 10 : 20)) / Hoytekken.PPM,
-                (32 * 14) / Hoytekken.PPM, 0);
+        body.setTransform(
+                (32 * (type == PlayerType.PLAYER_ONE ? PLAYER_ONE_START_X : PLAYER_TWO_START_X)) / Hoytekken.PPM,
+                (32 * PLAYER_START_Y) / Hoytekken.PPM, 0);
     }
 
     @Override
