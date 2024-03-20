@@ -19,7 +19,6 @@ import hoytekken.app.Hoytekken;
  * The player class
  */
 public class Player extends Sprite implements IPlayer {
-    private static final String DEFAULT_SKIN = "obligator.png";
     private static final float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
     private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
@@ -46,7 +45,8 @@ public class Player extends Sprite implements IPlayer {
     // Player Texture & World
     private World world;
     private Body body;
-    private Texture playerTexture;
+    private TextureRegion player1stand;
+    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
