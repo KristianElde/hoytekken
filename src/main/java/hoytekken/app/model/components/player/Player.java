@@ -26,10 +26,11 @@ public class Player extends Sprite implements IPlayer {
     private static final int JUMPING_HEIGHT = 5;
     private static final float PLAYER_FRICTION_CONSTANT = 3;
 
-    private int punchDmg = 10;
-    private int kickDmg = 7;
-    private float punchRange = 1.8f;
-    private float kickRange = 2.2f;
+    // Constants for attack and defense
+    private static final int PUNCH_DAMAGE = 10;
+    private static final int KICK_DAMAGE = 7;
+    private static final float PUNCH_RANGE = 1.8f;
+    private static final float KICK_RANGE = 2.2f;
 
     // Player Texture & World
     private World world;
@@ -189,17 +190,12 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(Player that) {
-        int dmg = punchDmg;
-        float rangeFactor = punchRange;
-
-        return performAttack(that, dmg, rangeFactor);
+        return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(Player that) {
-        int dmg = kickDmg;
-        float rangeFactor = kickRange;
-        return performAttack(that, dmg, rangeFactor);
+        return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
     @Override
