@@ -69,6 +69,7 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
+        super(atlas.findRegion("Character_1_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
