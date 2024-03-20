@@ -82,7 +82,7 @@ public class Player extends Sprite implements IPlayer {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bdef);
-        startPosistion();
+        resetPosistion();
 
         // Set the user data to this object
         body.setUserData(this);
@@ -104,7 +104,7 @@ public class Player extends Sprite implements IPlayer {
     /**
      * Set the position of the player
      */
-    private void startPosistion() {
+    private void resetPosistion() {
         // Reset velocity
         body.setLinearVelocity(0, 0);
         // Set the position of the player
@@ -117,7 +117,7 @@ public class Player extends Sprite implements IPlayer {
     public void update() {
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
-            startPosistion();
+            resetPosistion();
         } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
@@ -149,7 +149,7 @@ public class Player extends Sprite implements IPlayer {
                 if (this.lives > 1) {
                     this.lives--;
                     this.health = maxHealth;
-                    startPosistion();
+                    resetPosistion();
                 } else {
                     this.isAlive = false;
                     this.health = 0;
