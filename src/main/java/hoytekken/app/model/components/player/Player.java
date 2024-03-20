@@ -33,6 +33,7 @@ public class Player extends Sprite implements IPlayer {
     private Body body;
     private TextureRegion player1stand;
 
+    // The texture atlas for the player 
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
 
     // The type of player (player one or player two)
