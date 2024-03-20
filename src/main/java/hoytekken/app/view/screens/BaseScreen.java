@@ -20,7 +20,13 @@ public abstract class BaseScreen implements Screen {
     protected FitViewport gamePort;
 
     /**
-     * Constructor for the base screen.
+     * Constructor for the base screen. Initializes the following:
+     * <ul>
+     *   <li>{@code this.game} Hoytekken</li>
+     *   <li>{@code this.model} ViewableModel</li>
+     *   <li>{@code this.gameCam} OrthographicCamera</li>
+     *   <li>{@code this.gamePort} FitViewport</li>
+     * </ul>
      * @param game the game object
      * @param model the viewable model
      * @param scaling whether the viewport should scale
@@ -34,7 +40,13 @@ public abstract class BaseScreen implements Screen {
     }
 
     /**
-     * Constructor for the base screen, ViewPort not Scaled.
+     * Constructor for the base screen. Initializes the following:
+     * <ul>
+     *   <li>{@code this.game} Hoytekken</li>
+     *   <li>{@code this.model} ViewableModel</li>
+     *   <li>{@code this.gameCam} OrthographicCamera</li>
+     *   <li>{@code this.gamePort} FitViewport, (ViewPort not scaled to {@code Hoytekken.PPM})</li>
+     * </ul>
      * @param game the game object
      * @param model the viewable model
      */
