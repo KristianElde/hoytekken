@@ -48,6 +48,9 @@ public class Player extends Sprite implements IPlayer {
     private Body body;
     private Texture playerTexture;
 
+    // Constants for health management
+    private static final int MAX_LIVES = 3;
+
     // Player State
     private PlayerType type;
     private boolean isAlive = true;
@@ -69,6 +72,7 @@ public class Player extends Sprite implements IPlayer {
         this.type = type;
         this.health = health;
         this.maxHealth = health;
+        this.lives = MAX_LIVES;
 
         this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
