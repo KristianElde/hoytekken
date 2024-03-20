@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.floatThat;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -30,6 +31,8 @@ public class Player extends Sprite implements IPlayer {
     private World world;
     private Body body;
     private Texture playerTexture;
+
+    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
 
     // The type of player (player one or player two)
     private PlayerType type;
