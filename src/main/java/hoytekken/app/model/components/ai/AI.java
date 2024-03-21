@@ -7,9 +7,11 @@ import hoytekken.app.model.components.player.PlayerType;
 
 public class AI extends Player {
 
-    public AI(World world, PlayerType type, int health) {
+    private Player target;
+
+    public AI(World world, PlayerType type, int health, Player target) {
         super(world, type, health);
-        // TODO Auto-generated constructor stub
+        this.target = target;
     }
 
 }
