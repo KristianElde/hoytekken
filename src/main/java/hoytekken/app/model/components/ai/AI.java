@@ -27,7 +27,13 @@ public class AI extends Player {
             punch(target);
         } else if (distToTarget < KICK_RANGE) {
             kick(target);
+        } else {
+            moveTowardsTarget();
         }
     }
 
+    private void moveTowardsTarget() {
+        float dirX = Math.signum(target.getBody().getPosition().x - getBody().getPosition().x);
+        move(dirX * 0.5f, 0);
+    }
 }
