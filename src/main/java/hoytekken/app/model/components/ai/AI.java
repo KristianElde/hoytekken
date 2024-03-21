@@ -32,7 +32,7 @@ public class AI extends Player {
     }
 
     private void moveTowardsTarget() {
-        float dirX = Math.signum(target.getBody().getPosition().x - getBody().getPosition().x);
+        float dirX = Float.compare(target.getBody().getPosition().x, getBody().getPosition().x);
         move(dirX * 0.5f, 0);
     }
 }
