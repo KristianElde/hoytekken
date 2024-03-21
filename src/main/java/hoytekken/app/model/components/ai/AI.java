@@ -22,10 +22,9 @@ public class AI extends Player {
     }
 
     private void makeDecision() {
-        float distToTarget = getBody().getPosition().dst(target.getBody().getPosition());
-        if (distToTarget < PUNCH_RANGE) {
+        if (isWithinRange(target, PUNCH_RANGE)) {
             punch(target);
-        } else if (distToTarget < KICK_RANGE) {
+        } else if (isWithinRange(target, KICK_RANGE)) {
             kick(target);
         } else {
             moveTowardsTarget();
