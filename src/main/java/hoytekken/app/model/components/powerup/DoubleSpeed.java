@@ -7,12 +7,8 @@ import hoytekken.app.model.components.player.Player;
 
 public class DoubleSpeed extends PowerUp {
 
-    private DoubleSpeed() {
+    DoubleSpeed() {
         super(new Texture(Gdx.files.internal("double_speed.png")));
-    }
-
-    static PowerUp createPowerUp() {
-        return new DoubleSpeed();
     }
 
     @Override
