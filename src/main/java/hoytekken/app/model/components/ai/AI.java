@@ -14,4 +14,14 @@ public class AI extends Player {
         this.target = target;
     }
 
+    @Override
+    public void update() {
+        super.update();
+        makeDecision();
+    }
+
+    private void makeDecision() {
+
+    }
+
 }
