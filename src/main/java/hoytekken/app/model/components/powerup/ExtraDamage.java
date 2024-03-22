@@ -7,12 +7,8 @@ import hoytekken.app.model.components.player.Player;
 
 public class ExtraDamage extends PowerUp {
 
-    private ExtraDamage() {
+    ExtraDamage() {
         super(new Texture(Gdx.files.internal("extra_damage.png")));
-    }
-
-    static PowerUp createPowerUp() {
-        return new ExtraDamage();
     }
 
     @Override

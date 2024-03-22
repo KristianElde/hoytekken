@@ -66,7 +66,7 @@ public class CombatTest {
     @Test
     void block() {
         // Activate block
-        playerTwo.activateBlock();
+        playerTwo.changeBlockingState();
         assertTrue(playerTwo.getIsBlocking(), "Player two should be blocking");
 
         // Test that the player doesnt take damage while blocking

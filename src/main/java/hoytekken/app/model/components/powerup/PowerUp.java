@@ -22,11 +22,11 @@ public abstract class PowerUp {
     static PowerUp newPowerUp(PowerUpType type) {
         PowerUp pUp = switch (type) {
             case EXTRA_DAMAGE ->
-                ExtraDamage.createPowerUp();
+                new ExtraDamage();
             case EXTRA_HEALTH ->
-                ExtraHealth.createPowerUp();
+                new ExtraHealth();
             case DOUBLE_SPEED ->
-                DoubleSpeed.createPowerUp();
+                new DoubleSpeed();
             default ->
                 throw new IllegalArgumentException("Undefined type for PowerUp");
         };

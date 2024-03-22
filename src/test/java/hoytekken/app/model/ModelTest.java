@@ -164,7 +164,7 @@ public class ModelTest {
     void blockingPreventsDamageTest() {
         movePlayersBeside();
 
-        player1.activateBlock();
+        player1.changeBlockingState();
         model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
         // Check that attack does not inflict damage when victim is blocking
         assertEquals(MAX_HP, player1.getHealth());
@@ -175,7 +175,7 @@ public class ModelTest {
         // Check that jump() returns true
         assertTrue(model.jump(PlayerType.PLAYER_ONE));
 
-        player1.activateBlock();
+        player1.changeBlockingState();
         // Check that jump() returns false when isBlocking is set to true
         assertFalse(model.jump(PlayerType.PLAYER_ONE));
     }
@@ -184,12 +184,12 @@ public class ModelTest {
     void blockingPreventsPunch() {
         movePlayersBeside();
 
-        player1.activateBlock();
+        player1.changeBlockingState();
         // Check that blocking prevents player from performing punch
         assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
         assertEquals(MAX_HP, player2.getHealth());
 
-        player1.deactivateBlock();
+        player1.changeBlockingState();
         // Check that deactivating block allows player to perform punch
         assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
         assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
@@ -199,12 +199,12 @@ public class ModelTest {
     void blockingPreventsKick() {
         movePlayersBeside();
 
-        player2.activateBlock();
+        player2.changeBlockingState();
         // Check that blocking prevents player from performing kick
         assertFalse(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
         assertEquals(MAX_HP, player1.getHealth());
 
-        player2.deactivateBlock();
+        player2.changeBlockingState();
         // Check that deactivating block allows player to perform kick
         assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
         assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
