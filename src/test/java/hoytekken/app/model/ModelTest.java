@@ -213,6 +213,8 @@ public class ModelTest {
     @Test
     void gameMapTest() {
         assertNotNull(model.getGameMaps());
+        model.setGameMap("map2");
+        assertEquals("secondKMVmap.tmx", model.getMap());
         model.setGameMap("map1");
         assertEquals("defaultMap.tmx", model.getMap());
     }
