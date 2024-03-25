@@ -37,13 +37,6 @@ public interface IPlayer extends ICombat, ViewablePlayer {
     void takeDamage(int damage);
 
     /**
-     * Retrieves the health of the player.
-     * 
-     * @return the health of the player
-     */
-    int getHealth();
-
-    /**
      * Checks if the player is alive.
      * 
      * @return true if the player is alive, false otherwise
@@ -53,24 +46,10 @@ public interface IPlayer extends ICombat, ViewablePlayer {
     boolean fallenOffTheMap();
 
     /**
-     * Draws the player on the screen.
-     * 
-     * @param batch the batch to draw the player on
-     */
-    void draw(Batch batch);
-
-    /**
      * Retrieves the jumping height of the player.
      * 
      * @return an int representing the deltaY of a jump
      */
     int getJumpingHeight();
-
-    /**
-     * Retrieves the number of lives the player has.
-     * 
-     * @return the number of lives the player has
-     */
-    int getLives();
 
 }
