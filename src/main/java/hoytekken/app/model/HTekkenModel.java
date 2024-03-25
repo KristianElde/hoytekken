@@ -43,8 +43,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private World gameWorld;
     private GameState gameState;
 
-    private Player playerOne;
-    private Player playerTwo;
+    private IPlayer playerOne;
+    private IPlayer playerTwo;
 
     private String map;
 
@@ -100,7 +100,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     @Override
-    public Player getPlayer(PlayerType player) {
+    public IPlayer getPlayer(PlayerType player) {
         return player == PlayerType.PLAYER_ONE ? playerOne : playerTwo;
     }
 
@@ -175,7 +175,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     private void directionToSpeed(PlayerType player, ForceDirection direction) {
-        Player p = getPlayer(player);
+        IPlayer p = getPlayer(player);
         if (direction == ForceDirection.LEFT) {
             p.move(-0.5f, 0);
         } else if (direction == ForceDirection.RIGHT) {
@@ -187,8 +187,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public boolean performAttackAction(PlayerType attacker, ActionType actionType) {
-        Player attackingPlayer = getPlayer(attacker);
-        Player victimPlayer = attacker == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
+        IPlayer attackingPlayer = getPlayer(attacker);
+        IPlayer victimPlayer = attacker == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
         switch (actionType) {
             case KICK:
