@@ -19,6 +19,13 @@ public interface ViewablePlayer {
     int getLives();
 
     /**
+     * Checks if the player is alive.
+     * 
+     * @return true if the player is alive, false otherwise
+     */
+    boolean isAlive();
+
+    /**
      * Draws the player on the screen.
      * 
      * @param batch the batch to draw the player on

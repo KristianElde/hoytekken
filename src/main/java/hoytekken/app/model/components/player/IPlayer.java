@@ -36,13 +36,6 @@ public interface IPlayer extends ICombat, ViewablePlayer {
      */
     void takeDamage(int damage);
 
-    /**
-     * Checks if the player is alive.
-     * 
-     * @return true if the player is alive, false otherwise
-     */
-    boolean isAlive();
-
     boolean fallenOffTheMap();
 
     /**
