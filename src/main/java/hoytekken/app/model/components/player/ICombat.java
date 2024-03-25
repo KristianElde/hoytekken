@@ -12,7 +12,7 @@ public interface ICombat {
      * @param that the player to punch
      * @return bool on if player was hit
      */
-    boolean punch(Player that);
+    boolean punch(IPlayer that);
 
     /**
      * A player will kick another player and
@@ -22,7 +22,7 @@ public interface ICombat {
      * @param that the player to kick
      * @return bool on if player was hit
      */
-    boolean kick(Player that);
+    boolean kick(IPlayer that);
 
     /**
      * Toggles the players isBlocking field variable.

@@ -171,7 +171,7 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
-    protected boolean isWithinRange(Player that, float rangeFactor) {
+    protected boolean isWithinRange(IPlayer that, float rangeFactor) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
@@ -188,7 +188,7 @@ public class Player extends Sprite implements IPlayer {
      * @param range  the range of the attack
      * @return
      */
-    private boolean performAttack(Player that, int damage, float range) {
+    private boolean performAttack(IPlayer that, int damage, float range) {
         if (!isWithinRange(that, range) || that.getIsBlocking() || this.getIsBlocking()) {
             return false;
         }
@@ -200,12 +200,12 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public boolean punch(Player that) {
+    public boolean punch(IPlayer that) {
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
-    public boolean kick(Player that) {
+    public boolean kick(IPlayer that) {
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
