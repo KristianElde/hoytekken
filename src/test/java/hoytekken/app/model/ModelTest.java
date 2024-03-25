@@ -23,13 +23,14 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
 public class ModelTest {
     private HTekkenModel model;
-    private Player player1;
-    private Player player2;
+    private IPlayer player1;
+    private IPlayer player2;
     private static final int MAX_HP = 99;
     private static final int PUNCH_DMG = 10;
     private static final int KICK_DMG = 7;
@@ -51,7 +52,7 @@ public class ModelTest {
 
     }
 
-    private boolean isWithinRange(Player p1, Player p2) {
+    private boolean isWithinRange(IPlayer p1, IPlayer p2) {
         float playerWidth = 45 / Hoytekken.PPM;
 
         Vector2 p1Pos = new Vector2(p1.getBody().getPosition().x, p1.getBody().getPosition().y);
