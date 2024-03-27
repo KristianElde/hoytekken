@@ -6,7 +6,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 /**
  * Interface defining common behavior for a player in the game.
  */
-public interface IPlayer extends ICombat {
+public interface IPlayer extends ICombat, ViewablePlayer {
 
     /**
      * Updates the player.
@@ -36,28 +36,7 @@ public interface IPlayer extends ICombat {
      */
     void takeDamage(int damage);
 
-    /**
-     * Retrieves the health of the player.
-     * 
-     * @return the health of the player
-     */
-    int getHealth();
-
-    /**
-     * Checks if the player is alive.
-     * 
-     * @return true if the player is alive, false otherwise
-     */
-    boolean isAlive();
-
     boolean fallenOffTheMap();
-
-    /**
-     * Draws the player on the screen.
-     * 
-     * @param batch the batch to draw the player on
-     */
-    void draw(Batch batch);
 
     /**
      * Retrieves the jumping height of the player.
@@ -65,12 +44,5 @@ public interface IPlayer extends ICombat {
      * @return an int representing the deltaY of a jump
      */
     int getJumpingHeight();
-
-    /**
-     * Retrieves the number of lives the player has.
-     * 
-     * @return the number of lives the player has
-     */
-    int getLives();
 
 }
