@@ -213,10 +213,13 @@ public class ModelTest {
     @Test
     void gameMapTest() {
         assertNotNull(model.getGameMaps());
+        assertNotNull(model.getMap());
         model.setGameMap("map2");
         assertEquals("secondKMVmap.tmx", model.getMap());
         model.setGameMap("map1");
         assertEquals("defaultMap.tmx", model.getMap());
+        model.setGameMap("map3");
+        assertEquals("thirdKMVmap.tmx", model.getMap());
     }
 
 }
