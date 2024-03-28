@@ -75,7 +75,6 @@ public class ModelTest {
         assertNotNull(model.getGameState());
         assertNotNull(model.getGameWorld());
         assertNotNull(model.getMap());
-        // assertNotNull(model.getTiledMap());
         assertNotNull(player1);
         assertNotNull(player1);
         assertNotEquals(player1, player2);
@@ -210,6 +209,18 @@ public class ModelTest {
         // Check that deactivating block allows player to perform kick
         assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
         assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
+    }
+
+    @Test
+    void gameMapTest() {
+        assertNotNull(model.getGameMaps());
+        assertNotNull(model.getMap());
+        model.setGameMap("map2");
+        assertEquals("secondKMVmap.tmx", model.getMap());
+        model.setGameMap("map1");
+        assertEquals("defaultMap.tmx", model.getMap());
+        model.setGameMap("map3");
+        assertEquals("thirdKMVmap.tmx", model.getMap());
     }
 
 }
