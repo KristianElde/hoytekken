@@ -75,7 +75,6 @@ public class ModelTest {
         assertNotNull(model.getGameState());
         assertNotNull(model.getGameWorld());
         assertNotNull(model.getMap());
-        // assertNotNull(model.getTiledMap());
         assertNotNull(player1);
         assertNotNull(player1);
         assertNotEquals(player1, player2);
