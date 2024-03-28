@@ -22,9 +22,9 @@ import hoytekken.app.model.components.GameState;
 
 public class GameScreenTest {
 
-    Hoytekken game;
-    HTekkenModel model;
-    GameScreen gameScreen;
+    private Hoytekken game;
+    private HTekkenModel model;
+    private GameScreen gameScreen;
 
     @BeforeAll
     static void setUpBeforeAll() {
