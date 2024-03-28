@@ -1,5 +1,6 @@
 package hoytekken.app.view.screens;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockingDetails;
@@ -17,12 +18,13 @@ import com.badlogic.gdx.graphics.GL20;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.HTekkenModel;
+import hoytekken.app.model.components.GameState;
 
 public class GameScreenTest {
 
     Hoytekken game;
     HTekkenModel model;
-    GameScreen screen;
+    GameScreen gameScreen;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -36,13 +38,22 @@ public class GameScreenTest {
     @BeforeEach
     void setUpBeforeEach() {
         game = new Hoytekken();
+        game.create();
         model = new HTekkenModel();
-        screen = new GameScreen(game, model);
+        game.setScreen(new GameScreen(game, model));
     }
 
     @Test
     void sanityTest() {
-        assertNotNull(screen.gameCam);
-        assertNotNull(screen.gamePort);
+        assertNotNull(game.getScreen());
+        assertNotNull(gameScreen.gameCam);
+        assertNotNull(gameScreen.gamePort);
+    }
+
+    @Test
+    void handleStateSwitchTest() {
+        assertEquals(GameState.ACTIVE_GAME, model.getGameState());
+        gameScreen.handleStateSwitch();
+        assertEquals(GameState.GAME_OVER, model.getGameState());
     }
 }
