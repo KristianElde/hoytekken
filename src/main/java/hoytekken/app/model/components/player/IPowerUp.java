@@ -21,4 +21,11 @@ public interface IPowerUp {
      */
     void increaseSpeed(int increaseAmount);
 
+    /**
+     * A player gets increased health.
+     * 
+     * @param increaseAmount the amount of health that is being increased
+     */
+    void increaseHealth(int increaseAmount);
+
 }
