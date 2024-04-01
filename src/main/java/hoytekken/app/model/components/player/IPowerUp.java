@@ -14,4 +14,11 @@ public interface IPowerUp {
      */
     void increaseDamage(int increaseAmount);
 
+    /**
+     * A player gets increased speed.
+     * 
+     * @param increaseAmount the amount of speed that is being increased
+     */
+    void increaseSpeed(int increaseAmount);
+
 }
