@@ -4,9 +4,14 @@ public interface IPowerUp {
     /**
      * A player gains an extra life.
      * 
-     * @param the player to receive an extra life.
-     * @return bool on if player received an extra life.
      */
-    void gainExtraLife(IPlayer that);
+    void gainExtraLife();
+
+    /**
+     * A player gets increased damage.
+     * 
+     * @param increaseAmount the amount of damage that is being increased
+     */
+    void increaseDamage(int increaseAmount);
 
 }
