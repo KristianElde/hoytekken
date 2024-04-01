@@ -249,4 +249,10 @@ public class Player extends Sprite implements IPlayer {
     public void increaseSpeed(int increaseAmount) {
         this.MAX_VELOCITY += increaseAmount;
     }
+
+    @Override
+    public void increaseHealth(int increaseAmount) {
+        this.maxHealth += increaseAmount;
+        this.health += increaseAmount;
+    }
 }
