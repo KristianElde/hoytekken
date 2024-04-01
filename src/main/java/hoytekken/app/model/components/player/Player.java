@@ -17,7 +17,7 @@ import hoytekken.app.Hoytekken;
  * The player class
  */
 public class Player extends Sprite implements IPlayer {
-    private static final float MAX_VELOCITY = 2;
+    private float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
     private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
@@ -35,8 +35,8 @@ public class Player extends Sprite implements IPlayer {
     };
 
     // Constants for attack and defense
-    private static final int PUNCH_DAMAGE = 10;
-    private static final int KICK_DAMAGE = 7;
+    private int PUNCH_DAMAGE = 10;
+    private int KICK_DAMAGE = 7;
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
 
@@ -232,5 +232,27 @@ public class Player extends Sprite implements IPlayer {
     @Override
     public int getLives() {
         return lives;
+    }
+
+    @Override
+    public void gainExtraLife() {
+        this.lives++;
+    }
+
+    @Override
+    public void increaseDamage(int increaseAmount) {
+        this.PUNCH_DAMAGE += increaseAmount;
+        this.KICK_DAMAGE += increaseAmount;
+    }
+
+    @Override
+    public void increaseSpeed(int increaseAmount) {
+        this.MAX_VELOCITY += increaseAmount;
+    }
+
+    @Override
+    public void increaseHealth(int increaseAmount) {
+        this.maxHealth += increaseAmount;
+        this.health += increaseAmount;
     }
 }
