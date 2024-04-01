@@ -35,8 +35,8 @@ public class Player extends Sprite implements IPlayer {
     };
 
     // Constants for attack and defense
-    private static final int PUNCH_DAMAGE = 10;
-    private static final int KICK_DAMAGE = 7;
+    private int PUNCH_DAMAGE = 10;
+    private int KICK_DAMAGE = 7;
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
 
@@ -235,7 +235,13 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void gainExtraLife(IPlayer that) {
+    public void gainExtraLife() {
         this.lives++;
+    }
+
+    @Override
+    public void increaseDamage(int increaseAmount) {
+        this.PUNCH_DAMAGE += increaseAmount;
+        this.KICK_DAMAGE += increaseAmount;
     }
 }
