@@ -17,7 +17,7 @@ import hoytekken.app.Hoytekken;
  * The player class
  */
 public class Player extends Sprite implements IPlayer {
-    private static final float MAX_VELOCITY = 2;
+    private float MAX_VELOCITY = 2;
     private static final float PLAYER_WIDTH = 45 / Hoytekken.PPM;
     private static final float PLAYER_HEIGHT = 60 / Hoytekken.PPM;
     private static final int JUMPING_HEIGHT = 5;
@@ -243,5 +243,10 @@ public class Player extends Sprite implements IPlayer {
     public void increaseDamage(int increaseAmount) {
         this.PUNCH_DAMAGE += increaseAmount;
         this.KICK_DAMAGE += increaseAmount;
+    }
+
+    @Override
+    public void increaseSpeed(int increaseAmount) {
+        this.MAX_VELOCITY += increaseAmount;
     }
 }
