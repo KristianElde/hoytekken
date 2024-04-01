@@ -233,4 +233,9 @@ public class Player extends Sprite implements IPlayer {
     public int getLives() {
         return lives;
     }
+
+    @Override
+    public void gainExtraLife(IPlayer that) {
+        this.lives++;
+    }
 }
