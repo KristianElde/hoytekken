@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.Player;
 
-public class ExtraHealth extends PowerUp {
+public class ExtraLife extends PowerUp {
 
-    ExtraHealth() {
+    ExtraLife() {
         super(new Texture(Gdx.files.internal("extra_health.png")));
     }
 
