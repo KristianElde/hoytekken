@@ -9,8 +9,12 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
@@ -275,6 +279,18 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         bdef.position.set(x, y);
         bdef.type = BodyDef.BodyType.StaticBody;
         Body body = gameWorld.createBody(bdef);
+
+        CircleShape shape = new CircleShape();
+        shape.setRadius(5 / Hoytekken.PPM);
+
+        FixtureDef fdef = new FixtureDef();
+        fdef.shape = shape;
+        fdef.isSensor = true;
+
+        body.createFixture(fdef);
+        shape.dispose();
+
+        body.setUserData(powerUp);
 
         
     }
