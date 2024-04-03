@@ -82,6 +82,19 @@ public class BaseScreenTest {
 
     @Test
     void testResizeScreen() {
+        // Assert objects are initialized
+        assertNotNull(menuScreen.game, "Game object should be initialized.");
+        assertNotNull(menuScreen.model, "Model object should be initialized.");
+        assertNotNull(menuScreen.gameCam, "Camera object should be initialized.");
+        assertNotNull(menuScreen.gamePort, "Viewport object should be initialized.");
+
+        // Assert correct types are used
+        assertTrue(menuScreen.gamePort instanceof FitViewport, "gamePort should be of type FitViewport.");
+        assertTrue(menuScreen.gameCam instanceof OrthographicCamera, "gameCam should be of type OrthographicCamera.");
+
+        // Assert that the camera is centered
+        assertEquals(Hoytekken.V_WIDTH / 2f, menuScreen.gameCam.position.x, "Camera X position should be centered.");
+        assertEquals(Hoytekken.V_HEIGHT / 2f, menuScreen.gameCam.position.y, "Camera Y position should be centered.");
 
     }
 
