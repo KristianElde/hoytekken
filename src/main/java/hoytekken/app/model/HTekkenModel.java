@@ -255,4 +255,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
     }
+
+    public void spawnPowerUpInMiddle() {
+        float width = tiledmap.getProperties().get("width", Integer.class);
+        float height = tiledmap.getProperties().get("height", Integer.class);
+    }
 }
