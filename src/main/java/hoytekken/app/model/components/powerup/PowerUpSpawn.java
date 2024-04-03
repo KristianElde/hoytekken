@@ -13,4 +13,11 @@ public class PowerUpSpawn {
         this.map = map;
         this.powerUpFactory = new RandomPowerUpFactory();
     }
+
+    public Vector2 getRandomPowerUpSpawn() {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
+        int width = layer.getWidth();
+        int height = layer.getHeight();
+
+    }
 }
