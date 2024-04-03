@@ -31,14 +31,16 @@ public class GameScreenTest {
         HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
         ApplicationListener listener = new ApplicationAdapter() {
         };
-        new HeadlessApplication(listener, config);
+        // Hoytekken game = new Hoytekken();
+        Hoytekken game = mock(Hoytekken.class);
+        new HeadlessApplication(game, config);
         Gdx.gl = mock(GL20.class);
     }
 
     @BeforeEach
     void setUpBeforeEach() {
-        game = new Hoytekken();
-        game.create();
+        // game = new Hoytekken();
+        // game.create();
         model = new HTekkenModel();
         game.setScreen(new GameScreen(game, model));
     }
