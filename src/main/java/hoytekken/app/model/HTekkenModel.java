@@ -7,6 +7,8 @@ import javax.swing.Box;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.controller.ActionType;
@@ -17,6 +19,8 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.powerup.PowerUp;
+import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
@@ -262,5 +266,16 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         float x = width / 2;
         float y = height / 2;
+
+        PowerUp powerUp = new RandomPowerUpFactory().getNext();
+
+        //add power up to the world at the center of the map. This involves creating a new body for the power up 
+
+        BodyDef bdef = new BodyDef();
+        bdef.position.set(x, y);
+        bdef.type = BodyDef.BodyType.StaticBody;
+        Body body = gameWorld.createBody(bdef);
+
+        
     }
 }
