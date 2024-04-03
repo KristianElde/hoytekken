@@ -15,34 +15,36 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.HTekkenModel;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.view.ViewableModel;
 
 public class GameScreenTest {
 
-    private Hoytekken game;
-    private HTekkenModel model;
-    private GameScreen gameScreen;
+    private static HeadlessApplication application;
+    private static Hoytekken gameMock;
+    private static ViewableModel modelMock;
+
+    private MenuScreen menuScreen;
 
     @BeforeAll
     static void setUpBeforeAll() {
         HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
-        ApplicationListener listener = new ApplicationAdapter() {
-        };
-        // Hoytekken game = new Hoytekken();
-        Hoytekken game = mock(Hoytekken.class);
-        new HeadlessApplication(game, config);
+        application = new HeadlessApplication(new Hoytekken(), config);
+
+        // Mock dependencies
         Gdx.gl = mock(GL20.class);
+        gameMock = mock(Hoytekken.class);
+        modelMock = mock(ViewableModel.class);
+        gameMock.batch = mock(SpriteBatch.class);
     }
 
     @BeforeEach
     void setUpBeforeEach() {
-        // game = new Hoytekken();
-        // game.create();
-        model = new HTekkenModel();
-        game.setScreen(new GameScreen(game, model));
+        menuScreen = new MenuScreen(gameMock, modelMock);
     }
 
     @Test
