@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockingDetails;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,12 @@ public class GameScreenTest {
     @BeforeEach
     void setUpBeforeEach() {
         menuScreen = new MenuScreen(gameMock, modelMock);
+    }
+
+    @AfterAll
+    static void cleanUp() {
+        application.exit();
+        application = null;
     }
 
     @Test
