@@ -1,6 +1,8 @@
 package hoytekken.app.view.screens;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -82,19 +84,33 @@ public class BaseScreenTest {
 
     @Test
     void testResizeScreen() {
-        // Assert objects are initialized
-        assertNotNull(menuScreen.game, "Game object should be initialized.");
-        assertNotNull(menuScreen.model, "Model object should be initialized.");
-        assertNotNull(menuScreen.gameCam, "Camera object should be initialized.");
-        assertNotNull(menuScreen.gamePort, "Viewport object should be initialized.");
+        // MenuScreen menuScreen = new MenuScreen(gameMock, modelMock);
 
-        // Assert correct types are used
-        assertTrue(menuScreen.gamePort instanceof FitViewport, "gamePort should be of type FitViewport.");
-        assertTrue(menuScreen.gameCam instanceof OrthographicCamera, "gameCam should be of type OrthographicCamera.");
+        // assert aspect ratio is maintained
+        float originalAspectRatio = menuScreen.gamePort.getWorldWidth() / menuScreen.gamePort.getWorldHeight();
+        menuScreen.resize(800, 600);
 
-        // Assert that the camera is centered
-        assertEquals(Hoytekken.V_WIDTH / 2f, menuScreen.gameCam.position.x, "Camera X position should be centered.");
-        assertEquals(Hoytekken.V_HEIGHT / 2f, menuScreen.gameCam.position.y, "Camera Y position should be centered.");
+        float newWidth = menuScreen.gamePort.getScreenWidth();
+        float newHeight = menuScreen.gamePort.getScreenHeight();
+        float newAspectRatio = newWidth / newHeight;
+
+        assertEquals(originalAspectRatio, newAspectRatio, 0.01, "Aspect ratio should be maintained after resize.");
+        assertEquals(800, newWidth, "Screen width should be 800.");
+        assertNotEquals(600, newHeight, "Height should not be 600.");
+        assertEquals(newWidth / newAspectRatio, newHeight, "Height should be adjusted to maintain aspect ratio.");
+
+        // assert screens are resized for different parameters
+        menuScreen.resize(1000, 800);
+        assertEquals(1000, menuScreen.gamePort.getScreenWidth(), "Screen width should be 1000.");
+        assertEquals(1000 / newAspectRatio, menuScreen.gamePort.getScreenHeight(), "Screen height should be 800.");
+
+        menuScreen.resize(1200, 900);
+        assertEquals(1200, menuScreen.gamePort.getScreenWidth(), "Screen width should be 1200.");
+        assertEquals(1200 / newAspectRatio, menuScreen.gamePort.getScreenHeight(), "Screen height should be 900.");
+
+        // assert does not throw exception
+        assertDoesNotThrow(() -> menuScreen.resize(0, 0), "Resize should not throw an exception.");
+        assertDoesNotThrow(() -> menuScreen.resize(100000, 100000), "Resize should not throw an exception.");
 
     }
 
