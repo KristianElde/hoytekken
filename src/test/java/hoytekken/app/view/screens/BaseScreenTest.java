@@ -2,6 +2,7 @@ package hoytekken.app.view.screens;
 
 import static org.mockito.Mockito.mock;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -35,6 +36,12 @@ public class BaseScreenTest {
     @BeforeEach
     public void setUp() {
         menuScreen = new MenuScreen(gameMock, modelMock);
+    }
+
+    @AfterAll
+    public static void cleanUp() {
+        application.exit();
+        application = null;
     }
 
 }
