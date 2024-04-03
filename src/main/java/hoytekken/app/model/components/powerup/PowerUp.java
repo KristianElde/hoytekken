@@ -23,10 +23,12 @@ public abstract class PowerUp {
         PowerUp pUp = switch (type) {
             case EXTRA_DAMAGE ->
                 new ExtraDamage();
-            case EXTRA_HEALTH ->
-                new ExtraHealth();
+            case EXTRA_LIFE ->
+                new ExtraLife();
             case DOUBLE_SPEED ->
                 new DoubleSpeed();
+            case EXTRA_HEALTH ->
+                new ExtraHealth();
             default ->
                 throw new IllegalArgumentException("Undefined type for PowerUp");
         };
