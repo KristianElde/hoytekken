@@ -6,7 +6,7 @@
 - Jonas Bergaas
 - Sune Lianes
 - Mathias Hop Ness
-- Lauritz Thoresen Angeltvedt
+- Lauritz Thoresen Angeltveit
 - Vetle Larsen
 
 ## Spillbeskrivelse
