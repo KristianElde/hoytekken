@@ -29,7 +29,7 @@ public class BaseScreenTest {
     private MenuScreen menuScreen;
 
     @BeforeAll
-    public static void setUpBeforeAll() {
+    static void setUpBeforeAll() {
         HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
         application = new HeadlessApplication(new Hoytekken(), config);
 
@@ -41,18 +41,18 @@ public class BaseScreenTest {
     }
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         menuScreen = new MenuScreen(gameMock, modelMock);
     }
 
     @AfterAll
-    public static void cleanUp() {
+    static void cleanUp() {
         application.exit();
         application = null;
     }
 
     @Test
-    public void sanityTest() {
+    void sanityTest() {
         assertEquals(1, 1, "Sanity check to verify that tests are working.");
         assertNotNull(application, "Headless application should be initialized.");
         assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
@@ -62,7 +62,7 @@ public class BaseScreenTest {
     }
 
     @Test
-    public void testInitializeScreens() {
+    void testInitializeScreens() {
 
         // Assert objects are initialized
         assertNotNull(menuScreen.game, "Game object should be initialized.");
@@ -81,12 +81,12 @@ public class BaseScreenTest {
     }
 
     @Test
-    public void testResizeScreen() {
+    void testResizeScreen() {
 
     }
 
     @Test
-    public void testSuperImplementations() {
+    void testSuperImplementations() {
 
     }
 
