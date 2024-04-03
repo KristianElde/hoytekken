@@ -116,6 +116,14 @@ public class BaseScreenTest {
 
     @Test
     void testSuperImplementations() {
+        // MenuScreen menuScreen = new MenuScreen(gameMock, modelMock);
+
+        // assert super implementations does not throw exceptions
+        assertDoesNotThrow(() -> menuScreen.show(), "Show should not throw an exception.");
+        assertDoesNotThrow(() -> menuScreen.hide(), "Hide should not throw an exception.");
+        assertDoesNotThrow(() -> menuScreen.pause(), "Pause should not throw an exception.");
+        assertDoesNotThrow(() -> menuScreen.resume(), "Resume should not throw an exception.");
+        assertDoesNotThrow(() -> menuScreen.dispose(), "Dispose should not throw an exception.");
 
     }
 
