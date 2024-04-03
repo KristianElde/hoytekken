@@ -2,6 +2,7 @@ package hoytekken.app.view.screens;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.AfterAll;
@@ -13,7 +14,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.view.ViewableModel;
@@ -56,6 +59,35 @@ public class BaseScreenTest {
         assertNotNull(gameMock, "Mock game object should be initialized.");
         assertNotNull(modelMock, "Mock model object should be initialized.");
         assertNotNull(gameMock.batch, "Mock SpriteBatch object should be initialized.");
+    }
+
+    @Test
+    public void testInitializeScreens() {
+
+        // Assert objects are initialized
+        assertNotNull(menuScreen.game, "Game object should be initialized.");
+        assertNotNull(menuScreen.model, "Model object should be initialized.");
+        assertNotNull(menuScreen.gameCam, "Camera object should be initialized.");
+        assertNotNull(menuScreen.gamePort, "Viewport object should be initialized.");
+
+        // Assert correct types are used
+        assertTrue(menuScreen.gamePort instanceof FitViewport, "gamePort should be of type FitViewport.");
+        assertTrue(menuScreen.gameCam instanceof OrthographicCamera, "gameCam should be of type OrthographicCamera.");
+
+        // Assert that the camera is centered
+        assertEquals(Hoytekken.V_WIDTH / 2f, menuScreen.gameCam.position.x, "Camera X position should be centered.");
+        assertEquals(Hoytekken.V_HEIGHT / 2f, menuScreen.gameCam.position.y, "Camera Y position should be centered.");
+
+    }
+
+    @Test
+    public void testResizeScreen() {
+
+    }
+
+    @Test
+    public void testSuperImplementations() {
+
     }
 
 }
