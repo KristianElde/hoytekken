@@ -259,5 +259,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void spawnPowerUpInMiddle() {
         float width = tiledmap.getProperties().get("width", Integer.class);
         float height = tiledmap.getProperties().get("height", Integer.class);
+
+        float x = width / 2;
+        float y = height / 2;
     }
 }
