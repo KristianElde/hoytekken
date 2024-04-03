@@ -1,10 +1,13 @@
 package hoytekken.app.view.screens;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
@@ -42,6 +45,16 @@ public class BaseScreenTest {
     public static void cleanUp() {
         application.exit();
         application = null;
+    }
+
+    @Test
+    public void sanityTest() {
+        assertEquals(1, 1, "Sanity check to verify that tests are working.");
+        assertNotNull(application, "Headless application should be initialized.");
+        assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
+        assertNotNull(gameMock, "Mock game object should be initialized.");
+        assertNotNull(modelMock, "Mock model object should be initialized.");
+        assertNotNull(gameMock.batch, "Mock SpriteBatch object should be initialized.");
     }
 
 }
