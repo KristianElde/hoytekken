@@ -33,12 +33,21 @@ public class PowerUpSpawn {
             isTileOccupied = checkIfTileIsOccupied(x, y);
             
         } while (isTileOccupied);
+        
+        Vector2 spawnPosition = new Vector2(x, y);
+        return spawnPosition;
     }
 
     private boolean checkIfTileIsOccupied(int x, int y) {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
         return layer.getCell(x, y) != null;
+        //Possible fail
     }
 
-    
+    public PowerUp spawnPowerUp() {
+        Vector2 spawnPosition = getRandomPowerUpSpawn();
+        return powerUpFactory.createPowerUp(spawnPosition);
+    }
+
+
 }
