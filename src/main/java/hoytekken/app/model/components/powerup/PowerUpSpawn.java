@@ -9,5 +9,8 @@ public class PowerUpSpawn {
     private TiledMap map;
     private RandomPowerUpFactory powerUpFactory;
 
-    
+    public PowerUpSpawn(TiledMap map) {
+        this.map = map;
+        this.powerUpFactory = new RandomPowerUpFactory();
+    }
 }
