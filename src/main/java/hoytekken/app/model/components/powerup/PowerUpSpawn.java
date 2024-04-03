@@ -6,17 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 
 public class PowerUpSpawn {
-    // private TiledMap map;
-    // private RandomPowerUpFactory powerUpFactory;
+    private TiledMap map;
+    private RandomPowerUpFactory powerUpFactory;
 
-    // public PowerUpSpawn(TiledMap map) {
-    //     this.map = map;
-    //     this.powerUpFactory = new RandomPowerUpFactory();
-    // }
-
-    // public Vector2 getRandomPowerUpSpawn() {
-    //     TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
-    //     int width = layer.getWidth();
-    //     int height = layer.getHeight();
-    // }
+    
 }
