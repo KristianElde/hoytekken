@@ -263,35 +263,4 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
     }
-
-    public void spawnPowerUpInMiddle() {
-        float width = tiledmap.getProperties().get("width", Integer.class);
-        float height = tiledmap.getProperties().get("height", Integer.class);
-
-        float x = width / 2;
-        float y = height / 2;
-
-        PowerUp powerUp = new RandomPowerUpFactory().getNext();
-
-        //add power up to the world at the center of the map. This involves creating a new body for the power up 
-
-        BodyDef bdef = new BodyDef();
-        bdef.position.set(x, y);
-        bdef.type = BodyDef.BodyType.StaticBody;
-        Body body = gameWorld.createBody(bdef);
-
-        CircleShape shape = new CircleShape();
-        shape.setRadius(5 / Hoytekken.PPM);
-
-        FixtureDef fdef = new FixtureDef();
-        fdef.shape = shape;
-        fdef.isSensor = true;
-
-        body.createFixture(fdef);
-        shape.dispose();
-
-        body.setUserData(powerUp);
-
-        
-    }
 }
