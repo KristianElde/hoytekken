@@ -7,6 +7,7 @@ import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.powerup.PowerUp;
 
 /**
  * Interface for the viewable model
@@ -55,4 +56,5 @@ public interface ViewableModel {
      * @return a GameState-object that represents the current gamestate
      */
     public GameState getGameState();
+
 }
