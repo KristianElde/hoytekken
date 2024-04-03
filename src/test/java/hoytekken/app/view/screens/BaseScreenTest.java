@@ -43,7 +43,7 @@ public class BaseScreenTest {
     }
 
     @BeforeEach
-    void setUp() {
+    void setUpBeforeEach() {
         menuScreen = new MenuScreen(gameMock, modelMock);
     }
 
