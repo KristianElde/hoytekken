@@ -24,12 +24,21 @@ public class PowerUpSpawn {
 
         int x, y;
         boolean isTileOccupied = true;
+
         do {
             x = MathUtils.random(width - 1);
             y = MathUtils.random(height - 1);
 
             //isTileOccupied = layer.getCell(x, y) != null;
-
-        }
+            isTileOccupied = checkIfTileIsOccupied(x, y);
+            
+        } while (isTileOccupied);
     }
+
+    private boolean checkIfTileIsOccupied(int x, int y) {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
+        return layer.getCell(x, y) != null;
+    }
+
+    
 }
