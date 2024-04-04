@@ -13,10 +13,10 @@ import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.ai.AIPlayer;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
-import hoytekken.app.model.components.player.ViewablePlayer;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
@@ -65,7 +65,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.gameState = GameState.MAIN_MENU;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
-        this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+        this.playerTwo = new AIPlayer(gameWorld, PlayerType.PLAYER_TWO, 99, playerOne);
 
         mapLoader = new TmxMapLoader();
         // tiledmap = mapLoader.load(map);
