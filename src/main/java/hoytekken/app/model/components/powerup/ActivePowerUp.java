@@ -22,11 +22,16 @@ public class ActivePowerUp extends Sprite {
     private PowerUp powerUp;
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
+
         this.factory = factory;
         this.world = world;
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
+        
+        setRegion(texture);
+        defineBody();
+        setBounds(0, 0, POWERUP_SIZE, POWERUP_SIZE);
         
     }
 
