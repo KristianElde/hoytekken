@@ -44,10 +44,10 @@ public class PowerUpSpawn {
         //Possible fail
     }
 
-    public PowerUp spawnPowerUp() {
-        Vector2 spawnPosition = getRandomPowerUpSpawn();
-        return powerUpFactory.createPowerUp(spawnPosition);
-    }
+    // public PowerUp spawnPowerUp() {
+    //     Vector2 spawnPosition = getRandomPowerUpSpawn();
+    //     return powerUpFactory.createPowerUp(spawnPosition);
+    // }
 
 
 }
