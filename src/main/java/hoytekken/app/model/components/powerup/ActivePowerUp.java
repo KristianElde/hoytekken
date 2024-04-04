@@ -38,9 +38,10 @@ public class ActivePowerUp extends Sprite {
         positionTexture();
     }
 
-    // private void positionBody() {
-    //     body.setT
-    // }
+    private void positionBody() {
+        body.setTransform((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM,
+        (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM, 0);
+    }
 
     private void defineBody() {
         BodyDef bdef = new BodyDef();
