@@ -4,7 +4,7 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
-import hoytekken.app.model.components.player.PlayerBody;
+import hoytekken.app.model.components.player.PlayerFixtures;
 import hoytekken.app.model.components.player.PlayerType;
 
 /**
@@ -32,19 +32,28 @@ public class CollisionDetector extends AbstractCollision {
     }
 
     private void handlePlayerCollisions(Object userDataA, Object userDataB) {
-        if (userDataA instanceof PlayerType && userDataB instanceof PlayerBody) {
-            handlePlayerCollision((PlayerType) userDataA, (PlayerBody) userDataB);
-        } else if (userDataB instanceof PlayerType && userDataA instanceof PlayerBody) {
-            handlePlayerCollision((PlayerType) userDataB, (PlayerBody) userDataA);
+        PlayerType playerType = userDataA.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE
+                : PlayerType.PLAYER_TWO;
+        PlayerFixtures playerBody = userDataB.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerFixtures.PLAYER_ONE_FEET
+                : PlayerFixtures.PLAYER_TWO_FEET;
+
+        if (userDataA.equals(PlayerFixtures.PLAYER_ONE_FEET) || userDataA.equals(PlayerFixtures.PLAYER_TWO_FEET)) {
+            handlePlayerCollision(playerType, playerBody);
+        }
+
+        if (userDataB.equals(PlayerFixtures.PLAYER_ONE_FEET) || userDataB.equals(PlayerFixtures.PLAYER_TWO_FEET)) {
+            handlePlayerCollision(playerType, playerBody);
         }
     }
 
-    private void handlePlayerCollision(PlayerType playerType, PlayerBody playerBody) {
+    private void handlePlayerCollision(PlayerType playerType, PlayerFixtures playerBody) {
         switch (playerBody) {
-            case FEET:
+            case PLAYER_ONE_FEET:
+            case PLAYER_TWO_FEET:
                 feetTouched(playerType);
                 break;
-            case BODY:
+            case PLAYER_ONE_BODY:
+            case PLAYER_TWO_BODY:
                 break;
             default:
                 break;
