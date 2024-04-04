@@ -275,7 +275,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public void generatePowerUp() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generatePowerUp'");
+        if (activePowerUp != null) {
+            gameWorld.destroyBody(activePowerUp.getBody());
+        }
+        activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
     }
 }

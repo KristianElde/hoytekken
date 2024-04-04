@@ -39,6 +39,14 @@ public class CollisionDetector implements ContactListener {
         if (userDataA.equals(playerTwo + "feet")
                 || userDataB.equals(playerTwo + "feet"))
             model.resetDoubleJump(playerTwo);
+        
+        //if a player collides with a powerup, a new powerup is generated
+        if (userDataA.equals(playerOne + "player") && userDataB.equals("powerup")) {
+            model.generatePowerUp();
+        }
+        if (userDataA.equals(playerTwo + "player") && userDataB.equals("powerup")) {
+            model.generatePowerUp();
+        }
     }
 
     @Override
