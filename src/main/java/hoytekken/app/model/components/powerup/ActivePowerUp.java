@@ -38,6 +38,10 @@ public class ActivePowerUp extends Sprite {
         positionTexture();
     }
 
+    // private void positionBody() {
+    //     body.setT
+    // }
+
     private void defineBody() {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.StaticBody;
@@ -54,6 +58,8 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    
+    public PowerUp getPowerUp() {
+        return factory.getNext();
+    }
 
 }
