@@ -20,10 +20,15 @@ public class CollisionDetector extends AbstractCollision {
         super(model);
     }
 
+    /**
+     * Handles the beginning of contact between two fixtures.
+     * 
+     * @param contact the contact information
+     */
     @Override
     public void beginContact(Contact contact) {
-        Object userDataA = contact.getFixtureA().getUserData();
-        Object userDataB = contact.getFixtureB().getUserData();
+        PlayerFixtures userDataA = (PlayerFixtures) contact.getFixtureA().getUserData();
+        PlayerFixtures userDataB = (PlayerFixtures) contact.getFixtureB().getUserData();
 
         if (userDataA != null && userDataB != null) {
             handlePlayerCollisions(userDataA, userDataB);
@@ -46,6 +51,12 @@ public class CollisionDetector extends AbstractCollision {
         }
     }
 
+    /**
+     * Handles collision events involving player bodies.
+     * 
+     * @param playerType the type of player
+     * @param playerBody the body part of the player involved in collision
+     */
     private void handlePlayerCollision(PlayerType playerType, PlayerFixtures playerBody) {
         switch (playerBody) {
             case PLAYER_ONE_FEET:
