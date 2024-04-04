@@ -272,4 +272,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public ActivePowerUp getActivePowerUp() {
         return activePowerUp;
     }
+
+    @Override
+    public void generatePowerUp() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'generatePowerUp'");
+    }
 }

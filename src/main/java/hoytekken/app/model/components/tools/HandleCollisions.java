@@ -10,4 +10,10 @@ public interface HandleCollisions {
      * @return true if the collision was handled, false otherwise
      */
     public boolean resetDoubleJump(PlayerType player);
+
+    /**
+     * Method to generate a new powerup
+     */
+    public void generatePowerUp();
+
 }
