@@ -1,11 +1,13 @@
 package hoytekken.app.model.components.ai;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 import java.util.Random;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -42,5 +44,14 @@ public class AIPlayerTest {
         world = new World(new Vector2(0, 0), true); // no gravity right now
         opposition = new Player(world, PlayerType.PLAYER_ONE, 99);
         AIPlayer = new AIPlayer(world, PlayerType.PLAYER_TWO, 99, opposition);
+    }
+
+    @Test
+    void sanityTest() {
+        assertNotNull(world);
+        assertNotNull(opposition);
+        assertNotNull(AIPlayer);
+        assertNotNull(rand);
+
     }
 }
