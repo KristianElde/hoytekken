@@ -36,6 +36,32 @@ public class CollisionDetector extends AbstractCollision {
         }
     }
 
+    /**
+     * Determines the type of player based on the user data.
+     * 
+     * @param userData the user data of the fixture
+     * @return the type of player
+     */
+    private PlayerType getPlayerType(Object userData) {
+        return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
+    }
+
+    /**
+     * Determines the player fixture based on the user data.
+     * 
+     * @param userData
+     */
+    private PlayerFixtures getPlayerFixture(Object userData) {
+        return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerFixtures.PLAYER_ONE_FEET
+                : PlayerFixtures.PLAYER_TWO_FEET;
+    }
+
+    /**
+     * Handles collisions involving player bodies.
+     * 
+     * @param userDataA the user data of fixture A
+     * @param userDataB the user data of fixture B
+     */
     private void handlePlayerCollisions(Object userDataA, Object userDataB) {
         PlayerType playerType = userDataA.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE
                 : PlayerType.PLAYER_TWO;
