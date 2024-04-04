@@ -23,12 +23,14 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
 import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
 import hoytekken.app.view.ViewableModel;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * The model for the game
@@ -61,6 +63,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
+
+    private ActivePowerUp activePowerUp;
 
     /**
      * Constructor for the model
