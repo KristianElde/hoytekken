@@ -135,6 +135,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
+        if (deltaX < 0) {
+            flipLeft();
+        } else if (deltaX > 0) {
+            flipRight();
+        }
         if (deltaY != 0) {
             body.setLinearVelocity(body.getLinearVelocity().x, 0);
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
@@ -254,5 +259,15 @@ public class Player extends Sprite implements IPlayer {
     public void increaseHealth(int increaseAmount) {
         this.maxHealth += increaseAmount;
         this.health += increaseAmount;
+    }
+
+    @Override
+    public void flipLeft() {
+        this.setFlip(true, false);
+    }
+
+    @Override
+    public void flipRight() {
+        this.setFlip(false, false);
     }
 }
