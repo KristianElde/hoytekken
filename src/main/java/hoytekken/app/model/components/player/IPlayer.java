@@ -45,4 +45,8 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      */
     int getJumpingHeight();
 
+    void flipLeft();
+
+    void flipRight();
+
 }
