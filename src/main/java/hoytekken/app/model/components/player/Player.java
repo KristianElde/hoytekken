@@ -255,4 +255,14 @@ public class Player extends Sprite implements IPlayer {
         this.maxHealth += increaseAmount;
         this.health += increaseAmount;
     }
+
+    @Override
+    public void flipLeft() {
+        this.setFlip(true, false);
+    }
+
+    @Override
+    public void flipRight() {
+        this.setFlip(false, false);
+    }
 }
