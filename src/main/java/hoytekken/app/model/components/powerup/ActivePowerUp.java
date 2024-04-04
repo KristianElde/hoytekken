@@ -67,4 +67,7 @@ public class ActivePowerUp extends Sprite {
         return factory.getNext();
     }
 
+    public Body getBody() {
+        return body;
+    }
 }
