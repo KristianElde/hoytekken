@@ -98,6 +98,11 @@ public class CollisionDetector extends AbstractCollision {
         }
     }
 
+    /**
+     * Resets double jump if player's feet touch something.
+     * 
+     * @param playerType the type of player
+     */
     private void feetTouched(PlayerType playerType) {
         model.resetDoubleJump(playerType);
     }
