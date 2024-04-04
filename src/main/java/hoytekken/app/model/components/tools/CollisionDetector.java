@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import hoytekken.app.model.components.player.PlayerBody;
 import hoytekken.app.model.components.player.PlayerType;
 
 /**
@@ -30,13 +31,15 @@ public class CollisionDetector extends AbstractCollision {
         Object userDataB = contact.getFixtureB().getUserData();
 
         // if a players feet collide with another object, reset their double jump
-        if (userDataA.equals(playerOne + "feet")
-                || userDataB.equals(playerOne + "feet"))
-            model.resetDoubleJump(playerOne);
+        if (userDataA.equals(playerOne.toString() + PlayerBody.FEET.toString())
+                || userDataB.equals(playerOne.toString() + PlayerBody.FEET.toString()))
+            ;
+        model.resetDoubleJump(playerOne);
 
-        if (userDataA.equals(playerTwo + "feet")
-                || userDataB.equals(playerTwo + "feet"))
-            model.resetDoubleJump(playerTwo);
+        if (userDataA.equals(playerTwo.toString() + PlayerBody.FEET.toString())
+                || userDataB.equals(playerTwo.toString() + PlayerBody.FEET.toString()))
+            ;
+        model.resetDoubleJump(playerTwo);
     }
 
     @Override
