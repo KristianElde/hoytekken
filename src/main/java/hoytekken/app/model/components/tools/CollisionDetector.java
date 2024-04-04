@@ -26,7 +26,6 @@ public class CollisionDetector extends AbstractCollision {
 
     @Override
     public void beginContact(Contact contact) {
-        // user data for the two fixtures that collided
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
 
@@ -44,12 +43,24 @@ public class CollisionDetector extends AbstractCollision {
         }
     }
 
+    private void handlePlayerCollision(PlayerType playerType, PlayerBody playerBody) {
+        switch (playerBody) {
+            case FEET:
+                feetTouched(playerType);
+                break;
+            case BODY:
+                break;
+            default:
+                break;
+        }
+    }
 
+    private void feetTouched(PlayerType playerType) {
+        model.resetDoubleJump(playerType);
+    }
 
-        if (userDataA.equals(playerTwo.toString() + PlayerBody.FEET.toString())
-                || userDataB.equals(playerTwo.toString() + PlayerBody.FEET.toString()))
-            ;
-        model.resetDoubleJump(playerTwo);
+    private void handlePowerUpCollision(Object userDataA, Object userDataB) {
+        // Implement power-up collision handling if needed
     }
 
     @Override
