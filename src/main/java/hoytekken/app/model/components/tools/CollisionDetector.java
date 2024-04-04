@@ -27,8 +27,8 @@ public class CollisionDetector extends AbstractCollision {
      */
     @Override
     public void beginContact(Contact contact) {
-        PlayerFixtures userDataA = (PlayerFixtures) contact.getFixtureA().getUserData();
-        PlayerFixtures userDataB = (PlayerFixtures) contact.getFixtureB().getUserData();
+        Object userDataA = contact.getFixtureA().getUserData();
+        Object userDataB = contact.getFixtureB().getUserData();
 
         if (userDataA != null && userDataB != null) {
             handlePlayerCollisions(userDataA, userDataB);
