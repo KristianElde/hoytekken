@@ -2,7 +2,6 @@ package hoytekken.app.model.components.tools;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import hoytekken.app.model.components.player.PlayerBody;
@@ -12,9 +11,6 @@ import hoytekken.app.model.components.player.PlayerType;
  * Class to detect collisions between objects
  */
 public class CollisionDetector extends AbstractCollision {
-    private final PlayerType playerOne = PlayerType.PLAYER_ONE;
-    private final PlayerType playerTwo = PlayerType.PLAYER_TWO;
-
     /**
      * Constructor for the collision detector
      * 
