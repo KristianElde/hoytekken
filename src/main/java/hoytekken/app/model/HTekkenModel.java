@@ -66,6 +66,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
         this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+        playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
         // tiledmap = mapLoader.load(map);
