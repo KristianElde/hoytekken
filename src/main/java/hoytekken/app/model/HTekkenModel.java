@@ -85,7 +85,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
-
+        this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
     }
 
     /**
@@ -266,5 +266,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         } else {
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
+    }
+
+    @Override
+    public ActivePowerUp getActivePowerUp() {
+        return activePowerUp;
     }
 }
