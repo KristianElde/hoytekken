@@ -10,9 +10,7 @@ import hoytekken.app.model.components.player.PlayerType;
 /**
  * Class to detect collisions between objects
  */
-public class CollisionDetector implements ContactListener {
-    private HandleCollisions model;
-
+public class CollisionDetector extends AbstractCollision {
     private final PlayerType playerOne = PlayerType.PLAYER_ONE;
     private final PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
@@ -22,7 +20,7 @@ public class CollisionDetector implements ContactListener {
      * @param model the model to handle the collisions
      */
     public CollisionDetector(HandleCollisions model) {
-        this.model = model;
+        super(model);
     }
 
     @Override
