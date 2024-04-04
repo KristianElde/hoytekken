@@ -27,3 +27,19 @@ https://trello.com/b/4yo34C69/karan-med-varan
 Map:
 https://www.spriters-resource.com/pc_computer/platagosuperplatformgamemaker/sheet/103669/
 Credit: Patashnik (Submitter)
+
+Heart Icon:
+https://pngtree.com/freepng/red-heart-icon-isolated_5045156.html?sol=downref&id=bef
+Credit: heart icons PNG Designed By Rudyagan
+
+Power Icon:
+https://www.flaticon.com/free-icons/fist 
+Credit: Fist icons created by Freepik (Flaticon)
+
+Life Icon: 
+https://www.hiclipart.com/free-transparent-background-png-clipart-pjwuw
+Credit: Not required
+
+Speed Icon:
+https://pngtree.com/freepng/thunder-lightning-bolt_6260014.html?sol=downref&id=bef
+Credit: electric PNG Designed By Fortynxne 
