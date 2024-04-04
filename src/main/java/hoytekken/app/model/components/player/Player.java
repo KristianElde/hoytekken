@@ -93,14 +93,14 @@ public class Player extends Sprite implements IPlayer {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2);
         fdef.shape = shape;
-        body.createFixture(fdef).setUserData(this.type + "body");
+        body.createFixture(fdef).setUserData(this.type.toString() + PlayerBody.BODY.toString());
 
         // Foot sensor
         EdgeShape feet = new EdgeShape();
         feet.set(feetVerts[0], feetVerts[1]);
         fdef.shape = feet;
         fdef.isSensor = true;
-        body.createFixture(fdef).setUserData(this.type + "feet");
+        body.createFixture(fdef).setUserData(this.type.toString() + PlayerBody.FEET.toString());
     }
 
     /**
