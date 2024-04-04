@@ -43,6 +43,10 @@ public class ActivePowerUp extends Sprite {
         (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM, 0);
     }
 
+    private void positionTexture() {
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+    }
+
     private void defineBody() {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.StaticBody;
