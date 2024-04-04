@@ -75,6 +75,12 @@ public class CollisionDetector extends AbstractCollision {
         model.resetDoubleJump(playerType);
     }
 
+    /**
+     * Handles collisions involving power-ups.
+     * 
+     * @param userDataA the user data of fixture A
+     * @param userDataB the user data of fixture B
+     */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
         // Implement power-up collision handling if needed
     }
