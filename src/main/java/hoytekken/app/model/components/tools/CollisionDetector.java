@@ -63,17 +63,18 @@ public class CollisionDetector extends AbstractCollision {
      * @param userDataB the user data of fixture B
      */
     private void handlePlayerCollisions(Object userDataA, Object userDataB) {
-        PlayerType playerType = userDataA.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE
-                : PlayerType.PLAYER_TWO;
-        PlayerFixtures playerBody = userDataB.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerFixtures.PLAYER_ONE_FEET
-                : PlayerFixtures.PLAYER_TWO_FEET;
+        PlayerType playerTypeA = this.getPlayerType(userDataA);
+        PlayerFixtures playerFixtureA = this.getPlayerFixture(userDataA);
 
-        if (userDataA.equals(PlayerFixtures.PLAYER_ONE_FEET) || userDataA.equals(PlayerFixtures.PLAYER_TWO_FEET)) {
-            handlePlayerCollision(playerType, playerBody);
+        PlayerType playerTypeB = this.getPlayerType(userDataB);
+        PlayerFixtures playerFixtureB = this.getPlayerFixture(userDataB);
+
+        if (userDataA.equals(playerFixtureA) || userDataB.equals(playerFixtureA)) {
+            handlePlayerCollision(playerTypeA, playerFixtureA);
         }
 
-        if (userDataB.equals(PlayerFixtures.PLAYER_ONE_FEET) || userDataB.equals(PlayerFixtures.PLAYER_TWO_FEET)) {
-            handlePlayerCollision(playerType, playerBody);
+        if (userDataA.equals(playerFixtureB) || userDataB.equals(playerFixtureB)) {
+            handlePlayerCollision(playerTypeB, playerFixtureB);
         }
     }
 
