@@ -30,11 +30,21 @@ public class CollisionDetector extends AbstractCollision {
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
 
-        // if a players feet collide with another object, reset their double jump
-        if (userDataA.equals(playerOne.toString() + PlayerBody.FEET.toString())
-                || userDataB.equals(playerOne.toString() + PlayerBody.FEET.toString()))
-            ;
-        model.resetDoubleJump(playerOne);
+        if (userDataA != null && userDataB != null) {
+            handlePlayerCollisions(userDataA, userDataB);
+            handlePowerUpCollision(userDataA, userDataB);
+        }
+    }
+
+    private void handlePlayerCollisions(Object userDataA, Object userDataB) {
+        if (userDataA instanceof PlayerType && userDataB instanceof PlayerBody) {
+            handlePlayerCollision((PlayerType) userDataA, (PlayerBody) userDataB);
+        } else if (userDataB instanceof PlayerType && userDataA instanceof PlayerBody) {
+            handlePlayerCollision((PlayerType) userDataB, (PlayerBody) userDataA);
+        }
+    }
+
+
 
         if (userDataA.equals(playerTwo.toString() + PlayerBody.FEET.toString())
                 || userDataB.equals(playerTwo.toString() + PlayerBody.FEET.toString()))
