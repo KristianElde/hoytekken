@@ -7,8 +7,14 @@ import javax.swing.Box;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
@@ -17,10 +23,14 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUp;
+import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
 import hoytekken.app.view.ViewableModel;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * The model for the game
@@ -54,6 +64,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
+    private ActivePowerUp activePowerUp;
+
     /**
      * Constructor for the model
      * 
@@ -74,7 +86,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
-
+        this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
     }
 
     /**
@@ -255,5 +267,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         } else {
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
+    }
+
+    @Override
+    public ActivePowerUp getActivePowerUp() {
+        return activePowerUp;
     }
 }
