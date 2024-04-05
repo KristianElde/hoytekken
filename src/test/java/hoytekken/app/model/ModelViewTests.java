@@ -30,7 +30,7 @@ import hoytekken.app.view.ViewableModel;
 
 public class ModelViewTests {
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
-    private static final int INITIAL_BODY_COUNT = 2;
+    private static final int INITIAL_BODY_COUNT = 3;
     private static final int MAX_HP = 99;
     private static final int MAX_LIVES = 3;
 
@@ -106,7 +106,7 @@ public class ModelViewTests {
         //assert view has access to map and it is initialized as deafault map
         String map = model.getMap();
         assertNotNull(map, "Map object should be initialized.");
-        assertEquals(map, "defaultMap.tmx", "Map should be defaultMap.tmx.");
+        assertEquals("defaultMap.tmx", map, "Map should be defaultMap.tmx.");
 
     }
 
@@ -120,7 +120,7 @@ public class ModelViewTests {
     void testGetGameState() {
         //assert view has access to gamestate and it is initialized as main menu
         assertNotNull(model.getGameState(), "Gamestate should be initialized.");
-        assertEquals(model.getGameState(), GameState.MAIN_MENU, "Intial game stata should me main menu.");
+        assertEquals(GameState.MAIN_MENU ,model.getGameState(), "Intial game stata should me main menu.");
     }
 
     @Test
@@ -132,8 +132,8 @@ public class ModelViewTests {
         Vector2 gravity = gameWorld.getGravity();
         int bodyCount = gameWorld.getBodyCount();
 
-        assertEquals(gravity, GRAVITY_VECTOR, "Game world should have gravity vector set.");
-        assertEquals(bodyCount, INITIAL_BODY_COUNT, "Game world should have to player bodies");
+        assertEquals(GRAVITY_VECTOR, gravity, "Game world should have gravity vector set.");
+        assertEquals(INITIAL_BODY_COUNT, bodyCount, "Game world should have to player bodies");
         assertDoesNotThrow(() -> gameWorld.step(1f, 1, 1), "Game world should be able to step.");
     }
 }
