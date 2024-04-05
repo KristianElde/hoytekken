@@ -93,14 +93,17 @@ public class Player extends Sprite implements IPlayer {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2);
         fdef.shape = shape;
-        body.createFixture(fdef).setUserData(this.type + "body");
+
+        body.createFixture(fdef).setUserData(
+                type == PlayerType.PLAYER_ONE ? PlayerFixtures.PLAYER_ONE_BODY : PlayerFixtures.PLAYER_TWO_BODY);
 
         // Foot sensor
         EdgeShape feet = new EdgeShape();
         feet.set(feetVerts[0], feetVerts[1]);
         fdef.shape = feet;
         fdef.isSensor = true;
-        body.createFixture(fdef).setUserData(this.type + "feet");
+        body.createFixture(fdef).setUserData(
+                type == PlayerType.PLAYER_ONE ? PlayerFixtures.PLAYER_ONE_FEET : PlayerFixtures.PLAYER_TWO_FEET);
     }
 
     /**
@@ -135,6 +138,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
+        if (deltaX < 0) {
+            flipLeft();
+        } else if (deltaX > 0) {
+            flipRight();
+        }
         if (deltaY != 0) {
             body.setLinearVelocity(body.getLinearVelocity().x, 0);
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
@@ -254,5 +262,15 @@ public class Player extends Sprite implements IPlayer {
     public void increaseHealth(int increaseAmount) {
         this.maxHealth += increaseAmount;
         this.health += increaseAmount;
+    }
+
+    @Override
+    public void flipLeft() {
+        this.setFlip(true, false);
+    }
+
+    @Override
+    public void flipRight() {
+        this.setFlip(false, false);
     }
 }

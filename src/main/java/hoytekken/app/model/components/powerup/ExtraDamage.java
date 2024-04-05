@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import hoytekken.app.model.components.player.Player;
 
 public class ExtraDamage extends PowerUp {
+    private static Integer DAMAGE = 20;
 
     ExtraDamage() {
         super(new Texture(Gdx.files.internal("extra_damage.png")));
@@ -13,10 +14,7 @@ public class ExtraDamage extends PowerUp {
 
     @Override
     public void applyPowerUp(Player player) {
-        // setDamage in Player?
-        // player.setDamage(player.getDamage() + fixedAmount)
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'applyPowerUp'");
+        player.increaseDamage(DAMAGE);
     }
 
 }

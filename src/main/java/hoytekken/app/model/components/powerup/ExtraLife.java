@@ -5,17 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.Player;
 
-public class ExtraHealth extends PowerUp {
+public class ExtraLife extends PowerUp {
 
-    private static Integer HEALTH = 50;
-
-    ExtraHealth() {
-        super(new Texture(Gdx.files.internal("extra_health.png")));
+    ExtraLife() {
+        super(new Texture(Gdx.files.internal("extra_life.png")));
     }
 
     @Override
     public void applyPowerUp(Player player) {
-        player.increaseHealth(HEALTH);
+        player.gainExtraLife();
     }
 
 }

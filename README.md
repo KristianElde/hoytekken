@@ -16,7 +16,7 @@ Klassisk 2D-fighting spill i tekken og Street Fighter-stil.
 ## Om koden
 
 - Kompileres med `mvn package`.
-- Kjøres med java-jar target/hooytekken-app-1.0-SNAPSHOT-fat.jar
+- Kjøres med `java -jar target/hoytekken-app-1.0-SNAPSHOT-fat.jar`
 - Krever Java 17 eller senere
 
 ## Ressurser
