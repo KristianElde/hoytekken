@@ -1,9 +1,11 @@
 package hoytekken.app.model;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
@@ -18,6 +20,7 @@ import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 
+import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
@@ -51,6 +54,7 @@ public class ModelViewTests {
     void testUpdateModel() {
         model.updateModel(0.1f);
         assertNotNull(model, "Model object should be initialized.");
+        assertDoesNotThrow(() -> model.updateModel(0.1f), "Update should not throw.");
     }
 
     @Test
@@ -63,4 +67,16 @@ public class ModelViewTests {
     void testGetMap() {
         assertNotNull(model.getMap(), "Map object should be initialized.");
     }
+
+    @Test
+    void testGetTiledMap() {
+        assertNull(model.getTiledMap(), "Tiledmap should not be loaded before game starts.");
+    }
+
+    @Test
+    void testGetGameState() {
+        assertNotNull(model.getGameState(), "Gamestate should be initialized.");
+        assertEquals(model.getGameState(), GameState.MAIN_MENU, "Gamestate should be the same.");
+    }
+    
 }
