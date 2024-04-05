@@ -11,9 +11,5 @@ public interface HandleCollisions {
      */
     public boolean resetDoubleJump(PlayerType player);
 
-    /**
-     * Method to generate a new powerup
-     */
-    public void generatePowerUp();
 
 }

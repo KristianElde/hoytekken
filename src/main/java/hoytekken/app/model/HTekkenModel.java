@@ -272,12 +272,4 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public ActivePowerUp getActivePowerUp() {
         return activePowerUp;
     }
-
-    @Override
-    public void generatePowerUp() {
-        if (activePowerUp != null) {
-            gameWorld.destroyBody(activePowerUp.getBody());
-        }
-        activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-    }
 }
