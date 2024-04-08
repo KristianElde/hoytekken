@@ -105,12 +105,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         playerOne.update();
         playerTwo.update();
         //activePowerUp.update(dt);
-        if (activePowerUp != null && !activePowerUp.isActive()) {
-            activePowerUp = null;
-            timeSinceLastPowerUp = 0;
+        if (activePowerUp != null) {
+            if (!activePowerUp.isActive()){
+                activePowerUp = null;
+                timeSinceLastPowerUp = 0;
+            }
+            else {
+                activePowerUp.update(dt);
+            }
         }
-        else {
-            activePowerUp.update(dt);
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+            }
         }
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
