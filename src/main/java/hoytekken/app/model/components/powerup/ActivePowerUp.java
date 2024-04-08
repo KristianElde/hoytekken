@@ -23,6 +23,9 @@ public class ActivePowerUp extends Sprite {
     private Texture texture;
     private PowerUp powerUp;
 
+    private float powerUpTimer = 0;
+    private boolean powerUpActive = true;
+
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
         this.factory = factory;
@@ -63,11 +66,13 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    public PowerUp getPowerUp() {
-        return factory.getNext();
-    }
 
-    public Body getBody() {
-        return body;
-    }
+
+    // public PowerUp getPowerUp() {
+    //     return factory.getNext();
+    // }
+
+    // public Body getBody() {
+    //     return body;
+    // }
 }
