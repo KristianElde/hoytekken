@@ -3,6 +3,7 @@ package hoytekken.app.model.components.player;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -70,8 +71,11 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
-        super(atlas.findRegion("Character_1_normalStand(60x27)"));
-        atlas2.findRegion("Character_2_normalStand(60x27)");
+        //super(atlas.findRegion("Character_1_normalStand(60x27)"));
+        //atlas2.findRegion("Character_2_normalStand(60x27)");
+        super(type == PlayerType.PLAYER_ONE 
+        ? atlas.findRegion("Character_1_normalStand(60x27)") 
+        : atlas2.findRegion("Character_2_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
