@@ -71,8 +71,7 @@ public class ActivePowerUp extends Sprite {
             powerUpTimer += dt;
             if (powerUpTimer >= 3) {
                 powerUpActive = false;
-                //Destroy the power up
-                body.setUserData(null);
+                world.destroyBody(body);
             }
         }
     }
