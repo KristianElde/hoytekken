@@ -53,7 +53,7 @@ public class Player extends Sprite implements IPlayer {
     // Animation
     private Animation playerPunch;
     private Animation playerKick;
-    
+
     private float stateTimer;
 
     // Constants for health management
@@ -89,11 +89,13 @@ public class Player extends Sprite implements IPlayer {
         stateTimer = 0;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
+
+        // Punch animation
         frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
         playerPunch = new Animation(0.1f, frames);
         frames.clear();
 
-
+        // Kick animation
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
