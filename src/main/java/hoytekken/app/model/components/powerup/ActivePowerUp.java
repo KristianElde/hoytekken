@@ -76,6 +76,12 @@ public class ActivePowerUp extends Sprite {
         }
     }
 
+    // When the player collides with the powerup, the powerup is destroyed
+    public void destroy() {
+        powerUpActive = false;
+        world.destroyBody(body);
+    }
+
     public boolean isActive() {
         return powerUpActive;
     }
