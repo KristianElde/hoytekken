@@ -69,7 +69,11 @@ public class ActivePowerUp extends Sprite {
     public void update(float dt) {
         if (powerUpActive) {
             powerUpTimer += dt;
-            
+            if (powerUpTimer >= 3) {
+                powerUpActive = false;
+                //Destroy the power up
+                body.setUserData(null);
+            }
         }
     }
 
