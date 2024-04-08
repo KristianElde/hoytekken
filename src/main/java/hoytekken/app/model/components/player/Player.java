@@ -153,7 +153,12 @@ public class Player extends Sprite implements IPlayer {
         }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
+        setRegion(getFrame());
 
+    }
+
+    private TextureRegion getFrame() {
+        return null;
     }
 
     @Override
