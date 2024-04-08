@@ -44,6 +44,7 @@ public class Player extends Sprite implements IPlayer {
     private World world;
     private Body body;
     private TextureRegion player1stand;
+    private TextureRegion player2stand;
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
     private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
