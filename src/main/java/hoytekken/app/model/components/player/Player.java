@@ -53,6 +53,8 @@ public class Player extends Sprite implements IPlayer {
     // Animation
     private Animation playerPunch;
     private Animation playerKick;
+    
+    private float stateTimer;
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
@@ -84,6 +86,7 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
+        stateTimer = 0;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
