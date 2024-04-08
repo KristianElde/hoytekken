@@ -75,7 +75,7 @@ public class GameScreen extends BaseScreen {
         // game.batch.draw(img, 0, 0);
         this.model.getPlayer(PlayerType.PLAYER_ONE).draw(game.batch);
         this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
-        //this.model.getActivePowerUp().draw(game.batch);
+        
         ActivePowerUp activePowerUp = this.model.getActivePowerUp();
         if (activePowerUp != null && activePowerUp.isActive()) {
             activePowerUp.draw(game.batch);

@@ -291,4 +291,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public ActivePowerUp getActivePowerUp() {
         return activePowerUp;
     }
+
+    @Override
+    public void destroyPowerUp() {
+        activePowerUp.destroy();
+    }
 }
