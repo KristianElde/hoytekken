@@ -44,7 +44,7 @@ public class Player extends Sprite implements IPlayer {
     // Player Texture & World
     private World world;
     private Body body;
-    private TextureRegion player1stand;
+    private TextureRegion playerStand;
     private TextureRegion player2stand;
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
     private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
@@ -82,11 +82,11 @@ public class Player extends Sprite implements IPlayer {
         this.maxHealth = health;
         this.lives = MAX_LIVES;
 
-        this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
+        this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
-        setRegion(player1stand);
+        setRegion(playerStand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
