@@ -66,7 +66,12 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-
+    public void update(float dt) {
+        if (powerUpActive) {
+            powerUpTimer += dt;
+            
+        }
+    }
 
     // public PowerUp getPowerUp() {
     //     return factory.getNext();
