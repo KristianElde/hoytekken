@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import hoytekken.app.Hoytekken;
 
@@ -78,6 +79,8 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
+
+        Array<TextureRegion> frames = new Array<TextureRegion>();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
