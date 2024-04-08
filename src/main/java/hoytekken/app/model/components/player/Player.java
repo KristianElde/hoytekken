@@ -45,6 +45,7 @@ public class Player extends Sprite implements IPlayer {
     private Body body;
     private TextureRegion player1stand;
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
+    private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
