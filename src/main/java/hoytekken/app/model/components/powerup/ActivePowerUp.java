@@ -77,6 +77,10 @@ public class ActivePowerUp extends Sprite {
         }
     }
 
+    public boolean isActive() {
+        return powerUpActive;
+    }
+
     // public PowerUp getPowerUp() {
     //     return factory.getNext();
     // }
