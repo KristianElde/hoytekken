@@ -57,7 +57,8 @@ public class Player extends Sprite implements IPlayer {
     private int health;
     private int lives;
     private PlayerState currentState;
-    
+    private PlayerState previousState;
+
 
     /**
      * Constructor for the player
