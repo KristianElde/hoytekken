@@ -87,6 +87,7 @@ public class Player extends Sprite implements IPlayer {
         Array<TextureRegion> frames = new Array<TextureRegion>();
         frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
         playerPunch = new Animation(0.1f, frames);
+        frames.clear();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
