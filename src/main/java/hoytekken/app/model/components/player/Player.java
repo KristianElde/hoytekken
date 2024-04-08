@@ -1,5 +1,6 @@
 package hoytekken.app.model.components.player;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -49,6 +50,9 @@ public class Player extends Sprite implements IPlayer {
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
     private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
+    // Animation
+    private Animation playerPunch;
+
     // Constants for health management
     private static final int MAX_LIVES = 3;
 
@@ -81,6 +85,8 @@ public class Player extends Sprite implements IPlayer {
         this.lives = MAX_LIVES;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
+        frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+        playerPunch = new Animation(0.1f, frames);
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
