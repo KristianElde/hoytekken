@@ -88,6 +88,7 @@ public class Player extends Sprite implements IPlayer {
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(player1stand);
+        setRegion(player2stand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
