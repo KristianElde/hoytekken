@@ -102,6 +102,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         movePlayers();
         playerOne.update();
         playerTwo.update();
+        activePowerUp.update(dt);
+        if (!activePowerUp.isActive()) {
+            activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        }
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
