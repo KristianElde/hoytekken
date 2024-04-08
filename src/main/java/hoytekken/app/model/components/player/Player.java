@@ -83,12 +83,11 @@ public class Player extends Sprite implements IPlayer {
         this.lives = MAX_LIVES;
 
         this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
-        this.player2stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
+        //this.player2stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(player1stand);
-        setRegion(player2stand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
