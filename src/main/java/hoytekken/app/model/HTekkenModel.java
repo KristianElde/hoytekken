@@ -65,6 +65,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
     private ActivePowerUp activePowerUp;
+    private float timeSinceLastPowerUp = 0;
+    private final float powerUpSpawnInterval = 10;
 
     /**
      * Constructor for the model
@@ -102,9 +104,13 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         movePlayers();
         playerOne.update();
         playerTwo.update();
-        activePowerUp.update(dt);
-        if (!activePowerUp.isActive()) {
-            activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        //activePowerUp.update(dt);
+        if (activePowerUp != null && !activePowerUp.isActive()) {
+            activePowerUp = null;
+            timeSinceLastPowerUp = 0;
+        }
+        else {
+            activePowerUp.update(dt);
         }
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
