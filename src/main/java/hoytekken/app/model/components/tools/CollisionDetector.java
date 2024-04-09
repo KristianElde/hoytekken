@@ -47,7 +47,8 @@ public class CollisionDetector extends AbstractCollision {
      * @return the type of player
      */
     private PlayerType getPlayerType(Object userData) {
-        return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
+        //return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
+        return userData.toString().contains("PLAYER_ONE") ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
     }
 
     /**
@@ -119,18 +120,24 @@ public class CollisionDetector extends AbstractCollision {
      */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
         // If the player body is colliding with a power-up. The powerUp should disappear and the player should get the power-up
-        if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
-            
-            PowerUp powerUp = (PowerUp) userDataB;
-            powerUp.applyPowerUp((Player) userDataA);
-            model.destroyPowerUp();
+        if(userDataA.toString().contains("PLAYER_ONE") && userDataB.toString().contains("powerUp")) {
+            ActivePowerUp powerUp = model.getActivePowerUp();
+
+        } else if (userDataA.toString().contains("PLAYER_TWO") && userDataB.toString().contains("powerUp")) {
+            ActivePowerUp powerUp = model.getActivePowerUp();
         }
-        else if (userDataB instanceof Player && userDataA instanceof ActivePowerUp) {
+        // if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
             
-            PowerUp powerUp = (PowerUp) userDataA;
-            powerUp.applyPowerUp((Player) userDataB);
-            model.destroyPowerUp();
-        }
+        //     PowerUp powerUp = (PowerUp) userDataB;
+        //     powerUp.applyPowerUp((Player) userDataA);
+        //     model.destroyPowerUp();
+        // }
+        // else if (userDataB instanceof Player && userDataA instanceof ActivePowerUp) {
+            
+        //     PowerUp powerUp = (PowerUp) userDataA;
+        //     powerUp.applyPowerUp((Player) userDataB);
+        //     model.destroyPowerUp();
+        // }
     }
 
     @Override
