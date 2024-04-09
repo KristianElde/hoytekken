@@ -4,9 +4,11 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerFixtures;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUp;
 
 /**
  * Class to detect collisions between objects
@@ -117,7 +119,16 @@ public class CollisionDetector extends AbstractCollision {
      */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
         // If the player body is colliding with a power-up. The powerUp should disappear and the player should get the power-up
-        if (userDataA instanceof ActivePowerUp || userDataB instanceof ActivePowerUp) {
+        if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
+            
+            PowerUp powerUp = (PowerUp) userDataB;
+            powerUp.applyPowerUp((Player) userDataA);
+            model.destroyPowerUp();
+        }
+        else if (userDataB instanceof Player && userDataA instanceof ActivePowerUp) {
+            
+            PowerUp powerUp = (PowerUp) userDataA;
+            powerUp.applyPowerUp((Player) userDataB);
             model.destroyPowerUp();
         }
     }
