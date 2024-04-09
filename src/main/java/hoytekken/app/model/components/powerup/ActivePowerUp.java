@@ -79,8 +79,9 @@ public class ActivePowerUp extends Sprite {
 
     // When the player collides with the powerup, the powerup is destroyed
     public void destroy() {
-        powerUpActive = false;
-        world.destroyBody(body);
+        if (powerUpActive) {
+            powerUpActive = false;
+        }
     }
 
     public boolean isActive() {
@@ -89,5 +90,13 @@ public class ActivePowerUp extends Sprite {
 
     public void apply(IPlayer player) {
         powerUp.applyPowerUp(player);
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public Body getBody() {
+        return body;
     }
 }

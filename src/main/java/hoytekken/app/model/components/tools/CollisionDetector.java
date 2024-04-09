@@ -3,6 +3,7 @@ package hoytekken.app.model.components.tools;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerFixtures;
@@ -123,12 +124,14 @@ public class CollisionDetector extends AbstractCollision {
         if(userDataA.toString().contains("PLAYER_ONE_BODY") && userDataB.toString().contains("powerUp")
             || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
-            System.out.println("Collision detected between " + userDataA + " and " + userDataB);
+            model.applyPowerUp(PlayerType.PLAYER_ONE, powerUp);
+            model.destroyPowerUp();
 
         } else if (userDataA.toString().contains("PLAYER_TWO_BODY") && userDataB.toString().contains("powerUp")
             || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
-            System.out.println("Collision detected between " + userDataA + " and " + userDataB);
+            model.applyPowerUp(PlayerType.PLAYER_TWO, powerUp);
+            model.destroyPowerUp();
         }
         // if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
             
