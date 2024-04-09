@@ -32,7 +32,7 @@ public class CollisionDetector extends AbstractCollision {
     public void beginContact(Contact contact) {
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
-        System.out.println("Collision detected between " + userDataA + " and " + userDataB);
+        //System.out.println("Collision detected between " + userDataA + " and " + userDataB);
 
         if (userDataA != null && userDataB != null) {
             handlePlayerCollisions(userDataA, userDataB);
@@ -120,11 +120,15 @@ public class CollisionDetector extends AbstractCollision {
      */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
         // If the player body is colliding with a power-up. The powerUp should disappear and the player should get the power-up
-        if(userDataA.toString().contains("PLAYER_ONE") && userDataB.toString().contains("powerUp")) {
+        if(userDataA.toString().contains("PLAYER_ONE_BODY") && userDataB.toString().contains("powerUp")
+            || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
+            System.out.println("Collision detected between " + userDataA + " and " + userDataB);
 
-        } else if (userDataA.toString().contains("PLAYER_TWO") && userDataB.toString().contains("powerUp")) {
+        } else if (userDataA.toString().contains("PLAYER_TWO_BODY") && userDataB.toString().contains("powerUp")
+            || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
+            System.out.println("Collision detected between " + userDataA + " and " + userDataB);
         }
         // if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
             
