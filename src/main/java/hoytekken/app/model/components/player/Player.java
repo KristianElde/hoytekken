@@ -1,8 +1,10 @@
 package hoytekken.app.model.components.player;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import hoytekken.app.Hoytekken;
 
@@ -43,8 +46,9 @@ public class Player extends Sprite implements IPlayer {
     // Player Texture & World
     private World world;
     private Body body;
-    private TextureRegion player1stand;
+    private TextureRegion playerStand;
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
+    private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
@@ -57,6 +61,7 @@ public class Player extends Sprite implements IPlayer {
     private int health;
     private int lives;
 
+
     /**
      * Constructor for the player
      * 
@@ -65,18 +70,23 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
-        super(atlas.findRegion("Character_1_normalStand(60x27)"));
+        super(type == PlayerType.PLAYER_ONE 
+        ? atlas.findRegion("Character_1_normalStand(60x27)") 
+        : atlas2.findRegion("Character_2_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
 
-        this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
+        // Punching animation
+        //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+
+        this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
-        setRegion(player1stand);
+        setRegion(playerStand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
@@ -128,7 +138,6 @@ public class Player extends Sprite implements IPlayer {
         }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
-
     }
 
     @Override
