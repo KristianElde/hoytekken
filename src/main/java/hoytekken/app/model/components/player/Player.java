@@ -159,7 +159,7 @@ public class Player extends Sprite implements IPlayer {
 
     private TextureRegion getFrame() {
         return null;
-    }
+    }  
 
     @Override
     public Body getBody() {
