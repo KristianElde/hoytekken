@@ -63,6 +63,7 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
+    private boolean isPunching = false;
     private int maxHealth;
     private int health;
     private int lives;
@@ -158,8 +159,20 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private TextureRegion getFrame() {
-        return null;
+        currentState = getState();
     }  
+
+    private PlayerState getState() {
+        if (isBlocking) {
+            return PlayerState.BLOCKING;
+        } else if (punching()) {
+            return PlayerState.PUNCHING;
+        } else if (kicking()) {
+            return PlayerState.KICKING;
+        } else {
+            return PlayerState.STANDING;
+        }
+    }
 
     @Override
     public Body getBody() {
