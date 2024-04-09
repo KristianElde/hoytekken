@@ -50,12 +50,6 @@ public class Player extends Sprite implements IPlayer {
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
     private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
-    // Animation
-    private Animation playerPunch;
-    private Animation playerKick;
-
-    private float stateTimer;
-
     // Constants for health management
     private static final int MAX_LIVES = 3;
 
@@ -63,13 +57,9 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
-    private boolean isPunching = false;
-    private boolean isKicking = false;
     private int maxHealth;
     private int health;
     private int lives;
-    private PlayerState currentState;
-    private PlayerState previousState;
 
 
     /**
@@ -88,16 +78,10 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
-        stateTimer = 0;
 
-        Array<TextureRegion> frames = new Array<TextureRegion>();
-
-        // Punch animation
-        frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
-        playerPunch = new Animation(0.1f, frames);
-        frames.clear();
-
-        // Kick animation
+        // Punching animation
+        //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+        
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
@@ -155,24 +139,6 @@ public class Player extends Sprite implements IPlayer {
         }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
-        setRegion(getFrame());
-
-    }
-
-    private TextureRegion getFrame() {
-        currentState = getState();
-    }  
-
-    private PlayerState getState() {
-        if (isBlocking) {
-            return PlayerState.BLOCKING;
-        } else if (punching()) {
-            return PlayerState.PUNCHING;
-        } else if (kicking()) {
-            return PlayerState.KICKING;
-        } else {
-            return PlayerState.STANDING;
-        }
     }
 
     @Override
@@ -253,13 +219,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
-        isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
-        isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
