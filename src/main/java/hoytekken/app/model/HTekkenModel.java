@@ -123,6 +123,11 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
                 activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
             }
         }
+        for (Body b : bodiesToDestroy) {
+            gameWorld.destroyBody(b);
+        }
+        bodiesToDestroy.clear();
+
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }

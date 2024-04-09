@@ -29,5 +29,5 @@ public interface HandleCollisions {
 
     public void applyPowerUp(PlayerType player, ActivePowerUp powerUp);
 
-
+    public void destroyPowerUpList();
 }
