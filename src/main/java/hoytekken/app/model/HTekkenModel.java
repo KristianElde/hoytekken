@@ -100,8 +100,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-        playerOne.update();
-        playerTwo.update();
+        playerOne.update(dt);
+        playerTwo.update(dt);
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
