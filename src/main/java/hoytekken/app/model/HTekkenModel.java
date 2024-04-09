@@ -300,6 +300,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     @Override
     public void applyPowerUp(PlayerType player, ActivePowerUp powerUp) {
         IPlayer p = getPlayer(player);
-        
+        powerUp.apply(p);
+
     }
 }
