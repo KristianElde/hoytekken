@@ -129,7 +129,7 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void update() {
+    public void update(float dt) {
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
             resetPosistion();
