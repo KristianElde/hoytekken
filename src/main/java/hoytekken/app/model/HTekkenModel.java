@@ -307,10 +307,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     }
 
+    @Override
     public void destroyPowerUpList() {
         if (activePowerUp != null && activePowerUp.getBody() != null) {
             bodiesToDestroy.add(activePowerUp.getBody());
         }
-
     }
 }

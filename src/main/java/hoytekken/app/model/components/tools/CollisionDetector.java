@@ -125,13 +125,13 @@ public class CollisionDetector extends AbstractCollision {
             || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
             model.applyPowerUp(PlayerType.PLAYER_ONE, powerUp);
-            model.destroyPowerUp();
+            model.destroyPowerUpList();
 
         } else if (userDataA.toString().contains("PLAYER_TWO_BODY") && userDataB.toString().contains("powerUp")
             || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
             model.applyPowerUp(PlayerType.PLAYER_TWO, powerUp);
-            model.destroyPowerUp();
+            model.destroyPowerUpList();
         }
         // if (userDataA instanceof Player && userDataB instanceof ActivePowerUp) {
             
