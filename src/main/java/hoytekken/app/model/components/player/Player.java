@@ -259,7 +259,7 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean kick(IPlayer that) {
-        
+        isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
