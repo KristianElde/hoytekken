@@ -33,7 +33,7 @@ public class CollisionDetector extends AbstractCollision {
     public void beginContact(Contact contact) {
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
-        //System.out.println("Collision detected between " + userDataA + " and " + userDataB);
+        System.out.println("Collision detected between " + userDataA + " and " + userDataB);
 
         if (userDataA != null && userDataB != null) {
             handlePlayerCollisions(userDataA, userDataB);

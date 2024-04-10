@@ -24,10 +24,10 @@ public class ActivePowerUp extends Sprite {
     private Texture texture;
     private PowerUp powerUp;
 
-    private float powerUpTimer = 0;
     private boolean powerUpActive = true;
 
     private boolean isVisible = true;
+    private boolean shouldBeDestroyed = false;
 
 
 
@@ -47,8 +47,8 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM,
-        (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM, 0);
+        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM)/2 + Hoytekken.V_WIDTH / Hoytekken.PPM / 4,
+        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM) / 2 + Hoytekken.V_HEIGHT/Hoytekken.PPM/4, 0);
     }
 
     private void positionTexture() {
@@ -69,23 +69,6 @@ public class ActivePowerUp extends Sprite {
         fdef.shape = shape;
         fdef.isSensor = true;
         body.createFixture(fdef).setUserData(this.type + "powerUp");
-    }
-
-    public void update(float dt) {
-        if (powerUpActive) {
-            powerUpTimer += dt;
-            if (powerUpTimer >= 3) {
-                powerUpActive = false;
-                world.destroyBody(body);
-            }
-        }
-    }
-
-    // When the player collides with the powerup, the powerup is destroyed
-    public void destroy() {
-        if (powerUpActive) {
-            powerUpActive = false;
-        }
     }
 
     public boolean isActive() {
@@ -111,5 +94,13 @@ public class ActivePowerUp extends Sprite {
     public Texture getTexture() {
         return this.texture;
 
+    }
+
+    public void markForDestruction() {
+        this.shouldBeDestroyed = true;
+    }
+
+    public boolean shouldBeDestroyed() {
+        return this.shouldBeDestroyed;
     }
 }
