@@ -12,7 +12,7 @@
 
 ### 1.2. Møteleder
 
-    Sune er fortsatt nøteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med.
+    Sune er fortsatt nøteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
 
@@ -43,11 +43,26 @@
 
 ## 3. Gruppedynamikk
 
-    
+    I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist
+    seg å være en av de sterkeste sidene ved vårt teamarbeid. Effektiviteten og samarbeidet innad i gruppen har bidratt til en positiv og engasjerende arbeidsatmosfære,
+    noe som har vært essensielt for fremdriften og moralen i prosjektet. Den positive
+    stemningen i gruppen har også lagt grunnlaget for en kultur hvor det er lav terskel
+    for å fremme forslag til forbedringer, kreative løsninger og innovative ideer.
+    Dette har vist seg å være en verdifull ressurs for prosjektets utvikling, da
+    det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har
+    vi oppnådd en dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt
+    og motivert til å bidra med sitt beste.
+
+    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets
+    fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet
+    som fundamentale faktorer for vår suksess, og vil fortsette å prioritere
+    disse aspektene i videre arbeid.    
 
 ## 4. Kommunikasjon
 
-    
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver.
+    Siden sist innlevering har vi innført en kort kodegjennomgang på møtene våre når det har vært noe uklart. Dette har fungert bra.
+    I tillegg møter vi ofte hverandre på lesesal, slik at man kan spørre og diskutere mindre ting. 
 
 ## 5. Retrospektiv
 
@@ -55,7 +70,7 @@
 
 ## 6. Arbeidsfordeling
 
-    
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette har blitt jevnere siden sist innlevering, men kan fortsatt se litt ujevnt ut. 
 
 ## 7. Forbedringspunkter fra retrospektiv
 
