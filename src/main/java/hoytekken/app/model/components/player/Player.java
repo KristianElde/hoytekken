@@ -162,6 +162,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private PlayerState resetAnimation() {
+        isPunching = false;
+        isKicking = false;
+        return PlayerState.STANDING;
     }
 
     private TextureRegion getFrame(float dt) {
