@@ -63,9 +63,10 @@ public class Player extends Sprite implements IPlayer {
     private int maxHealth;
     private int health;
     private int lives;
-    private PlayerState current;
-    private PlayerState previous;
+    private PlayerState currentState;
+    private PlayerState previousState;
     private float stateTimer;
+    private float timeSinceAction = 0;
 
     // Animation
     private Animation<TextureRegion> punchAnimation;
@@ -88,12 +89,11 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
-        this.current = PlayerState.STANDING;
-        this.previous = PlayerState.STANDING;
+        this.currentState = PlayerState.STANDING;
+        this.previousState = PlayerState.STANDING;
         this.stateTimer = 0;
         this.runningRight = true;
 
-        // Punching animation
         Array<TextureRegion> frames = new Array<TextureRegion>();
         frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
         punchAnimation = new Animation<TextureRegion>(0.1f, frames);
@@ -103,7 +103,7 @@ public class Player extends Sprite implements IPlayer {
         frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
         frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
         kickAnimation = new Animation<TextureRegion>(0.1f, frames);
-        //frames.clear();
+        frames.clear();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
@@ -165,26 +165,35 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private TextureRegion getFrame(float dt) {
-        current = getState();
+        currentState = getState();
         TextureRegion region;
 
-        switch (current) {
+        switch (currentState) {
             case PUNCHING:
-                region = punchAnimation.getKeyFrame(stateTimer, true);
+                region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
                 break;
             case KICKING:
-                region = kickAnimation.getKeyFrame(stateTimer, true);
+                region = kickAnimation.getKeyFrame(stateTimer);
                 break;
             // case BLOCKING:
             //     region = playerBlock;
             //     break;
             case STANDING:
-            default:
                 region = playerStand;
                 break;
+            default:
+                region = playerStand;
         }
-        stateTimer = current == previous ? stateTimer + dt : 0; 
-        previous = current;
+
+        if(!runningRight && !region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = false;
+        } else if(runningRight && region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = true;
+        }
+        stateTimer = currentState == previousState ? stateTimer + dt : 0; 
+        previousState = currentState;
         return region;
     }
 
@@ -278,12 +287,14 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
+        System.out.println("Punching");
         isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
+        System.out.println("Kicking");
         isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
