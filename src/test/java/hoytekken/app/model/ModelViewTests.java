@@ -13,6 +13,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -24,6 +25,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
@@ -47,7 +49,7 @@ public class ModelViewTests {
 
     @BeforeEach
     void setUpBeforeEach() {
-        model = new HTekkenModel();
+        model = new HTekkenModel(Mockito.mock(EventBus.class));
 
     }
 

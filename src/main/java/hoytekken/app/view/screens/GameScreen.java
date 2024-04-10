@@ -46,9 +46,8 @@ public class GameScreen extends BaseScreen {
     @Override
     protected void update(float delta) {
         model.updateModel(delta);
-        gameCam.update();
         renderer.setView(gameCam);
-        handleStateSwitch();
+        super.update(delta);
     }
 
     @Override
