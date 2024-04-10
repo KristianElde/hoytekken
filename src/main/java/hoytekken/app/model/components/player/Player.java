@@ -183,7 +183,9 @@ public class Player extends Sprite implements IPlayer {
                 region = playerStand;
                 break;
         }
-
+        stateTimer = current == previous ? stateTimer + dt : 0; 
+        previous = current;
+        return region;
     }
 
     private PlayerState getState() {
