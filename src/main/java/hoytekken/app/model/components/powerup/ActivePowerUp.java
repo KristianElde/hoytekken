@@ -11,7 +11,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.model.components.player.IPlayer;
 
 public class ActivePowerUp extends Sprite {
 

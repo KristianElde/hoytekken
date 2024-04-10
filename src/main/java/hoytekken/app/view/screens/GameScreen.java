@@ -9,7 +9,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.PlayerType;
-import hoytekken.app.model.components.powerup.ActivePowerUp;
 import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.view.ViewableModel;
 
@@ -47,9 +46,8 @@ public class GameScreen extends BaseScreen {
     @Override
     protected void update(float delta) {
         model.updateModel(delta);
-        gameCam.update();
         renderer.setView(gameCam);
-        handleStateSwitch();
+        super.update(delta);
     }
 
     @Override

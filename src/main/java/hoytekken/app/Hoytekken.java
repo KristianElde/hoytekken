@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import hoytekken.app.controller.HtekkenController;
 import hoytekken.app.model.HTekkenModel;
+import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.view.screens.MenuScreen;
 
 /**
@@ -22,7 +23,7 @@ public class Hoytekken extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        HTekkenModel model = new HTekkenModel();
+        HTekkenModel model = new HTekkenModel(new EventBus());
         new HtekkenController(model);
 
         setScreen(new MenuScreen(this, model));
