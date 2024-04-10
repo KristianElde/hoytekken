@@ -253,11 +253,13 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
+        isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
+        isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
