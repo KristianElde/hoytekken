@@ -13,5 +13,10 @@ public class EventBus {
         listeners.remove(listener);
     }
 
-    
+    public void emitEvent(IEvent event) {
+        for (IEventListener listener : listeners) {
+            listener.handleEvent(event);
+        }
+    }
+
 }
