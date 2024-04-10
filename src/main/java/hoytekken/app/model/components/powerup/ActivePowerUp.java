@@ -23,13 +23,11 @@ public class ActivePowerUp extends Sprite {
     private Body body;
     private Texture texture;
     private PowerUp powerUp;
-
+    
     private boolean powerUpActive = true;
-
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
-
-
+    
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
