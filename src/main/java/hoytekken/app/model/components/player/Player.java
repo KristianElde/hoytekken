@@ -186,7 +186,7 @@ public class Player extends Sprite implements IPlayer {
                 region = kickAnimation.getKeyFrame(stateTimer);
                 break;
             case BLOCKING:
-                region = null;
+                region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
                 break;
             case STANDING:
                 region = playerStand;
