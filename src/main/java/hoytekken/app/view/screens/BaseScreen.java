@@ -6,13 +6,14 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.IEventListener;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
 /**
  * Base class for all screens.
  */
-public abstract class BaseScreen implements Screen {
+public abstract class BaseScreen implements Screen, IEventListener {
     protected Hoytekken game;
     protected ViewableModel model;
 
@@ -37,6 +38,7 @@ public abstract class BaseScreen implements Screen {
 
         initializeCameraAndViewport(scaling);
 
+        this.model.getEventBus().addListener(this);
     }
 
     /**
