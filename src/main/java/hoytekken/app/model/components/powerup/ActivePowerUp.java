@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.player.IPlayer;
 
 public class ActivePowerUp extends Sprite {
 
@@ -22,6 +23,13 @@ public class ActivePowerUp extends Sprite {
     private Body body;
     private Texture texture;
     private PowerUp powerUp;
+
+    private float powerUpTimer = 0;
+    private boolean powerUpActive = true;
+
+    private boolean isVisible = true;
+
+
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
@@ -63,11 +71,45 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    public PowerUp getPowerUp() {
-        return factory.getNext();
+    public void update(float dt) {
+        if (powerUpActive) {
+            powerUpTimer += dt;
+            if (powerUpTimer >= 3) {
+                powerUpActive = false;
+                world.destroyBody(body);
+            }
+        }
+    }
+
+    // When the player collides with the powerup, the powerup is destroyed
+    public void destroy() {
+        if (powerUpActive) {
+            powerUpActive = false;
+        }
+    }
+
+    public boolean isActive() {
+        return powerUpActive;
+    }
+
+    public void apply(IPlayer player) {
+        powerUp.applyPowerUp(player);
     }
 
     public Body getBody() {
         return body;
+    }
+
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+
+    public void makeInvisible() {
+        this.isVisible = false;
+    }
+
+    public Texture getTexture() {
+        return this.texture;
+
     }
 }

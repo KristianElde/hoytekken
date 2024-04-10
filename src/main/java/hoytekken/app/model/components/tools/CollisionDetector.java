@@ -3,9 +3,13 @@ package hoytekken.app.model.components.tools;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerFixtures;
 import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUp;
 
 /**
  * Class to detect collisions between objects
@@ -29,6 +33,7 @@ public class CollisionDetector extends AbstractCollision {
     public void beginContact(Contact contact) {
         Object userDataA = contact.getFixtureA().getUserData();
         Object userDataB = contact.getFixtureB().getUserData();
+        //System.out.println("Collision detected between " + userDataA + " and " + userDataB);
 
         if (userDataA != null && userDataB != null) {
             handlePlayerCollisions(userDataA, userDataB);
@@ -43,7 +48,8 @@ public class CollisionDetector extends AbstractCollision {
      * @return the type of player
      */
     private PlayerType getPlayerType(Object userData) {
-        return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
+        //return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
+        return userData.toString().contains("PLAYER_ONE") ? PlayerType.PLAYER_ONE : PlayerType.PLAYER_TWO;
     }
 
     /**
@@ -114,7 +120,19 @@ public class CollisionDetector extends AbstractCollision {
      * @param userDataB the user data of fixture B
      */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
-        // Implement power-up collision handling if needed
+        // If the player body is colliding with a power-up. The powerUp should disappear and the player should get the power-up
+        if(userDataA.toString().contains("PLAYER_ONE_BODY") && userDataB.toString().contains("powerUp")
+            || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
+            ActivePowerUp powerUp = model.getActivePowerUp();
+            model.applyPowerUp(PlayerType.PLAYER_ONE, powerUp);
+            model.destroyPowerUpList();
+
+        } else if (userDataA.toString().contains("PLAYER_TWO_BODY") && userDataB.toString().contains("powerUp")
+            || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
+            ActivePowerUp powerUp = model.getActivePowerUp();
+            model.applyPowerUp(PlayerType.PLAYER_TWO, powerUp);
+            model.destroyPowerUpList();
+        }
     }
 
     @Override
