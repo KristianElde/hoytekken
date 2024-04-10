@@ -57,6 +57,8 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
+    private boolean isPunching = false;
+    private boolean isKicking = false;
     private boolean runningRight;
     private int maxHealth;
     private int health;
@@ -168,6 +170,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private PlayerState getState() {
+        if (isAlive) {
+            
+        }
     }
 
     @Override
