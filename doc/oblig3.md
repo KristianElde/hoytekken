@@ -66,15 +66,21 @@
 
 ## 5. Retrospektiv
 
-    
+    I vårt retrospektiv har vi fokusert på å evaluere prosjektstrukturen og kommunikasjonen innad i teamet. Vi har klart å etablere en solid struktur gjennom bruk av Kanban og regelmessige møter, som har bidratt til en jevn arbeidsflyt og effektiv oppgavehåndtering. Vår evne til å holde alle oppdatert via Discord og Trello har vært avgjørende for denne suksessen.
+
+    På forrige innlevering etterlyste vi klarere retningslinjer for dokumentasjon og deling av arbeidsprosesser. Målet da var å forbedre forståelsen og effektiviteten i teamet. Dette har vi absolutt klart å gjøre.
+
+    Ifht. commits så er det fortsatt litt skjevt fordelt, grunnene bak dette står forklart på punkt #6 om arbeidsfordeling. Dette har blitt bedre og jevenere, men vi har fortsatt litt å gå på her.
 
 ## 6. Arbeidsfordeling
 
-    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette har blitt jevnere siden sist innlevering, men kan fortsatt se litt ujevnt ut. 
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt jevnere. Dette har to forklaringer. Den første er at noen committer hyppigere når de skriver kode. Dette har vi selvfølgelig prøvd å ordnet siden sist, og nå ser det ut som om alle committer cirka like ofte. Den andre grunnen er at noen har hatt grafikkbaserte oppgaver, noe som ikke gir noen commits. Så f.eks Lauritz som har designet spiller-figurene og animasjonene har ikke fått noen commits på selve designingen. Ser fortsatt på at det har vært forbedring siden sist og er ganske sikker på at det vil jevne seg enda mere til neste innlevering.
+
+    Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features som vi ikke har endt opp med å bruke.
 
 ## 7. Forbedringspunkter fra retrospektiv
 
-    
+    - Fortsette å jevne ut commits.
 
 # Krav og spesifikasjon
 
