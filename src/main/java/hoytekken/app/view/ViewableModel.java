@@ -3,6 +3,7 @@ package hoytekken.app.view;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.model.IViewAndControl;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
@@ -13,7 +14,7 @@ import hoytekken.app.model.components.powerup.PowerUp;
 /**
  * Interface for the viewable model
  */
-public interface ViewableModel {
+public interface ViewableModel extends IViewAndControl{
 
     /**
      * Updates the model
