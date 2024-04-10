@@ -165,7 +165,9 @@ public class Player extends Sprite implements IPlayer {
     private TextureRegion getFrame(float dt) {
         current = getState();
         TextureRegion region;
-        
+    }
+
+    private PlayerState getState() {
     }
 
     @Override
