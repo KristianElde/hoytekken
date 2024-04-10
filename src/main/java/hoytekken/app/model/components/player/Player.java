@@ -69,7 +69,6 @@ public class Player extends Sprite implements IPlayer {
     private float timeSinceAction = 0;
 
     // Animation
-    private Animation<TextureRegion> punchAnimation;
     private Animation<TextureRegion> kickAnimation;
 
 
