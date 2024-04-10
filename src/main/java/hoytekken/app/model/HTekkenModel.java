@@ -13,12 +13,14 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Event;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
@@ -71,7 +73,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * 
      * @param map string for chosen map
      */
-    public HTekkenModel(String map) {
+    public HTekkenModel(String map, EventBus eventBus) {
         this.map = map;
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
@@ -92,8 +94,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Constructor for the model, uses default map
      */
-    public HTekkenModel() {
-        this(DEFAULT_MAP);
+    public HTekkenModel(EventBus eventBus) {
+        this(DEFAULT_MAP, eventBus);
     }
 
     @Override
