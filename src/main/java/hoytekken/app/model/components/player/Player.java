@@ -92,7 +92,10 @@ public class Player extends Sprite implements IPlayer {
         this.runningRight = true;
 
         // Punching animation
-        //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+        frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+        punchAnimation = new Animation<TextureRegion>(0.1f, frames);
+        frames.clear();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
