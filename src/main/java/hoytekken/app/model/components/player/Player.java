@@ -298,6 +298,9 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
         isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
