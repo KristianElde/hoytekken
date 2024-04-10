@@ -8,31 +8,34 @@
 
 ### 1.1. Prosjektleder
 
-    
+    Selv om vi ikke har utnevnt noen til denne rollen direkte, er det likevel blitt naturlig at noen har tatt på seg lederrollen. Mathias har hatt god oversikt over hva som skal til for å få prosjektet i mål, og dermed har han fått denne rollen. Dette har utviklet seg naturlig utover prosjektet.
 
 ### 1.2. Møteleder
 
-    
+    Sune er fortsatt nøteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
 
+    Jonas regnes fortsatt som trello-ansvarlig, men alle har ansvar for å oppdatere trello med oppgaver de holder på med og er ferdig med. 
+    Dette ser vi på som en suksess og en naturlig utvikling som har gitt oss en god måte å holde oversikt over oppgaver som skal gjøres og er gjort.
     
-
 ### 1.4. Testansvarlig
 
-    
+    Denne rollen er tildelt Kristian, og han har gjort en god jobb med å øke test-coverage på prosjektet. Andre har selvfølgelig også vært involvert i å lage tester, men Kristian har altså hovedansvaret for det, noe som har fungert godt.
 
 ### 1.5 Lyd og grafikk
 
-    
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder vil mest sannsynlig bli laget/implementert av Vetle eller Lauritz, evt. sammen.
 
 ### 1.6 Strukturansvarlig
 
-    
+    Rollen ble tildelt Vetle, men har også vært naturlig fordelt over hele gruppen. Alle har vært flinke til å holde seg til git-strukturen, og har vært flinke til
+    å lage branches for det de jobber med.
+    Commits/merges har også blitt jevnere siden forrige innlevering, det er fortsatt en trend at noen commiter oftere enn andre, men dette vil bare være naturlig.
 
 ### 1.7 Kodestilansvarlig
 
-    
+    Denne rollen er tildelt Mathias, og har fungert bra. Rollen har nå blitt mer relevant ettersom kodebasen har blitt en del større. Han har dermed kommet med gode forbedringer til koden, som vi deretter har refaktorert.
 
 ## 2. Prosjektmetodikk
 
@@ -40,23 +43,44 @@
 
 ## 3. Gruppedynamikk
 
-    
+    I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist
+    seg å være en av de sterkeste sidene ved vårt teamarbeid. Effektiviteten og samarbeidet innad i gruppen har bidratt til en positiv og engasjerende arbeidsatmosfære,
+    noe som har vært essensielt for fremdriften og moralen i prosjektet. Den positive
+    stemningen i gruppen har også lagt grunnlaget for en kultur hvor det er lav terskel
+    for å fremme forslag til forbedringer, kreative løsninger og innovative ideer.
+    Dette har vist seg å være en verdifull ressurs for prosjektets utvikling, da
+    det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har
+    vi oppnådd en dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt
+    og motivert til å bidra med sitt beste.
+
+    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets
+    fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet
+    som fundamentale faktorer for vår suksess, og vil fortsette å prioritere
+    disse aspektene i videre arbeid.    
 
 ## 4. Kommunikasjon
 
-    
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver.
+    Siden sist innlevering har vi innført en kort kodegjennomgang på møtene våre når det har vært noe uklart. Dette har fungert bra.
+    I tillegg møter vi ofte hverandre på lesesal, slik at man kan spørre og diskutere mindre ting. 
 
 ## 5. Retrospektiv
 
-    
+    I vårt retrospektiv har vi fokusert på å evaluere prosjektstrukturen og kommunikasjonen innad i teamet. Vi har klart å etablere en solid struktur gjennom bruk av Kanban og regelmessige møter, som har bidratt til en jevn arbeidsflyt og effektiv oppgavehåndtering. Vår evne til å holde alle oppdatert via Discord og Trello har vært avgjørende for denne suksessen.
+
+    På forrige innlevering etterlyste vi klarere retningslinjer for dokumentasjon og deling av arbeidsprosesser. Målet da var å forbedre forståelsen og effektiviteten i teamet. Dette har vi absolutt klart å gjøre.
+
+    Ifht. commits så er det fortsatt litt skjevt fordelt, grunnene bak dette står forklart på punkt #6 om arbeidsfordeling. Dette har blitt bedre og jevenere, men vi har fortsatt litt å gå på her.
 
 ## 6. Arbeidsfordeling
 
-    
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt jevnere. Dette har to forklaringer. Den første er at noen committer hyppigere når de skriver kode. Dette har vi selvfølgelig prøvd å ordnet siden sist, og nå ser det ut som om alle committer cirka like ofte. Den andre grunnen er at noen har hatt grafikkbaserte oppgaver, noe som ikke gir noen commits. Så f.eks Lauritz som har designet spiller-figurene og animasjonene har ikke fått noen commits på selve designingen. Ser fortsatt på at det har vært forbedring siden sist og er ganske sikker på at det vil jevne seg enda mere til neste innlevering.
+
+    Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features som vi ikke har endt opp med å bruke.
 
 ## 7. Forbedringspunkter fra retrospektiv
 
-    
+    - Fortsette å jevne ut commits.
 
 # Krav og spesifikasjon
 
