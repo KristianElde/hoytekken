@@ -307,6 +307,9 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean kick(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
         isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
