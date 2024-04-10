@@ -335,11 +335,13 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void flipLeft() {
+        runningRight = false;
         this.setFlip(true, false);
     }
 
     @Override
     public void flipRight() {
+        runningRight = true;
         this.setFlip(false, false);
     }
 }
