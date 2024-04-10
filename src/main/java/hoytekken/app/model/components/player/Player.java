@@ -88,7 +88,7 @@ public class Player extends Sprite implements IPlayer {
         this.lives = MAX_LIVES;
         this.current = PlayerState.STANDING;
         this.previous = PlayerState.STANDING;
-        
+        this.stateTimer = 0;
 
         // Punching animation
         //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
