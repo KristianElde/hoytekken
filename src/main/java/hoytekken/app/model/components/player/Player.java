@@ -66,7 +66,6 @@ public class Player extends Sprite implements IPlayer {
     private PlayerState currentState;
     private PlayerState previousState;
     private float stateTimer;
-    private float timeSinceAction = 0;
 
     // Animation
     private Animation<TextureRegion> punchAnimation;
@@ -94,6 +93,7 @@ public class Player extends Sprite implements IPlayer {
         this.stateTimer = 0;
         this.runningRight = true;
 
+        // Punching animation
         Array<TextureRegion> frames = new Array<TextureRegion>();
         frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
         punchAnimation = new Animation<TextureRegion>(0.1f, frames);
@@ -287,14 +287,12 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
-        System.out.println("Punching");
         isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
-        System.out.println("Kicking");
         isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
