@@ -90,27 +90,31 @@ public abstract class BaseScreen implements Screen, IEventListener {
      * If the game state has changed, switches to the appropriate screen.
      */
     protected void handleStateSwitch(GameStateEvent event) {
-        GameState currentState = model.getGameState();
+        GameState newState = event.newState();
 
-        switch (currentState) {
+        switch (newState) {
             case MAIN_MENU:
                 if (!(this instanceof MenuScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new MenuScreen(game, model));
                 }
                 break;
             case INSTRUCTIONS:
                 if (!(this instanceof InstructionsScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new InstructionsScreen(game, model));
                 }
                 break;
             case ACTIVE_GAME:
                 if (!(this instanceof GameScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new GameScreen(game, model));
                 }
                 break;
             case GAME_OVER:
                 if (!(this instanceof GameOverScreen)) {
                     int winningPlayer = getWinningPlayer();
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new GameOverScreen(game, model, winningPlayer));
                 }
                 break;
