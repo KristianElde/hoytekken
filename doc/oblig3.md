@@ -102,15 +102,19 @@
 
 ## README.md
 
-    
+    Readme.md er opp til dato for spesifkasjoner for å kjøre programmet.
+    Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet
+    til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet
+    skal kompilere på Linux også.
 
 ## Klassediagram
 
-    
+    Klassediagram ligger her: [UML](/doc/hoytekken_uml.png)
+    Vi har valgt å ta ut alle enums, for å gjøre det mer oversiktlig.
 
 ## Kode
 
-     
+    
 
 ## kjente feil
 
