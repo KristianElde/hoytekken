@@ -16,8 +16,8 @@ public class AIPlayer extends Player {
     }
 
     @Override
-    public void update() {
-        super.update();
+    public void update(float dt) {
+        super.update(dt);
         makeDecision();
     }
 

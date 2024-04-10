@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -57,9 +56,19 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
+    private boolean isPunching = false;
+    private boolean isKicking = false;
+    private boolean runningRight;
     private int maxHealth;
     private int health;
     private int lives;
+    private PlayerState currentState;
+    private PlayerState previousState;
+    private float stateTimer;
+    private float timeSinceAction = 0;
+
+    // Animation
+    private Animation<TextureRegion> kickAnimation;
 
 
     /**
@@ -78,9 +87,19 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
+        this.currentState = PlayerState.STANDING;
+        this.previousState = PlayerState.STANDING;
+        this.stateTimer = 0;
+        this.runningRight = true;
 
-        // Punching animation
-        //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+
+        // Kicking animation
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        kickAnimation = new Animation<TextureRegion>(0.1f, frames);
+        frames.clear();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
@@ -129,7 +148,10 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void update() {
+    public void update(float dt) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            timeSinceAction += dt;
+        }
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
             resetPosistion();
@@ -138,6 +160,62 @@ public class Player extends Sprite implements IPlayer {
         }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
+        setRegion(getFrame(dt));
+        if (timeSinceAction > 0.3f) {
+            resetAnimation();
+            timeSinceAction = 0;
+        }
+    }
+
+    private PlayerState resetAnimation() {
+        isPunching = false;
+        isKicking = false;
+        return PlayerState.STANDING;
+    }
+
+    private TextureRegion getFrame(float dt) {
+        currentState = getState();
+        TextureRegion region;
+
+        switch (currentState) {
+            case PUNCHING:
+                region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
+                break;
+            case KICKING:
+                region = kickAnimation.getKeyFrame(stateTimer);
+                break;
+            case BLOCKING:
+                region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
+                break;
+            case STANDING:
+                region = playerStand;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + currentState);
+        }
+
+        if(!runningRight && !region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = false;
+        } else if(runningRight && region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = true;
+        }
+        stateTimer = currentState == previousState ? stateTimer + dt : 0; 
+        previousState = currentState;
+        return region;
+    }
+
+    private PlayerState getState() {
+        if (isPunching) {
+            return PlayerState.PUNCHING;
+        } else if (isKicking) {
+            return PlayerState.KICKING;
+        } else if (isBlocking) {
+            return PlayerState.BLOCKING;
+        } else {
+            return PlayerState.STANDING;
+        }
     }
 
     @Override
@@ -218,11 +296,19 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
+        isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
+        isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
@@ -275,11 +361,13 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void flipLeft() {
+        runningRight = false;
         this.setFlip(true, false);
     }
 
     @Override
     public void flipRight() {
+        runningRight = true;
         this.setFlip(false, false);
     }
 }
