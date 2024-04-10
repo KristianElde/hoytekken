@@ -63,6 +63,10 @@ public class Player extends Sprite implements IPlayer {
     private PlayerState current;
     private PlayerState previous;
 
+    // Animation
+    private Animation<TextureRegion> punchAnimation;
+    private Animation<TextureRegion> kickAnimation;
+
 
     /**
      * Constructor for the player
