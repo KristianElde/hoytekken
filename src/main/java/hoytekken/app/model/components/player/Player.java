@@ -161,6 +161,9 @@ public class Player extends Sprite implements IPlayer {
         setRegion(getFrame(dt));
     }
 
+    private PlayerState resetAnimation() {
+    }
+
     private TextureRegion getFrame(float dt) {
         currentState = getState();
         TextureRegion region;
