@@ -8,4 +8,10 @@ public class EventBus {
     public void addListener(IEventListener listener) {
         listeners.add(listener);
     }
+
+    public void removeListener(IEventListener listener) {
+        listeners.remove(listener);
+    }
+
+    
 }
