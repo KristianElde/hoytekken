@@ -151,6 +151,9 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void update(float dt) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            timeSinceAction += dt;
+        }
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
             resetPosistion();
