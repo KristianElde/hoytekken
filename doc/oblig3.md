@@ -8,31 +8,34 @@
 
 ### 1.1. Prosjektleder
 
-    
+    Selv om vi ikke har utnevnt noen til denne rollen direkte, er det likevel blitt naturlig at noen har tatt på seg lederrollen. Mathias har hatt god oversikt over hva som skal til for å få prosjektet i mål, og dermed har han fått denne rollen. Dette har utviklet seg naturlig utover prosjektet.
 
 ### 1.2. Møteleder
 
-    
+    Sune er fortsatt nøteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med.
 
 ### 1.3. Trello-ansvarlig
 
+    Jonas regnes fortsatt som trello-ansvarlig, men alle har ansvar for å oppdatere trello med oppgaver de holder på med og er ferdig med. 
+    Dette ser vi på som en suksess og en naturlig utvikling som har gitt oss en god måte å holde oversikt over oppgaver som skal gjøres og er gjort.
     
-
 ### 1.4. Testansvarlig
 
-    
+    Denne rollen er tildelt Kristian, og han har gjort en god jobb med å øke test-coverage på prosjektet. Andre har selvfølgelig også vært involvert i å lage tester, men Kristian har altså hovedansvaret for det, noe som har fungert godt.
 
 ### 1.5 Lyd og grafikk
 
-    
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder vil mest sannsynlig bli laget/implementert av Vetle eller Lauritz, evt. sammen.
 
 ### 1.6 Strukturansvarlig
 
-    
+    Rollen ble tildelt Vetle, men har også vært naturlig fordelt over hele gruppen. Alle har vært flinke til å holde seg til git-strukturen, og har vært flinke til
+    å lage branches for det de jobber med.
+    Commits/merges har også blitt jevnere siden forrige innlevering, det er fortsatt en trend at noen commiter oftere enn andre, men dette vil bare være naturlig.
 
 ### 1.7 Kodestilansvarlig
 
-    
+    Denne rollen er tildelt Mathias, og har fungert bra. Rollen har nå blitt mer relevant ettersom kodebasen har blitt en del større. Han har dermed kommet med gode forbedringer til koden, som vi deretter har refaktorert.
 
 ## 2. Prosjektmetodikk
 
