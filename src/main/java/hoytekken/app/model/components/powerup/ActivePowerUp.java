@@ -98,21 +98,9 @@ public class ActivePowerUp extends Sprite {
         powerUp.applyPowerUp(player);
     }
 
-    public World getWorld() {
-        return world;
-    }
-
     public Body getBody() {
         return body;
     }
-
-    // public void markForDestruction() {
-    //     shouldDestroy = true;
-    // }
-
-    // public boolean shouldDestroy() {
-    //     return shouldDestroy;
-    // }
 
     public boolean isVisible() {
         return this.isVisible;
