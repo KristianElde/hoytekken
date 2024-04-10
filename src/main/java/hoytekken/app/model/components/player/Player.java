@@ -57,11 +57,13 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
+    private boolean runningRight;
     private int maxHealth;
     private int health;
     private int lives;
     private PlayerState current;
     private PlayerState previous;
+    private float stateTimer;
 
     // Animation
     private Animation<TextureRegion> punchAnimation;
@@ -84,6 +86,9 @@ public class Player extends Sprite implements IPlayer {
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
+        this.current = PlayerState.STANDING;
+        this.previous = PlayerState.STANDING;
+        
 
         // Punching animation
         //frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
