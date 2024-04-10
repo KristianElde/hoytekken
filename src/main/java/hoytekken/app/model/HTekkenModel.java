@@ -1,7 +1,7 @@
 package hoytekken.app.model;
 
 import java.util.HashMap;
-
+import java.util.LinkedList;
 import javax.swing.Box;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -321,6 +321,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             bodiesToDestroy.add(activePowerUp.getBody());
             activePowerUp.markForDestruction();
         }
+    }
 
     public EventBus getEventBus() {
         return eventBus;

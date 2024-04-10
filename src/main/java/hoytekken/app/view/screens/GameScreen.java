@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
 import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.view.ViewableModel;
 
