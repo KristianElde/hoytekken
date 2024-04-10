@@ -95,9 +95,6 @@ public class Player extends Sprite implements IPlayer {
 
         // Punching animation
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        frames.add(new TextureRegion(getTexture(), 2178, 0, 666, 1080));
-        punchAnimation = new Animation<TextureRegion>(0.1f, frames);
-        frames.clear();
 
         // Kicking animation
         frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
