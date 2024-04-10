@@ -1,7 +1,6 @@
 package hoytekken.app.model;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import javax.swing.Box;
 
@@ -14,7 +13,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
@@ -67,9 +65,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
     private ActivePowerUp activePowerUp;
-    private float timeSinceLastPowerUp = 0;
-    private final float powerUpSpawnInterval = 10;
-    private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
 
     /**
      * Constructor for the model
@@ -107,44 +102,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         movePlayers();
         playerOne.update();
         playerTwo.update();
-        //activePowerUp.update(dt);
-        if (activePowerUp != null) {
-            if (!activePowerUp.isActive()){
-                activePowerUp = null;
-                timeSinceLastPowerUp = 0;
-            }
-            else {
-                activePowerUp.update(dt);
-            }
-        }
-        if (activePowerUp == null) {
-            timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-            }
-        }
-        // if (activePowerUp != null && activePowerUp.shouldDestroy()) {
-        //     Body body = activePowerUp.getBody();
-        //     if (body != null) {
-        //         gameWorld.destroyBody(body);
-        //     }
-        // }
-        // for (Body b : bodiesToDestroy) {
-        //     gameWorld.destroyBody(b);
-        //     activePowerUp.getTexture().dispose();
-        // }
-        // bodiesToDestroy.clear();
-
-        for (Body b : bodiesToDestroy) {
-            Object userData = b.getUserData();
-            if (userData instanceof ActivePowerUp) {
-                ActivePowerUp powerUp = (ActivePowerUp) userData;
-                powerUp.makeInvisible();
-            }
-            gameWorld.destroyBody(b);
-        }
-        bodiesToDestroy.clear();
-
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
@@ -315,19 +272,5 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     @Override
     public ActivePowerUp getActivePowerUp() {
         return activePowerUp;
-    }
-
-    @Override
-    public void applyPowerUp(PlayerType player, ActivePowerUp powerUp) {
-        IPlayer p = getPlayer(player);
-        powerUp.apply(p);
-
-    }
-
-    @Override
-    public void destroyPowerUpList() {
-        if (activePowerUp != null && activePowerUp.getBody() != null) {
-            bodiesToDestroy.add(activePowerUp.getBody());
-        }
     }
 }
