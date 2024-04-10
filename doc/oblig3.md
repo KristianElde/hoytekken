@@ -116,8 +116,8 @@
 
     Prosjektet følger MVC (model-view-controller) struktur. Dette kommer med fordeler og ulemper. Vi hadde et problem med
     at vi måtte sjekke current gamestate i game-loopen for å bytte skjerm, dette er ikke optimalt. Vi har nå implementert en
-    EventBus som løser dette problemet. Eventbusen gjør det også mulig å forbedre andre områder i koden, og vi vil bruke denne på
-    flere steder ettersom vi ser behov for det.
+    EventBus som løser dette problemet. Eventbusen gjør det også mulig å forbedre andre områder i koden, og vi vil 
+    bruke denne på flere steder ettersom vi ser behov for det.
 
     - Controller klasse håndterer alt av input.
     - View er en består av en abstrakt superklasse, BaseScreen som extender libgdx sin Screen klasse, og subklasser.
@@ -134,5 +134,6 @@
 
 ## kjente feil
     
-
+    - Spillere kan klistre seg fast på siden av objekter hvis de har beveger seg mot objektet. (Usikkert om dette er
+    noe vi ønsker å beholde som en feature, eller om vi ønsker endre dette slik at spilleren faller)
     
