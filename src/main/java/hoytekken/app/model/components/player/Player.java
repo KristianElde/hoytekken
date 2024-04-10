@@ -167,6 +167,19 @@ public class Player extends Sprite implements IPlayer {
     private TextureRegion getFrame(float dt) {
         current = getState();
         TextureRegion region;
+
+        switch (current) {
+            case PUNCHING:
+                region = punchAnimation.getKeyFrame(stateTimer, true);
+                break;
+            case KICKING:
+                region = kickAnimation.getKeyFrame(stateTimer, true);
+                break;
+            case STANDING:
+            default:
+                region = playerStand;
+                break;
+        }
     }
 
     private PlayerState getState() {
