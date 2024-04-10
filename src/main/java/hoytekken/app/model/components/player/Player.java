@@ -170,8 +170,14 @@ public class Player extends Sprite implements IPlayer {
     }
 
     private PlayerState getState() {
-        if (isAlive) {
-            
+        if (isPunching) {
+            return PlayerState.PUNCHING;
+        } else if (isKicking) {
+            return PlayerState.KICKING;
+        } else if (isBlocking) {
+            return PlayerState.BLOCKING;
+        } else {
+            return PlayerState.STANDING;
         }
     }
 
