@@ -66,6 +66,7 @@ public class Player extends Sprite implements IPlayer {
     private PlayerState currentState;
     private PlayerState previousState;
     private float stateTimer;
+    private float timeSinceAction = 0;
 
     // Animation
     private Animation<TextureRegion> punchAnimation;
