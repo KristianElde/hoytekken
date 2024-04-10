@@ -182,7 +182,7 @@ public class Player extends Sprite implements IPlayer {
                 region = playerStand;
                 break;
             default:
-                region = playerStand;
+                throw new IllegalStateException("Unexpected value: " + currentState);
         }
 
         if(!runningRight && !region.isFlipX()) {
