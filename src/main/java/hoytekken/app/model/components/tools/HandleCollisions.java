@@ -1,6 +1,7 @@
 package hoytekken.app.model.components.tools;
 
 import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
 
 public interface HandleCollisions {
 
@@ -12,4 +13,9 @@ public interface HandleCollisions {
     public boolean resetDoubleJump(PlayerType player);
 
 
+    public void destroyPowerUpList();
+
+    public void applyPowerUp(PlayerType player, ActivePowerUp powerUp);
+
+    public ActivePowerUp getActivePowerUp();
 }
