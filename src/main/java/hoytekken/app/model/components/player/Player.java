@@ -175,11 +175,15 @@ public class Player extends Sprite implements IPlayer {
             case KICKING:
                 region = kickAnimation.getKeyFrame(stateTimer, true);
                 break;
+            // case BLOCKING:
+            //     region = playerBlock;
+            //     break;
             case STANDING:
             default:
                 region = playerStand;
                 break;
         }
+
     }
 
     private PlayerState getState() {
