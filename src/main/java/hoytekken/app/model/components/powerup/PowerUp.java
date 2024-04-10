@@ -4,7 +4,6 @@ import org.w3c.dom.Text;
 
 import com.badlogic.gdx.graphics.Texture;
 
-import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 
 public abstract class PowerUp {
@@ -43,7 +42,7 @@ public abstract class PowerUp {
      * 
      * @param player Player to affect.
      */
-    public abstract void applyPowerUp(IPlayer player);
+    public abstract void applyPowerUp(Player player);
 
     Texture getTexture() {
         return pUpTexture;

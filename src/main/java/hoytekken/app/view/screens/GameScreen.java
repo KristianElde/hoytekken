@@ -9,7 +9,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.PlayerType;
-import hoytekken.app.model.components.powerup.ActivePowerUp;
 import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.view.ViewableModel;
 
@@ -75,11 +74,7 @@ public class GameScreen extends BaseScreen {
         // game.batch.draw(img, 0, 0);
         this.model.getPlayer(PlayerType.PLAYER_ONE).draw(game.batch);
         this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
-
-        ActivePowerUp activePowerUp = this.model.getActivePowerUp();
-        if (activePowerUp != null && activePowerUp.isVisible()) {
-            activePowerUp.draw(game.batch);
-        }
+        this.model.getActivePowerUp().draw(game.batch);
 
         game.batch.end();
         hud.getStage().draw();
