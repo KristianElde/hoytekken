@@ -114,8 +114,25 @@
 
 ## Kode
 
-    
+    Prosjektet følger MVC (model-view-controller) struktur. Dette kommer med fordeler og ulemper. Vi hadde et problem med
+    at vi måtte sjekke current gamestate i game-loopen for å bytte skjerm, dette er ikke optimalt. Vi har nå implementert en
+    EventBus som løser dette problemet. Eventbusen gjør det også mulig å forbedre andre områder i koden, og vi vil bruke denne på
+    flere steder ettersom vi ser behov for det.
+
+    - Controller klasse håndterer alt av input.
+    - View er en består av en abstrakt superklasse, BaseScreen som extender libgdx sin Screen klasse, og subklasser.
+    Hver av subklassene representerer en GameState.
+    - Modellen holder på alt av mekanikk og logikk i spillet. Denne kobles opp mot controller og Screeens
+    med Viewable- og ControllableModelInterface som dikterer hvilke deler av prosjektet som skal ha tilgang til hvilke deler av modellen.
+    - Hoytekken Game/ApplicationListener. Denne klassen knytter alle delene av prosjektet sammen og kjøres i main.
+
+    - Testing. Vi har jobbet mye med testing siden forrige oblig og fått opp testcoverage, men vi har fortsatt en del kode
+    som ikke er dekket av testene.
+    - Alt av kode, klasser, interface, metoder, osv... er dokumentert med Javadoc. Det er potensiale til å rydde i
+    koden på visse steder ved å bl.a sortere metoder etter bruksområder.
+
 
 ## kjente feil
+    
 
     
