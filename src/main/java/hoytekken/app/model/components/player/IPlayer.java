@@ -12,7 +12,7 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      * Updates the player.
      * 
      */
-    void update();
+    void update(float dt);
 
     /**
      * Retrieves the physical body representing the player.
