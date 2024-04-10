@@ -93,7 +93,6 @@ public class Player extends Sprite implements IPlayer {
         this.stateTimer = 0;
         this.runningRight = true;
 
-        // Punching animation
         Array<TextureRegion> frames = new Array<TextureRegion>();
 
         // Kicking animation
