@@ -1,4 +1,6 @@
 package hoytekken.app.model.components.eventBus;
 
-public record GameStateEvent() {
+import hoytekken.app.model.components.GameState;
+
+public record GameStateEvent(GameState oldState, GameState newState) implements IEvent{
 }
