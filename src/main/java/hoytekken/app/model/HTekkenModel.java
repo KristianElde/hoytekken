@@ -52,6 +52,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     };
 
+    private EventBus eventBus;
+
     private World gameWorld;
     private GameState gameState;
 
@@ -89,6 +91,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
         this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        this.eventBus = eventBus;
     }
 
     /**
