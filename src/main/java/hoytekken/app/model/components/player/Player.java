@@ -163,6 +163,10 @@ public class Player extends Sprite implements IPlayer {
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
         setRegion(getFrame(dt));
+        if (timeSinceAction > 0.3f) {
+            resetAnimation();
+            timeSinceAction = 0;
+        }
     }
 
     private PlayerState resetAnimation() {
