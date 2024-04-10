@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.model.components.eventBus.IEventListener;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
@@ -56,6 +58,13 @@ public abstract class BaseScreen implements Screen, IEventListener {
         this(game, model, false);
     }
 
+    @Override
+    public void handleEvent(IEvent event) {
+        if (event instanceof GameStateEvent) {
+            handleStateSwitch((GameStateEvent) event);
+        }
+    }
+
     private int getWinningPlayer() throws IllegalStateException{
         boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
         boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
@@ -80,7 +89,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
      * Handles the state switch.
      * If the game state has changed, switches to the appropriate screen.
      */
-    protected void handleStateSwitch() {
+    protected void handleStateSwitch(GameStateEvent event) {
         GameState currentState = model.getGameState();
 
         switch (currentState) {
@@ -123,7 +132,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
      */
     protected void update(float delta) {
         this.gameCam.update();
-        handleStateSwitch();
+        //handleStateSwitch();
     }
 
     @Override
