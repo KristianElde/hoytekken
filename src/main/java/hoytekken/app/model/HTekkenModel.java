@@ -123,7 +123,24 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
                 activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
             }
         }
+        // if (activePowerUp != null && activePowerUp.shouldDestroy()) {
+        //     Body body = activePowerUp.getBody();
+        //     if (body != null) {
+        //         gameWorld.destroyBody(body);
+        //     }
+        // }
+        // for (Body b : bodiesToDestroy) {
+        //     gameWorld.destroyBody(b);
+        //     activePowerUp.getTexture().dispose();
+        // }
+        // bodiesToDestroy.clear();
+
         for (Body b : bodiesToDestroy) {
+            Object userData = b.getUserData();
+            if (userData instanceof ActivePowerUp) {
+                ActivePowerUp powerUp = (ActivePowerUp) userData;
+                powerUp.makeInvisible();
+            }
             gameWorld.destroyBody(b);
         }
         bodiesToDestroy.clear();

@@ -27,6 +27,12 @@ public class ActivePowerUp extends Sprite {
     private float powerUpTimer = 0;
     private boolean powerUpActive = true;
 
+    private boolean shouldDestroy = false;
+
+    private boolean isVisible = true;
+
+
+
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
         this.factory = factory;
@@ -98,5 +104,26 @@ public class ActivePowerUp extends Sprite {
 
     public Body getBody() {
         return body;
+    }
+
+    // public void markForDestruction() {
+    //     shouldDestroy = true;
+    // }
+
+    // public boolean shouldDestroy() {
+    //     return shouldDestroy;
+    // }
+
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+
+    public void makeInvisible() {
+        this.isVisible = false;
+    }
+
+    public Texture getTexture() {
+        return this.texture;
+
     }
 }
