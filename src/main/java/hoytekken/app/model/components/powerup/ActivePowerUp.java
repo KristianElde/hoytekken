@@ -22,6 +22,11 @@ public class ActivePowerUp extends Sprite {
     private Body body;
     private Texture texture;
     private PowerUp powerUp;
+    
+    private boolean powerUpActive = true;
+    private boolean isVisible = true;
+    private boolean shouldBeDestroyed = false;
+    
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
@@ -39,8 +44,8 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM,
-        (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM, 0);
+        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM)/2 + Hoytekken.V_WIDTH / Hoytekken.PPM / 4,
+        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM) / 2 + Hoytekken.V_HEIGHT/Hoytekken.PPM/4, 0);
     }
 
     private void positionTexture() {
@@ -63,11 +68,36 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    public PowerUp getPowerUp() {
-        return factory.getNext();
+    public boolean isActive() {
+        return powerUpActive;
+    }
+
+    public void apply(IPlayer player) {
+        powerUp.applyPowerUp(player);
     }
 
     public Body getBody() {
         return body;
+    }
+
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+
+    public void makeInvisible() {
+        this.isVisible = false;
+    }
+
+    public Texture getTexture() {
+        return this.texture;
+
+    }
+
+    public void markForDestruction() {
+        this.shouldBeDestroyed = true;
+    }
+
+    public boolean shouldBeDestroyed() {
+        return this.shouldBeDestroyed;
     }
 }

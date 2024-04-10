@@ -70,6 +70,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
     private ActivePowerUp activePowerUp;
+    private float timeSinceLastPowerUp = 0;
+    private final float powerUpSpawnInterval = 2;
+    private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
+
 
     /**
      * Constructor for the model
@@ -91,6 +95,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
+
         this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
         this.eventBus = eventBus;
     }
@@ -106,6 +111,28 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
+
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                timeSinceLastPowerUp = 0;
+            }
+        }
+
+        if (activePowerUp != null && activePowerUp.shouldBeDestroyed()) {
+            bodiesToDestroy.add(activePowerUp.getBody());
+        }
+
+        while (!bodiesToDestroy.isEmpty()) {
+            Body b = bodiesToDestroy.poll();
+            if (b != null && b.getUserData() instanceof ActivePowerUp){
+                //activePowerUp.makeInvisible();
+                gameWorld.destroyBody(b);
+            }
+            activePowerUp = null;
+        }
+
         playerOne.update(dt);
         playerTwo.update(dt);
         if (isGameOver()) {
@@ -282,7 +309,22 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     @Override
+    public void applyPowerUp(PlayerType player, ActivePowerUp powerUp) {
+        IPlayer p = getPlayer(player);
+        powerUp.apply(p);
+
+    }
+
+    @Override
+    public void destroyPowerUpList() {
+        if (activePowerUp != null && activePowerUp.getBody() != null) {
+            bodiesToDestroy.add(activePowerUp.getBody());
+            activePowerUp.markForDestruction();
+        }
+
     public EventBus getEventBus() {
         return eventBus;
     }
+
+    
 }
