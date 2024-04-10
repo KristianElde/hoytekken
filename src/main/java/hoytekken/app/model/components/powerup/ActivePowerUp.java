@@ -27,8 +27,6 @@ public class ActivePowerUp extends Sprite {
     private float powerUpTimer = 0;
     private boolean powerUpActive = true;
 
-    private boolean shouldDestroy = false;
-
     private boolean isVisible = true;
 
 
