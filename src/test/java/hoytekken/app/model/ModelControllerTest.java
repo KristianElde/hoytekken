@@ -191,9 +191,45 @@ public class ModelControllerTest {
         assertDoesNotThrow(() -> p1.fallenOffTheMap());
         assertDoesNotThrow(() -> p2.fallenOffTheMap());
     }
-        // p1.fallenOffTheMap();
+
+    @Test
+    void testFlip() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        //assert players can flip
+        p1.flipLeft();
+        p2.flipRight();
+
+       
+
+        //assert players can flip back
+        p1.flipRight();
+        p2.flipLeft();
+
+        //assertions???
+
+    }
         // p1.flipLeft();
         // p1.flipRight();
+    
+    @Test
+    void testKick() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertDoesNotThrow(() -> p1.kick(p2));
+        assertDoesNotThrow(() -> p2.kick(p1));
+    }
+
+    @Test
+    void testPunch() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertDoesNotThrow(() -> p1.punch(p2));
+        assertDoesNotThrow(() -> p2.punch(p1));
+    }
         // p1.kick(p2);
         // p1.punch(p2);
         // p1.getBody();
