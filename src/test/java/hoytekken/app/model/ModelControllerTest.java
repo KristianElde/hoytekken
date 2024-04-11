@@ -1,9 +1,12 @@
 package hoytekken.app.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -29,6 +32,13 @@ public class ModelControllerTest {
     @BeforeEach
     void setUpBeforeEach() {
         model = new HTekkenModel(new EventBus());
+    }
+
+    @Test
+    void SanityTest() {
+        assertEquals(1, 1, "Sanity check to verify that tests are working.");
+        assertNotNull(model, "Model should be initialized.");
+        assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
     }
 
     
