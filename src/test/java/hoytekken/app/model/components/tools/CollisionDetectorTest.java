@@ -29,5 +29,9 @@ public class CollisionDetectorTest {
     void setUp(){
         model = Mockito.mock(HandleCollisions.class);
         collisionDetector = new CollisionDetector(model);
+
+        //Configure the mock contact to return the mock fixtures
+        Mockito.when(mockContact.getFixtureA()).thenReturn(mockFixtureA);
+        Mockito.when(mockContact.getFixtureB()).thenReturn(mockFixtureB);
     }
 }
