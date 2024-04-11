@@ -87,4 +87,38 @@ public class HtekkenController extends InputAdapter {
         }
     }
 
+    @Override
+    public boolean keyUp(int keycode) {
+        if (model.getGameState() == GameState.ACTIVE_GAME) {
+            // Player 1
+            // Stop applying force to the player when the key is released
+            if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
+                    || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
+                model.setDirection(playerOne, ForceDirection.STATIC);
+                return true;
+            }
+
+            // Deactivate block when DOWN-key is released
+            if (keycode == Input.Keys.DOWN) {
+                model.getPlayer(playerOne).changeBlockingState();
+                return true;
+            }
+
+            // Player2
+            // Stop applying force to the player when the key is released
+            if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
+                    || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
+                model.setDirection(playerTwo, ForceDirection.STATIC);
+                return true;
+            }
+
+            // Deactivate block when S-key is released
+            if (keycode == Input.Keys.S) {
+                model.getPlayer(playerTwo).changeBlockingState();
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
