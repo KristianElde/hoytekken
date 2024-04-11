@@ -251,12 +251,37 @@ public class ModelControllerTest {
 
         assertEquals(10, p2.getPunchDamage());
         p2.increaseDamage(10);
-        assertEquals(20, p2.getPunchDamage());
-        
-        
+        assertEquals(20, p2.getPunchDamage()); 
     }
-        // p1.increaseDamage(0);
-        // p1.increaseHealth(0);
+
+    @Test
+    void testIncreaseHealth() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertEquals(99, p1.getHealth());
+        p1.increaseHealth(1);
+        assertEquals(100, p1.getHealth());
+
+        assertEquals(99, p2.getHealth());
+        p2.increaseHealth(1);
+        assertEquals(100, p2.getHealth());
+    }
+
+    @Test
+    void testGainExtraLife() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertEquals(3, p1.getLives());
+        p1.gainExtraLife();
+        assertEquals(4, p1.getLives());
+
+        assertEquals(3, p2.getLives());
+        p2.gainExtraLife();
+        assertEquals(4, p2.getLives());
+    }
+        
         // p1.gainExtraLife();
         // p1.isAlive();
         // p1.getLives();
