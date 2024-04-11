@@ -230,8 +230,15 @@ public class ModelControllerTest {
         assertDoesNotThrow(() -> p1.punch(p2));
         assertDoesNotThrow(() -> p2.punch(p1));
     }
-        // p1.kick(p2);
-        // p1.punch(p2);
+    
+    @Test
+    void testGetBody() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertNotNull(p1.getBody(), "Player one body should not be null.");
+        assertNotNull(p2.getBody(), "Player two body should not be null.");
+    }
         // p1.getBody();
         // p1.increaseDamage(0);
         // p1.increaseHealth(0);
