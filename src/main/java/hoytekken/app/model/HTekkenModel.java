@@ -27,12 +27,11 @@ import hoytekken.app.view.ViewableModel;
  * The model for the game
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
-    private static final String DEFAULT_MAP = "defaultMap.tmx";
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
-    private HashMap<String, String> gameMaps = new HashMap<String, String>() {
+    private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
             put("map2", "secondKMVmap.tmx");
@@ -91,7 +90,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * Constructor for the model, uses default map
      */
     public HTekkenModel(EventBus eventBus) {
-        this(DEFAULT_MAP, eventBus);
+        this(gameMaps.get("map1"), eventBus);
     }
 
     @Override
@@ -211,6 +210,13 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
+    /**
+     * Sets the speed of the player based on the direction
+     * 
+     * @param player
+     * @param direction
+     * 
+     */
     private void directionToSpeed(PlayerType player, ForceDirection direction) {
         IPlayer p = getPlayer(player);
         switch (direction) {
