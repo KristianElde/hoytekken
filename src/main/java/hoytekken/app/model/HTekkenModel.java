@@ -131,6 +131,14 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
                 activePowerUp = null;
             }
         }
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp.makeVisible();
+                timeSinceLastPowerUp = 0;
+            }
+        }
 
         while (!bodiesToDestroy.isEmpty()) {
             Body b = bodiesToDestroy.poll();
