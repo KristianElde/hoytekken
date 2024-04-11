@@ -15,7 +15,7 @@ import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
  */
 public class SoundTest {
     private ISound sound;
-    private String path = "/resources/sounds/punch-3-166696.mp3";
+    private String path = "sounds/punch-3-166696.mp3";
 
     @BeforeAll
     static void setUpBeforeAll() {
