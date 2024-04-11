@@ -1,17 +1,13 @@
+package hoytekken.app.model.components.sound;
+
+import com.badlogic.gdx.Gdx;
+
 public class Sound {
-    private String soundName;
-    private String soundPath;
+    private com.badlogic.gdx.audio.Sound sound;
+    private long id;
 
-    public Sound(String soundName, String soundPath) {
-        this.soundName = soundName;
-        this.soundPath = soundPath;
+    public Sound(String path) {
+        this.sound = Gdx.audio.newSound(Gdx.files.internal(path));
     }
 
-    public String getSoundName() {
-        return soundName;
-    }
-
-    public String getSoundPath() {
-        return soundPath;
-    }
 }
