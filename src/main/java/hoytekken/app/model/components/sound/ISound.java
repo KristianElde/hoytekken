@@ -17,4 +17,8 @@ public interface ISound {
      */
     public void loop();
 
+    /**
+     * Stop the sound loop.
+     */
+    public void stopLoop();
 }
