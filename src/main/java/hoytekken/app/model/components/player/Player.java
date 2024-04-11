@@ -70,7 +70,6 @@ public class Player extends Sprite implements IPlayer {
     // Animation
     private Animation<TextureRegion> kickAnimation;
 
-
     /**
      * Constructor for the player
      * 
@@ -79,9 +78,9 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
-        super(type == PlayerType.PLAYER_ONE 
-        ? atlas.findRegion("Character_1_normalStand(60x27)") 
-        : atlas2.findRegion("Character_2_normalStand(60x27)"));
+        super(type == PlayerType.PLAYER_ONE
+                ? atlas.findRegion("Character_1_normalStand(60x27)")
+                : atlas2.findRegion("Character_2_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
@@ -194,14 +193,14 @@ public class Player extends Sprite implements IPlayer {
                 throw new IllegalStateException("Unexpected value: " + currentState);
         }
 
-        if(!runningRight && !region.isFlipX()) {
+        if (!runningRight && !region.isFlipX()) {
             region.flip(true, false);
             runningRight = false;
-        } else if(runningRight && region.isFlipX()) {
+        } else if (runningRight && region.isFlipX()) {
             region.flip(true, false);
             runningRight = true;
         }
-        stateTimer = currentState == previousState ? stateTimer + dt : 0; 
+        stateTimer = currentState == previousState ? stateTimer + dt : 0;
         previousState = currentState;
         return region;
     }
@@ -266,7 +265,7 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
-    protected boolean isWithinRange(IPlayer that, float rangeFactor) {
+    public boolean isWithinRange(IPlayer that, float rangeFactor) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 

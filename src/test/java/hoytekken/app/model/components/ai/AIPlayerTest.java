@@ -1,12 +1,14 @@
 package hoytekken.app.model.components.ai;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import java.util.Random;
 
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +33,9 @@ public class AIPlayerTest {
     private Random rand = new Random();
 
     private static final int MAX_HEALTH = 99;
+    private static final float PUNCH_RANGE = 1.8f;
+    private static final float KICK_RANGE = 2.2f;
+    private static final float DELTA_TIME = 1.0f;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -61,19 +66,35 @@ public class AIPlayerTest {
     }
 
     @Test
-    void moveTowardsTargetTest() {
-        float distance = Float.compare(AIPlayer.getBody().getPosition().x, opposition.getBody().getPosition().x);
-        for (int i = 0; i < 10; i++) {
-            AIPlayer.move(-5, 0);
+    void moveAIPlayerTest() {
+        float initX = AIPlayer.getBody().getPosition().x;
+        float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
+
+        AIPlayer.move(dirX, 0);
+        world.step(1 / 60f, 6, 2);
+
+        float newX = AIPlayer.getBody().getPosition().x;
+
+        float deltaX = initX - newX;
+
+        assertTrue(deltaX != 0);
+    }
+
+    @Test
+    void makeDecisionTest() {
+        float initX = AIPlayer.getBody().getPosition().x;
+        while (AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
+            AIPlayer.update(DELTA_TIME);
             world.step(1 / 60f, 6, 2);
         }
-        float distanceAfterUpdate = Float.compare(AIPlayer.getBody().getPosition().x,
-                opposition.getBody().getPosition().x);
+        float newX = AIPlayer.getBody().getPosition().x;
 
-        float deltaX = distance - distanceAfterUpdate;
+        assertTrue(initX != newX);
+        assertTrue(AIPlayer.isWithinRange(opposition, KICK_RANGE));
+        assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
 
-        System.out.println(distance);
-        System.out.println(distanceAfterUpdate);
-        assertTrue(deltaX > 0);
+        AIPlayer.update(DELTA_TIME);
+        world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
     }
+
 }
