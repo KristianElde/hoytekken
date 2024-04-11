@@ -47,8 +47,12 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM)/2 + Hoytekken.V_WIDTH / Hoytekken.PPM / 4,
-        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM) / 2 + Hoytekken.V_HEIGHT/Hoytekken.PPM/4, 0);
+        // body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM)/2 + Hoytekken.V_WIDTH / Hoytekken.PPM / 4,
+        // ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM) / 2 + Hoytekken.V_HEIGHT/Hoytekken.PPM/4, 0);
+
+        //Randomly at the whole map
+        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM),
+        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM), 0);
     }
 
     private void positionTexture() {
@@ -85,9 +89,9 @@ public class ActivePowerUp extends Sprite {
         powerUpInterval = 0;
     }
 
-    public boolean isActive() {
-        return powerUpActive;
-    }
+    // public boolean isActive() {
+    //     return powerUpActive;
+    // }
 
     public void apply(IPlayer player) {
         powerUp.applyPowerUp(player);
@@ -105,10 +109,10 @@ public class ActivePowerUp extends Sprite {
         this.isVisible = false;
     }
 
-    public Texture getTexture() {
-        return this.texture;
+    // public Texture getTexture() {
+    //     return this.texture;
 
-    }
+    // }
 
     public void markForDestruction() {
         this.shouldBeDestroyed = true;
