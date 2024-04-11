@@ -36,6 +36,7 @@ public class AIPlayerTest {
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
     private static final float DELTA_TIME = 1.0f;
+    private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
     private static final int POSITION_ITERATIONS = 2;
 
@@ -73,7 +74,7 @@ public class AIPlayerTest {
         float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
 
         AIPlayer.move(dirX, 0);
-        world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         float newX = AIPlayer.getBody().getPosition().x;
 
@@ -87,7 +88,7 @@ public class AIPlayerTest {
         float initX = AIPlayer.getBody().getPosition().x;
         while (AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
             AIPlayer.update(DELTA_TIME);
-            world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+            world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
         }
         float newX = AIPlayer.getBody().getPosition().x;
 
@@ -96,7 +97,7 @@ public class AIPlayerTest {
         assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
 
         AIPlayer.update(DELTA_TIME);
-        world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
     }
 
 }
