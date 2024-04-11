@@ -27,6 +27,8 @@ public class ActivePowerUp extends Sprite {
     private boolean powerUpActive = true;
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
+
+    private float powerUpInterval = 0;
     
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
@@ -71,7 +73,10 @@ public class ActivePowerUp extends Sprite {
 
     public void update(float dt) {
         if (isVisible) {
-            
+            powerUpInterval += dt;
+            if (powerUpInterval >= 3) {
+                makeInvisible();
+            }
         }
     }
 
