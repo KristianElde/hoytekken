@@ -83,12 +83,16 @@ public class PowerUpTest {
         assertTrue(hp instanceof ExtraHealth);
         assertTrue(life instanceof ExtraLife);
         assertTrue(speed instanceof DoubleSpeed);
+        assertNotNull(dmg.getTexture());
+        assertNotNull(hp.getTexture());
+        assertNotNull(life.getTexture());
+        assertNotNull(speed.getTexture());
 
     }
 
     @Test
     void extraDamageTest() {
-        PowerUp extraDamagPowerUp = new ExtraDamage();
+        ExtraDamage extraDamagPowerUp = new ExtraDamage();
         extraDamagPowerUp.applyPowerUp(player1);
 
         movePlayersBeside(PUNCH_RANGE);
@@ -100,7 +104,7 @@ public class PowerUpTest {
 
     @Test
     void extraHealthTest() {
-        PowerUp extraHealthPowerUp = new ExtraHealth();
+        ExtraHealth extraHealthPowerUp = new ExtraHealth();
         extraHealthPowerUp.applyPowerUp(player1);
 
         assertEquals(149, player1.getHealth());
@@ -108,7 +112,7 @@ public class PowerUpTest {
 
     @Test
     void extraLifeTest() {
-        PowerUp extraLifPowerUp = new ExtraLife();
+        ExtraLife extraLifPowerUp = new ExtraLife();
         extraLifPowerUp.applyPowerUp(player1);
 
         assertEquals(4, player1.getLives());
