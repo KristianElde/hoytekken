@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.sound.Sound;
 
 /**
  * The player class
@@ -69,6 +70,10 @@ public class Player extends Sprite implements IPlayer {
 
     // Animation
     private Animation<TextureRegion> kickAnimation;
+
+    //Sounds
+    private Sound punchSound = new Sound("sounds\\Punch.mp3");
+    private Sound kickSound = new Sound("sounds\\Kick.mp3");
 
     /**
      * Constructor for the player
@@ -299,6 +304,7 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         isPunching = true;
+        punchSound.play();
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
@@ -308,6 +314,7 @@ public class Player extends Sprite implements IPlayer {
             return false;
         }
         isKicking = true;
+        kickSound.play();
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
