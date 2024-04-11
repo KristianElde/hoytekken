@@ -8,13 +8,18 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.GL20;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.view.ViewableModel;
 
 public class SelectionScreen extends BaseScreen {
     private List<Texture> mapTextures = new ArrayList<Texture>();
+    private boolean isOnePlayerSelected = true;
     
     public SelectionScreen(Hoytekken game, ViewableModel model) {
         super(game, model);
@@ -58,6 +63,17 @@ public class SelectionScreen extends BaseScreen {
         }
     }
 
+    private void drawPlayerSelection() {
+        BitmapFont font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        GlyphLayout layout = new GlyphLayout();
+        String text = isOnePlayerSelected ? "1 player selected, click here to change to 2 players" : "2 players selected, click here to change to 1 player";
+        layout.setText(font, text);
+        float x = (gamePort.getWorldWidth() - layout.width) / 2;
+        float y = gamePort.getWorldHeight()- (gamePort.getWorldHeight()/10) - layout.height; 
+        font.draw(game.batch, layout, x, y);
+    }
+
     @Override
     public void render(float delta) {
         update(delta);
@@ -69,6 +85,7 @@ public class SelectionScreen extends BaseScreen {
 
         game.batch.begin();
         drawMapSelections();
+        drawPlayerSelection();
         game.batch.end();
     }
 }
