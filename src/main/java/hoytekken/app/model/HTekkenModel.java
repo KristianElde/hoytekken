@@ -112,16 +112,24 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
 
-        if (activePowerUp == null) {
-            timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-                timeSinceLastPowerUp = 0;
-            }
-        }
+        // if (activePowerUp == null) {
+        //     timeSinceLastPowerUp += dt;
+        //     if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+        //         activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        //         timeSinceLastPowerUp = 0;
+        //     }
+        // }
 
-        if (activePowerUp != null && activePowerUp.shouldBeDestroyed()) {
-            bodiesToDestroy.add(activePowerUp.getBody());
+        // if (activePowerUp != null && activePowerUp.shouldBeDestroyed()) {
+        //     bodiesToDestroy.add(activePowerUp.getBody());
+        // }
+
+        if (activePowerUp != null) {
+            activePowerUp.update(dt);
+            if (activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
+                bodiesToDestroy.add(activePowerUp.getBody());
+                activePowerUp = null;
+            }
         }
 
         while (!bodiesToDestroy.isEmpty()) {
