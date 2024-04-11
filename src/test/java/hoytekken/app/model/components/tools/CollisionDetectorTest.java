@@ -1,6 +1,11 @@
 package hoytekken.app.model.components.tools;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -33,5 +38,17 @@ public class CollisionDetectorTest {
         //Configure the mock contact to return the mock fixtures
         Mockito.when(mockContact.getFixtureA()).thenReturn(mockFixtureA);
         Mockito.when(mockContact.getFixtureB()).thenReturn(mockFixtureB);
+    }
+
+    @Test
+    void sanityTest() {
+        assert(true);
+        assertEquals(1, 1);
+         assertNotNull(model);
+        assertDoesNotThrow(() -> new CollisionDetector(model));
+        assertNotNull(collisionDetector);
+        assertNotNull(mockContact);
+        assertNotNull(mockFixtureA);
+        assertNotNull(mockFixtureB);
     }
 }
