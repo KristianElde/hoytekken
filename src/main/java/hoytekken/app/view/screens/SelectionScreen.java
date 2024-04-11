@@ -15,6 +15,10 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class SelectionScreen extends BaseScreen {
@@ -72,6 +76,32 @@ public class SelectionScreen extends BaseScreen {
         float x = (gamePort.getWorldWidth() - layout.width) / 2;
         float y = gamePort.getWorldHeight()- (gamePort.getWorldHeight()/10) - layout.height; 
         font.draw(game.batch, layout, x, y);
+    }
+
+    @Override
+    public void handleEvent(IEvent event) {
+        if (event instanceof GameStateEvent) {
+            handleStateSwitch((GameStateEvent) event);
+        } else if (event instanceof ClickedScreenEvent) {
+            handleSelection((ClickedScreenEvent) event);
+        }
+    }
+
+    private void handleSelection(ClickedScreenEvent event) {
+        int x = event.x();
+        int y = event.y();
+        if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() * 2 / 3) {
+            isOnePlayerSelected = !isOnePlayerSelected;
+        } else if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() / 3) {
+            if (x < gamePort.getWorldWidth() / 2) model.setGameMap("map1");
+            else model.setGameMap("map2");
+            model.setGameState(GameState.ACTIVE_GAME);
+        } else {
+            if (x < gamePort.getWorldWidth() / 2) model.setGameMap("map3");
+            else model.setGameMap("map4");
+            model.setGameState(GameState.ACTIVE_GAME);
+        }
+        
     }
 
     @Override
