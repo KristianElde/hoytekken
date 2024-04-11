@@ -33,4 +33,9 @@ public class Sound implements ISound {
     public void stopLoop() {
         sound.stop(id);
     }
+
+    @Override
+    public long getId() {
+        return id;
+    }
 }
