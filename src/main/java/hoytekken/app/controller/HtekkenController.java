@@ -121,6 +121,16 @@ public class HtekkenController extends InputAdapter {
         return false;
     }
 
+    /**
+     * Handles touch down events based on the current game state
+     * 
+     * @param screenX the x-coordinate of the touch
+     * @param screenY the y-coordinate of the touch
+     * @param pointer the pointer of the touch
+     * @param button  the button of the touch
+     * 
+     * @return true if the input was processed
+     */
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         switch (model.getGameState()) {
