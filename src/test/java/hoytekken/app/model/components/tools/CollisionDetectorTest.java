@@ -14,6 +14,8 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import hoytekken.app.model.components.player.PlayerType;
+
 public class CollisionDetectorTest {
     private CollisionDetector collisionDetector;
     private HandleCollisions model;
@@ -70,5 +72,12 @@ public class CollisionDetectorTest {
     @Test
     void testPostSolve() {
         assertDoesNotThrow(() -> collisionDetector.postSolve(mockContact, mockImpulse));
+    }
+
+    @Test
+    void testHandleCollisionModel() {
+        assertDoesNotThrow(() -> model.resetDoubleJump(PlayerType.PLAYER_ONE));
+        assertDoesNotThrow(() -> model.resetDoubleJump(PlayerType.PLAYER_TWO));
+        //flere tester for når powerup blir lagt til
     }
 }
