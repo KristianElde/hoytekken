@@ -56,4 +56,9 @@ public class CollisionDetectorTest {
     void testBeginContact() {
         assertDoesNotThrow(() -> collisionDetector.beginContact(mockContact));
     }
+
+    @Test
+    void testEndContact() {
+        assertDoesNotThrow(() -> collisionDetector.endContact(mockContact));
+    }
 }
