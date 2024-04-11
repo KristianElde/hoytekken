@@ -1,6 +1,8 @@
 package hoytekken.app.model.components.powerup;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -68,6 +70,20 @@ public class PowerUpTest {
             player1.move(1, 0);
             world.step(1 / 60f, 6, 2);
         }
+    }
+
+    @Test
+    void newPowerUpTest() {
+        PowerUp dmg = PowerUp.newPowerUp(PowerUpType.EXTRA_DAMAGE);
+        PowerUp hp = PowerUp.newPowerUp(PowerUpType.EXTRA_HEALTH);
+        PowerUp life = PowerUp.newPowerUp(PowerUpType.EXTRA_LIFE);
+        PowerUp speed = PowerUp.newPowerUp(PowerUpType.DOUBLE_SPEED);
+
+        assertTrue(dmg instanceof ExtraDamage);
+        assertTrue(hp instanceof ExtraHealth);
+        assertTrue(life instanceof ExtraLife);
+        assertTrue(speed instanceof DoubleSpeed);
+
     }
 
     @Test
