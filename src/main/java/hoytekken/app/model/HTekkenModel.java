@@ -143,7 +143,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         while (!bodiesToDestroy.isEmpty()) {
             Body b = bodiesToDestroy.poll();
             if (b != null && b.getUserData() instanceof ActivePowerUp){
-                //activePowerUp.makeInvisible();
                 gameWorld.destroyBody(b);
             }
             activePowerUp = null;
@@ -154,6 +153,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
+
+        System.out.println(gameWorld.getBodyCount());
     }
 
     @Override
