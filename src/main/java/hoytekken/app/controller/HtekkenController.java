@@ -16,6 +16,7 @@ import hoytekken.app.model.components.player.PlayerType;
 public class HtekkenController extends InputAdapter {
     ControllableModel model;
 
+    // Player types
     private PlayerType playerOne = PlayerType.PLAYER_ONE;
     private PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
@@ -30,114 +31,4 @@ public class HtekkenController extends InputAdapter {
         Gdx.input.setInputProcessor(this);
     }
 
-    @Override
-    public boolean keyDown(int keycode) {
-        if (model.getGameState() == GameState.ACTIVE_GAME) {
-            // Player1, LEFT, RIGHT, UP, PUNCH, BLOCK, KICK keys
-            if (keycode == Input.Keys.LEFT)
-                model.setDirection(playerOne, ForceDirection.LEFT);
-            if (keycode == Input.Keys.RIGHT)
-                model.setDirection(playerOne, ForceDirection.RIGHT);
-            if (keycode == Input.Keys.UP)
-                model.jump(playerOne);
-            if (keycode == Input.Keys.P)
-                model.performAttackAction(playerOne, ActionType.PUNCH);
-            if (keycode == Input.Keys.K)
-                model.performAttackAction(playerOne, ActionType.KICK);
-            if (keycode == Input.Keys.DOWN) {
-                model.getPlayer(playerOne).changeBlockingState();
-            }
-
-            // Player2, A, D, W, PUNCH, BLOCK, KICK keys
-            if (keycode == Input.Keys.A)
-                model.setDirection(playerTwo, ForceDirection.LEFT);
-            if (keycode == Input.Keys.D)
-                model.setDirection(playerTwo, ForceDirection.RIGHT);
-            if (keycode == Input.Keys.W)
-                model.jump(playerTwo);
-            if (keycode == Input.Keys.Q)
-                model.performAttackAction(playerTwo, ActionType.PUNCH);
-            if (keycode == Input.Keys.E)
-                model.performAttackAction(playerTwo, ActionType.KICK);
-            if (keycode == Input.Keys.S) {
-                model.getPlayer(playerTwo).changeBlockingState();
-            }
-        } else if (model.getGameState() == GameState.MAIN_MENU) {
-            if (keycode == Input.Keys.I) {
-                model.setGameState(GameState.INSTRUCTIONS);
-            }
-            if (keycode == Input.Keys.ESCAPE) {
-                Gdx.app.exit();
-            }
-            if (keycode == Input.Keys.NUM_1) {
-                model.setGameMap("map1");
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
-            if (keycode == Input.Keys.NUM_2) {
-                model.setGameMap("map2");
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
-            if (keycode == Input.Keys.NUM_3) {
-                model.setGameMap("map3");
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
-            if (keycode == Input.Keys.NUM_4) {
-                model.setGameMap("map4");
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        if (model.getGameState() == GameState.ACTIVE_GAME) {
-            // Player 1
-
-            // Stop applying force to the player when the key is released
-            if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
-                    || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
-                model.setDirection(playerOne, ForceDirection.STATIC);
-                return true;
-            }
-            // Deactivate block when DOWN-key is released
-            if (keycode == Input.Keys.DOWN) {
-                model.getPlayer(playerOne).changeBlockingState();
-                return true;
-            }
-
-            // Player2
-
-            // Stop applying force to the player when the key is released
-            if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
-                    || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
-                model.setDirection(playerTwo, ForceDirection.STATIC);
-                return true;
-            }
-            // Deactivate block when S-key is released
-            if (keycode == Input.Keys.S) {
-                model.getPlayer(playerTwo).changeBlockingState();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (model.getGameState() == GameState.INSTRUCTIONS) {
-            model.setGameState(GameState.MAIN_MENU);
-            return true;
-        } else if (model.getGameState() == GameState.MAIN_MENU) {
-            model.setGameMap("map1");
-            model.setGameState(GameState.ACTIVE_GAME);
-            return true;
-        } else if (model.getGameState() == GameState.GAME_OVER) {
-            ((Hoytekken) Gdx.app.getApplicationListener()).create();
-            return true;
-        }
-        return false;
-    }
 }
