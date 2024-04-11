@@ -381,6 +381,11 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
+    public float getMaxVelocity() {
+        return this.MAX_VELOCITY;
+    }
+
+    @Override
     public void flipLeft() {
         runningRight = false;
         this.setFlip(true, false);
