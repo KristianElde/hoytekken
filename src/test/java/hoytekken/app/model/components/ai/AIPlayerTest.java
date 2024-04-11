@@ -19,6 +19,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
@@ -53,6 +54,26 @@ public class AIPlayerTest {
         AIPlayer = new AIPlayer(world, PlayerType.PLAYER_TWO, 99, opposition);
     }
 
+    private boolean isWithinRange(Player p1, Player p2, float rangeFactor) {
+        float playerWidth = 45 / Hoytekken.PPM;
+
+        Vector2 p1Pos = new Vector2(p1.getBody().getPosition().x, p1.getBody().getPosition().y);
+        Vector2 p2Pos = new Vector2(p2.getBody().getPosition().x, p2.getBody().getPosition().y);
+
+        float distance = p1Pos.dst(p2Pos);
+        float range = playerWidth * rangeFactor;
+        return distance <= range;
+    }
+
+    private void movePlayersBeside(float rangeFactor) {
+        float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
+
+        while (!isWithinRange(AIPlayer, opposition, rangeFactor)) {
+            AIPlayer.move(dirX * 0.5f, 0);
+            world.step(1 / 60f, 6, 2);
+        }
+    }
+
     @Test
     void sanityTest() {
         assertNotNull(world);
@@ -81,10 +102,7 @@ public class AIPlayerTest {
     @Test
     void makeDecisionTest() {
         float initX = AIPlayer.getBody().getPosition().x;
-        while (!AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
-            AIPlayer.update(DELTA_TIME);
-            world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-        }
+        movePlayersBeside(KICK_RANGE);
         float newX = AIPlayer.getBody().getPosition().x;
 
         assertTrue(initX != newX);
@@ -100,6 +118,8 @@ public class AIPlayerTest {
 
     @Test
     void AIPlayerTakeDamageTest() {
+        movePlayersBeside(PUNCH_RANGE);
+
         opposition.punch(AIPlayer);
         world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
