@@ -77,4 +77,13 @@ public class SoundTest {
             sound.stopLoop();
         });
     }
+
+    @Test
+    void testPlayLoopStopLoop() {
+        assertDoesNotThrow(() -> {
+            sound.play();
+            sound.loop();
+            sound.stopLoop();
+        });
+    }
 }
