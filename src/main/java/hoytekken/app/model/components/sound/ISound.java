@@ -7,4 +7,9 @@ public interface ISound {
      */
     public void play();
 
+    /**
+     * Stop playing the sound.
+     */
+    public void stop();
+
 }
