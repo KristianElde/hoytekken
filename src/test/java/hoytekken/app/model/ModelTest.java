@@ -28,7 +28,6 @@ import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 
-
 public class ModelTest {
     private HTekkenModel model;
     private IPlayer player1;
