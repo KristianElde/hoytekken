@@ -148,6 +148,7 @@ public class ModelControllerTest {
         assertDoesNotThrow(() -> model.setGameMap("map4"));
     }
 
+    @Test
     void testGetPlayers() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
@@ -159,7 +160,28 @@ public class ModelControllerTest {
         assertEquals(99, p2.getHealth(), "Player two should have 99 health.");
 
         //skrive tester for metoder IPlayer metoder som skal være tilgengelige
-        // p1.changeBlockingState();
+    }
+
+    @Test
+    void testChangeBlockingState() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        //assert players can change blocking state
+        p1.changeBlockingState();
+        p2.changeBlockingState();
+
+        assertTrue(p1.getIsBlocking(), "Player one should be blocking.");
+        assertTrue(p2.getIsBlocking(), "Player two should be blocking.");
+
+        //assert players can change blocking state back
+        p1.changeBlockingState();
+        p2.changeBlockingState();
+
+        assertFalse(p1.getIsBlocking(), "Player one should not be blocking.");
+        assertFalse(p2.getIsBlocking(), "Player two should not be blocking.");
+
+    }
         // p1.fallenOffTheMap();
         // p1.flipLeft();
         // p1.flipRight();
@@ -172,6 +194,5 @@ public class ModelControllerTest {
         // p1.isAlive();
         // p1.getLives();
         // p1.getJumpingHeight();
-
-    }
+    
 }
