@@ -239,7 +239,22 @@ public class ModelControllerTest {
         assertNotNull(p1.getBody(), "Player one body should not be null.");
         assertNotNull(p2.getBody(), "Player two body should not be null.");
     }
-        // p1.getBody();
+    
+    @Test 
+    void testIncreaseDamage() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertEquals(10, p1.getPunchDamage());
+        p1.increaseDamage(10);
+        assertEquals(20, p1.getPunchDamage());
+
+        assertEquals(10, p2.getPunchDamage());
+        p2.increaseDamage(10);
+        assertEquals(20, p2.getPunchDamage());
+        
+        
+    }
         // p1.increaseDamage(0);
         // p1.increaseHealth(0);
         // p1.gainExtraLife();
