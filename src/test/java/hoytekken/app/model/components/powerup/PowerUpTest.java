@@ -113,4 +113,9 @@ public class PowerUpTest {
 
         assertEquals(4, player1.getLives());
     }
+
+    @Test
+    void doubleSpeedTest() {
+
+    }
 }
