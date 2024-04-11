@@ -1,5 +1,8 @@
 package hoytekken.app.model.components.sound;
 
+/**
+ * Interface for sound effects.
+ */
 public interface ISound {
 
     /**
