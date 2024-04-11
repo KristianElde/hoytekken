@@ -369,6 +369,11 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
+    public int getPunchDamage() {
+        return this.PUNCH_DAMAGE;
+    }
+
+    @Override
     public void flipLeft() {
         runningRight = false;
         this.setFlip(true, false);
