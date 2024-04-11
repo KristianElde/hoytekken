@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
@@ -146,5 +147,16 @@ public class ModelControllerTest {
         assertEquals("fourthKMVmap1.tmx", maps.get("map4"));
         assertDoesNotThrow(() -> model.getGameMaps());
     }
+    
+    @Test
+    void testSetGameMap() {
+        //assert method throws when map is not found
+        assertThrows(IllegalArgumentException.class, () -> model.setGameMap("map5"));
+        assertDoesNotThrow(() -> model.setGameMap("map1"));
+        assertDoesNotThrow(() -> model.setGameMap("map2"));
+        assertDoesNotThrow(() -> model.setGameMap("map3"));
+        assertDoesNotThrow(() -> model.setGameMap("map4"));
+    }
+
     
 }
