@@ -166,7 +166,7 @@ public class ModelTest {
         player1.changeBlockingState();
         model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
         // Check that attack does not inflict damage when victim is blocking
-        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
     }
 
     @Test
