@@ -78,7 +78,6 @@ public class CollisionDetectorTest {
     void testHandleCollisionModel() {
         assertDoesNotThrow(() -> model.resetDoubleJump(PlayerType.PLAYER_ONE));
         assertDoesNotThrow(() -> model.resetDoubleJump(PlayerType.PLAYER_TWO));
-        //flere tester for når powerup blir lagt til
     }
 
     @Test
@@ -90,5 +89,10 @@ public class CollisionDetectorTest {
     void testApplyPowerUp() {
         assertDoesNotThrow(() -> model.applyPowerUp(PlayerType.PLAYER_ONE, null));
         assertDoesNotThrow(() -> model.applyPowerUp(PlayerType.PLAYER_TWO, null));
+    }
+
+    @Test
+    void testGetActivePowerUp() {
+        assertDoesNotThrow(() -> model.getActivePowerUp());
     }
 }
