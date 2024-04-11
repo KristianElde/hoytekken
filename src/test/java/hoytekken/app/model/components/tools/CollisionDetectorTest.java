@@ -1,5 +1,6 @@
 package hoytekken.app.model.components.tools;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -23,4 +24,10 @@ public class CollisionDetectorTest {
 
     @Mock
     private ContactImpulse mockImpulse = Mockito.mock(ContactImpulse.class);
+
+    @BeforeEach
+    void setUp(){
+        model = Mockito.mock(HandleCollisions.class);
+        collisionDetector = new CollisionDetector(model);
+    }
 }
