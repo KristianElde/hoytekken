@@ -282,7 +282,27 @@ public class ModelControllerTest {
         assertEquals(4, p2.getLives());
     }
         
-        // p1.gainExtraLife();
+    @Test
+    void testIsAlive() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertTrue(p1.isAlive());
+        assertTrue(p2.isAlive());
+        
+        //Because players have at least three lives. 
+        p1.takeDamage(99);
+        p1.takeDamage(99);
+        p1.takeDamage(99);
+
+        p2.takeDamage(99);
+        p2.takeDamage(99);
+        p2.takeDamage(99);
+
+        assertFalse(p1.isAlive());
+        assertFalse(p2.isAlive());
+
+    }
         // p1.isAlive();
         // p1.getLives();
         // p1.getJumpingHeight();
