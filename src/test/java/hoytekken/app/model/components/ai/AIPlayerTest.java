@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
-import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
@@ -58,7 +56,7 @@ public class AIPlayerTest {
     private void movePlayersBeside(float rangeFactor) {
         float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
 
-        while (AIPlayer.isWithinRange(opposition, rangeFactor)) {
+        while (!AIPlayer.isWithinRange(opposition, rangeFactor)) {
             AIPlayer.move(dirX * 0.5f, 0);
             world.step(1 / 60f, 6, 2);
         }
@@ -90,17 +88,17 @@ public class AIPlayerTest {
     }
 
     @Test
-    void makeDecisionTest() {
+    void AIPlayerDoDamageTest() {
         float initX = AIPlayer.getBody().getPosition().x;
-        movePlayersBeside(PUNCH_RANGE);
-        assertTrue(AIPlayer.isAlive());
+        movePlayersBeside(KICK_RANGE);
         float newX = AIPlayer.getBody().getPosition().x;
 
         assertTrue(initX != newX);
-        assertTrue(AIPlayer.isWithinRange(opposition, KICK_RANGE));
-        assertTrue(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
 
-        AIPlayer.update(DELTA_TIME);
+        assertTrue(AIPlayer.isWithinRange(opposition, KICK_RANGE));
+        assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
+
+        AIPlayer.kick(opposition);
         world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         assertEquals(92, opposition.getHealth());
