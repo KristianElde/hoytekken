@@ -81,4 +81,12 @@ public class PowerUpTest {
 
         assertEquals(69, player2.getHealth());
     }
+
+    @Test
+    void extraHealthPowerUp() {
+        PowerUp extraHealthPowerUp = new ExtraHealth();
+        extraHealthPowerUp.applyPowerUp(player1);
+
+        assertEquals(149, player1.getHealth());
+    }
 }
