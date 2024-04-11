@@ -131,15 +131,15 @@ public class ModelTest {
 
         // Check that opponents health is not reduced by kick when opponent is out of
         // range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is reduced by kick when opponent is inside range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP - KICK_DMG, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth() - player1.getKickDamage(), player2.getHealth());
     }
 
     @Test
