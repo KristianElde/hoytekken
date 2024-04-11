@@ -51,4 +51,9 @@ public class CollisionDetectorTest {
         assertNotNull(mockFixtureA);
         assertNotNull(mockFixtureB);
     }
+
+    @Test
+    void testBeginContact() {
+        assertDoesNotThrow(() -> collisionDetector.beginContact(mockContact));
+    }
 }
