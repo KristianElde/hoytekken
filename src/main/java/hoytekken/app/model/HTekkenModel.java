@@ -27,12 +27,30 @@ import hoytekken.app.view.ViewableModel;
  * The model for the game
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
+    // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
+
+    // Event bus
+    private EventBus eventBus;
+
+    // Game world and state
+    private World gameWorld;
+    private GameState gameState;
+
+    // Players
+    private IPlayer playerOne;
+    private IPlayer playerTwo;
+    private ForceDirection p1Direction = ForceDirection.STATIC;
+    private ForceDirection p2Direction = ForceDirection.STATIC;
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
     private final float directionSpeed = 0.5f;
 
+    // Map
+    private String map;
+    private TmxMapLoader mapLoader;
+    private TiledMap tiledmap;
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
@@ -42,22 +60,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     };
 
-    private EventBus eventBus;
-
-    private World gameWorld;
-    private GameState gameState;
-
-    private IPlayer playerOne;
-    private IPlayer playerTwo;
-
-    private String map;
-
-    private TmxMapLoader mapLoader;
-    private TiledMap tiledmap;
-
-    private ForceDirection p1Direction = ForceDirection.STATIC;
-    private ForceDirection p2Direction = ForceDirection.STATIC;
-
+    // Powerups
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
     private final float powerUpSpawnInterval = 10;
