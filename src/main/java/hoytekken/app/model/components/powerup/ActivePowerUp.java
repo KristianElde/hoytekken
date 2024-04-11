@@ -18,13 +18,13 @@ public class ActivePowerUp extends Sprite {
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
 
     private String type;
-    private PowerUpFactory factory;
+    // private PowerUpFactory factory;
     private World world;
     private Body body;
     private Texture texture;
     private PowerUp powerUp;
     
-    private boolean powerUpActive = true;
+    // private boolean powerUpActive = true;
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
 
@@ -33,7 +33,7 @@ public class ActivePowerUp extends Sprite {
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
-        this.factory = factory;
+        // this.factory = factory;
         this.world = world;
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
