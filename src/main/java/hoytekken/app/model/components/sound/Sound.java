@@ -15,4 +15,9 @@ public class Sound implements ISound {
         this.id = this.sound.play();
     }
 
+    @Override
+    public void stop() {
+        sound.stop();
+    }
+
 }
