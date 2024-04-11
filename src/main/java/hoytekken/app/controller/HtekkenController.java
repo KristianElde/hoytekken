@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputAdapter;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
 import hoytekken.app.model.components.player.PlayerType;
 
 /**
@@ -136,6 +137,9 @@ public class HtekkenController extends InputAdapter {
             return true;
         } else if (model.getGameState() == GameState.GAME_OVER) {
             ((Hoytekken) Gdx.app.getApplicationListener()).create();
+            return true;
+        } else if (model.getGameState() == GameState.SELECTION) {
+            this.model.getEventBus().emitEvent(new ClickedScreenEvent(screenX, screenY));
             return true;
         }
         return false;
