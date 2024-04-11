@@ -64,4 +64,15 @@ public class HudTest {
         assertNotNull(hud.getStage());
         assertDoesNotThrow(() -> hud.getStage());
     }
+
+    @Test
+    void testHealth() {
+        assertDoesNotThrow(() -> hud.setPlayerHealth("99"));
+        assertDoesNotThrow(() -> hud.setEnemyHealth("99"));
+        assertDoesNotThrow(() -> hud.setPlayerHealth("0"));
+        assertDoesNotThrow(() -> hud.setEnemyHealth("0"));
+        assertDoesNotThrow(() -> hud.setPlayerHealth("99999"));
+        assertDoesNotThrow(() -> hud.setEnemyHealth("99999"));
+
+    }
 }
