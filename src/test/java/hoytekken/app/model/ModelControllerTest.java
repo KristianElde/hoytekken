@@ -182,6 +182,15 @@ public class ModelControllerTest {
         assertFalse(p2.getIsBlocking(), "Player two should not be blocking.");
 
     }
+
+    @Test 
+    void testFallenOffTheMap() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertDoesNotThrow(() -> p1.fallenOffTheMap());
+        assertDoesNotThrow(() -> p2.fallenOffTheMap());
+    }
         // p1.fallenOffTheMap();
         // p1.flipLeft();
         // p1.flipRight();
