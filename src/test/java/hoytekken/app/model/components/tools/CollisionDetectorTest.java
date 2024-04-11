@@ -66,4 +66,9 @@ public class CollisionDetectorTest {
     void testPreSolve() {
         assertDoesNotThrow(() -> collisionDetector.preSolve(mockContact, mockMan));
     }
+
+    @Test
+    void testPostSolve() {
+        assertDoesNotThrow(() -> collisionDetector.postSolve(mockContact, mockImpulse));
+    }
 }
