@@ -6,9 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import java.util.Random;
-
-import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +19,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
-import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
@@ -34,7 +30,7 @@ public class AIPlayerTest {
     private static final int MAX_HEALTH = 99;
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
-    private static final float DELTA_TIME = 1.0f;
+    private static final float DELTA_TIME = 0.1f;
     private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
     private static final int POSITION_ITERATIONS = 2;
@@ -72,7 +68,7 @@ public class AIPlayerTest {
         float initX = AIPlayer.getBody().getPosition().x;
         float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
 
-        AIPlayer.move(dirX, 0);
+        AIPlayer.move(dirX * 0.5f, 0);
         world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         float newX = AIPlayer.getBody().getPosition().x;
@@ -83,7 +79,7 @@ public class AIPlayerTest {
     }
 
     @Test
-d     void makeDecisionTest() {
+    void makeDecisionTest() {
         float initX = AIPlayer.getBody().getPosition().x;
         while (!AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
             AIPlayer.update(DELTA_TIME);
@@ -99,12 +95,13 @@ d     void makeDecisionTest() {
             world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
         }
 
+        assertEquals(92, opposition.getHealth());
     }
 
     @Test
     void AIPlayerTakeDamageTest() {
         opposition.punch(AIPlayer);
-        world.step(DELTA_TIME, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         assertEquals(89, AIPlayer.getHealth());
     }
