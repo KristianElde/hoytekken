@@ -76,9 +76,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
-        // tiledmap = mapLoader.load(map);
-
-        // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
 
