@@ -12,4 +12,9 @@ public interface ISound {
      */
     public void stop();
 
+    /**
+     * Loop the sound.
+     */
+    public void loop();
+
 }
