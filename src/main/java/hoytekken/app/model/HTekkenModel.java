@@ -71,7 +71,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
-    private final float powerUpSpawnInterval = 2;
+    private final float powerUpSpawnInterval = 10;
     private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
 
 
@@ -145,11 +145,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             if (b != null && b.getUserData() instanceof ActivePowerUp){
                 gameWorld.destroyBody(b);
             }
-            activePowerUp = null;
+            //activePowerUp = null;
         }
 
         playerOne.update(dt);
         playerTwo.update(dt);
+        
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
