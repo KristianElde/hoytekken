@@ -2,6 +2,8 @@ package hoytekken.app.model.components.sound;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -28,4 +30,10 @@ public class SoundTest {
     void setUpBeforeEach() {
         sound = new Sound(path);
     }
+
+    @Test
+    void sanityTest() {
+        assertNotNull(sound);
+    }
+
 }
