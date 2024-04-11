@@ -64,13 +64,6 @@ public interface ControllableModel extends IViewAndControl{
     void setGameState(GameState gameState);
 
     /**
-     * Method to get the maps for the game
-     * 
-     * @return the maps for the game
-     */
-    HashMap<String, String> getGameMaps();
-
-    /**
      * Method to set the map for the game
      * 
      * @param mapName the name of the map
