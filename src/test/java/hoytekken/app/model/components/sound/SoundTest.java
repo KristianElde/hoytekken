@@ -8,6 +8,9 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 
+/*
+ * Unit tests for the Sound class
+ */
 public class SoundTest {
     private ISound sound;
     private String path = "/resources/sounds/punch-3-166696.mp3";
