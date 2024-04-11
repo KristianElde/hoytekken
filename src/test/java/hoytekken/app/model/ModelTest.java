@@ -33,9 +33,6 @@ public class ModelTest {
     private HTekkenModel model;
     private IPlayer player1;
     private IPlayer player2;
-    private static final int MAX_HP = 99;
-    private static final int PUNCH_DMG = 10;
-    private static final int KICK_DMG = 7;
 
     @BeforeAll
     static void setUpBeforeAll() {
