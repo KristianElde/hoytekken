@@ -202,12 +202,12 @@ public class ModelTest {
         player2.changeBlockingState();
         // Check that blocking prevents player from performing kick
         assertFalse(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
-        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
 
         player2.changeBlockingState();
         // Check that deactivating block allows player to perform kick
         assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
-        assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
+        assertEquals(player1.getMaxHealth() - player2.getKickDamage(), player1.getHealth());
     }
 
     @Test
