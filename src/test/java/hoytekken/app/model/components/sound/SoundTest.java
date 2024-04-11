@@ -36,4 +36,8 @@ public class SoundTest {
         assertNotNull(sound);
     }
 
+    @Test
+    void checkIdNotNull() {
+        assertNotNull(sound.getId());
+    }
 }
