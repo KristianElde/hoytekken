@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -133,5 +135,16 @@ public class ModelControllerTest {
         assertEquals(GameState.ACTIVE_GAME, model.getGameState(), "Gamestate should be ACTIVE_GAME.");
     }
 
+    @Test
+    void testGetGameMaps() {
+        HashMap<String, String> maps = model.getGameMaps();
+        assertNotNull(maps, "Game maps should not be null.");
+        assertEquals(4, maps.size(), "Game maps should have 4 maps.");
+        assertEquals("defaultMap.tmx", maps.get("map1"));
+        assertEquals("secondKMVmap.tmx", maps.get("map2"));
+        assertEquals("thirdKMVmap.tmx", maps.get("map3"));
+        assertEquals("fourthKMVmap1.tmx", maps.get("map4"));
+        assertDoesNotThrow(() -> model.getGameMaps());
+    }
     
 }
