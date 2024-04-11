@@ -73,7 +73,7 @@ public class AIPlayerTest {
         float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
 
         AIPlayer.move(dirX, 0);
-        world.step(1 / 60f, 6, 2);
+        world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         float newX = AIPlayer.getBody().getPosition().x;
 
@@ -87,7 +87,7 @@ public class AIPlayerTest {
         float initX = AIPlayer.getBody().getPosition().x;
         while (AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
             AIPlayer.update(DELTA_TIME);
-            world.step(1 / 60f, 6, 2);
+            world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
         }
         float newX = AIPlayer.getBody().getPosition().x;
 
@@ -96,7 +96,7 @@ public class AIPlayerTest {
         assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
 
         AIPlayer.update(DELTA_TIME);
-        world.step(1 / 60f, 6, 2);
+        world.step(1 / 60f, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
     }
 
 }
