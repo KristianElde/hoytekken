@@ -121,4 +121,26 @@ public class HtekkenController extends InputAdapter {
         return false;
     }
 
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        switch (model.getGameState()) {
+            case INSTRUCTIONS -> {
+                model.setGameState(GameState.MAIN_MENU);
+                return true;
+            }
+            case MAIN_MENU -> {
+                model.setGameMap("map1");
+                model.setGameState(GameState.ACTIVE_GAME);
+                return true;
+            }
+            case GAME_OVER -> {
+                ((Hoytekken) Gdx.app.getApplicationListener()).create();
+                return true;
+            }
+            default -> {
+                return false;
+            }
+        }
+    }
+
 }
