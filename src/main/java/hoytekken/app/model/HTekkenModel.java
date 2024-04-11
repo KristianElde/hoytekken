@@ -239,18 +239,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         switch (actionType) {
             case KICK:
-                if (attackingPlayer.kick(victimPlayer)) {
-                    System.out.println(victimPlayer.getHealth() + " health left");
-                    return true;
-                }
-                break;
+                return attackingPlayer.kick(victimPlayer);
             case PUNCH:
-                if (attackingPlayer.punch(victimPlayer)) {
-                    System.out.println(victimPlayer.getHealth() + " health left");
-                    return true;
-                }
-                break;
-
+                return attackingPlayer.punch(victimPlayer);
         }
         return false;
     }
