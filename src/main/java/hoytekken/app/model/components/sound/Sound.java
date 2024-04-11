@@ -26,4 +26,8 @@ public class Sound implements ISound {
         sound.setLooping(id, true);
     }
 
+    @Override
+    public void stopLoop() {
+        sound.stop(id);
+    }
 }
