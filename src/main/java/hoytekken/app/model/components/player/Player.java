@@ -265,7 +265,7 @@ public class Player extends Sprite implements IPlayer {
         return health;
     }
 
-    public boolean isWithinRange(IPlayer that, float rangeFactor) {
+    protected boolean isWithinRange(IPlayer that, float rangeFactor) {
         Vector2 thisPos = new Vector2(getBody().getPosition().x, getBody().getPosition().y);
         Vector2 thatPos = new Vector2(that.getBody().getPosition().x, that.getBody().getPosition().y);
 
