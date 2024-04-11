@@ -31,6 +31,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
+    private final float directionSpeed = 0.5f;
+
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
