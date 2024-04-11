@@ -25,6 +25,7 @@ import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 
 public class ModelControllerTest {
@@ -111,17 +112,6 @@ public class ModelControllerTest {
     }
 
     @Test
-    void testPerformAttackAction() { 
-        //testet i ModelTest.java, legge til flere caser i ModelTest.java for spillere blokker/ikke i range osv...
-        //assert player does not damage when not within range
-        //move players within range
-        //assert player cannot inflict damage when blocking
-        //assert player can inflict damage when not blocking
-        //assert player does not damage victim when victim is blocking
-        //assert player damages victim when victim is not blocking
-    }
-
-    @Test
     void testGameState() {
         //assert gamestate is not null
         assertNotNull(model.getGameState(), "Gamestate should not be null.");
@@ -158,5 +148,30 @@ public class ModelControllerTest {
         assertDoesNotThrow(() -> model.setGameMap("map4"));
     }
 
-    
+    void testGetPlayers() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+        
+        assertNotNull(p1, "Player one should not be null.");
+        assertNotNull(p2, "Player two should not be null.");
+
+        assertEquals(99, p1.getHealth(), "Player one should have 99 health.");
+        assertEquals(99, p2.getHealth(), "Player two should have 99 health.");
+
+        //skrive tester for metoder IPlayer metoder som skal være tilgengelige
+        // p1.changeBlockingState();
+        // p1.fallenOffTheMap();
+        // p1.flipLeft();
+        // p1.flipRight();
+        // p1.kick(p2);
+        // p1.punch(p2);
+        // p1.getBody();
+        // p1.increaseDamage(0);
+        // p1.increaseHealth(0);
+        // p1.gainExtraLife();
+        // p1.isAlive();
+        // p1.getLives();
+        // p1.getJumpingHeight();
+
+    }
 }
