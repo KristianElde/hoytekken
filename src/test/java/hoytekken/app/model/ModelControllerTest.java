@@ -1,6 +1,7 @@
 package hoytekken.app.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -76,7 +77,32 @@ public class ModelControllerTest {
         //assert method returns true when setting direction
         assertTrue(model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.STATIC));
         assertTrue(model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.STATIC));
-        
+    }
+
+    @Test
+    void testJump() {
+        //assert players can jump
+        assertTrue(model.jump(PlayerType.PLAYER_ONE), "Player one should be able to jump.");
+        assertTrue(model.jump(PlayerType.PLAYER_TWO), "Player two should be able to jump.");
+
+        //assert players can't jump when blocking
+        model.getPlayer(PlayerType.PLAYER_ONE).changeBlockingState();
+        model.getPlayer(PlayerType.PLAYER_TWO).changeBlockingState();
+
+        assertFalse(model.jump(PlayerType.PLAYER_ONE), "Player one should not be able to jump while blocking.");
+        assertFalse(model.jump(PlayerType.PLAYER_TWO), "Player two should not be able to jump while blocking.");
+
+        model.getPlayer(PlayerType.PLAYER_ONE).changeBlockingState();
+        model.getPlayer(PlayerType.PLAYER_TWO).changeBlockingState();
+
+        //assert players can jump a second time
+        assertTrue(model.jump(PlayerType.PLAYER_ONE), "Player one should be able to jump a second time.");
+        assertTrue(model.jump(PlayerType.PLAYER_TWO), "Player two should be able to jump a second time.");
+
+
+        //assert players can't jump a third time
+        assertFalse(model.jump(PlayerType.PLAYER_ONE), "Player one should not be able to jump a third time.");
+        assertFalse(model.jump(PlayerType.PLAYER_TWO), "Player two should not be able to jump a third time.");
     }
 
     
