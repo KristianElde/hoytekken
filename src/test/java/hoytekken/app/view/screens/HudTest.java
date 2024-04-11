@@ -1,5 +1,6 @@
 package hoytekken.app.view.screens;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -58,5 +59,9 @@ public class HudTest {
         assertNotNull(hud, "Hud should be initialized.");
     }
 
-    
+    @Test
+    void testStage() {
+        assertNotNull(hud.getStage());
+        assertDoesNotThrow(() -> hud.getStage());
+    }
 }
