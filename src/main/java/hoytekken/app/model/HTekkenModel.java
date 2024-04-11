@@ -213,12 +213,16 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     private void directionToSpeed(PlayerType player, ForceDirection direction) {
         IPlayer p = getPlayer(player);
-        if (direction == ForceDirection.LEFT) {
-            p.move(-0.5f, 0);
-        } else if (direction == ForceDirection.RIGHT) {
-            p.move(0.5f, 0);
-        } else if (direction == ForceDirection.STATIC) {
-            p.move(0, 0);
+        switch (direction) {
+            case LEFT:
+                p.move(-0.5f, 0);
+                break;
+            case RIGHT:
+                p.move(0.5f, 0);
+                break;
+            case STATIC:
+                p.move(0, 0);
+                break;
         }
     }
 
