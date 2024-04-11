@@ -2,6 +2,8 @@ package hoytekken.app.model;
 
 import hoytekken.app.model.components.eventBus.EventBus;
 
+import java.util.HashMap;
+
 public interface IViewAndControl {
 
     /**
@@ -9,4 +11,11 @@ public interface IViewAndControl {
      * @return the event bus
      */
     public EventBus getEventBus();
+
+    /**
+     * Method to get the maps for the game
+     * 
+     * @return the maps for the game
+     */
+    public HashMap<String, String> getGameMaps();
 }
