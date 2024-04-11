@@ -80,6 +80,11 @@ public class ActivePowerUp extends Sprite {
         }
     }
 
+    public void makeVisible() {
+        isVisible = true;
+        powerUpInterval = 0;
+    }
+
     public boolean isActive() {
         return powerUpActive;
     }
