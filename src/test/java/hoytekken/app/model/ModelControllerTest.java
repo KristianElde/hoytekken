@@ -197,22 +197,12 @@ public class ModelControllerTest {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
 
-        //assert players can flip
-        p1.flipLeft();
-        p2.flipRight();
-
-       
-
-        //assert players can flip back
-        p1.flipRight();
-        p2.flipLeft();
-
-        //assertions???
-
+        assertDoesNotThrow(() -> p1.flipLeft());
+        assertDoesNotThrow(() -> p2.flipRight());
+        assertDoesNotThrow(() -> p1.flipRight());
+        assertDoesNotThrow(() -> p2.flipLeft());
     }
-        // p1.flipLeft();
-        // p1.flipRight();
-    
+
     @Test
     void testKick() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
@@ -303,8 +293,23 @@ public class ModelControllerTest {
         assertFalse(p2.isAlive());
 
     }
-        // p1.isAlive();
-        // p1.getLives();
-        // p1.getJumpingHeight();
+    
+    @Test
+    void testGetLives() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertEquals(3, p1.getLives());
+        assertEquals(3, p2.getLives());
+    }
+    
+    @Test
+    void testGetjumpingHeight() {
+        IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
+
+        assertEquals(5, p1.getJumpingHeight());
+        assertEquals(5, p2.getJumpingHeight());
+    }
     
 }
