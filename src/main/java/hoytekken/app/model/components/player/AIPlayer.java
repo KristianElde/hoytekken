@@ -1,16 +1,13 @@
-package hoytekken.app.model.components.ai;
+package hoytekken.app.model.components.player;
 
 import com.badlogic.gdx.physics.box2d.World;
-
-import hoytekken.app.model.components.player.Player;
-import hoytekken.app.model.components.player.PlayerType;
 
 public class AIPlayer extends Player {
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
-    private Player target;
+    private IPlayer target;
 
-    public AIPlayer(World world, PlayerType type, int health, Player target) {
+    public AIPlayer(World world, PlayerType type, int health, IPlayer target) {
         super(world, type, health);
         this.target = target;
     }
