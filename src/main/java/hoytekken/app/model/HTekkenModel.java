@@ -220,10 +220,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         IPlayer p = getPlayer(player);
         switch (direction) {
             case LEFT:
-                p.move(-0.5f, 0);
+                p.move(-this.directionSpeed, 0);
                 break;
             case RIGHT:
-                p.move(0.5f, 0);
+                p.move(this.directionSpeed, 0);
                 break;
             case STATIC:
                 p.move(0, 0);
