@@ -24,4 +24,9 @@ public interface ISound {
      * Stop the sound loop.
      */
     public void stopLoop();
+
+    /**
+     * Get the id of the sound.
+     */
+    public long getId();
 }
