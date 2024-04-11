@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -39,5 +40,10 @@ public class SoundTest {
     @Test
     void checkIdNotNull() {
         assertNotNull(sound.getId());
+    }
+
+    @Test
+    void testPlay() {
+        assertDoesNotThrow(() -> sound.play());
     }
 }
