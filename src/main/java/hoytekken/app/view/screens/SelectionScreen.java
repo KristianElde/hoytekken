@@ -2,6 +2,8 @@ package hoytekken.app.view.screens;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL20;
 
@@ -12,11 +14,12 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.view.ViewableModel;
 
 public class SelectionScreen extends BaseScreen {
-    private LinkedList<Texture> mapTextures = new LinkedList<Texture>();
+    private List<Texture> mapTextures = new ArrayList<Texture>();
     
     public SelectionScreen(Hoytekken game, ViewableModel model) {
         super(game, model);
         loadMapTextures();
+        gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
         
     }
 
@@ -34,26 +37,26 @@ public class SelectionScreen extends BaseScreen {
 
     private void drawMapSelections() {
 
-    // Calculate cell width and height based on the screen size and desired grid layout
-    float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
-    float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
+        // Calculate cell width and height based on the screen size and desired grid layout
+        float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
+        float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
 
-    // Starting positions for the bottom 2 rows
-    float startX = 0;
-    float startY = cellHeight;
+        // Starting positions for the bottom 2 rows
+        float startX = 0;
+        float startY = 0;
 
-    int mapIndex = 0;
+        int mapIndex = 0;
 
-    while(!mapTextures.isEmpty()) {
-        Texture mapTexture = mapTextures.poll();
-        float x = startX + (mapIndex % 2) * cellWidth;
-        float y = startY + (mapIndex / 2) * cellHeight;
+        while(mapIndex < 4) {
+            Texture mapTexture = mapTextures.get(mapIndex);
+            float x = startX + (mapIndex % 2) * cellWidth;
+            float y = startY + (mapIndex / 2) * cellHeight;
 
-        game.batch.draw(mapTexture, x, y, cellWidth, cellHeight);
+            game.batch.draw(mapTexture, x, y, cellWidth, cellHeight);
 
-        mapIndex++;
+            mapIndex++;
+        }
     }
-}
 
     @Override
     public void render(float delta) {
