@@ -116,6 +116,9 @@ public class PowerUpTest {
 
     @Test
     void doubleSpeedTest() {
+        DoubleSpeed doubleSpeedPowerUp = new DoubleSpeed();
+        doubleSpeedPowerUp.applyPowerUp(player1);
 
+        assertEquals(3, player1.getMaxVelocity());
     }
 }
