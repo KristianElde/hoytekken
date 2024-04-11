@@ -186,12 +186,13 @@ public class ModelTest {
         player1.changeBlockingState();
         // Check that blocking prevents player from performing punch
         assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         player1.changeBlockingState();
         // Check that deactivating block allows player to perform punch
         assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
-        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
+
+        assertEquals(player2.getMaxHealth() - player1.getPunchDamage(), player2.getHealth());
     }
 
     @Test
