@@ -48,6 +48,11 @@ public class HtekkenController extends InputAdapter {
         return false;
     }
 
+    /**
+     * Handles key code events for the main menu state
+     * 
+     * @param keycode
+     */
     private void handleMainMenuInput(int keycode) {
         switch (keycode) {
             case Input.Keys.I -> model.setGameState(GameState.INSTRUCTIONS);
