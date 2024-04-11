@@ -20,4 +20,10 @@ public class Sound implements ISound {
         sound.stop();
     }
 
+    @Override
+    public void loop() {
+        play();
+        sound.setLooping(id, true);
+    }
+
 }
