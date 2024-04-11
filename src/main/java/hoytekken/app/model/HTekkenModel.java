@@ -269,6 +269,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * Retrieves the jump count for player one. Only used for test purposes.
      * 
      * @return the current jump count for player one
+     * @throws IllegalStateException if the player is not found
      */
     int getJumpCounter(PlayerType player) {
         if (player == PlayerType.PLAYER_ONE) {
