@@ -1,5 +1,6 @@
 package hoytekken.app.model;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,6 +20,7 @@ import com.badlogic.gdx.graphics.GL20;
 
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
+import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.PlayerType;
 
@@ -103,6 +105,32 @@ public class ModelControllerTest {
         //assert players can't jump a third time
         assertFalse(model.jump(PlayerType.PLAYER_ONE), "Player one should not be able to jump a third time.");
         assertFalse(model.jump(PlayerType.PLAYER_TWO), "Player two should not be able to jump a third time.");
+    }
+
+    @Test
+    void testPerformAttackAction() { 
+        //testet i ModelTest.java, legge til flere caser i ModelTest.java for spillere blokker/ikke i range osv...
+        //assert player does not damage when not within range
+        //move players within range
+        //assert player cannot inflict damage when blocking
+        //assert player can inflict damage when not blocking
+        //assert player does not damage victim when victim is blocking
+        //assert player damages victim when victim is not blocking
+    }
+
+    @Test
+    void testGameState() {
+        //assert gamestate is not null
+        assertNotNull(model.getGameState(), "Gamestate should not be null.");
+        GameState initialGameState = model.getGameState();
+        GameState expectedGameState = GameState.MAIN_MENU;
+
+        //assert initial gamestate is MAIN_MENU
+        assertEquals(expectedGameState, initialGameState, "Initial gamestate should be MAIN_MENU.");
+
+        //assert gamestate can be changed
+        assertDoesNotThrow(() -> model.setGameState(GameState.ACTIVE_GAME));
+        assertEquals(GameState.ACTIVE_GAME, model.getGameState(), "Gamestate should be ACTIVE_GAME.");
     }
 
     
