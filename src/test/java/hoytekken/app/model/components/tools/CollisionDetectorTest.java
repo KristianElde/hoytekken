@@ -85,4 +85,10 @@ public class CollisionDetectorTest {
     void testDestroyPowerUpList() {
         assertDoesNotThrow(() -> model.destroyPowerUpList());
     }
+
+    @Test
+    void testApplyPowerUp() {
+        assertDoesNotThrow(() -> model.applyPowerUp(PlayerType.PLAYER_ONE, null));
+        assertDoesNotThrow(() -> model.applyPowerUp(PlayerType.PLAYER_TWO, null));
+    }
 }
