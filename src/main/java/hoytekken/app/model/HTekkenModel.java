@@ -256,6 +256,11 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.gameState = gameState;
     }
 
+    /**
+     * Checks if the game is over
+     * 
+     * @return true if the game is over, false otherwise
+     */
     private boolean isGameOver() {
         return !playerOne.isAlive() || !playerTwo.isAlive();
     }
