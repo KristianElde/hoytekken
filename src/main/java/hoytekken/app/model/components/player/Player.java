@@ -70,7 +70,6 @@ public class Player extends Sprite implements IPlayer {
     // Animation
     private Animation<TextureRegion> kickAnimation;
 
-
     /**
      * Constructor for the player
      * 
@@ -79,9 +78,9 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
-        super(type == PlayerType.PLAYER_ONE 
-        ? atlas.findRegion("Character_1_normalStand(60x27)") 
-        : atlas2.findRegion("Character_2_normalStand(60x27)"));
+        super(type == PlayerType.PLAYER_ONE
+                ? atlas.findRegion("Character_1_normalStand(60x27)")
+                : atlas2.findRegion("Character_2_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
@@ -194,14 +193,14 @@ public class Player extends Sprite implements IPlayer {
                 throw new IllegalStateException("Unexpected value: " + currentState);
         }
 
-        if(!runningRight && !region.isFlipX()) {
+        if (!runningRight && !region.isFlipX()) {
             region.flip(true, false);
             runningRight = false;
-        } else if(runningRight && region.isFlipX()) {
+        } else if (runningRight && region.isFlipX()) {
             region.flip(true, false);
             runningRight = true;
         }
-        stateTimer = currentState == previousState ? stateTimer + dt : 0; 
+        stateTimer = currentState == previousState ? stateTimer + dt : 0;
         previousState = currentState;
         return region;
     }
@@ -357,6 +356,21 @@ public class Player extends Sprite implements IPlayer {
     public void increaseHealth(int increaseAmount) {
         this.maxHealth += increaseAmount;
         this.health += increaseAmount;
+    }
+
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    @Override
+    public int getKickDamage() {
+        return this.KICK_DAMAGE;
+    }
+
+    @Override
+    public int getPunchDamage() {
+        return this.PUNCH_DAMAGE;
     }
 
     @Override
