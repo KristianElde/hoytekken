@@ -1,5 +1,6 @@
 package hoytekken.app.model.components.player;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import hoytekken.app.Hoytekken;
 
@@ -43,8 +45,9 @@ public class Player extends Sprite implements IPlayer {
     // Player Texture & World
     private World world;
     private Body body;
-    private TextureRegion player1stand;
+    private TextureRegion playerStand;
     private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
+    private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
@@ -53,9 +56,20 @@ public class Player extends Sprite implements IPlayer {
     private PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
+    private boolean isPunching = false;
+    private boolean isKicking = false;
+    private boolean runningRight;
     private int maxHealth;
     private int health;
     private int lives;
+    private PlayerState currentState;
+    private PlayerState previousState;
+    private float stateTimer;
+    private float timeSinceAction = 0;
+
+    // Animation
+    private Animation<TextureRegion> kickAnimation;
+
 
     /**
      * Constructor for the player
@@ -65,18 +79,33 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
-        super(atlas.findRegion("Character_1_normalStand(60x27)"));
+        super(type == PlayerType.PLAYER_ONE 
+        ? atlas.findRegion("Character_1_normalStand(60x27)") 
+        : atlas2.findRegion("Character_2_normalStand(60x27)"));
         this.world = world;
         this.type = type;
         this.health = health;
         this.maxHealth = health;
         this.lives = MAX_LIVES;
+        this.currentState = PlayerState.STANDING;
+        this.previousState = PlayerState.STANDING;
+        this.stateTimer = 0;
+        this.runningRight = true;
 
-        this.player1stand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+
+        // Kicking animation
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        kickAnimation = new Animation<TextureRegion>(0.1f, frames);
+        frames.clear();
+
+        this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
-        setRegion(player1stand);
+        setRegion(playerStand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
     }
 
@@ -93,14 +122,17 @@ public class Player extends Sprite implements IPlayer {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(PLAYER_WIDTH / 2, PLAYER_HEIGHT / 2);
         fdef.shape = shape;
-        body.createFixture(fdef).setUserData(this.type + "body");
+
+        body.createFixture(fdef).setUserData(
+                type == PlayerType.PLAYER_ONE ? PlayerFixtures.PLAYER_ONE_BODY : PlayerFixtures.PLAYER_TWO_BODY);
 
         // Foot sensor
         EdgeShape feet = new EdgeShape();
         feet.set(feetVerts[0], feetVerts[1]);
         fdef.shape = feet;
         fdef.isSensor = true;
-        body.createFixture(fdef).setUserData(this.type + "feet");
+        body.createFixture(fdef).setUserData(
+                type == PlayerType.PLAYER_ONE ? PlayerFixtures.PLAYER_ONE_FEET : PlayerFixtures.PLAYER_TWO_FEET);
     }
 
     /**
@@ -116,7 +148,10 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void update() {
+    public void update(float dt) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            timeSinceAction += dt;
+        }
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
             resetPosistion();
@@ -125,7 +160,62 @@ public class Player extends Sprite implements IPlayer {
         }
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
+        setRegion(getFrame(dt));
+        if (timeSinceAction > 0.3f) {
+            resetAnimation();
+            timeSinceAction = 0;
+        }
+    }
 
+    private PlayerState resetAnimation() {
+        isPunching = false;
+        isKicking = false;
+        return PlayerState.STANDING;
+    }
+
+    private TextureRegion getFrame(float dt) {
+        currentState = getState();
+        TextureRegion region;
+
+        switch (currentState) {
+            case PUNCHING:
+                region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
+                break;
+            case KICKING:
+                region = kickAnimation.getKeyFrame(stateTimer);
+                break;
+            case BLOCKING:
+                region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
+                break;
+            case STANDING:
+                region = playerStand;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + currentState);
+        }
+
+        if(!runningRight && !region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = false;
+        } else if(runningRight && region.isFlipX()) {
+            region.flip(true, false);
+            runningRight = true;
+        }
+        stateTimer = currentState == previousState ? stateTimer + dt : 0; 
+        previousState = currentState;
+        return region;
+    }
+
+    private PlayerState getState() {
+        if (isPunching) {
+            return PlayerState.PUNCHING;
+        } else if (isKicking) {
+            return PlayerState.KICKING;
+        } else if (isBlocking) {
+            return PlayerState.BLOCKING;
+        } else {
+            return PlayerState.STANDING;
+        }
     }
 
     @Override
@@ -135,6 +225,11 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void move(float deltaX, float deltaY) {
+        if (deltaX < 0) {
+            flipLeft();
+        } else if (deltaX > 0) {
+            flipRight();
+        }
         if (deltaY != 0) {
             body.setLinearVelocity(body.getLinearVelocity().x, 0);
             body.applyLinearImpulse(new Vector2(deltaX, deltaY), body.getWorldCenter(), true);
@@ -201,11 +296,19 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public boolean punch(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
+        isPunching = true;
         return performAttack(that, PUNCH_DAMAGE, PUNCH_RANGE);
     }
 
     @Override
     public boolean kick(IPlayer that) {
+        if (!PlayerState.STANDING.equals(currentState)) {
+            return false;
+        }
+        isKicking = true;
         return performAttack(that, KICK_DAMAGE, KICK_RANGE);
     }
 
@@ -254,5 +357,17 @@ public class Player extends Sprite implements IPlayer {
     public void increaseHealth(int increaseAmount) {
         this.maxHealth += increaseAmount;
         this.health += increaseAmount;
+    }
+
+    @Override
+    public void flipLeft() {
+        runningRight = false;
+        this.setFlip(true, false);
+    }
+
+    @Override
+    public void flipRight() {
+        runningRight = true;
+        this.setFlip(false, false);
     }
 }

@@ -6,13 +6,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.IEvent;
+import hoytekken.app.model.components.eventBus.IEventListener;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.view.ViewableModel;
 
 /**
  * Base class for all screens.
  */
-public abstract class BaseScreen implements Screen {
+public abstract class BaseScreen implements Screen, IEventListener {
     protected Hoytekken game;
     protected ViewableModel model;
 
@@ -37,6 +40,7 @@ public abstract class BaseScreen implements Screen {
 
         initializeCameraAndViewport(scaling);
 
+        this.model.getEventBus().addListener(this);
     }
 
     /**
@@ -52,6 +56,13 @@ public abstract class BaseScreen implements Screen {
      */
     public BaseScreen(Hoytekken game, ViewableModel model) {
         this(game, model, false);
+    }
+
+    @Override
+    public void handleEvent(IEvent event) {
+        if (event instanceof GameStateEvent) {
+            handleStateSwitch((GameStateEvent) event);
+        }
     }
 
     private int getWinningPlayer() throws IllegalStateException{
@@ -78,28 +89,32 @@ public abstract class BaseScreen implements Screen {
      * Handles the state switch.
      * If the game state has changed, switches to the appropriate screen.
      */
-    protected void handleStateSwitch() {
-        GameState currentState = model.getGameState();
+    protected void handleStateSwitch(GameStateEvent event) {
+        GameState newState = event.newState();
 
-        switch (currentState) {
+        switch (newState) {
             case MAIN_MENU:
                 if (!(this instanceof MenuScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new MenuScreen(game, model));
                 }
                 break;
             case INSTRUCTIONS:
                 if (!(this instanceof InstructionsScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new InstructionsScreen(game, model));
                 }
                 break;
             case ACTIVE_GAME:
                 if (!(this instanceof GameScreen)) {
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new GameScreen(game, model));
                 }
                 break;
             case GAME_OVER:
                 if (!(this instanceof GameOverScreen)) {
                     int winningPlayer = getWinningPlayer();
+                    model.getEventBus().removeListener(this);
                     game.setScreen(new GameOverScreen(game, model, winningPlayer));
                 }
                 break;
@@ -121,7 +136,7 @@ public abstract class BaseScreen implements Screen {
      */
     protected void update(float delta) {
         this.gameCam.update();
-        handleStateSwitch();
+        //handleStateSwitch();
     }
 
     @Override

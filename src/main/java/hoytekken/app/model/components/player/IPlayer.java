@@ -12,7 +12,7 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      * Updates the player.
      * 
      */
-    void update();
+    void update(float dt);
 
     /**
      * Retrieves the physical body representing the player.
@@ -44,5 +44,9 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      * @return an int representing the deltaY of a jump
      */
     int getJumpingHeight();
+
+    void flipLeft();
+
+    void flipRight();
 
 }

@@ -1,26 +1,39 @@
 package hoytekken.app.model;
 
 import java.util.HashMap;
-
+import java.util.LinkedList;
 import javax.swing.Box;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Event;
 
+import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
-import hoytekken.app.model.components.ai.AIPlayer;
+import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUp;
+import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
 import hoytekken.app.view.ViewableModel;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * The model for the game
@@ -40,6 +53,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     };
 
+    private EventBus eventBus;
+
     private World gameWorld;
     private GameState gameState;
 
@@ -54,18 +69,24 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
 
+    private ActivePowerUp activePowerUp;
+    private float timeSinceLastPowerUp = 0;
+    private final float powerUpSpawnInterval = 2;
+    private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
+
     /**
      * Constructor for the model
      * 
      * @param map string for chosen map
      */
-    public HTekkenModel(String map) {
+    public HTekkenModel(String map, EventBus eventBus) {
         this.map = map;
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
-        this.playerTwo = new AIPlayer(gameWorld, PlayerType.PLAYER_TWO, 99, playerOne);
+        this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+        playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
         // tiledmap = mapLoader.load(map);
@@ -74,21 +95,45 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
 
+        this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        this.eventBus = eventBus;
     }
 
     /**
      * Constructor for the model, uses default map
      */
-    public HTekkenModel() {
-        this(DEFAULT_MAP);
+    public HTekkenModel(EventBus eventBus) {
+        this(DEFAULT_MAP, eventBus);
     }
 
     @Override
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-        playerOne.update();
-        playerTwo.update();
+
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                timeSinceLastPowerUp = 0;
+            }
+        }
+
+        if (activePowerUp != null && activePowerUp.shouldBeDestroyed()) {
+            bodiesToDestroy.add(activePowerUp.getBody());
+        }
+
+        while (!bodiesToDestroy.isEmpty()) {
+            Body b = bodiesToDestroy.poll();
+            if (b != null && b.getUserData() instanceof ActivePowerUp) {
+                // activePowerUp.makeInvisible();
+                gameWorld.destroyBody(b);
+            }
+            activePowerUp = null;
+        }
+
+        playerOne.update(dt);
+        playerTwo.update(dt);
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
@@ -215,6 +260,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public void setGameState(GameState gameState) {
+        this.eventBus.emitEvent(new GameStateEvent(this.gameState, gameState));
         this.gameState = gameState;
     }
 
@@ -255,4 +301,29 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             throw new IllegalArgumentException("Map: " + mapName + " not found");
         }
     }
+
+    @Override
+    public ActivePowerUp getActivePowerUp() {
+        return activePowerUp;
+    }
+
+    @Override
+    public void applyPowerUp(PlayerType player, ActivePowerUp powerUp) {
+        IPlayer p = getPlayer(player);
+        powerUp.apply(p);
+
+    }
+
+    @Override
+    public void destroyPowerUpList() {
+        if (activePowerUp != null && activePowerUp.getBody() != null) {
+            bodiesToDestroy.add(activePowerUp.getBody());
+            activePowerUp.markForDestruction();
+        }
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
+    }
+
 }

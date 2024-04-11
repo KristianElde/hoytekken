@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,6 +22,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.view.ViewableModel;
 
 public class BaseScreenTest {
@@ -28,6 +30,7 @@ public class BaseScreenTest {
     private static Hoytekken gameMock;
     private static ViewableModel modelMock;
 
+    private EventBus eventbus = new EventBus();
     private MenuScreen menuScreen;
 
     @BeforeAll
@@ -44,6 +47,7 @@ public class BaseScreenTest {
 
     @BeforeEach
     void setUpBeforeEach() {
+        when(modelMock.getEventBus()).thenReturn(eventbus);
         menuScreen = new MenuScreen(gameMock, modelMock);
     }
 

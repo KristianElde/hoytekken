@@ -2,12 +2,15 @@ package hoytekken.app.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.view.ViewableModel;
 
 /**
@@ -19,6 +22,7 @@ public class GameScreen extends BaseScreen {
     private Box2DDebugRenderer b2dr;
 
     private Hud hud;
+
 
     /**
      * Constructor for the game screen
@@ -43,9 +47,8 @@ public class GameScreen extends BaseScreen {
     @Override
     protected void update(float delta) {
         model.updateModel(delta);
-        gameCam.update();
         renderer.setView(gameCam);
-        handleStateSwitch();
+        super.update(delta);
     }
 
     @Override
@@ -71,6 +74,13 @@ public class GameScreen extends BaseScreen {
         // game.batch.draw(img, 0, 0);
         this.model.getPlayer(PlayerType.PLAYER_ONE).draw(game.batch);
         this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
+        //this.model.getActivePowerUp().draw(game.batch);
+
+        ActivePowerUp activePowerUp = this.model.getActivePowerUp();
+        if (activePowerUp != null && activePowerUp.isVisible()) {
+            activePowerUp.draw(game.batch);
+        }
+
         game.batch.end();
         hud.getStage().draw();
     }
