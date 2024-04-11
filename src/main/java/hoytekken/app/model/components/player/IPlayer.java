@@ -53,6 +53,13 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
     int getKickDamage();
 
     /**
+     * Retrieves the punch damage of the player.
+     * 
+     * @return an int representing the punch damage
+     */
+    int getPunchDamage();
+
+    /**
      * Retrieves the jumping height of the player.
      * 
      * @return an int representing the deltaY of a jump
