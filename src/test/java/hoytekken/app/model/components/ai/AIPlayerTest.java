@@ -30,7 +30,6 @@ public class AIPlayerTest {
     private World world;
     private Player opposition;
     private AIPlayer AIPlayer;
-    private Random rand = new Random();
 
     private static final int MAX_HEALTH = 99;
     private static final float PUNCH_RANGE = 1.8f;
@@ -86,7 +85,7 @@ public class AIPlayerTest {
     @Test
     void makeDecisionTest() {
         float initX = AIPlayer.getBody().getPosition().x;
-        while (AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
+        while (!AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
             AIPlayer.update(DELTA_TIME);
             world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
         }
@@ -98,6 +97,8 @@ public class AIPlayerTest {
 
         AIPlayer.update(DELTA_TIME);
         world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        assertEquals(92, opposition.getHealth());
     }
 
 }
