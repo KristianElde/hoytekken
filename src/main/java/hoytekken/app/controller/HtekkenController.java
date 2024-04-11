@@ -31,4 +31,18 @@ public class HtekkenController extends InputAdapter {
         Gdx.input.setInputProcessor(this);
     }
 
+    /**
+     * Handles key down events
+     * 
+     * @param keycode the key code of the key that was pressed
+     * @return true if the input was processed
+     */
+    @Override
+    public boolean keyDown(int keycode) {
+        switch (model.getGameState()) {
+
+        }
+        return false;
+    }
+
 }
