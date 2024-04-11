@@ -51,6 +51,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private String map;
     private TmxMapLoader mapLoader;
     private TiledMap tiledmap;
+    private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
@@ -92,7 +93,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * Constructor for the model, uses default map
      */
     public HTekkenModel(EventBus eventBus) {
-        this(gameMaps.get("map1"), eventBus);
+        this(HTekkenModel.DEFAULT_MAP, eventBus);
     }
 
     @Override
