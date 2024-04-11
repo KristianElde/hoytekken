@@ -83,7 +83,7 @@ public class AIPlayerTest {
     }
 
     @Test
-    void makeDecisionTest() {
+d     void makeDecisionTest() {
         float initX = AIPlayer.getBody().getPosition().x;
         while (!AIPlayer.isWithinRange(opposition, KICK_RANGE)) {
             AIPlayer.update(DELTA_TIME);
@@ -94,11 +94,19 @@ public class AIPlayerTest {
         assertTrue(initX != newX);
         assertTrue(AIPlayer.isWithinRange(opposition, KICK_RANGE));
         assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
+        for (int i = 0; i < 2; i++) {
+            AIPlayer.update(DELTA_TIME);
+            world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        }
 
-        AIPlayer.update(DELTA_TIME);
-        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+    }
 
-        assertEquals(92, opposition.getHealth());
+    @Test
+    void AIPlayerTakeDamageTest() {
+        opposition.punch(AIPlayer);
+        world.step(DELTA_TIME, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        assertEquals(89, AIPlayer.getHealth());
     }
 
 }
