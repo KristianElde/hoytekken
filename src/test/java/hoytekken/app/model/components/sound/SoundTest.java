@@ -51,4 +51,9 @@ public class SoundTest {
     void testStop() {
         assertDoesNotThrow(() -> sound.stop());
     }
+
+    @Test
+    void testLoop() {
+        assertDoesNotThrow(() -> sound.loop());
+    }
 }
