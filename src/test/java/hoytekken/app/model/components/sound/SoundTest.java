@@ -46,4 +46,9 @@ public class SoundTest {
     void testPlay() {
         assertDoesNotThrow(() -> sound.play());
     }
+
+    @Test
+    void testStop() {
+        assertDoesNotThrow(() -> sound.stop());
+    }
 }
