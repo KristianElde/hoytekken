@@ -71,7 +71,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
-    private final float powerUpSpawnInterval = 2;
+    private final float powerUpSpawnInterval = 10;
     private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
 
     /**
@@ -111,32 +111,36 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
 
+        if (activePowerUp != null) {
+            activePowerUp.update(dt);
+            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
+                bodiesToDestroy.add(activePowerUp.getBody());
+                activePowerUp = null;
+            }
+        }
         if (activePowerUp == null) {
             timeSinceLastPowerUp += dt;
             if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
                 activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp.makeVisible();
                 timeSinceLastPowerUp = 0;
             }
-        }
-
-        if (activePowerUp != null && activePowerUp.shouldBeDestroyed()) {
-            bodiesToDestroy.add(activePowerUp.getBody());
         }
 
         while (!bodiesToDestroy.isEmpty()) {
             Body b = bodiesToDestroy.poll();
             if (b != null && b.getUserData() instanceof ActivePowerUp) {
-                // activePowerUp.makeInvisible();
                 gameWorld.destroyBody(b);
             }
-            activePowerUp = null;
         }
 
         playerOne.update(dt);
         playerTwo.update(dt);
+
         if (isGameOver()) {
             setGameState(GameState.GAME_OVER);
         }
+
     }
 
     @Override

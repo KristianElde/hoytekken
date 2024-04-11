@@ -92,16 +92,7 @@ public class Hud {
         return stage;
     }
 
-    // getters and setters might be removed for better alternative later
-
-    /**
-     * Getter for the player's health
-     * 
-     * @return Integer representing the player's health
-     */
-    public Integer getPlayerHealth() {
-        return playerHealth;
-    }
+    // setters be removed for better alternative later
 
     /**
      * Setter for the player's health
@@ -110,15 +101,6 @@ public class Hud {
      */
     public void setPlayerHealth(String health) {
         labelList.get(3).setText(health);
-    }
-
-    /**
-     * Getter for other enemy's health
-     * 
-     * @return Integer representing the enemy's health
-     */
-    public Integer getEnemyHealth() {
-        return enemyHealth;
     }
 
     /**

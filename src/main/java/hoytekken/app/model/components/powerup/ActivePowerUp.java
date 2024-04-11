@@ -18,20 +18,19 @@ public class ActivePowerUp extends Sprite {
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
 
     private String type;
-    private PowerUpFactory factory;
     private World world;
     private Body body;
     private Texture texture;
     private PowerUp powerUp;
-    
-    private boolean powerUpActive = true;
+
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
+
+    private float powerUpInterval = 0;
     
 
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
-        this.factory = factory;
         this.world = world;
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
@@ -45,8 +44,8 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM)/2 + Hoytekken.V_WIDTH / Hoytekken.PPM / 4,
-        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM) / 2 + Hoytekken.V_HEIGHT/Hoytekken.PPM/4, 0);
+        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM),
+        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM), 0);
     }
 
     private void positionTexture() {
@@ -69,35 +68,64 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    public boolean isActive() {
-        return powerUpActive;
+    /*
+     * Updates the powerup
+     */
+    public void update(float dt) {
+        if (isVisible) {
+            powerUpInterval += dt;
+            if (powerUpInterval >= 3) {
+                makeInvisible();
+            }
+        }
     }
 
+    /*
+     * Makes the powerup visible
+     */
+    public void makeVisible() {
+        isVisible = true;
+        powerUpInterval = 0;
+    }
+
+    /*
+     * Applies the powerup to the player
+     */
     public void apply(IPlayer player) {
         powerUp.applyPowerUp(player);
     }
 
+    /*
+     * Getter for the body
+     */
     public Body getBody() {
         return body;
     }
 
+    /*
+     * Boolean to determine whether the powerup is visible
+     */
     public boolean isVisible() {
         return this.isVisible;
     }
 
+    /*
+     * Makes the powerup invisible
+     */
     public void makeInvisible() {
         this.isVisible = false;
     }
 
-    public Texture getTexture() {
-        return this.texture;
-
-    }
-
+    /*
+     * Marks the powerup for destruction
+     */
     public void markForDestruction() {
         this.shouldBeDestroyed = true;
     }
 
+    /*
+     * Boolean to determine whether the powerup should be destroyed
+     */
     public boolean shouldBeDestroyed() {
         return this.shouldBeDestroyed;
     }

@@ -39,6 +39,27 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
     boolean fallenOffTheMap();
 
     /**
+     * Retrieves the max health of the player.
+     * 
+     * @return
+     */
+    int getMaxHealth();
+
+    /**
+     * Retrives the kick damage of the player.
+     * 
+     * @return an int representing the kick damage
+     */
+    int getKickDamage();
+
+    /**
+     * Retrieves the punch damage of the player.
+     * 
+     * @return an int representing the punch damage
+     */
+    int getPunchDamage();
+
+    /**
      * Retrieves the jumping height of the player.
      * 
      * @return an int representing the deltaY of a jump

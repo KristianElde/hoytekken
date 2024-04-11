@@ -26,17 +26,12 @@ import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
-
 
 public class ModelTest {
     private HTekkenModel model;
     private IPlayer player1;
     private IPlayer player2;
-    private static final int MAX_HP = 99;
-    private static final int PUNCH_DMG = 10;
-    private static final int KICK_DMG = 7;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -119,15 +114,15 @@ public class ModelTest {
 
         // Check that opponents health is not reduced by punch when opponent is out of
         // range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is reduced by punch when opponent is inside range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth() - player1.getPunchDamage(), player2.getHealth());
     }
 
     @Test
@@ -136,15 +131,15 @@ public class ModelTest {
 
         // Check that opponents health is not reduced by kick when opponent is out of
         // range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.KICK);
 
         // Check that opponents health is reduced by kick when opponent is inside range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP - KICK_DMG, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth() - player1.getKickDamage(), player2.getHealth());
     }
 
     @Test
@@ -171,7 +166,7 @@ public class ModelTest {
         player1.changeBlockingState();
         model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.PUNCH);
         // Check that attack does not inflict damage when victim is blocking
-        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
     }
 
     @Test
@@ -191,12 +186,13 @@ public class ModelTest {
         player1.changeBlockingState();
         // Check that blocking prevents player from performing punch
         assertFalse(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         player1.changeBlockingState();
         // Check that deactivating block allows player to perform punch
         assertTrue(model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH));
-        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
+
+        assertEquals(player2.getMaxHealth() - player1.getPunchDamage(), player2.getHealth());
     }
 
     @Test
@@ -206,12 +202,12 @@ public class ModelTest {
         player2.changeBlockingState();
         // Check that blocking prevents player from performing kick
         assertFalse(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
-        assertEquals(MAX_HP, player1.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
 
         player2.changeBlockingState();
         // Check that deactivating block allows player to perform kick
         assertTrue(model.performAttackAction(PlayerType.PLAYER_TWO, ActionType.KICK));
-        assertEquals(MAX_HP - KICK_DMG, player1.getHealth());
+        assertEquals(player1.getMaxHealth() - player2.getKickDamage(), player1.getHealth());
     }
 
     @Test
