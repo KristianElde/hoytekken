@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,21 +55,10 @@ public class AIPlayerTest {
         AIPlayer = new AIPlayer(world, PlayerType.PLAYER_TWO, 99, opposition);
     }
 
-    private boolean isWithinRange(Player p1, Player p2, float rangeFactor) {
-        float playerWidth = 45 / Hoytekken.PPM;
-
-        Vector2 p1Pos = new Vector2(p1.getBody().getPosition().x, p1.getBody().getPosition().y);
-        Vector2 p2Pos = new Vector2(p2.getBody().getPosition().x, p2.getBody().getPosition().y);
-
-        float distance = p1Pos.dst(p2Pos);
-        float range = playerWidth * rangeFactor;
-        return distance <= range;
-    }
-
     private void movePlayersBeside(float rangeFactor) {
         float dirX = Float.compare(opposition.getBody().getPosition().x, AIPlayer.getBody().getPosition().x);
 
-        while (!isWithinRange(AIPlayer, opposition, rangeFactor)) {
+        while (AIPlayer.isWithinRange(opposition, rangeFactor)) {
             AIPlayer.move(dirX * 0.5f, 0);
             world.step(1 / 60f, 6, 2);
         }
@@ -102,16 +92,16 @@ public class AIPlayerTest {
     @Test
     void makeDecisionTest() {
         float initX = AIPlayer.getBody().getPosition().x;
-        movePlayersBeside(KICK_RANGE);
+        movePlayersBeside(PUNCH_RANGE);
+        assertTrue(AIPlayer.isAlive());
         float newX = AIPlayer.getBody().getPosition().x;
 
         assertTrue(initX != newX);
         assertTrue(AIPlayer.isWithinRange(opposition, KICK_RANGE));
-        assertFalse(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
-        for (int i = 0; i < 2; i++) {
-            AIPlayer.update(DELTA_TIME);
-            world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-        }
+        assertTrue(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
+
+        AIPlayer.update(DELTA_TIME);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         assertEquals(92, opposition.getHealth());
     }
