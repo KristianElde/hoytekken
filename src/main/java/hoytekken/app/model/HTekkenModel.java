@@ -282,7 +282,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public HashMap<String, String> getGameMaps() {
-        return this.gameMaps;
+        return HTekkenModel.gameMaps;
     }
 
     @Override
