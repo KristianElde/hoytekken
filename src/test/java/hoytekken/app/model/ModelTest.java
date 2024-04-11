@@ -114,15 +114,15 @@ public class ModelTest {
 
         // Check that opponents health is not reduced by punch when opponent is out of
         // range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth(), player2.getHealth());
 
         movePlayersBeside();
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
         // Check that opponents health is reduced by punch when opponent is inside range
-        assertEquals(MAX_HP, player1.getHealth());
-        assertEquals(MAX_HP - PUNCH_DMG, player2.getHealth());
+        assertEquals(player1.getMaxHealth(), player1.getHealth());
+        assertEquals(player2.getMaxHealth() - player1.getPunchDamage(), player2.getHealth());
     }
 
     @Test
