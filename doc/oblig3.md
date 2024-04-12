@@ -156,11 +156,28 @@
     bruke denne på flere steder ettersom vi ser behov for det.
 
     - Controller klasse håndterer alt av input.
+        - Kommuniserer med modellen for og utfører handlinger på spillet basert på hvilken input som ble registrert
+
     - View er en består av en abstrakt superklasse, BaseScreen som extender libgdx sin Screen klasse, og subklasser.
     Hver av subklassene representerer en GameState.
+        - Screen klassene tegner alt visuelt.
+        - GameLoopen kommer fra render metoden, her kaller den på update i model som oppdaterer resten av mekanikken i spillet.
+
+
     - Modellen holder på alt av mekanikk og logikk i spillet. Denne kobles opp mot controller og Screeens
     med Viewable- og ControllableModelInterface som dikterer hvilke deler av prosjektet som skal ha tilgang til hvilke deler av modellen.
+        - Selve model klassen knytter alle components sammen.
+            - Sprites -- Player, PowerUps
+            - Box2d -- World generator
+            - ContactListener/Collision detector som lager events hver gang objekter i Box2d physics world kolliderer
+
     - Hoytekken Game/ApplicationListener. Denne klassen knytter alle delene av prosjektet sammen og kjøres i main.
+        - create() oppretter
+            - spritebatchen for spillet
+            - modellen
+            - controller
+            - View/Screen
+            - EventBus
 
     - Testing. Vi har jobbet mye med testing siden forrige oblig og fått opp testcoverage, men vi har fortsatt en del kode
     som ikke er dekket av testene.
@@ -172,4 +189,12 @@
     
     - Spillere kan klistre seg fast på siden av objekter hvis de har beveger seg mot objektet. (Usikkert om dette er
     noe vi ønsker å beholde som en feature, eller om vi ønsker endre dette slik at spilleren faller)
+    - Powerups kan spawne inni platformer og ellers "unreachable" områder
+    - Powerups kan gi mer en max health, mer enn max liv osv
+    - Man kan slå/sparke motspiller uansett hvilken vei man ser.
+    - AI faller lett av platform
+    - Per nå ingen måte å endre fra 2 spiller modus til 1 spiller mot ai (Vil implementere en ekstra skjerm
+    for å velge antall spillere og ønsket map)
+    - Noen deler av koden i modellen kan flyttes inn i de aktuelle klassene de håndterer, controllen er også inkonsisten
+    på enkelte tilfeller i forhold til kommunikasjon med modell eller direkte til spiller.
     
