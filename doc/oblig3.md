@@ -46,7 +46,13 @@
     Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen.
     Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi
     unngå overbelastning og forsinkelser. Dette har fortsatt fungert veldig bra for oss,
-    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort.
+    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort. 
+    Denne metoden sørger også for at vi har god tilbakemeldingssykluser, der vi
+    har regelmessig møte en gang i uken, hvor vi vurderer kanban-brettet, fremgang
+    og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
+    funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert
+    kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha
+    en fungerende prototype som vi kan revidere, test og forbedre senere i prosessen.
 
 ## 3. Gruppedynamikk
 
