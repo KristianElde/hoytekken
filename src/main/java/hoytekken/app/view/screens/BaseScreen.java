@@ -104,6 +104,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
                     model.getEventBus().removeListener(this);
                     game.setScreen(new SelectionScreen(game, model));
                 }
+                break;
             case INSTRUCTIONS:
                 if (!(this instanceof InstructionsScreen)) {
                     model.getEventBus().removeListener(this);

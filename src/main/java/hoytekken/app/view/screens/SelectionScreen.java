@@ -80,9 +80,11 @@ public class SelectionScreen extends BaseScreen {
 
     @Override
     public void handleEvent(IEvent event) {
-        if (event instanceof GameStateEvent) {
+        /*if (event instanceof GameStateEvent) {
             handleStateSwitch((GameStateEvent) event);
-        } else if (event instanceof ClickedScreenEvent) {
+        } else*/
+        super.handleEvent(event);
+        if (event instanceof ClickedScreenEvent) {
             handleSelection((ClickedScreenEvent) event);
         }
     }
