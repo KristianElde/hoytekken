@@ -12,7 +12,7 @@
 
 ### 1.2. Møteleder
 
-    Sune er fortsatt nøteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
+    Sune er fortsatt møteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
 
@@ -52,7 +52,8 @@
     og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
     funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert
     kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha
-    en fungerende prototype som vi kan revidere, teste og forbedre senere i prosessen. Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
+    en fungerende prototype som vi kan revidere, teste og forbedre senere i prosessen. 
+    Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
 
 ## 3. Gruppedynamikk
 
