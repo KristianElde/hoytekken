@@ -84,7 +84,7 @@
 
 ## Progresjon i forhold til MVP
 
-    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et stykke forbi dette, og arbeidet går nå i hovedsak ut på å forbedre features som allerede er implementert i sin enkleste form. Vi har også kommet et stykke lenger på dette.
+    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et stykke forbi dette, og arbeidet går nå i hovedsak ut på å forbedre features som allerede er implementert i sin enkleste form.
 
     Ettersom at vi har kommet forbi MVP stadiet er det ikke lenger aktuelt å endre på prioriteringsrekkefølgen for MVP-kravene. Vi har heller ikke sett behovet for å legge til noen krav.
 
@@ -96,9 +96,15 @@
 
     En tredje ting som har vært viktig siden sist er implementering av power ups. Dette fungerer nå på et basic nivå.
 
+    Vi har også lagt inn lyder som samsvarer med angrepshandlingene til spillerne.
+
 ## Prioriterte oppgaver fremover
 
-    En av de høyeste prioriterte oppgavene den siste perioden av utviklingen vil være å få økt test-coverage til minimum 75%.
+    En av de høyeste prioriterte oppgavene den siste perioden av utviklingen vil være å få økt test-coverage til minimum 75%. Vi har ikke mye igjen før vi er der, men dette vil være viktig å få ferdig den siste tiden.
+
+    Vi vil også prioritere å rette de bugene som vi har og vet om (se avsnitt om kjente feil).
+
+    Vi ønsker også å videreutvikle AI-spilleren. Den er nå ganske primitiv. Vi tror spillet kan bli en del kulere hvis vi får til å lage en AI-spiller med litt mer intelligent og variert oppførsel.
 
 # Produkt og kode
 
