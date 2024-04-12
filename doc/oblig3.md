@@ -16,9 +16,9 @@
 
 ### 1.3. Trello-ansvarlig
 
-    Jonas regnes fortsatt som trello-ansvarlig, men alle har ansvar for å oppdatere trello med oppgaver de holder på med og er ferdig med. 
+    Jonas regnes fortsatt som trello-ansvarlig, men alle har ansvar for å oppdatere trello med oppgaver de holder på med og er ferdig med.
     Dette ser vi på som en suksess og en naturlig utvikling som har gitt oss en god måte å holde oversikt over oppgaver som skal gjøres og er gjort.
-    
+
 ### 1.4. Testansvarlig
 
     Denne rollen er tildelt Kristian, og han har gjort en god jobb med å øke test-coverage på prosjektet. Andre har selvfølgelig også vært involvert i å lage tester, men Kristian har altså hovedansvaret for det, noe som har fungert godt.
@@ -46,7 +46,7 @@
     Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen.
     Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi
     unngå overbelastning og forsinkelser. Dette har fortsatt fungert veldig bra for oss,
-    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort. 
+    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort.
     Denne metoden sørger også for at vi har god tilbakemeldingssykluser, der vi
     har regelmessig møte en gang i uken, hvor vi vurderer kanban-brettet, fremgang
     og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
@@ -69,13 +69,13 @@
     Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets
     fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet
     som fundamentale faktorer for vår suksess, og vil fortsette å prioritere
-    disse aspektene i videre arbeid.    
+    disse aspektene i videre arbeid.
 
 ## 4. Kommunikasjon
 
     Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å oppdatere hverandre på statusen til våre respektive oppgaver.
     Siden sist innlevering har vi innført en kort kodegjennomgang på møtene våre når det har vært noe uklart. Dette har fungert bra.
-    I tillegg møter vi ofte hverandre på lesesal, slik at man kan spørre og diskutere mindre ting. 
+    I tillegg møter vi ofte hverandre på lesesal, slik at man kan spørre og diskutere mindre ting.
 
 ## 5. Retrospektiv
 
@@ -101,15 +101,27 @@
 
 ## Progresjon i forhold til MVP
 
-    
+    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et stykke forbi dette, og arbeidet går nå i hovedsak ut på å forbedre features som allerede er implementert i sin enkleste form.
+
+    Ettersom at vi har kommet forbi MVP stadiet er det ikke lenger aktuelt å endre på prioriteringsrekkefølgen for MVP-kravene. Vi har heller ikke sett behovet for å legge til noen krav.
 
 ## Prioriteringer til nå
 
-    
+    Siden forrige innlevering har en av de høyest prioriterte oppgavene vært å forbedre test-coverage. Vi er veldig fornøyde med å kunne si at vi har økt test-coverage fra 0% til nesten 70% siden forrige innlevering!
+
+    Vi har også prioritert animasjoner høyt siden forrige innlevering. Vi har nå animasjoner for spark, slag og blokk. Disse animasjonene fungerer nå som de skal, og de forbedrer helhetsopplevelsen av spillet betraktelig.
+
+    En tredje ting som har vært viktig siden sist er implementering av power ups. Dette fungerer nå på et basic nivå.
+
+    Vi har også lagt inn lyder som samsvarer med angrepshandlingene til spillerne.
 
 ## Prioriterte oppgaver fremover
 
-    
+    En av de høyeste prioriterte oppgavene den siste perioden av utviklingen vil være å få økt test-coverage til minimum 75%. Vi har ikke mye igjen før vi er der, men dette vil være viktig å få ferdig den siste tiden.
+
+    Vi vil også prioritere å rette de bugene som vi har og vet om (se avsnitt om kjente feil).
+
+    Vi ønsker også å videreutvikle AI-spilleren. Den er nå ganske primitiv. Vi tror spillet kan bli en del kulere hvis vi får til å lage en AI-spiller med litt mer intelligent og variert oppførsel.
 
 # Produkt og kode
 
@@ -118,7 +130,7 @@
     Kjente feil vi listet opp under Oblig2:
     - Bug med kontroller bevegelse. Kommer av samtidig input left/right, hvor direction blir satt tilbake til
     static. Fikses med en getter av direction og sjekke hvilken retning spiller beveger seg.
-    - Tester vil ikke kjøre. 
+    - Tester vil ikke kjøre.
     - Game Over skjerm kan bytte tilbake til Main menu, men restarter ikke faktisk spillet i form av å lage nye
     spillere. Fikses ved å legge til funksjonalitet for å restarte spillet.
     - Block fungerer ikke enda, må implementeres med en state for å holde en kontinuerlig block.
@@ -155,7 +167,7 @@
 
     Prosjektet følger MVC (model-view-controller) struktur. Dette kommer med fordeler og ulemper. Vi hadde et problem med
     at vi måtte sjekke current gamestate i game-loopen for å bytte skjerm, dette er ikke optimalt. Vi har nå implementert en
-    EventBus som løser dette problemet. Eventbusen gjør det også mulig å forbedre andre områder i koden, og vi vil 
+    EventBus som løser dette problemet. Eventbusen gjør det også mulig å forbedre andre områder i koden, og vi vil
     bruke denne på flere steder ettersom vi ser behov for det.
 
     - Controller klasse håndterer alt av input.
@@ -187,9 +199,8 @@
     - Alt av kode, klasser, interface, metoder, osv... er dokumentert med Javadoc. Det er potensiale til å rydde i
     koden på visse steder ved å bl.a sortere metoder etter bruksområder.
 
-
 ## kjente feil
-    
+
     - Spillere kan klistre seg fast på siden av objekter hvis de har beveger seg mot objektet. (Usikkert om dette er
     noe vi ønsker å beholde som en feature, eller om vi ønsker endre dette slik at spilleren faller)
     - Powerups kan spawne inni platformer og ellers "unreachable" områder
