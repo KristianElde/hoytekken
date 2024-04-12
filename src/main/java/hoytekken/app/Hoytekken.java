@@ -27,7 +27,7 @@ public class Hoytekken extends Game {
         HTekkenModel model = new HTekkenModel(new EventBus());
         new HtekkenController(model);
 
-        //setScreen(new MenuScreen(this, model));
-        setScreen(new SelectionScreen(this, model));
+        setScreen(new MenuScreen(this, model));
+        //setScreen(new SelectionScreen(this, model));
     }
 }
