@@ -2,20 +2,11 @@ package hoytekken.app.model;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import javax.swing.Box;
-
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Event;
-
-import hoytekken.app.Hoytekken;
 import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
@@ -25,26 +16,43 @@ import hoytekken.app.model.components.eventBus.GameStateEvent;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
-import hoytekken.app.model.components.player.ViewablePlayer;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
 import hoytekken.app.view.ViewableModel;
-import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * The model for the game
  */
 public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
-    private static final String DEFAULT_MAP = "defaultMap.tmx";
+    // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
+
+    // Event bus
+    private EventBus eventBus;
+
+    // Game world and state
+    private World gameWorld;
+    private GameState gameState;
+
+    // Players
+    private IPlayer playerOne;
+    private IPlayer playerTwo;
+    private ForceDirection p1Direction = ForceDirection.STATIC;
+    private ForceDirection p2Direction = ForceDirection.STATIC;
     private static final int MAX_JUMPS = 2;
     private int playerOneJumpCounter = 0;
     private int playerTwoJumpCounter = 0;
-    private HashMap<String, String> gameMaps = new HashMap<String, String>() {
+    private final float directionSpeed = 0.5f;
+
+    // Map
+    private String map;
+    private TmxMapLoader mapLoader;
+    private TiledMap tiledmap;
+    private final static String DEFAULT_MAP = "defaultMap.tmx";
+    private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
             put("map2", "secondKMVmap.tmx");
@@ -53,22 +61,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     };
 
-    private EventBus eventBus;
-
-    private World gameWorld;
-    private GameState gameState;
-
-    private IPlayer playerOne;
-    private IPlayer playerTwo;
-
-    private String map;
-
-    private TmxMapLoader mapLoader;
-    private TiledMap tiledmap;
-
-    private ForceDirection p1Direction = ForceDirection.STATIC;
-    private ForceDirection p2Direction = ForceDirection.STATIC;
-
+    // Powerups
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
     private final float powerUpSpawnInterval = 10;
@@ -89,9 +82,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
-        // tiledmap = mapLoader.load(map);
-
-        // new Box2DWorldGenerator(gameWorld, tiledmap);
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
 
@@ -103,7 +93,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * Constructor for the model, uses default map
      */
     public HTekkenModel(EventBus eventBus) {
-        this(DEFAULT_MAP, eventBus);
+        this(HTekkenModel.DEFAULT_MAP, eventBus);
     }
 
     @Override
@@ -223,14 +213,25 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return true;
     }
 
+    /**
+     * Sets the speed of the player based on the direction
+     * 
+     * @param player
+     * @param direction
+     * 
+     */
     private void directionToSpeed(PlayerType player, ForceDirection direction) {
         IPlayer p = getPlayer(player);
-        if (direction == ForceDirection.LEFT) {
-            p.move(-0.5f, 0);
-        } else if (direction == ForceDirection.RIGHT) {
-            p.move(0.5f, 0);
-        } else if (direction == ForceDirection.STATIC) {
-            p.move(0, 0);
+        switch (direction) {
+            case LEFT:
+                p.move(-this.directionSpeed, 0);
+                break;
+            case RIGHT:
+                p.move(this.directionSpeed, 0);
+                break;
+            case STATIC:
+                p.move(0, 0);
+                break;
         }
     }
 
@@ -241,18 +242,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         switch (actionType) {
             case KICK:
-                if (attackingPlayer.kick(victimPlayer)) {
-                    System.out.println(victimPlayer.getHealth() + " health left");
-                    return true;
-                }
-                break;
+                return attackingPlayer.kick(victimPlayer);
             case PUNCH:
-                if (attackingPlayer.punch(victimPlayer)) {
-                    System.out.println(victimPlayer.getHealth() + " health left");
-                    return true;
-                }
-                break;
-
+                return attackingPlayer.punch(victimPlayer);
         }
         return false;
     }
@@ -268,16 +260,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.gameState = gameState;
     }
 
+    /**
+     * Checks if the game is over
+     * 
+     * @return true if the game is over, false otherwise
+     */
     private boolean isGameOver() {
-        if (playerOne.isAlive() && playerTwo.isAlive())
-            return false;
-        return true;
+        return !playerOne.isAlive() || !playerTwo.isAlive();
     }
 
     /**
      * Retrieves the jump count for player one. Only used for test purposes.
      * 
      * @return the current jump count for player one
+     * @throws IllegalStateException if the player is not found
      */
     int getJumpCounter(PlayerType player) {
         if (player == PlayerType.PLAYER_ONE) {
@@ -291,7 +287,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     @Override
     public HashMap<String, String> getGameMaps() {
-        return this.gameMaps;
+        return HTekkenModel.gameMaps;
     }
 
     @Override

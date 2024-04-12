@@ -129,19 +129,6 @@ public class CollisionDetector extends AbstractCollision {
         }
     }
 
-    @Override
-    public void endContact(Contact contact) {
-        // ignore end contact
-    }
-
-    @Override
-    public void preSolve(Contact contact, Manifold oldManifold) {
-        // ignore pre solve
-    }
-
-    @Override
-    public void postSolve(Contact contact, ContactImpulse impulse) {
-        // ignore post solve
-    }
+    
 
 }
