@@ -25,7 +25,7 @@
 
 ### 1.5 Lyd og grafikk
 
-    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder vil mest sannsynlig bli laget/implementert av Vetle eller Lauritz, evt. sammen.
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder ble også laget av begge.
 
 ### 1.6 Strukturansvarlig
 
@@ -87,13 +87,12 @@
 
 ## 6. Arbeidsfordeling
 
-    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt jevnere. Dette har to forklaringer. Den første er at noen committer hyppigere når de skriver kode. Dette har vi selvfølgelig prøvd å ordnet siden sist, og nå ser det ut som om alle committer cirka like ofte. Den andre grunnen er at noen har hatt grafikkbaserte oppgaver, noe som ikke gir noen commits. Så f.eks Lauritz som har designet spiller-figurene og animasjonene har ikke fått noen commits på selve designingen. Ser fortsatt på at det har vært forbedring siden sist og er ganske sikker på at det vil jevne seg enda mere til neste innlevering.
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt mye jevnere. Det har nå kommet til det punktet hvor antall commits reflekterer hyppigheten man velger å committe. Arbeidsfordelingen har jevnet seg veldig ut, og er nå på et fint punkt.git c
 
     Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features som vi ikke har endt opp med å bruke.
 
 ## 7. Forbedringspunkter fra retrospektiv
 
-    - Fortsette å jevne ut commits.
 
 # Krav og spesifikasjon
 
