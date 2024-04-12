@@ -25,7 +25,7 @@
 
 ### 1.5 Lyd og grafikk
 
-    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder vil mest sannsynlig bli laget/implementert av Vetle eller Lauritz, evt. sammen.
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder ble også laget av begge.
 
 ### 1.6 Strukturansvarlig
 
@@ -38,6 +38,21 @@
     Denne rollen er tildelt Mathias, og har fungert bra. Rollen har nå blitt mer relevant ettersom kodebasen har blitt en del større. Han har dermed kommet med gode forbedringer til koden, som vi deretter har refaktorert.
 
 ## 2. Prosjektmetodikk
+
+    Metoden som vi fortsatt benytter oss av er Kanban. Vi har brukt trello som vårt
+    kanban-brett, der vi har kolonner som: Backlog, doing, review, done,
+    archive og discarded. Kortene flyttes fra venstre til høyre på tavlen
+    etter hvert som arbeidet skrider frem gjennom de ulike stadiene av prosessen.
+    Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen.
+    Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi
+    unngå overbelastning og forsinkelser. Dette har fortsatt fungert veldig bra for oss,
+    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort.
+    Denne metoden sørger også for at vi har god tilbakemeldingssykluser, der vi
+    har regelmessig møte en gang i uken, hvor vi vurderer kanban-brettet, fremgang
+    og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
+    funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert
+    kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha
+    en fungerende prototype som vi kan revidere, teste og forbedre senere i prosessen. Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
 
 ## 3. Gruppedynamikk
 
@@ -72,13 +87,11 @@
 
 ## 6. Arbeidsfordeling
 
-    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt jevnere. Dette har to forklaringer. Den første er at noen committer hyppigere når de skriver kode. Dette har vi selvfølgelig prøvd å ordnet siden sist, og nå ser det ut som om alle committer cirka like ofte. Den andre grunnen er at noen har hatt grafikkbaserte oppgaver, noe som ikke gir noen commits. Så f.eks Lauritz som har designet spiller-figurene og animasjonene har ikke fått noen commits på selve designingen. Ser fortsatt på at det har vært forbedring siden sist og er ganske sikker på at det vil jevne seg enda mere til neste innlevering.
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt mye jevnere. Det har nå kommet til det punktet hvor antall commits reflekterer hyppigheten man velger å committe. Arbeidsfordelingen har jevnet seg veldig ut, og er nå på et fint punkt.git c
 
     Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features som vi ikke har endt opp med å bruke.
 
 ## 7. Forbedringspunkter fra retrospektiv
-
-    - Fortsette å jevne ut commits.
 
 # Krav og spesifikasjon
 
