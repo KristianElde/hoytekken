@@ -96,7 +96,6 @@
     - Fortsette å jevne ut commits.
     - Fortsette å oppdatere trello ofte med oppgaver.
     - Fortsette med dokumentasjon og testing av kode.
-    
 
 # Krav og spesifikasjon
 
