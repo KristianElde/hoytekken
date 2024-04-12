@@ -39,7 +39,14 @@
 
 ## 2. Prosjektmetodikk
 
-    
+    Metoden som vi fortsatt benytter oss av er Kanban. Vi har brukt trello som vårt
+    kanban-brett, der vi har kolonner som: Backlog, doing, review, done,
+    archive og discarded. Kortene flyttes fra venstre til høyre på tavlen
+    etter hvert som arbeidet skrider frem gjennom de ulike stadiene av prosessen.
+    Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen.
+    Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi
+    unngå overbelastning og forsinkelser. Dette har fortsatt fungert veldig bra for oss,
+    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort.
 
 ## 3. Gruppedynamikk
 
