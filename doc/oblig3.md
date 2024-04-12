@@ -25,7 +25,7 @@
 
 ### 1.5 Lyd og grafikk
 
-    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder vil mest sannsynlig bli laget/implementert av Vetle eller Lauritz, evt. sammen.
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder ble også laget av begge.
 
 ### 1.6 Strukturansvarlig
 
@@ -87,7 +87,7 @@
 
 ## 6. Arbeidsfordeling
 
-    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt jevnere. Dette har to forklaringer. Den første er at noen committer hyppigere når de skriver kode. Dette har vi selvfølgelig prøvd å ordnet siden sist, og nå ser det ut som om alle committer cirka like ofte. Den andre grunnen er at noen har hatt grafikkbaserte oppgaver, noe som ikke gir noen commits. Så f.eks Lauritz som har designet spiller-figurene og animasjonene har ikke fått noen commits på selve designingen. Ser fortsatt på at det har vært forbedring siden sist og er ganske sikker på at det vil jevne seg enda mere til neste innlevering.
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe vi kommenterte sist også, men siden den gang har det blitt mye jevnere. Det har nå kommet til det punktet hvor antall commits reflekterer hyppigheten man velger å committe. Arbeidsfordelingen har jevnet seg veldig ut, og er nå på et fint punkt.git c
 
     Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features som vi ikke har endt opp med å bruke.
 
@@ -159,11 +159,28 @@
     bruke denne på flere steder ettersom vi ser behov for det.
 
     - Controller klasse håndterer alt av input.
+        - Kommuniserer med modellen for og utfører handlinger på spillet basert på hvilken input som ble registrert
+
     - View er en består av en abstrakt superklasse, BaseScreen som extender libgdx sin Screen klasse, og subklasser.
     Hver av subklassene representerer en GameState.
+        - Screen klassene tegner alt visuelt.
+        - GameLoopen kommer fra render metoden, her kaller den på update i model som oppdaterer resten av mekanikken i spillet.
+
+
     - Modellen holder på alt av mekanikk og logikk i spillet. Denne kobles opp mot controller og Screeens
     med Viewable- og ControllableModelInterface som dikterer hvilke deler av prosjektet som skal ha tilgang til hvilke deler av modellen.
+        - Selve model klassen knytter alle components sammen.
+            - Sprites -- Player, PowerUps
+            - Box2d -- World generator
+            - ContactListener/Collision detector som lager events hver gang objekter i Box2d physics world kolliderer
+
     - Hoytekken Game/ApplicationListener. Denne klassen knytter alle delene av prosjektet sammen og kjøres i main.
+        - create() oppretter
+            - spritebatchen for spillet
+            - modellen
+            - controller
+            - View/Screen
+            - EventBus
 
     - Testing. Vi har jobbet mye med testing siden forrige oblig og fått opp testcoverage, men vi har fortsatt en del kode
     som ikke er dekket av testene.
@@ -175,4 +192,12 @@
     
     - Spillere kan klistre seg fast på siden av objekter hvis de har beveger seg mot objektet. (Usikkert om dette er
     noe vi ønsker å beholde som en feature, eller om vi ønsker endre dette slik at spilleren faller)
+    - Powerups kan spawne inni platformer og ellers "unreachable" områder
+    - Powerups kan gi mer en max health, mer enn max liv osv
+    - Man kan slå/sparke motspiller uansett hvilken vei man ser.
+    - AI faller lett av platform
+    - Per nå ingen måte å endre fra 2 spiller modus til 1 spiller mot ai (Vil implementere en ekstra skjerm
+    for å velge antall spillere og ønsket map)
+    - Noen deler av koden i modellen kan flyttes inn i de aktuelle klassene de håndterer, controllen er også inkonsisten
+    på enkelte tilfeller i forhold til kommunikasjon med modell eller direkte til spiller.
     
