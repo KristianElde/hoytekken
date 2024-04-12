@@ -90,6 +90,10 @@ public class SelectionScreen extends BaseScreen {
     private void handleSelection(ClickedScreenEvent event) {
         int x = event.x();
         int y = event.y();
+        System.out.println(gamePort.getWorldHeight());
+        System.out.println(gamePort.getWorldHeight() - gamePort.getWorldHeight() / 3);
+        System.out.println(gamePort.getWorldHeight() - gamePort.getWorldHeight() * 2 / 3);
+        System.out.println("x: " + x + " y: " + y);
         if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() * 2 / 3) {
             isOnePlayerSelected = !isOnePlayerSelected;
         } else if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() / 3) {
