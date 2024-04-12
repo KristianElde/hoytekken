@@ -39,7 +39,20 @@
 
 ## 2. Prosjektmetodikk
 
-    
+    Metoden som vi fortsatt benytter oss av er Kanban. Vi har brukt trello som vårt
+    kanban-brett, der vi har kolonner som: Backlog, doing, review, done,
+    archive og discarded. Kortene flyttes fra venstre til høyre på tavlen
+    etter hvert som arbeidet skrider frem gjennom de ulike stadiene av prosessen.
+    Dette gjør vi for å sikre en jevn og effektiv flyt av arbeidet gjennom prosessen.
+    Ved å visualisere arbeidet og andvende WIP-grenser (work-in-progress), kan vi
+    unngå overbelastning og forsinkelser. Dette har fortsatt fungert veldig bra for oss,
+    og vi har hatt god oversikt over hva som skal gjøres, og hva som er gjort. 
+    Denne metoden sørger også for at vi har god tilbakemeldingssykluser, der vi
+    har regelmessig møte en gang i uken, hvor vi vurderer kanban-brettet, fremgang
+    og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
+    funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert
+    kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha
+    en fungerende prototype som vi kan revidere, teste og forbedre senere i prosessen. Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
 
 ## 3. Gruppedynamikk
 
