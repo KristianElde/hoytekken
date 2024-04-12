@@ -52,8 +52,8 @@
     og WIP-grenser etter behov. Det har vært naturlig for prosjektet at viktige
     funksjoner for spillet har falt på plass før grundig testing og vel-dokumentert
     kode. Dette er noe vi har prioritert med vilje, da vi mener det er viktig å ha
-    en fungerende prototype som vi kan revidere, test og forbedre senere i prosessen. Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
-    
+    en fungerende prototype som vi kan revidere, teste og forbedre senere i prosessen. Dette gjør at vi reduserer tiden det tar fra en brukerhistorie er utformet til den er implementert og testet.
+
 ## 3. Gruppedynamikk
 
     I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist
