@@ -182,20 +182,11 @@ public class Player extends Sprite implements IPlayer {
         TextureRegion region;
 
         switch (currentState) {
-            case PUNCHING:
-                region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
-                break;
-            case KICKING:
-                region = kickAnimation.getKeyFrame(stateTimer);
-                break;
-            case BLOCKING:
-                region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
-                break;
-            case STANDING:
-                region = playerStand;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + currentState);
+            case PUNCHING -> region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
+            case KICKING -> region = kickAnimation.getKeyFrame(stateTimer);
+            case BLOCKING -> region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
+            case STANDING -> region = playerStand;
+            default -> throw new IllegalStateException("Unexpected value: " + currentState);
         }
 
         if (!runningRight && !region.isFlipX()) {
