@@ -7,7 +7,7 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 
 public class ExtraDamage extends PowerUp {
-    private static Integer DAMAGE = 20;
+    private static final Integer DAMAGE = 20;
 
     ExtraDamage() {
         super(new Texture(Gdx.files.internal("extra_damage.png")));

@@ -8,7 +8,7 @@ import hoytekken.app.model.components.player.Player;
 
 public class DoubleSpeed extends PowerUp {
 
-    private static Integer SPEED = 1;
+    private static final Integer SPEED = 1;
 
     DoubleSpeed() {
         super(new Texture(Gdx.files.internal("double_speed.png")));
