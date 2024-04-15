@@ -15,7 +15,7 @@ import hoytekken.app.view.ViewableModel;
  * Class representing the instructions screen.
  */
 public class InstructionsScreen extends BaseScreen {
-    private Stage stage;
+    private final Stage stage;
 
     /**
      * Constructor for the instructions screen.

@@ -21,7 +21,7 @@ public class GameScreen extends BaseScreen {
     private OrthoCachedTiledMapRenderer renderer;
     private Box2DDebugRenderer b2dr;
 
-    private Hud hud;
+    private final Hud hud;
 
 
     /**

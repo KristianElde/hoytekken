@@ -15,7 +15,7 @@ import hoytekken.app.view.ViewableModel;
  * class represents a game over screen
  */
 public class GameOverScreen extends BaseScreen {
-    private Stage stage;
+    private final Stage stage;
 
     /**
      * Constructor for the game over screen

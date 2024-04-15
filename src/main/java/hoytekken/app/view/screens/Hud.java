@@ -20,8 +20,8 @@ import hoytekken.app.Hoytekken;
  * class represents the heads-up display for the game
  */
 public class Hud {
-    private Stage stage;
-    private Viewport port;
+    private final Stage stage;
+    private final Viewport port;
 
     private static final Integer HUD_PADDING_TOP = 5;
     private static final Integer INIT_TIME = 0;
