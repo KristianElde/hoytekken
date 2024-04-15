@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
  * Sound class for playing sound effects
  */
 public class Sound implements ISound {
-    private com.badlogic.gdx.audio.Sound sound;
+    private final com.badlogic.gdx.audio.Sound sound;
     private long id;
 
     public Sound(String path) {
