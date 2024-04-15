@@ -32,15 +32,15 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 
     // Event bus
-    private EventBus eventBus;
+    private final EventBus eventBus;
 
     // Game world and state
-    private World gameWorld;
+    private final World gameWorld;
     private GameState gameState;
 
     // Players
-    private IPlayer playerOne;
-    private IPlayer playerTwo;
+    private final IPlayer playerOne;
+    private final IPlayer playerTwo;
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
     private static final int MAX_JUMPS = 2;
@@ -50,7 +50,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     // Map
     private String map;
-    private TmxMapLoader mapLoader;
+    private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
     private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
