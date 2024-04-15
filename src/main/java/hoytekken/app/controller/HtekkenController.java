@@ -18,8 +18,8 @@ public class HtekkenController extends InputAdapter {
     ControllableModel model;
 
     // Player types
-    private PlayerType playerOne = PlayerType.PLAYER_ONE;
-    private PlayerType playerTwo = PlayerType.PLAYER_TWO;
+    private final PlayerType playerOne = PlayerType.PLAYER_ONE;
+    private final PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
     /**
      * Constructor for the controller

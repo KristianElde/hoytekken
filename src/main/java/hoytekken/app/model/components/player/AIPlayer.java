@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 public class AIPlayer extends Player {
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
-    private IPlayer target;
+    private final IPlayer target;
 
     public AIPlayer(World world, PlayerType type, int health, IPlayer target) {
         super(world, type, health);
