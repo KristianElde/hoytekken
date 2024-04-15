@@ -55,5 +55,5 @@ public interface ControllableModel extends IViewAndControl{
      * @param player the player number
      * @return the player
      */
-    public IPlayer getPlayer(PlayerType player);
+    IPlayer getPlayer(PlayerType player);
 }

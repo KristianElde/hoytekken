@@ -66,7 +66,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
     private final float powerUpSpawnInterval = 10;
-    private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
+    private LinkedList<Body> bodiesToDestroy = new LinkedList<>();
 
     /**
      * Constructor for the model
