@@ -21,14 +21,14 @@ public interface ViewableModel extends IViewAndControl{
      * 
      * @param dt time slice float
      */
-    public void updateModel(float dt);
+    void updateModel(float dt);
 
     /**
      * Getter for the game world
      * 
      * @return the game world
      */
-    public World getGameWorld();
+    World getGameWorld();
 
     /**
      * Getter for the player
@@ -36,34 +36,34 @@ public interface ViewableModel extends IViewAndControl{
      * @param player the player number
      * @return the player
      */
-    public ViewablePlayer getPlayer(PlayerType player);
+    ViewablePlayer getPlayer(PlayerType player);
 
     /**
      * Getter for the map
      * 
      * @return the map path string
      */
-    public String getMap();
+    String getMap();
 
     /**
      * Getter for the tiled map
      * 
      * @return the tiled map
      */
-    public TiledMap getTiledMap();
+    TiledMap getTiledMap();
 
     /**
      * Gets the gamestate that the game is currently in
      * 
      * @return a GameState-object that represents the current gamestate
      */
-    public GameState getGameState();
+    GameState getGameState();
 
     /**
      * Gets the powerup that is currently active
      * 
      * @return the active powerup
      */
-    public ActivePowerUp getActivePowerUp();
+    ActivePowerUp getActivePowerUp();
 
 }
