@@ -44,17 +44,17 @@ public class Player extends Sprite implements IPlayer {
     private static final float KICK_RANGE = 2.2f;
 
     // Player Texture & World
-    private World world;
+    private final World world;
     private Body body;
     private TextureRegion playerStand;
-    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
-    private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
+    private static final TextureAtlas atlas = new TextureAtlas("Figur1.txt");
+    private static final TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
 
     // Player State
-    private PlayerType type;
+    private final PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
     private boolean isPunching = false;
@@ -69,11 +69,11 @@ public class Player extends Sprite implements IPlayer {
     private float timeSinceAction = 0;
 
     // Animation
-    private Animation<TextureRegion> kickAnimation;
+    private final Animation<TextureRegion> kickAnimation;
 
     //Sounds
-    private Sound punchSound = new Sound("sounds\\Punch.mp3");
-    private Sound kickSound = new Sound("sounds\\Kick.mp3");
+    private final Sound punchSound = new Sound("sounds\\Punch.mp3");
+    private final Sound kickSound = new Sound("sounds\\Kick.mp3");
 
     /**
      * Constructor for the player
