@@ -50,6 +50,7 @@ public class ModelViewTests {
     @BeforeEach
     void setUpBeforeEach() {
         model = new HTekkenModel(Mockito.mock(EventBus.class));
+        model.setNumberOfPlayers(false);
 
     }
 

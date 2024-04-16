@@ -46,6 +46,7 @@ public class ModelTest {
     void setUpBeforeEach() {
         model = new HTekkenModel(Mockito.mock(EventBus.class));
         player1 = model.getPlayer(PlayerType.PLAYER_ONE);
+        model.setNumberOfPlayers(false);
         player2 = model.getPlayer(PlayerType.PLAYER_TWO);
 
     }

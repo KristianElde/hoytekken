@@ -40,4 +40,11 @@ public interface IViewAndControl {
      * @param mapName the name of the map
      */
     void setGameMap(String mapName);
+
+    /**
+     * Method sets number of players
+     * @param onePlayer true if one player, false if two players
+     * @return true if the number of players was set, false otherwise
+     */
+    public boolean setNumberOfPlayers(Boolean onePlayer);
 }
