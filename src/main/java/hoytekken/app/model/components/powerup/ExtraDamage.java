@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
 
 public class ExtraDamage extends PowerUp {
     private static final Integer DAMAGE = 20;

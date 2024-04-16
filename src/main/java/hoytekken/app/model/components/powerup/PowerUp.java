@@ -1,11 +1,8 @@
 package hoytekken.app.model.components.powerup;
 
-import org.w3c.dom.Text;
-
 import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
 
 public abstract class PowerUp {
     private final Texture pUpTexture;

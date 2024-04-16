@@ -117,7 +117,7 @@ public class Player extends Sprite implements IPlayer {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bdef);
-        resetPosistion();
+        resetPosition();
 
         // Set the user data to this object
         body.setUserData(this);
@@ -142,7 +142,7 @@ public class Player extends Sprite implements IPlayer {
     /**
      * Set the position of the player
      */
-    private void resetPosistion() {
+    private void resetPosition() {
         // Reset velocity
         body.setLinearVelocity(0, 0);
         // Set the position of the player
@@ -158,7 +158,7 @@ public class Player extends Sprite implements IPlayer {
         }
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
-            resetPosistion();
+            resetPosition();
         } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
@@ -241,7 +241,7 @@ public class Player extends Sprite implements IPlayer {
                 if (this.lives > 1) {
                     this.lives--;
                     this.health = maxHealth;
-                    resetPosistion();
+                    resetPosition();
                 } else {
                     this.isAlive = false;
                     this.health = 0;
@@ -276,7 +276,7 @@ public class Player extends Sprite implements IPlayer {
      * @param that   the player that is being attacked
      * @param damage the damage that is being dealt
      * @param range  the range of the attack
-     * @return
+     * @return bool on if it was successful
      */
     private boolean performAttack(IPlayer that, int damage, float range) {
         if (!isWithinRange(that, range) || that.getIsBlocking() || this.getIsBlocking()) {

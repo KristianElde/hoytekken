@@ -53,7 +53,7 @@ public class HtekkenController extends InputAdapter {
     /**
      * Handles key code events for the main menu state
      * 
-     * @param keycode
+     * @param keycode id of key
      */
     private void handleMainMenuInput(int keycode) {
         switch (keycode) {
@@ -69,7 +69,7 @@ public class HtekkenController extends InputAdapter {
     /**
      * Handles key code events for the active game state
      * 
-     * @param keycode
+     * @param keycode id of key
      */
     private void handleActiveGameInput(int keycode) {
         switch (keycode) {

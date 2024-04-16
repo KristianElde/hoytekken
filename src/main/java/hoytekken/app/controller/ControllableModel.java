@@ -1,10 +1,8 @@
 package hoytekken.app.controller;
 
-import java.util.HashMap;
 
 import hoytekken.app.model.IViewAndControl;
 import hoytekken.app.model.components.ForceDirection;
-import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 

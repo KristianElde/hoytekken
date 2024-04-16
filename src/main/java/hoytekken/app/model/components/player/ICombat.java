@@ -16,7 +16,7 @@ public interface ICombat {
 
     /**
      * A player will kick another player and
-     * inflilct damage on that player.
+     * inflict damage on that player.
      * Will only hit if other player is in range.
      * 
      * @param that the player to kick
@@ -30,7 +30,7 @@ public interface ICombat {
     void changeBlockingState();
 
     /**
-     * Retireves a boolean representing if player is blocking or not.
+     * Retrieves a boolean representing if player is blocking or not.
      * 
      * @return value of the players isBlocking field variable.
      */
