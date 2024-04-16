@@ -40,7 +40,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     // Players
     private final IPlayer playerOne;
-    private final IPlayer playerTwo;
+    private IPlayer playerTwo;
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
     private static final int MAX_JUMPS = 2;
@@ -66,7 +66,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
     private final float powerUpSpawnInterval = 10;
-    private LinkedList<Body> bodiesToDestroy = new LinkedList<>();
+    private final LinkedList<Body> bodiesToDestroy = new LinkedList<>();
 
     /**
      * Constructor for the model
@@ -218,8 +218,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Sets the speed of the player based on the direction
      * 
-     * @param player
-     * @param direction
+     * @param player to set the speed for
+     * @param direction the speed goes
      * 
      */
     private void directionToSpeed(PlayerType player, ForceDirection direction) {
