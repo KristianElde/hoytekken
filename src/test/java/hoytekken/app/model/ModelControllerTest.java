@@ -42,6 +42,7 @@ public class ModelControllerTest {
     @BeforeEach
     void setUpBeforeEach() {
         model = new HTekkenModel(new EventBus());
+        model.setNumberOfPlayers(false);
     }
 
     @Test
