@@ -64,7 +64,7 @@ public class SelectionScreen extends BaseScreen {
             game.batch.draw(mapTexture, x, y, cellWidth, cellHeight);
 
             mapIndex++;
-        }
+        }  
     }
 
     private void drawPlayerSelection() {
@@ -92,18 +92,31 @@ public class SelectionScreen extends BaseScreen {
     private void handleSelection(ClickedScreenEvent event) {
         int x = event.x();
         int y = event.y();
-        System.out.println(gamePort.getWorldHeight());
-        System.out.println(gamePort.getWorldHeight() - gamePort.getWorldHeight() / 3);
-        System.out.println(gamePort.getWorldHeight() - gamePort.getWorldHeight() * 2 / 3);
+
+        //float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
+        //float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
+        float cellWidth = gamePort.getScreenWidth() / 2; // 2 columns
+        float cellHeight = gamePort.getScreenHeight() / 3; // 3 rows
+
+        /*System.out.println("World height " + gamePort.getWorldHeight());
+        System.out.println("World height - 1/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3)));
+        System.out.println("World height - 2/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3 * 2)));
+        System.out.println("middle world x " + gamePort.getWorldWidth() / 2);*/
+        System.out.println("3Cell height " + 3*cellHeight);
+        System.out.println("2Cell heihgt " + 2*cellHeight);
+        System.out.println("1Cell Heigh " + 1*cellHeight);
+        System.out.println("Cell width " + cellWidth);
+
+
         System.out.println("x: " + x + " y: " + y);
-        if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() * 2 / 3) {
+        if (y < cellHeight) {
             isOnePlayerSelected = !isOnePlayerSelected;
-        } else if (y < gamePort.getWorldHeight() - gamePort.getWorldHeight() / 3) {
-            if (x < gamePort.getWorldWidth() / 2) model.setGameMap("map1");
+        } else if (y < 2*cellHeight) {
+            if (x < cellWidth) model.setGameMap("map1");
             else model.setGameMap("map2");
             model.setGameState(GameState.ACTIVE_GAME);
-        } else {
-            if (x < gamePort.getWorldWidth() / 2) model.setGameMap("map3");
+        } else if (y < 3*cellHeight){
+            if (x < cellWidth) model.setGameMap("map3");
             else model.setGameMap("map4");
             model.setGameState(GameState.ACTIVE_GAME);
         }
