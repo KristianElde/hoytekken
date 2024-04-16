@@ -114,10 +114,12 @@ public class SelectionScreen extends BaseScreen {
         } else if (y < 2*cellHeight) {
             if (x < cellWidth) model.setGameMap("map1");
             else model.setGameMap("map2");
+            model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
         } else if (y < 3*cellHeight){
             if (x < cellWidth) model.setGameMap("map3");
             else model.setGameMap("map4");
+            model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
         }
         
