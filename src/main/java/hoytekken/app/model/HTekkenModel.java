@@ -11,6 +11,7 @@ import hoytekken.app.controller.ActionType;
 import hoytekken.app.controller.ControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
+import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.eventBus.GameStateEvent;
 import hoytekken.app.model.components.player.IPlayer;
@@ -78,8 +79,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.gameState = GameState.MAIN_MENU;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
-        this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
-        playerTwo.flipLeft();
+        //this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+        this.playerTwo = null;
+        //playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
 
@@ -326,4 +328,20 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         return eventBus;
     }
 
+    @Override
+    public boolean setNumberOfPlayers(Boolean onePlayer) {
+        if (onePlayer && !(this.playerTwo instanceof AIPlayer)) {
+            this.playerTwo = new AIPlayer(gameWorld, PlayerType.PLAYER_TWO, 99, this.playerOne);
+            this.playerTwo.flipLeft();
+            return true;
+        }
+        else if (!onePlayer && !(this.playerTwo instanceof Player)){
+            this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
+            this.playerTwo.flipLeft();
+            return true;
+        }
+        else return false;
+    }
+
+    
 }

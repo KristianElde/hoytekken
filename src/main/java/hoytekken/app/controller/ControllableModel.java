@@ -50,34 +50,6 @@ public interface ControllableModel extends IViewAndControl{
     boolean performAttackAction(PlayerType attacker, ActionType action);
 
     /**
-     * Gets the gamestate that the game is currently in
-     * 
-     * @return a GameState-object that represents the current gamestate
-     */
-    GameState getGameState();
-
-    /**
-     * Updates the current gamestate
-     * 
-     * @param gameState is the gamestate that the game gets set to
-     */
-    void setGameState(GameState gameState);
-
-    /**
-     * Method to get the maps for the game
-     * 
-     * @return the maps for the game
-     */
-    HashMap<String, String> getGameMaps();
-
-    /**
-     * Method to set the map for the game
-     * 
-     * @param mapName the name of the map
-     */
-    void setGameMap(String mapName);
-
-    /**
      * Getter for the player
      * 
      * @param player the player number
