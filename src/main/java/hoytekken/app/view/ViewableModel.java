@@ -66,4 +66,11 @@ public interface ViewableModel extends IViewAndControl{
      */
     public ActivePowerUp getActivePowerUp();
 
+    /**
+     * Method sets number of players
+     * @param onePlayer true if one player, false if two players
+     * @return true if the number of players was set, false otherwise
+     */
+    public boolean setNumberOfPlayers(Boolean onePlayer);
+
 }
