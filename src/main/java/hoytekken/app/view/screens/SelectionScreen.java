@@ -88,7 +88,6 @@ public class SelectionScreen extends BaseScreen {
         float cellWidth = gamePort.getScreenWidth() / 2; // 2 columns
         float cellHeight = gamePort.getScreenHeight() / 3; // 3 rows
 
-        System.out.println("x: " + x + " y: " + y);
         if (y < cellHeight) {
             isOnePlayerSelected = !isOnePlayerSelected;
         } else if (y < 2*cellHeight) {
