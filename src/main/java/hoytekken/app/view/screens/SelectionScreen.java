@@ -29,6 +29,11 @@ public class SelectionScreen extends BaseScreen {
     }
 
     private void loadMapTextures() {
+        mapTextures.add(new Texture(Gdx.files.internal("map3.png")));
+        mapTextures.add(new Texture(Gdx.files.internal("map4.png")));
+        mapTextures.add(new Texture(Gdx.files.internal("map1.png")));
+        mapTextures.add(new Texture(Gdx.files.internal("map2.png")));
+        
         int count = 0;
         while(count < 4) {
             mapTextures.add(new Texture(Gdx.files.internal("background.png")));
