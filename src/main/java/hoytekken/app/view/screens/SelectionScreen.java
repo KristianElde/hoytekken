@@ -18,7 +18,7 @@ import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class SelectionScreen extends BaseScreen {
-    private List<Texture> mapTextures = new ArrayList<Texture>();
+    private final List<Texture> mapTextures = new ArrayList<>();
     private boolean isOnePlayerSelected = true;
     
     public SelectionScreen(Hoytekken game, ViewableModel model) {
@@ -29,10 +29,6 @@ public class SelectionScreen extends BaseScreen {
     }
 
     private void loadMapTextures() {
-        /*mapTextures.add(new Texture(Gdx.files.internal("map1.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map2.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map3.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map4.png")));*/
         int count = 0;
         while(count < 4) {
             mapTextures.add(new Texture(Gdx.files.internal("background.png")));
@@ -89,20 +85,8 @@ public class SelectionScreen extends BaseScreen {
         int x = event.x();
         int y = event.y();
 
-        //float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
-        //float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
         float cellWidth = gamePort.getScreenWidth() / 2; // 2 columns
         float cellHeight = gamePort.getScreenHeight() / 3; // 3 rows
-
-        /*System.out.println("World height " + gamePort.getWorldHeight());
-        System.out.println("World height - 1/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3)));
-        System.out.println("World height - 2/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3 * 2)));
-        System.out.println("middle world x " + gamePort.getWorldWidth() / 2);*/
-        System.out.println("3Cell height " + 3*cellHeight);
-        System.out.println("2Cell heihgt " + 2*cellHeight);
-        System.out.println("1Cell Heigh " + 1*cellHeight);
-        System.out.println("Cell width " + cellWidth);
-
 
         System.out.println("x: " + x + " y: " + y);
         if (y < cellHeight) {
