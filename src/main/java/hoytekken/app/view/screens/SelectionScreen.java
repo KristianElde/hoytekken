@@ -1,7 +1,5 @@
 package hoytekken.app.view.screens;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,12 +10,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
-import hoytekken.app.model.components.eventBus.GameStateEvent;
 import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 

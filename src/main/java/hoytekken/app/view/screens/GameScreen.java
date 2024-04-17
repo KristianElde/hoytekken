@@ -2,7 +2,6 @@ package hoytekken.app.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -10,7 +9,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.model.components.powerup.PowerUp;
 import hoytekken.app.view.ViewableModel;
 
 /**
