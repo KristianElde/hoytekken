@@ -1,5 +1,6 @@
 package hoytekken.app.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -140,7 +141,24 @@ public class HTekkenControllerTest {
         assertTrue(controller.keyUp(Input.Keys.D));
         controller.keyDown(Input.Keys.S);
         assertTrue(controller.keyUp(Input.Keys.S));
+    }
 
+    @Test
+    void touchDownTest() {
+        model.setGameState(GameState.INSTRUCTIONS);
+        assertTrue(controller.touchDown(0, 0, 0, 0));
+        assertEquals(GameState.MAIN_MENU, model.getGameState());
+
+        assertTrue(controller.touchDown(0, 0, 0, 0));
+        assertEquals(GameState.SELECTION, model.getGameState());
+
+        assertTrue(controller.touchDown(0, 0, 0, 0));
+
+        model.setGameState(GameState.GAME_OVER);
+        assertTrue(controller.touchDown(0, 0, 0, 0));
+
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertFalse(controller.touchDown(0, 0, 0, 0));
     }
 
 }
