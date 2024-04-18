@@ -1,5 +1,6 @@
 package hoytekken.app.controller;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
@@ -56,6 +57,12 @@ public class HTekkenControllerTest {
     void keyDownTestMainMenuESCAPE() {
         model.setGameState(GameState.MAIN_MENU);
         assertTrue(controller.keyDown(Input.Keys.ESCAPE));
+    }
+
+    @Test
+    void keyDownTestMainMenuUP() {
+        model.setGameState(GameState.MAIN_MENU);
+        assertFalse(controller.keyDown(Input.Keys.UP));
     }
 
 }
