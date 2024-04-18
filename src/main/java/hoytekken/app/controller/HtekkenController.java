@@ -44,7 +44,7 @@ public class HtekkenController extends InputAdapter {
             case ACTIVE_GAME -> handleActiveGameInput(keycode);
             case MAIN_MENU -> handleMainMenuInput(keycode);
             default -> false;
-        }
+        };
 
     }
 
@@ -82,7 +82,7 @@ public class HtekkenController extends InputAdapter {
             case Input.Keys.E -> model.performAttackAction(playerTwo, ActionType.KICK);
             case Input.Keys.S -> model.getPlayer(playerTwo).changeBlockingState();
             default -> false;
-        }
+        };
     }
 
     @Override

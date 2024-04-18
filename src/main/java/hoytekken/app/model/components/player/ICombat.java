@@ -26,8 +26,9 @@ public interface ICombat {
 
     /**
      * Toggles the players isBlocking field variable.
+     * @return  bool on if it was successful
      */
-    void changeBlockingState();
+    boolean changeBlockingState();
 
     /**
      * Retrieves a boolean representing if player is blocking or not.
