@@ -65,8 +65,8 @@ public class HtekkenController extends InputAdapter {
      * 
      * @param keycode id of key
      */
-    private void handleActiveGameInput(int keycode) {
-        switch (keycode) {
+    private boolean handleActiveGameInput(int keycode) {
+        return switch (keycode) {
             // Player 1 controls
             case Input.Keys.LEFT -> model.setDirection(playerOne, ForceDirection.LEFT);
             case Input.Keys.RIGHT -> model.setDirection(playerOne, ForceDirection.RIGHT);
@@ -81,6 +81,7 @@ public class HtekkenController extends InputAdapter {
             case Input.Keys.Q -> model.performAttackAction(playerTwo, ActionType.PUNCH);
             case Input.Keys.E -> model.performAttackAction(playerTwo, ActionType.KICK);
             case Input.Keys.S -> model.getPlayer(playerTwo).changeBlockingState();
+            default -> false;
         }
     }
 
