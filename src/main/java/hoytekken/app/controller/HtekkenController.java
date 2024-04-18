@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
-import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
