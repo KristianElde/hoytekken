@@ -119,7 +119,23 @@ public class HTekkenControllerTest {
         assertFalse(controller.keyDown(Input.Keys.G));
         assertFalse(controller.keyDown(Input.Keys.NUM_3));
         assertFalse(controller.keyDown(Input.Keys.SPACE));
+    }
 
+    @Test
+    void keyUpTest() {
+        assertFalse(controller.keyUp(Input.Keys.LEFT));
+
+        model.setGameState(GameState.ACTIVE_GAME);
+
+        controller.keyDown(Input.Keys.RIGHT);
+        assertTrue(controller.keyUp(Input.Keys.RIGHT));
+        controller.keyDown(Input.Keys.LEFT);
+        assertTrue(controller.keyUp(Input.Keys.LEFT));
+
+        controller.keyDown(Input.Keys.A);
+        assertTrue(controller.keyUp(Input.Keys.A));
+        controller.keyDown(Input.Keys.D);
+        assertTrue(controller.keyUp(Input.Keys.D));
     }
 
 }
