@@ -100,4 +100,17 @@ public class HTekkenControllerTest {
         assertTrue(controller.keyDown(Input.Keys.K));
     }
 
+    @Test
+    void keyDownTestActiveGameP2() {
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertTrue(controller.keyDown(Input.Keys.A));
+        assertTrue(controller.keyDown(Input.Keys.D));
+        assertTrue(controller.keyDown(Input.Keys.W));
+
+        movePlayersBeside();
+        assertTrue(controller.keyDown(Input.Keys.Q));
+        assertTrue(controller.keyDown(Input.Keys.E));
+        assertTrue(controller.keyDown(Input.Keys.S));
+    }
+
 }
