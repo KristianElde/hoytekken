@@ -55,11 +55,11 @@ public class HtekkenController extends InputAdapter {
      * 
      * @param keycode id of key
      */
-    private void handleMainMenuInput(int keycode) {
-        switch (keycode) {
-            case Input.Keys.I -> model.setGameState(GameState.INSTRUCTIONS);
-            case Input.Keys.ESCAPE -> Gdx.app.exit();
-        }
+    private boolean handleMainMenuInput(int keycode) {
+        if (keycode == Input.Keys.ENTER) {model.setGameState(GameState.INSTRUCTIONS);}
+        else if (keycode == Input.Keys.ESCAPE) {Gdx.app.exit();}
+        else {return false;}
+        return true;
     }
 
     /**
