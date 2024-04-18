@@ -59,10 +59,6 @@ public class HtekkenController extends InputAdapter {
         switch (keycode) {
             case Input.Keys.I -> model.setGameState(GameState.INSTRUCTIONS);
             case Input.Keys.ESCAPE -> Gdx.app.exit();
-            case Input.Keys.NUM_1, Input.Keys.NUM_2, Input.Keys.NUM_3, Input.Keys.NUM_4 -> {
-                model.setGameMap("map" + (keycode - Input.Keys.NUM_0));
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
         }
     }
 
