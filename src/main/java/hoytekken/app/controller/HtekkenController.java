@@ -40,14 +40,12 @@ public class HtekkenController extends InputAdapter {
      */
     @Override
     public boolean keyDown(int keycode) {
-        switch (model.getGameState()) {
+        return switch (model.getGameState()) {
             case ACTIVE_GAME -> handleActiveGameInput(keycode);
             case MAIN_MENU -> handleMainMenuInput(keycode);
-            default -> {
-                return false;
-            }
+            default -> false;
         }
-        return false;
+
     }
 
     /**
