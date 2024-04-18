@@ -65,4 +65,9 @@ public class HTekkenControllerTest {
         assertFalse(controller.keyDown(Input.Keys.UP));
     }
 
+    @Test
+    void keyDownTestActiveGame() {
+
+    }
+
 }
