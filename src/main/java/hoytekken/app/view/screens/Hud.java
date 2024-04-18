@@ -27,7 +27,7 @@ public class Hud {
     private static final Integer INIT_TIME = 0;
 
     private Integer playerHealth;
-    private Integer battleTimer;
+    private float battleTimer;
     private Integer enemyHealth;
 
     private List<Label> labelList;
@@ -110,5 +110,10 @@ public class Hud {
      */
     public void setEnemyHealth(String health) {
         labelList.get(5).setText(health);
+    }
+
+    public void update(float dt) {
+        battleTimer += dt;
+        labelList.get(4).setText(String.format("%03d", battleTimer));
     }
 }
