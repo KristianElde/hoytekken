@@ -44,17 +44,17 @@ public class Player extends Sprite implements IPlayer {
     private static final float KICK_RANGE = 2.2f;
 
     // Player Texture & World
-    private World world;
+    private final World world;
     private Body body;
     private TextureRegion playerStand;
-    private static TextureAtlas atlas = new TextureAtlas("Figur1.txt");
-    private static TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
+    private static final TextureAtlas atlas = new TextureAtlas("Figur1.txt");
+    private static final TextureAtlas atlas2 = new TextureAtlas("Figur2.txt");
 
     // Constants for health management
     private static final int MAX_LIVES = 3;
 
     // Player State
-    private PlayerType type;
+    private final PlayerType type;
     private boolean isAlive = true;
     private boolean isBlocking = false;
     private boolean isPunching = false;
@@ -69,11 +69,11 @@ public class Player extends Sprite implements IPlayer {
     private float timeSinceAction = 0;
 
     // Animation
-    private Animation<TextureRegion> kickAnimation;
+    private final Animation<TextureRegion> kickAnimation;
 
     //Sounds
-    private Sound punchSound = new Sound("sounds\\Punch.mp3");
-    private Sound kickSound = new Sound("sounds\\Kick.mp3");
+    private final Sound punchSound = new Sound("sounds\\Punch.mp3");
+    private final Sound kickSound = new Sound("sounds\\Kick.mp3");
 
     /**
      * Constructor for the player
@@ -96,13 +96,13 @@ public class Player extends Sprite implements IPlayer {
         this.stateTimer = 0;
         this.runningRight = true;
 
-        Array<TextureRegion> frames = new Array<TextureRegion>();
+        Array<TextureRegion> frames = new Array<>();
 
         // Kicking animation
         frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
         frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
         frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
-        kickAnimation = new Animation<TextureRegion>(0.1f, frames);
+        kickAnimation = new Animation<>(0.1f, frames);
         frames.clear();
 
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
@@ -117,7 +117,7 @@ public class Player extends Sprite implements IPlayer {
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bdef);
-        resetPosistion();
+        resetPosition();
 
         // Set the user data to this object
         body.setUserData(this);
@@ -142,7 +142,7 @@ public class Player extends Sprite implements IPlayer {
     /**
      * Set the position of the player
      */
-    private void resetPosistion() {
+    private void resetPosition() {
         // Reset velocity
         body.setLinearVelocity(0, 0);
         // Set the position of the player
@@ -158,7 +158,7 @@ public class Player extends Sprite implements IPlayer {
         }
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
-            resetPosistion();
+            resetPosition();
         } else if (fallenOffTheMap() && this.lives == 0) {
             takeDamage(maxHealth);
         }
@@ -182,20 +182,11 @@ public class Player extends Sprite implements IPlayer {
         TextureRegion region;
 
         switch (currentState) {
-            case PUNCHING:
-                region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
-                break;
-            case KICKING:
-                region = kickAnimation.getKeyFrame(stateTimer);
-                break;
-            case BLOCKING:
-                region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
-                break;
-            case STANDING:
-                region = playerStand;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + currentState);
+            case PUNCHING -> region = new TextureRegion(getTexture(), 2178, 0, 666, 1080);
+            case KICKING -> region = kickAnimation.getKeyFrame(stateTimer);
+            case BLOCKING -> region = new TextureRegion(getTexture(), 0, 0, 360, 1080);
+            case STANDING -> region = playerStand;
+            default -> throw new IllegalStateException("Unexpected value: " + currentState);
         }
 
         if (!runningRight && !region.isFlipX()) {
@@ -250,7 +241,7 @@ public class Player extends Sprite implements IPlayer {
                 if (this.lives > 1) {
                     this.lives--;
                     this.health = maxHealth;
-                    resetPosistion();
+                    resetPosition();
                 } else {
                     this.isAlive = false;
                     this.health = 0;
@@ -285,7 +276,7 @@ public class Player extends Sprite implements IPlayer {
      * @param that   the player that is being attacked
      * @param damage the damage that is being dealt
      * @param range  the range of the attack
-     * @return
+     * @return bool on if it was successful
      */
     private boolean performAttack(IPlayer that, int damage, float range) {
         if (!isWithinRange(that, range) || that.getIsBlocking() || this.getIsBlocking()) {

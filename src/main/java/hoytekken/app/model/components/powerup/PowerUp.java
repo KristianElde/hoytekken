@@ -1,11 +1,8 @@
 package hoytekken.app.model.components.powerup;
 
-import org.w3c.dom.Text;
-
 import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
 
 public abstract class PowerUp {
     private final Texture pUpTexture;
@@ -23,19 +20,13 @@ public abstract class PowerUp {
      * @return A power-up.
      */
     static PowerUp newPowerUp(PowerUpType type) {
-        PowerUp pUp = switch (type) {
-            case EXTRA_DAMAGE ->
-                new ExtraDamage();
-            case EXTRA_LIFE ->
-                new ExtraLife();
-            case DOUBLE_SPEED ->
-                new DoubleSpeed();
-            case EXTRA_HEALTH ->
-                new ExtraHealth();
-            default ->
-                throw new IllegalArgumentException("Undefined type for PowerUp");
+        return switch (type) {
+            case EXTRA_DAMAGE -> new ExtraDamage();
+            case EXTRA_LIFE -> new ExtraLife();
+            case DOUBLE_SPEED -> new DoubleSpeed();
+            case EXTRA_HEALTH -> new ExtraHealth();
+            default -> throw new IllegalArgumentException("Undefined type for PowerUp");
         };
-        return pUp;
     }
 
     /**

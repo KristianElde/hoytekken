@@ -18,8 +18,8 @@ public class HtekkenController extends InputAdapter {
     ControllableModel model;
 
     // Player types
-    private PlayerType playerOne = PlayerType.PLAYER_ONE;
-    private PlayerType playerTwo = PlayerType.PLAYER_TWO;
+    private final PlayerType playerOne = PlayerType.PLAYER_ONE;
+    private final PlayerType playerTwo = PlayerType.PLAYER_TWO;
 
     /**
      * Constructor for the controller
@@ -53,7 +53,7 @@ public class HtekkenController extends InputAdapter {
     /**
      * Handles key code events for the main menu state
      * 
-     * @param keycode
+     * @param keycode id of key
      */
     private void handleMainMenuInput(int keycode) {
         switch (keycode) {
@@ -69,7 +69,7 @@ public class HtekkenController extends InputAdapter {
     /**
      * Handles key code events for the active game state
      * 
-     * @param keycode
+     * @param keycode id of key
      */
     private void handleActiveGameInput(int keycode) {
         switch (keycode) {

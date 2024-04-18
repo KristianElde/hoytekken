@@ -1,8 +1,6 @@
 package hoytekken.app.model.components.tools;
 
 import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.Manifold;
 
 import hoytekken.app.model.components.player.PlayerFixtures;
 import hoytekken.app.model.components.player.PlayerType;
@@ -50,7 +48,7 @@ public class CollisionDetector extends AbstractCollision {
     /**
      * Determines the player fixture based on the user data.
      * 
-     * @param userData
+     * @param userData data of user
      */
     private PlayerFixtures getPlayerFixture(Object userData) {
         return userData.equals(PlayerFixtures.PLAYER_ONE_FEET) ? PlayerFixtures.PLAYER_ONE_FEET

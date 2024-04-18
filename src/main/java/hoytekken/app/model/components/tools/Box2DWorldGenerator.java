@@ -16,8 +16,8 @@ import hoytekken.app.Hoytekken;
  * Generates game layers from the map
  */
 public class Box2DWorldGenerator {
-    private World world;
-    private TiledMap map;
+    private final World world;
+    private final TiledMap map;
 
     /**
      * Constructor for the box2d world generator

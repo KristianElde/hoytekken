@@ -17,11 +17,11 @@ public class ActivePowerUp extends Sprite {
 
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
 
-    private String type;
-    private World world;
+    private final String type;
+    private final World world;
     private Body body;
-    private Texture texture;
-    private PowerUp powerUp;
+    private final Texture texture;
+    private final PowerUp powerUp;
 
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;

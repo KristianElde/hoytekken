@@ -32,14 +32,14 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 
     // Event bus
-    private EventBus eventBus;
+    private final EventBus eventBus;
 
     // Game world and state
-    private World gameWorld;
+    private final World gameWorld;
     private GameState gameState;
 
     // Players
-    private IPlayer playerOne;
+    private final IPlayer playerOne;
     private IPlayer playerTwo;
     private ForceDirection p1Direction = ForceDirection.STATIC;
     private ForceDirection p2Direction = ForceDirection.STATIC;
@@ -50,7 +50,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
     // Map
     private String map;
-    private TmxMapLoader mapLoader;
+    private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
     private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
@@ -66,7 +66,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private ActivePowerUp activePowerUp;
     private float timeSinceLastPowerUp = 0;
     private final float powerUpSpawnInterval = 10;
-    private LinkedList<Body> bodiesToDestroy = new LinkedList<Body>();
+    private final LinkedList<Body> bodiesToDestroy = new LinkedList<>();
 
     /**
      * Constructor for the model
@@ -218,8 +218,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Sets the speed of the player based on the direction
      * 
-     * @param player
-     * @param direction
+     * @param player to set the speed for
+     * @param direction the speed goes
      * 
      */
     private void directionToSpeed(PlayerType player, ForceDirection direction) {

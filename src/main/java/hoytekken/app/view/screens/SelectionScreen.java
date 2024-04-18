@@ -1,7 +1,5 @@
 package hoytekken.app.view.screens;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,17 +10,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
-import hoytekken.app.model.components.eventBus.GameStateEvent;
 import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class SelectionScreen extends BaseScreen {
-    private List<Texture> mapTextures = new ArrayList<Texture>();
+    private final List<Texture> mapTextures = new ArrayList<>();
     private boolean isOnePlayerSelected = true;
     
     public SelectionScreen(Hoytekken game, ViewableModel model) {
@@ -94,22 +90,9 @@ public class SelectionScreen extends BaseScreen {
         int x = event.x();
         int y = event.y();
 
-        //float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
-        //float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
         float cellWidth = gamePort.getScreenWidth() / 2; // 2 columns
         float cellHeight = gamePort.getScreenHeight() / 3; // 3 rows
 
-        /*System.out.println("World height " + gamePort.getWorldHeight());
-        System.out.println("World height - 1/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3)));
-        System.out.println("World height - 2/3 " + (gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 3 * 2)));
-        System.out.println("middle world x " + gamePort.getWorldWidth() / 2);*/
-        System.out.println("3Cell height " + 3*cellHeight);
-        System.out.println("2Cell heihgt " + 2*cellHeight);
-        System.out.println("1Cell Heigh " + 1*cellHeight);
-        System.out.println("Cell width " + cellWidth);
-
-
-        System.out.println("x: " + x + " y: " + y);
         if (y < cellHeight) {
             isOnePlayerSelected = !isOnePlayerSelected;
         } else if (y < 2*cellHeight) {

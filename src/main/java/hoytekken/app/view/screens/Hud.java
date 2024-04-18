@@ -20,8 +20,8 @@ import hoytekken.app.Hoytekken;
  * class represents the heads-up display for the game
  */
 public class Hud {
-    private Stage stage;
-    private Viewport port;
+    private final Stage stage;
+    private final Viewport port;
 
     private static final Integer HUD_PADDING_TOP = 5;
     private static final Integer INIT_TIME = 0;
@@ -38,7 +38,7 @@ public class Hud {
     /**
      * Constructor for the heads-up display
      * 
-     * @param sb
+     * @param sb sprite-batch
      */
     public Hud(SpriteBatch sb) {
         battleTimer = INIT_TIME;
@@ -73,7 +73,7 @@ public class Hud {
     }
 
     private void addLabelsToTable(List<Label> labels, Table table) {
-        Integer counter = 0;
+        int counter = 0;
         for (Label label : labels) {
             counter++;
             table.add(label).expandX().padTop(HUD_PADDING_TOP);
@@ -97,7 +97,7 @@ public class Hud {
     /**
      * Setter for the player's health
      * 
-     * @param health
+     * @param health of player
      */
     public void setPlayerHealth(String health) {
         labelList.get(3).setText(health);
@@ -106,7 +106,7 @@ public class Hud {
     /**
      * Setter for the enemy's health
      * 
-     * @param health
+     * @param health of enemy
      */
     public void setEnemyHealth(String health) {
         labelList.get(5).setText(health);

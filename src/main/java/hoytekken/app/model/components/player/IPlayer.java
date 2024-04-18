@@ -1,6 +1,5 @@
 package hoytekken.app.model.components.player;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
@@ -41,12 +40,12 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
     /**
      * Retrieves the max health of the player.
      * 
-     * @return
+     * @return max health of player
      */
     int getMaxHealth();
 
     /**
-     * Retrives the kick damage of the player.
+     * Retrieves the kick damage of the player.
      * 
      * @return an int representing the kick damage
      */

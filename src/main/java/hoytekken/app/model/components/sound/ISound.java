@@ -8,25 +8,25 @@ public interface ISound {
     /**
      * Play the sound.
      */
-    public void play();
+    void play();
 
     /**
      * Stop playing the sound.
      */
-    public void stop();
+    void stop();
 
     /**
      * Loop the sound.
      */
-    public void loop();
+    void loop();
 
     /**
      * Stop the sound loop.
      */
-    public void stopLoop();
+    void stopLoop();
 
     /**
      * Get the id of the sound.
      */
-    public long getId();
+    long getId();
 }

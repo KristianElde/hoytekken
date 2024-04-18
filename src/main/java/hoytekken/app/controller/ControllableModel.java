@@ -1,10 +1,8 @@
 package hoytekken.app.controller;
 
-import java.util.HashMap;
 
 import hoytekken.app.model.IViewAndControl;
 import hoytekken.app.model.components.ForceDirection;
-import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 
@@ -55,5 +53,5 @@ public interface ControllableModel extends IViewAndControl{
      * @param player the player number
      * @return the player
      */
-    public IPlayer getPlayer(PlayerType player);
+    IPlayer getPlayer(PlayerType player);
 }

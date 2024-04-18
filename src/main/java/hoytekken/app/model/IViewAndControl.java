@@ -11,14 +11,14 @@ public interface IViewAndControl {
      * Gets the event bus, stored in model
      * @return the event bus
      */
-    public EventBus getEventBus();
+    EventBus getEventBus();
 
     /**
      * Method to get the maps for the game
      * 
      * @return the maps for the game
      */
-    public HashMap<String, String> getGameMaps();
+    HashMap<String, String> getGameMaps();
 
     /**
      * Gets the gamestate that the game is currently in
@@ -46,5 +46,5 @@ public interface IViewAndControl {
      * @param onePlayer true if one player, false if two players
      * @return true if the number of players was set, false otherwise
      */
-    public boolean setNumberOfPlayers(Boolean onePlayer);
+    boolean setNumberOfPlayers(Boolean onePlayer);
 }

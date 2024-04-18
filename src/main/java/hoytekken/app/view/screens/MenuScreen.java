@@ -22,8 +22,8 @@ public class MenuScreen extends BaseScreen {
     private static final String INSTRUCTIONS = "PRESS \'I\' FOR INSTRUCTIONS";
     private static final String EXIT = "PRESS \'ESC\' TO EXIT";
 
-    private Texture background;
-    private Stage stage;
+    private final Texture background;
+    private final Stage stage;
 
     /**
      * Constructor for the menu screen
