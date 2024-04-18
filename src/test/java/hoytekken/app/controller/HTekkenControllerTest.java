@@ -131,11 +131,16 @@ public class HTekkenControllerTest {
         assertTrue(controller.keyUp(Input.Keys.RIGHT));
         controller.keyDown(Input.Keys.LEFT);
         assertTrue(controller.keyUp(Input.Keys.LEFT));
+        controller.keyDown(Input.Keys.DOWN);
+        assertTrue(controller.keyUp(Input.Keys.DOWN));
 
         controller.keyDown(Input.Keys.A);
         assertTrue(controller.keyUp(Input.Keys.A));
         controller.keyDown(Input.Keys.D);
         assertTrue(controller.keyUp(Input.Keys.D));
+        controller.keyDown(Input.Keys.S);
+        assertTrue(controller.keyUp(Input.Keys.S));
+
     }
 
 }
