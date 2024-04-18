@@ -86,8 +86,18 @@ public class HTekkenControllerTest {
     }
 
     @Test
-    void keyDownTestActiveGame() {
+    void keyDownTestActiveGameP1() {
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertTrue(controller.keyDown(Input.Keys.LEFT));
+        assertTrue(controller.keyDown(Input.Keys.RIGHT));
+        assertTrue(controller.keyDown(Input.Keys.UP));
+        assertTrue(controller.keyDown(Input.Keys.DOWN));
 
+        controller.keyUp(Input.Keys.DOWN);
+        movePlayersBeside();
+
+        assertTrue(controller.keyDown(Input.Keys.P));
+        assertTrue(controller.keyDown(Input.Keys.K));
     }
 
 }
