@@ -113,4 +113,13 @@ public class HTekkenControllerTest {
         assertTrue(controller.keyDown(Input.Keys.S));
     }
 
+    @Test
+    void keyDownTestActiveGameInvalidKey() {
+        model.setGameState(GameState.ACTIVE_GAME);
+        assertFalse(controller.keyDown(Input.Keys.G));
+        assertFalse(controller.keyDown(Input.Keys.NUM_3));
+        assertFalse(controller.keyDown(Input.Keys.SPACE));
+
+    }
+
 }
