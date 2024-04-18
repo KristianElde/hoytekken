@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
-import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
@@ -40,14 +39,12 @@ public class HtekkenController extends InputAdapter {
      */
     @Override
     public boolean keyDown(int keycode) {
-        switch (model.getGameState()) {
+        return switch (model.getGameState()) {
             case ACTIVE_GAME -> handleActiveGameInput(keycode);
             case MAIN_MENU -> handleMainMenuInput(keycode);
-            default -> {
-                return false;
-            }
-        }
-        return false;
+            default -> false;
+        };
+
     }
 
     /**
@@ -55,15 +52,11 @@ public class HtekkenController extends InputAdapter {
      * 
      * @param keycode id of key
      */
-    private void handleMainMenuInput(int keycode) {
-        switch (keycode) {
-            case Input.Keys.I -> model.setGameState(GameState.INSTRUCTIONS);
-            case Input.Keys.ESCAPE -> Gdx.app.exit();
-            case Input.Keys.NUM_1, Input.Keys.NUM_2, Input.Keys.NUM_3, Input.Keys.NUM_4 -> {
-                model.setGameMap("map" + (keycode - Input.Keys.NUM_0));
-                model.setGameState(GameState.ACTIVE_GAME);
-            }
-        }
+    private boolean handleMainMenuInput(int keycode) {
+        if (keycode == Input.Keys.I) {model.setGameState(GameState.INSTRUCTIONS);}
+        else if (keycode == Input.Keys.ESCAPE) {Gdx.app.exit();}
+        else {return false;}
+        return true;
     }
 
     /**
@@ -71,8 +64,8 @@ public class HtekkenController extends InputAdapter {
      * 
      * @param keycode id of key
      */
-    private void handleActiveGameInput(int keycode) {
-        switch (keycode) {
+    private boolean handleActiveGameInput(int keycode) {
+        return switch (keycode) {
             // Player 1 controls
             case Input.Keys.LEFT -> model.setDirection(playerOne, ForceDirection.LEFT);
             case Input.Keys.RIGHT -> model.setDirection(playerOne, ForceDirection.RIGHT);
@@ -87,7 +80,8 @@ public class HtekkenController extends InputAdapter {
             case Input.Keys.Q -> model.performAttackAction(playerTwo, ActionType.PUNCH);
             case Input.Keys.E -> model.performAttackAction(playerTwo, ActionType.KICK);
             case Input.Keys.S -> model.getPlayer(playerTwo).changeBlockingState();
-        }
+            default -> false;
+        };
     }
 
     @Override
@@ -97,28 +91,24 @@ public class HtekkenController extends InputAdapter {
             // Stop applying force to the player when the key is released
             if (keycode == Input.Keys.LEFT && model.getDirection(playerOne) == ForceDirection.LEFT
                     || keycode == Input.Keys.RIGHT && model.getDirection(playerOne) == ForceDirection.RIGHT) {
-                model.setDirection(playerOne, ForceDirection.STATIC);
-                return true;
+                return model.setDirection(playerOne, ForceDirection.STATIC);
             }
 
             // Deactivate block when DOWN-key is released
             if (keycode == Input.Keys.DOWN) {
-                model.getPlayer(playerOne).changeBlockingState();
-                return true;
+                return model.getPlayer(playerOne).changeBlockingState();
             }
 
             // Player2
             // Stop applying force to the player when the key is released
             if (keycode == Input.Keys.A && model.getDirection(playerTwo) == ForceDirection.LEFT
                     || keycode == Input.Keys.D && model.getDirection(playerTwo) == ForceDirection.RIGHT) {
-                model.setDirection(playerTwo, ForceDirection.STATIC);
-                return true;
+                return model.setDirection(playerTwo, ForceDirection.STATIC);
             }
 
             // Deactivate block when S-key is released
             if (keycode == Input.Keys.S) {
-                model.getPlayer(playerTwo).changeBlockingState();
-                return true;
+                return model.getPlayer(playerTwo).changeBlockingState();
             }
         }
         return false;
@@ -137,26 +127,13 @@ public class HtekkenController extends InputAdapter {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         switch (model.getGameState()) {
-            case INSTRUCTIONS -> {
-                model.setGameState(GameState.MAIN_MENU);
-                return true;
-            }
-            case MAIN_MENU -> {
-                model.setGameState(GameState.SELECTION);
-                return true;
-            }
-            case GAME_OVER -> {
-                ((Hoytekken) Gdx.app.getApplicationListener()).create();
-                return true;
-            }
-            case SELECTION -> {
-                this.model.getEventBus().emitEvent(new ClickedScreenEvent(screenX, screenY));
-                return true;
-            }
-            default -> {
-                return false;
-            }
+            case INSTRUCTIONS -> model.setGameState(GameState.MAIN_MENU);
+            case MAIN_MENU -> model.setGameState(GameState.SELECTION);
+            case GAME_OVER -> Gdx.app.getApplicationListener().create();
+            case SELECTION -> this.model.getEventBus().emitEvent(new ClickedScreenEvent(screenX, screenY));
+            default -> {return false;}
         }
+        return true;
     }
 
 }

@@ -310,8 +310,9 @@ public class Player extends Sprite implements IPlayer {
     }
 
     @Override
-    public void changeBlockingState() {
+    public boolean changeBlockingState() {
         isBlocking = !isBlocking;
+        return true;
     }
 
     @Override
