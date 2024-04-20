@@ -24,10 +24,10 @@ public class Hud {
     private final Viewport port;
 
     private static final Integer HUD_PADDING_TOP = 5;
-    private static final Integer INIT_TIME = 0;
+    private static final Float INIT_TIME = 0.0f;
 
     private Integer playerHealth;
-    private Integer battleTimer;
+    private Float battleTimer;
     private Integer enemyHealth;
 
     private List<Label> labelList;
@@ -67,7 +67,7 @@ public class Hud {
         list.add(createLabel("ENEMY"));
         // next lines might have to change due to updating the variable
         list.add(createLabel(String.format("%02d", playerHealth)));
-        list.add(createLabel(String.format("%03d", battleTimer)));
+        list.add(createLabel(String.format("%03d", battleTimer.intValue())));
         list.add(createLabel(String.format("%02d", enemyHealth)));
         return list;
     }
@@ -110,5 +110,10 @@ public class Hud {
      */
     public void setEnemyHealth(String health) {
         labelList.get(5).setText(health);
+    }
+
+    public void update(float dt) {
+        battleTimer += dt;
+        labelList.get(4).setText(String.format("%03d", battleTimer.intValue()));
     }
 }
