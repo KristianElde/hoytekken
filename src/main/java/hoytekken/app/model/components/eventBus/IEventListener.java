@@ -1,5 +1,8 @@
 package hoytekken.app.model.components.eventBus;
 
+/**
+ * Interface that represents an event listener
+ */
 public interface IEventListener {
     
     /**

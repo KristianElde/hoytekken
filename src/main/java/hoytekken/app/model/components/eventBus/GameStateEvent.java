@@ -2,5 +2,9 @@ package hoytekken.app.model.components.eventBus;
 
 import hoytekken.app.model.components.GameState;
 
-public record GameStateEvent(GameState oldState, GameState newState) implements IEvent{
-}
+/**
+ * Event for when the game state changes
+ * @param oldState the old game state
+ * @param newState the new game state
+ */
+public record GameStateEvent(GameState oldState, GameState newState) implements IEvent {}

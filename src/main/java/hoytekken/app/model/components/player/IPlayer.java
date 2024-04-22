@@ -65,10 +65,21 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      */
     int getJumpingHeight();
 
+    /**
+     * Retrieves the max velocity of the player.
+     * 
+     * @return a float representing the max velocity of the player
+     */
     float getMaxVelocity();
 
+    /**
+     * Flips the player image to face left
+     */
     void flipLeft();
 
+    /**
+     * Flips the player image to face right
+     */
     void flipRight();
 
 }

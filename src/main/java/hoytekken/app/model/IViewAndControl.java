@@ -5,6 +5,9 @@ import hoytekken.app.model.components.eventBus.EventBus;
 
 import java.util.HashMap;
 
+/**
+ * Interface for methods that are used by both the view and the control
+ */
 public interface IViewAndControl {
 
     /**
