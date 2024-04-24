@@ -17,10 +17,22 @@ import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
 import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
+/**
+ * class represents a selection screen
+ * Select number of players and map
+ */
 public class SelectionScreen extends BaseScreen {
     private final List<Texture> mapTextures = new ArrayList<>();
     private boolean isOnePlayerSelected = true;
+
+    private float cellHeight;
+    private float cellWidth;
     
+    /**
+     * Constructor for the SelectionScreen
+     * @param game the game object
+     * @param model ViewableModel model for the game
+     */
     public SelectionScreen(Hoytekken game, ViewableModel model) {
         super(game, model);
         loadMapTextures();
@@ -28,24 +40,19 @@ public class SelectionScreen extends BaseScreen {
         
     }
 
-    private void loadMapTextures() {
-        mapTextures.add(new Texture(Gdx.files.internal("map3.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map4.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map1.png")));
-        mapTextures.add(new Texture(Gdx.files.internal("map2.png")));
-        
-        int count = 0;
-        while(count < 4) {
-            mapTextures.add(new Texture(Gdx.files.internal("background.png")));
-            count++;
+    private void loadMapTextures() {        
+        int index = 1;
+        while(index < 5) {
+            mapTextures.add(new Texture(Gdx.files.internal("map" + index + ".png")));
+            index++;
         }
     }
 
     private void drawMapSelections() {
 
         // Calculate cell width and height based on the screen size and desired grid layout
-        float cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
-        float cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
+        cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
+        cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
 
         // Starting positions for the bottom 2 rows
         float startX = 0;
@@ -71,15 +78,12 @@ public class SelectionScreen extends BaseScreen {
         String text = isOnePlayerSelected ? "1 player selected, click here to change to 2 players" : "2 players selected, click here to change to 1 player";
         layout.setText(font, text);
         float x = (gamePort.getWorldWidth() - layout.width) / 2;
-        float y = gamePort.getWorldHeight()- (gamePort.getWorldHeight()/10) - layout.height; 
+        float y = gamePort.getWorldHeight() - (gamePort.getWorldHeight()/10) - layout.height; 
         font.draw(game.batch, layout, x, y);
     }
 
     @Override
     public void handleEvent(IEvent event) {
-        /*if (event instanceof GameStateEvent) {
-            handleStateSwitch((GameStateEvent) event);
-        } else*/
         super.handleEvent(event);
         if (event instanceof ClickedScreenEvent) {
             handleSelection((ClickedScreenEvent) event);
@@ -96,13 +100,13 @@ public class SelectionScreen extends BaseScreen {
         if (y < cellHeight) {
             isOnePlayerSelected = !isOnePlayerSelected;
         } else if (y < 2*cellHeight) {
-            if (x < cellWidth) model.setGameMap("map1");
-            else model.setGameMap("map2");
+            if (x < cellWidth) model.setGameMap("map3");
+            else model.setGameMap("map4");
             model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
         } else if (y < 3*cellHeight){
-            if (x < cellWidth) model.setGameMap("map3");
-            else model.setGameMap("map4");
+            if (x < cellWidth) model.setGameMap("map1");
+            else model.setGameMap("map2");
             model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
         }

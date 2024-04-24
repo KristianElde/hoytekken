@@ -4,10 +4,17 @@ import com.badlogic.gdx.graphics.Texture;
 
 import hoytekken.app.model.components.player.IPlayer;
 
+/**
+ * Abstract class for power-ups.
+ */
 public abstract class PowerUp {
     private final Texture pUpTexture;
 
-    // constructor
+    /**
+     * Constructor for PowerUp
+     * 
+     * @param pUpTexture Texture of the power-up.
+     */
     PowerUp(Texture pUpTexture) {
         this.pUpTexture = pUpTexture;
     }
@@ -36,6 +43,11 @@ public abstract class PowerUp {
      */
     public abstract void applyPowerUp(IPlayer player);
 
+    /**
+     * Gets the texture of the power-up.
+     * 
+     * @return Texture of the power-up.
+     */
     Texture getTexture() {
         return pUpTexture;
     }

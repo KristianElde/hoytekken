@@ -9,6 +9,10 @@ public class Sound implements ISound {
     private final com.badlogic.gdx.audio.Sound sound;
     private long id;
 
+    /**
+     * Constructor for Sound
+     * @param path path to the sound file
+     */
     public Sound(String path) {
         this.sound = Gdx.audio.newSound(Gdx.files.internal(path));
     }

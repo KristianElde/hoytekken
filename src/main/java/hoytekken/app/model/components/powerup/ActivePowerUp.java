@@ -13,8 +13,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.IPlayer;
 
+/**
+ * Class represents the currently active power up in the game
+ */
 public class ActivePowerUp extends Sprite {
-
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
 
     private final String type;
@@ -28,7 +30,12 @@ public class ActivePowerUp extends Sprite {
 
     private float powerUpInterval = 0;
     
-
+    /**
+     * Constructor for the active power up
+     * 
+     * @param factory the power up factory
+     * @param world   the world object
+     */
     public ActivePowerUp(PowerUpFactory factory, World world) {
 
         this.world = world;
@@ -70,6 +77,7 @@ public class ActivePowerUp extends Sprite {
 
     /*
      * Updates the powerup
+     * includes updating the timer for the powerup and removing it
      */
     public void update(float dt) {
         if (isVisible) {

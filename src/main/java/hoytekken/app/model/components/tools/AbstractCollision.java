@@ -5,9 +5,17 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+/**
+ * Abstract class for collision
+ */
 public abstract class AbstractCollision implements ContactListener {
     protected HandleCollisions model;
 
+    /**
+     * Constructor for the abstract collision
+     * 
+     * @param model the model to handle the collisions
+     */
     public AbstractCollision(HandleCollisions model) {
         this.model = model;
     }
