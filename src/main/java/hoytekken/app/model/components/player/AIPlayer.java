@@ -54,12 +54,14 @@ public class AIPlayer extends Player {
     }
 
     private void makeDecision() {
-        if (isWithinRange(target, PUNCH_RANGE)) {
+        int decide = randomChoice();
+
+        if (isWithinRange(target, PUNCH_RANGE) && !block) {
             punch(target);
-        } else if (isWithinRange(target, KICK_RANGE)) {
+        } else if (isWithinRange(target, KICK_RANGE) && !block) {
             kick(target);
-        } else {
-            moveTowardsTarget();
+        } else if (!(idleMovement || chase)) {
+            chooseMovement();
         }
     }
 
@@ -67,6 +69,12 @@ public class AIPlayer extends Player {
         if (block && blockTimer > 2) stopBlock();
         if (idleMovement && movementTimer > 2) idleMovement = false;
         if (chase && movementTimer > 3) chase = false;
+    }
+
+    private void stopBlock() {
+        block = false;
+        lastBlockTimer = 0;
+        changeBlockingState();
     }
 
     private void startBlock() {
