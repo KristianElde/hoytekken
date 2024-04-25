@@ -42,5 +42,18 @@ public class EventBusTest {
         assertTrue(eventBus.getListeners().contains(mockListener));
     }
 
+    @Test
+    public void testRemoveListener(){
+        assertEquals(0, eventBus.getListeners().size());
+        eventBus.addListener(mockListener);
+
+        assertEquals(1, eventBus.getListeners().size());
+        assertTrue(eventBus.getListeners().contains(mockListener));
+
+        eventBus.removeListener(mockListener);
+        assertEquals(0, eventBus.getListeners().size());
+        assertTrue(!eventBus.getListeners().contains(mockListener));
+    }
+
 
 }
