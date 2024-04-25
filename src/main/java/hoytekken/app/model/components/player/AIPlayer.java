@@ -63,6 +63,12 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void checkTimers() {
+        if (block && blockTimer > 2) stopBlock();
+        if (idleMovement && movementTimer > 2) idleMovement = false;
+        if (chase && movementTimer > 3) chase = false;
+    }
+
     private void startBlock() {
         block = true;
         blockTimer = 0;
