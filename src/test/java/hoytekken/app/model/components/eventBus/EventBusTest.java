@@ -56,5 +56,11 @@ public class EventBusTest {
         assertFalse(eventBus.getListeners().contains(mockListener));
     }
 
+    @Test
+    public void testEmitEvent(){
+        eventBus.addListener(mockListener);
+        eventBus.emitEvent(mockEvent);
+        verify(mockListener, times(1)).handleEvent(mockEvent);
+    }
 
 }
