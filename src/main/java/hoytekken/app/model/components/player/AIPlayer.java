@@ -65,6 +65,13 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void attackOrDefend(boolean punchRange, int decide) {
+        if (decide == 0) {
+            if (punchRange) punch(target);
+            else kick(target);
+        } else if (lastBlockTimer > 2) startBlock();
+    }
+
     private void checkTimers() {
         if (block && blockTimer > 2) stopBlock();
         if (idleMovement && movementTimer > 2) idleMovement = false;
