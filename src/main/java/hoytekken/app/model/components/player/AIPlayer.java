@@ -13,6 +13,11 @@ public class AIPlayer extends Player {
     private static final float KICK_RANGE = 2.2f;
     private final IPlayer target;
 
+    //AI Actions
+    private boolean chase = false;
+    private boolean idleMovement = false;
+    private boolean block = false;
+
     // improve fluidity of idle movement
     private int moveTicks = 0;
     private int lastDir = 0;
@@ -53,7 +58,7 @@ public class AIPlayer extends Player {
         }
     }
 
-    private void choseMovement() {
+    private void chooseMovement() {
         movementTimer = 0;
         if (randomChoice() == 0) idleMovement = true;
         else chase = true;
