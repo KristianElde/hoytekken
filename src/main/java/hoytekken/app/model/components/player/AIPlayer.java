@@ -49,6 +49,15 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void idleMovement() {
+        int choice = randomChoice();
+        if (choice == 0) {
+            move(0.5f, 0);
+        } else {
+            move(-0.5f, 0);
+        }
+    }
+
     private void moveTowardsTarget() {
         float dirX = Float.compare(target.getBody().getPosition().x, getBody().getPosition().x);
         move(dirX * 0.5f, 0);
