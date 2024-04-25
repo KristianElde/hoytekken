@@ -1,5 +1,7 @@
 package hoytekken.app.model.components.player;
 
+import java.util.Random;
+
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
@@ -30,6 +32,11 @@ public class AIPlayer extends Player {
     public void update(float dt) {
         super.update(dt);
         makeDecision();
+    }
+
+    //Randomly choose between 0 and 1
+    private int randomChoice() {
+        return new Random().nextInt(2);
     }
 
     private void makeDecision() {
