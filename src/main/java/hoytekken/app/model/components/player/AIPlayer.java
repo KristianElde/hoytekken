@@ -18,6 +18,11 @@ public class AIPlayer extends Player {
     private boolean idleMovement = false;
     private boolean block = false;
 
+    // Action timers
+    private float movementTimer = 0;
+    private float blockTimer = 0;
+    private float lastBlockTimer = 0;
+
     // improve fluidity of idle movement
     private int moveTicks = 0;
     private int lastDir = 0;
