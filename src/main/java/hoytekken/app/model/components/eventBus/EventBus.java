@@ -38,4 +38,8 @@ public class EventBus {
         }
     }
 
+    CopyOnWriteArrayList<IEventListener> getListeners() {
+        return listeners;
+    }
+
 }
