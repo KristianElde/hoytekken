@@ -63,6 +63,12 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void startBlock() {
+        block = true;
+        blockTimer = 0;
+        changeBlockingState();
+    }
+
     private void chooseMovement() {
         movementTimer = 0;
         if (randomChoice() == 0) idleMovement = true;
