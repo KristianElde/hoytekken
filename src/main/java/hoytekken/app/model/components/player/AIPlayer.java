@@ -53,6 +53,12 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void choseMovement() {
+        movementTimer = 0;
+        if (randomChoice() == 0) idleMovement = true;
+        else chase = true;
+    }
+
     private void idleMovement() {
         int choice = randomChoice();
         if (!(moveTicks % 30 == 0)) choice = lastDir;
