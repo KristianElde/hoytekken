@@ -1,6 +1,7 @@
 package hoytekken.app.model.components.eventBus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
@@ -52,7 +53,7 @@ public class EventBusTest {
 
         eventBus.removeListener(mockListener);
         assertEquals(0, eventBus.getListeners().size());
-        assertTrue(!eventBus.getListeners().contains(mockListener));
+        assertFalse(eventBus.getListeners().contains(mockListener));
     }
 
 
