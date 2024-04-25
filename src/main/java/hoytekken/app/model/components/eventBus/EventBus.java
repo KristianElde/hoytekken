@@ -38,6 +38,11 @@ public class EventBus {
         }
     }
 
+    /**
+     * Method to get the list of listeners
+     * 
+     * @return the list of listeners
+     */
     CopyOnWriteArrayList<IEventListener> getListeners() {
         return listeners;
     }
