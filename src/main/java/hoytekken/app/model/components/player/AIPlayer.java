@@ -56,13 +56,9 @@ public class AIPlayer extends Player {
     private void makeDecision() {
         int decide = randomChoice();
 
-        if (isWithinRange(target, PUNCH_RANGE) && !block) {
-            punch(target);
-        } else if (isWithinRange(target, KICK_RANGE) && !block) {
-            kick(target);
-        } else if (!(idleMovement || chase)) {
-            chooseMovement();
-        }
+        if (isWithinRange(target, PUNCH_RANGE) && !block) attackOrDefend(true, decide);
+        else if (isWithinRange(target, KICK_RANGE) && !block) attackOrDefend(false, decide);
+        else if (!(idleMovement || chase)) chooseMovement();
     }
 
     private void attackOrDefend(boolean punchRange, int decide) {
