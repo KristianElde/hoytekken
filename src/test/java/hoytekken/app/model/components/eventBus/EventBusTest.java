@@ -1,5 +1,6 @@
 package hoytekken.app.model.components.eventBus;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
@@ -25,6 +26,11 @@ public class EventBusTest {
         assertNotNull(eventBus);
         assertNotNull(mockListener);
         assertNotNull(mockEvent);
+    }
+
+    @Test
+    public void testConstructor(){
+        assertEquals(0, eventBus.getListeners().size());
     }
 
 
