@@ -13,6 +13,10 @@ public class AIPlayer extends Player {
     private static final float KICK_RANGE = 2.2f;
     private final IPlayer target;
 
+    // improve fluidity of idle movement
+    private int moveTicks = 0;
+    private int lastDir = 0;
+
     /**
      * Constructor for AIPlayer
      * @param world the game world
