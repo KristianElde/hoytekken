@@ -33,5 +33,14 @@ public class EventBusTest {
         assertEquals(0, eventBus.getListeners().size());
     }
 
+    @Test
+    public void testAddListener(){
+        assertEquals(0, eventBus.getListeners().size());
+        eventBus.addListener(mockListener);
+
+        assertEquals(1, eventBus.getListeners().size());
+        assertTrue(eventBus.getListeners().contains(mockListener));
+    }
+
 
 }
