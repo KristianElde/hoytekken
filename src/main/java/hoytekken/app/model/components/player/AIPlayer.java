@@ -55,10 +55,14 @@ public class AIPlayer extends Player {
 
     private void idleMovement() {
         int choice = randomChoice();
+        if (!(moveTicks % 30 == 0)) choice = lastDir;
+
         if (choice == 0) {
-            move(0.5f, 0);
+            lastDir = 0;
+            move(0.15f, 0);
         } else {
-            move(-0.5f, 0);
+            lastDir = 1;
+            move(-0.15f, 0);
         }
     }
 
