@@ -21,6 +21,9 @@ public class AIPlayer extends Player {
     public AIPlayer(World world, PlayerType type, int health, IPlayer target) {
         super(world, type, health);
         this.target = target;
+
+        // reduce AI speed to make it less aggressive
+        increaseSpeed(-1);
     }
 
     @Override
