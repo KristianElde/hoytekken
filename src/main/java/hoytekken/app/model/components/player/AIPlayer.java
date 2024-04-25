@@ -46,6 +46,18 @@ public class AIPlayer extends Player {
     public void update(float dt) {
         super.update(dt);
         makeDecision();
+        checkTimers();
+
+        if (block) blockTimer += dt;
+        else lastBlockTimer += dt;
+
+        if (idleMovement) {
+            idleMovement();
+            movementTimer += dt;
+        } else if (chase) {
+            moveTowardsTarget();
+            movementTimer += dt;
+        }
     }
 
     //Randomly choose between 0 and 1
