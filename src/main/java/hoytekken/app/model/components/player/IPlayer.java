@@ -8,8 +8,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
 
     /**
-     * Updates the player.
+     * Updates the player entity's state and position over time.
      * 
+     * @param dt The time step since the last update, in seconds.
      */
     void update(float dt);
 
@@ -35,6 +36,11 @@ public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
      */
     void takeDamage(int damage);
 
+    /**
+     * Check if players position is off the map.
+     * 
+     * @return boolean true, if player is off the map
+     */
     boolean fallenOffTheMap();
 
     /**

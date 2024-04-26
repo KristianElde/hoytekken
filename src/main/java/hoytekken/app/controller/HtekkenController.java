@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputAdapter;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
+import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.player.PlayerType;
 
 /**
@@ -65,15 +66,31 @@ public class HtekkenController extends InputAdapter {
      * @param keycode id of key
      */
     private boolean handleActiveGameInput(int keycode) {
+        boolean p1handled = handleP1Input(keycode);
+        boolean p2handled = false;
+        
+        if (!(model.getPlayer(playerTwo) instanceof AIPlayer)) 
+            p2handled = handleP2Input(keycode);
+
+        return p1handled || p2handled;
+    }
+
+    // Input keys for player 1
+    private boolean handleP1Input(int keycode) {
         return switch (keycode) {
-            // Player 1 controls
             case Input.Keys.LEFT -> model.setDirection(playerOne, ForceDirection.LEFT);
             case Input.Keys.RIGHT -> model.setDirection(playerOne, ForceDirection.RIGHT);
             case Input.Keys.UP -> model.jump(playerOne);
             case Input.Keys.P -> model.performAttackAction(playerOne, ActionType.PUNCH);
             case Input.Keys.K -> model.performAttackAction(playerOne, ActionType.KICK);
             case Input.Keys.DOWN -> model.getPlayer(playerOne).changeBlockingState();
-            // Player 2 controls
+            default -> false;
+        };
+    }
+
+    // Input keys for player 2
+    private boolean handleP2Input(int keycode) {
+        return switch (keycode) {
             case Input.Keys.A -> model.setDirection(playerTwo, ForceDirection.LEFT);
             case Input.Keys.D -> model.setDirection(playerTwo, ForceDirection.RIGHT);
             case Input.Keys.W -> model.jump(playerTwo);

@@ -25,7 +25,9 @@ import hoytekken.app.controller.ActionType;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
 public class ModelTest {
@@ -221,6 +223,18 @@ public class ModelTest {
         assertEquals("defaultMap.tmx", model.getMap());
         model.setGameMap("map3");
         assertEquals("thirdKMVmap.tmx", model.getMap());
+    }
+
+    @Test
+    void setNumberOfPlayersTest() {
+        //two players set in @BeforeEach
+        assertTrue(model.getPlayer(PlayerType.PLAYER_TWO) instanceof Player, "Player Two should be a Player object");
+        
+        assertFalse(model.setNumberOfPlayers(false), "Should return false if number of players is already set to 2");
+        
+        boolean changedNumPlayers = model.setNumberOfPlayers(true);
+        assertTrue(changedNumPlayers, "Should return true if number of players is changed to 1");
+        assertTrue(model.getPlayer(PlayerType.PLAYER_TWO) instanceof AIPlayer, "Player Two should be an AIPlayer object");
     }
 
 }
