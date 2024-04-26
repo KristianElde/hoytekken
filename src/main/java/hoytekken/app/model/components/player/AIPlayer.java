@@ -11,6 +11,9 @@ import com.badlogic.gdx.physics.box2d.World;
 public class AIPlayer extends Player {
     private static final float PUNCH_RANGE = 1.8f;
     private static final float KICK_RANGE = 2.2f;
+    private static final float IDLE_ACCELERATION = 0.15f;
+    private static final float CHASE_ACCELERATION = 0.5f;
+    
     private final IPlayer target;
 
     //AI Actions
@@ -22,6 +25,12 @@ public class AIPlayer extends Player {
     private float movementTimer = 0;
     private float blockTimer = 0;
     private float lastBlockTimer = 0;
+
+    // Timer limits
+    private static final float BLOCK_TIME_LIMIT = 2;
+    private static final float CHASE_TIME_LIMIT = 2;
+    private static final float IDLE_TIME_LIMIT = 2;
+    private static final float LAST_BLOCK_TIME_LIMIT = 2;
 
     // improve fluidity of idle movement
     private int moveTicks = 0;
@@ -48,6 +57,7 @@ public class AIPlayer extends Player {
         makeDecision();
         checkTimers();
 
+        // update active timers
         if (block) blockTimer += dt;
         else lastBlockTimer += dt;
 
@@ -65,6 +75,7 @@ public class AIPlayer extends Player {
         return new Random().nextInt(2);
     }
 
+    //Make decision based on target position
     private void makeDecision() {
         int decide = randomChoice();
 
@@ -73,52 +84,61 @@ public class AIPlayer extends Player {
         else if (!(idleMovement || chase)) chooseMovement();
     }
 
+    //Attack or defend based if target is within range
     private void attackOrDefend(boolean punchRange, int decide) {
         if (decide == 0) {
             if (punchRange) punch(target);
             else kick(target);
-        } else if (lastBlockTimer > 2) startBlock();
+        } else if (lastBlockTimer > LAST_BLOCK_TIME_LIMIT) startBlock();
     }
 
+    // check timers and stop actions if necessary
     private void checkTimers() {
-        if (block && blockTimer > 2) stopBlock();
-        if (idleMovement && movementTimer > 2) idleMovement = false;
-        if (chase && movementTimer > 3) chase = false;
+        if (block && blockTimer > BLOCK_TIME_LIMIT) stopBlock();
+        if (idleMovement && movementTimer > IDLE_TIME_LIMIT) idleMovement = false;
+        if (chase && movementTimer > CHASE_TIME_LIMIT) chase = false;
     }
 
+    //stop block action
     private void stopBlock() {
         block = false;
         lastBlockTimer = 0;
         changeBlockingState();
     }
 
+    //start block action
     private void startBlock() {
         block = true;
         blockTimer = 0;
         changeBlockingState();
     }
 
+    //Choose between idle movement and chase
     private void chooseMovement() {
         movementTimer = 0;
         if (randomChoice() == 0) idleMovement = true;
         else chase = true;
     }
 
+    //Move left and right
     private void idleMovement() {
         int choice = randomChoice();
         if (!(moveTicks % 30 == 0)) choice = lastDir;
 
         if (choice == 0) {
             lastDir = 0;
-            move(0.15f, 0);
+            move(IDLE_ACCELERATION, 0);
         } else {
             lastDir = 1;
-            move(-0.15f, 0);
+            move(IDLE_ACCELERATION, 0);
         }
+
+        moveTicks++;
     }
 
+    //Move towards target
     private void moveTowardsTarget() {
         float dirX = Float.compare(target.getBody().getPosition().x, getBody().getPosition().x);
-        move(dirX * 0.5f, 0);
+        move(dirX * CHASE_ACCELERATION, 0);
     }
 }
