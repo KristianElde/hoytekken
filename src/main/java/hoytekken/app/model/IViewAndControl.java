@@ -2,6 +2,9 @@ package hoytekken.app.model;
 
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.player.Player;
+import hoytekken.app.model.components.player.PlayerType;
 
 import java.util.HashMap;
 
@@ -50,4 +53,12 @@ public interface IViewAndControl {
      * @return true if the number of players was set, false otherwise
      */
     boolean setNumberOfPlayers(Boolean onePlayer);
+
+    /**
+     * Method to get the player
+     * 
+     * @param player the player number
+     * @return the IPlayer object
+     */
+    IPlayer getPlayer(PlayerType player);
 }
