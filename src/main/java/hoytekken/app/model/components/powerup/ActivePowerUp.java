@@ -36,6 +36,8 @@ public class ActivePowerUp extends Sprite {
     private float powerUpInterval = 0;
     private float timeSinceLastPowerUp = 0;
 
+    private RandomPowerUpFactory factory;
+
     //private PowerUpCreator creator;
     
     /**
@@ -50,7 +52,7 @@ public class ActivePowerUp extends Sprite {
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
-        //this.creator = creator;
+        this.factory = (RandomPowerUpFactory) factory;
         
         setRegion(texture);
         defineBody();
