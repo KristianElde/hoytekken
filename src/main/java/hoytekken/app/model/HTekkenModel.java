@@ -18,6 +18,7 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
+import hoytekken.app.model.components.powerup.PowerUpCreator;
 import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
@@ -27,7 +28,7 @@ import hoytekken.app.view.ViewableModel;
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
+public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions, PowerUpCreator {
     // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 
@@ -342,6 +343,11 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public ActivePowerUp createPowerUp() {
+        return new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
     }
 
     
