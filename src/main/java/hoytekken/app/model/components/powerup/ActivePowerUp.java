@@ -31,6 +31,7 @@ public class ActivePowerUp extends Sprite {
     private boolean shouldBeDestroyed = false;
 
     private float powerUpInterval = 0;
+    private PowerUpCreator creator;
     
     /**
      * Constructor for the active power up
@@ -44,6 +45,7 @@ public class ActivePowerUp extends Sprite {
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
+        this.creator = creator;
         
         setRegion(texture);
         defineBody();
@@ -101,6 +103,9 @@ public class ActivePowerUp extends Sprite {
             body = null;
             shouldBeDestroyed = false;
             //isVisible = false;
+        }
+        if (!isVisible && body == null) {
+            ActivePowerUp newPowerUp = new ActivePowerUp(new PowerUpFactory(), world);
         }
     }
 
