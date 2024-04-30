@@ -1,5 +1,7 @@
 package hoytekken.app.model.components.powerup;
 
+import java.util.LinkedList;
+
 import com.badlogic.gdx.graphics.Texture;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -79,13 +81,17 @@ public class ActivePowerUp extends Sprite {
      * Updates the powerup
      * includes updating the timer for the powerup and removing it
      */
-    public void update(float dt) {
+    public void update(float dt, LinkedList<Body> bodiesToDestroy) {
         if (isVisible) {
             powerUpInterval += dt;
             if (powerUpInterval >= 3) {
                 makeInvisible();
             }
         }
+    }
+
+    public void updatePowerUp(float dt) {
+
     }
 
     /*
