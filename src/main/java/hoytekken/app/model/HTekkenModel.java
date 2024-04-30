@@ -129,9 +129,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         if (activePowerUp != null) {
             activePowerUp.update(dt, bodiesToDestroy);
-            if (activePowerUp.shouldBeDestroyed()) {
-                activePowerUp = null;
-            }
         }
 
         while (!bodiesToDestroy.isEmpty()) {
