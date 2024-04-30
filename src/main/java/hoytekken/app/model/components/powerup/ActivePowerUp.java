@@ -81,12 +81,26 @@ public class ActivePowerUp extends Sprite {
      * Updates the powerup
      * includes updating the timer for the powerup and removing it
      */
+    // public void update(float dt, LinkedList<Body> bodiesToDestroy) {
+    //     if (isVisible) {
+    //         powerUpInterval += dt;
+    //         if (powerUpInterval >= 3) {
+    //             makeInvisible();
+    //         }
+    //     }
+    // }
     public void update(float dt, LinkedList<Body> bodiesToDestroy) {
-        if (isVisible) {
-            powerUpInterval += dt;
-            if (powerUpInterval >= 3) {
-                makeInvisible();
-            }
+        powerUpInterval += dt;
+
+        if (isVisible && powerUpInterval >= 3) {
+            makeInvisible();
+        }
+
+        if (!isVisible && shouldBeDestroyed) {
+            bodiesToDestroy.add(body);
+            body = null;
+            shouldBeDestroyed = false;
+            //isVisible = false;
         }
     }
 
