@@ -324,6 +324,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
+    @Override
     public EventBus getEventBus() {
         return eventBus;
     }
