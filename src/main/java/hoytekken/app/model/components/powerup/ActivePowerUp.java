@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.IPlayer;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * Class represents the currently active power up in the game
@@ -104,17 +105,15 @@ public class ActivePowerUp extends Sprite {
 
         if (!isVisible) {
             timeSinceLastPowerUp += dt;
-        }
-
-        if (!isVisible && shouldBeDestroyed && body != null) {
-            bodiesToDestroy.add(body);
-            body = null;
-        }
-
-        if (timeSinceLastPowerUp >= POWERUP_SPACE && body == null && !shouldBeDestroyed) {
-            shouldBeDestroyed = true;
-            ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
-            newPowerUp.makeVisible();
+            if (timeSinceLastPowerUp >= POWERUP_SPACE && !shouldBeDestroyed) {
+                shouldBeDestroyed = true;
+                if (body != null) {
+                    bodiesToDestroy.add(body);
+                    body = null;
+                }
+                ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
+                newPowerUp.makeVisible();
+            }
         }
     }
 
