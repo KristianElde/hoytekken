@@ -1,5 +1,7 @@
 package hoytekken.app.model.components.powerup;
 
+import static org.mockito.Mockito.times;
+
 import java.util.LinkedList;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -107,16 +109,24 @@ public class ActivePowerUp extends Sprite {
 
         if (!isVisible) {
             timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= POWERUP_SPACE && !shouldBeDestroyed) {
-                shouldBeDestroyed = true;
+            if (timeSinceLastPowerUp >= POWERUP_SPACE) {
+                timeSinceLastPowerUp = 0;
                 if (body != null) {
                     bodiesToDestroy.add(body);
                     body = null;
                 }
-                ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
-                newPowerUp.makeVisible();
+                spawnPowerUp();
             }
+        
         }
+
+    }
+
+    private void spawnPowerUp() {
+        ActivePowerUp powerUp = new ActivePowerUp(factory, world);
+        powerUp.makeVisible();
+        
+
     }
 
     /*
