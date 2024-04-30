@@ -104,7 +104,7 @@ public class ActivePowerUp extends Sprite {
             shouldBeDestroyed = false;
             //isVisible = false;
         }
-        if (!isVisible && body == null) {
+        if (!isVisible && body == null && creator != null) {
             ActivePowerUp newPowerUp = creator.createPowerUp();
             if (newPowerUp != null) {
                 newPowerUp.makeVisible();
