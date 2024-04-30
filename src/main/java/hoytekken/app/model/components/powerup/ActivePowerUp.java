@@ -105,12 +105,12 @@ public class ActivePowerUp extends Sprite {
             //isVisible = false;
         }
         if (!isVisible && body == null) {
-            ActivePowerUp newPowerUp = new ActivePowerUp(new PowerUpFactory(), world);
+            ActivePowerUp newPowerUp = creator.createPowerUp();
+            if (newPowerUp != null) {
+                newPowerUp.makeVisible();
+            }
+
         }
-    }
-
-    public void updatePowerUp(float dt) {
-
     }
 
     /*
