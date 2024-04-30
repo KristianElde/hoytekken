@@ -28,7 +28,7 @@ import hoytekken.app.view.ViewableModel;
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions, PowerUpCreator {
+public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
     // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 
@@ -351,11 +351,5 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
         else return false;
     }
-
-    @Override
-    public ActivePowerUp createPowerUp() {
-        return new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-    }
-
     
 }

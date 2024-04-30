@@ -105,7 +105,7 @@ public class ActivePowerUp extends Sprite {
             //isVisible = false;
         }
         if (!isVisible && body == null && creator != null) {
-            ActivePowerUp newPowerUp = creator.createPowerUp();
+            ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
             if (newPowerUp != null) {
                 newPowerUp.makeVisible();
             }
