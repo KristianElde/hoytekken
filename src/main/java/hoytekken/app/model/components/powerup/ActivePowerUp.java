@@ -110,13 +110,11 @@ public class ActivePowerUp extends Sprite {
             bodiesToDestroy.add(body);
             body = null;
         }
-        
-        if (!isVisible && body == null) {
-            ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
-            if (newPowerUp != null) {
-                newPowerUp.makeVisible();
-            }
 
+        if (timeSinceLastPowerUp >= POWERUP_SPACE && body == null && !shouldBeDestroyed) {
+            shouldBeDestroyed = true;
+            ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
+            newPowerUp.makeVisible();
         }
     }
 
