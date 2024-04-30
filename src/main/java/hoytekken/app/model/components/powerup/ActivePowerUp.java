@@ -20,6 +20,8 @@ import hoytekken.app.model.components.player.IPlayer;
  */
 public class ActivePowerUp extends Sprite {
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
+    private static final float POWERUP_INTERVAL = 3;
+    private static final float POWERUP_SPACE = 10;
 
     private final String type;
     private final World world;
@@ -31,7 +33,9 @@ public class ActivePowerUp extends Sprite {
     private boolean shouldBeDestroyed = false;
 
     private float powerUpInterval = 0;
-    private PowerUpCreator creator;
+    private float timeSinceLastPowerUp = 0;
+
+    //private PowerUpCreator creator;
     
     /**
      * Constructor for the active power up
@@ -45,7 +49,7 @@ public class ActivePowerUp extends Sprite {
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
-        this.creator = creator;
+        //this.creator = creator;
         
         setRegion(texture);
         defineBody();
@@ -94,17 +98,20 @@ public class ActivePowerUp extends Sprite {
     public void update(float dt, LinkedList<Body> bodiesToDestroy) {
         powerUpInterval += dt;
 
-        if (isVisible && powerUpInterval >= 3) {
+        if (isVisible && powerUpInterval >= POWERUP_INTERVAL) {
             makeInvisible();
         }
 
-        if (!isVisible && shouldBeDestroyed) {
+        if (!isVisible) {
+            timeSinceLastPowerUp += dt;
+        }
+
+        if (!isVisible && shouldBeDestroyed && body != null) {
             bodiesToDestroy.add(body);
             body = null;
-            shouldBeDestroyed = false;
-            //isVisible = false;
         }
-        if (!isVisible && body == null && creator != null) {
+        
+        if (!isVisible && body == null) {
             ActivePowerUp newPowerUp = new ActivePowerUp(new RandomPowerUpFactory(), world);
             if (newPowerUp != null) {
                 newPowerUp.makeVisible();
