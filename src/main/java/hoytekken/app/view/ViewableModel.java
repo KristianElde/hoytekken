@@ -31,14 +31,6 @@ public interface ViewableModel extends IViewAndControl{
     World getGameWorld();
 
     /**
-     * Getter for the player
-     * 
-     * @param player the player number
-     * @return the player
-     */
-    ViewablePlayer getPlayer(PlayerType player);
-
-    /**
      * Getter for the map
      * 
      * @return the map path string
