@@ -92,42 +92,42 @@ public class ActivePowerUp extends Sprite {
      * Updates the powerup
      * includes updating the timer for the powerup and removing it
      */
-    // public void update(float dt, LinkedList<Body> bodiesToDestroy) {
-    //     if (isVisible) {
-    //         powerUpInterval += dt;
-    //         if (powerUpInterval >= 3) {
-    //             makeInvisible();
-    //         }
-    //     }
-    // }
-    public void update(float dt, LinkedList<Body> bodiesToDestroy) {
-        powerUpInterval += dt;
-
-        if (isVisible && powerUpInterval >= POWERUP_INTERVAL) {
-            makeInvisible();
-        }
-
-        if (!isVisible) {
-            timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= POWERUP_SPACE) {
-                timeSinceLastPowerUp = 0;
-                if (body != null) {
-                    bodiesToDestroy.add(body);
-                    body = null;
-                }
-                spawnPowerUp();
+    public void update(float dt) {
+        if (isVisible) {
+            powerUpInterval += dt;
+            if (powerUpInterval >= 3) {
+                makeInvisible();
             }
-        
         }
-
     }
+    // public void update(float dt, LinkedList<Body> bodiesToDestroy) {
+    //     powerUpInterval += dt;
 
-    private void spawnPowerUp() {
-        ActivePowerUp powerUp = new ActivePowerUp(factory, world);
-        powerUp.makeVisible();
+    //     if (isVisible && powerUpInterval >= POWERUP_INTERVAL) {
+    //         makeInvisible();
+    //     }
+
+    //     if (!isVisible) {
+    //         timeSinceLastPowerUp += dt;
+    //         if (timeSinceLastPowerUp >= POWERUP_SPACE) {
+    //             timeSinceLastPowerUp = 0;
+    //             if (body != null) {
+    //                 bodiesToDestroy.add(body);
+    //                 body = null;
+    //             }
+    //             spawnPowerUp();
+    //         }
+        
+    //     }
+
+    // }
+
+    // private void spawnPowerUp() {
+    //     ActivePowerUp powerUp = new ActivePowerUp(factory, world);
+    //     powerUp.makeVisible();
         
 
-    }
+    // }
 
     /*
      * Makes the powerup visible

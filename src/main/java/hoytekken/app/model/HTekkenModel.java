@@ -104,32 +104,32 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
 
-        // if (activePowerUp != null) {
-        //     activePowerUp.update(dt);
-        //     if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
-        //         bodiesToDestroy.add(activePowerUp.getBody());
-        //         activePowerUp = null;
-        //     }
-        // }
-        // if (activePowerUp == null) {
-        //     timeSinceLastPowerUp += dt;
-        //     if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-        //         activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-        //         activePowerUp.makeVisible();
-        //         timeSinceLastPowerUp = 0;
-        //     }
-        // }
+        if (activePowerUp != null) {
+            activePowerUp.update(dt);
+            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
+                bodiesToDestroy.add(activePowerUp.getBody());
+                activePowerUp = null;
+            }
+        }
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp.makeVisible();
+                timeSinceLastPowerUp = 0;
+            }
+        }
 
         // if (activePowerUp != null) {
-        //     activePowerUp.update(dt, bodiesToDestroy);
+        //     activePowerUp.update(dt);
         //     if (activePowerUp.shouldBeDestroyed()) {
         //         activePowerUp = null;
         //     }
         // }
 
-        if (activePowerUp != null) {
-            activePowerUp.update(dt, bodiesToDestroy);
-        }
+        // if (activePowerUp != null) {
+        //     activePowerUp.update(dt, bodiesToDestroy);
+        // }
 
         while (!bodiesToDestroy.isEmpty()) {
             Body b = bodiesToDestroy.poll();
