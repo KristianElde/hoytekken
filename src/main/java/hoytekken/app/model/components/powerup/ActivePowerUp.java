@@ -23,8 +23,6 @@ import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
  */
 public class ActivePowerUp extends Sprite {
     private static final float POWERUP_SIZE = 30 / Hoytekken.PPM;
-    private static final float POWERUP_INTERVAL = 3;
-    private static final float POWERUP_SPACE = 10;
 
     private final String type;
     private final World world;
@@ -36,11 +34,6 @@ public class ActivePowerUp extends Sprite {
     private boolean shouldBeDestroyed = false;
 
     private float powerUpInterval = 0;
-    private float timeSinceLastPowerUp = 0;
-
-    private RandomPowerUpFactory factory;
-
-    //private PowerUpCreator creator;
     
     /**
      * Constructor for the active power up
@@ -54,7 +47,7 @@ public class ActivePowerUp extends Sprite {
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
-        this.factory = (RandomPowerUpFactory) factory;
+        //this.factory = (RandomPowerUpFactory) factory;
         
         setRegion(texture);
         defineBody();
@@ -102,11 +95,42 @@ public class ActivePowerUp extends Sprite {
     }
 
     /*
+     * Method to get the body of the powerup
+     * @return the body of the powerup
+     */
+    public Body getBody() {
+        return body;
+    }
+
+    /*
+     * Marks the powerup for destruction
+     */
+    public void markForDestruction() {
+        shouldBeDestroyed = true;
+    }
+
+    /*
      * Makes the powerup visible
      */
     public void makeVisible() {
         isVisible = true;
         powerUpInterval = 0;
+    }
+
+    /*
+     * Checks if the powerup is visible
+     * @return true if the powerup is visible, false otherwise
+     */
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    /*
+     * Checks if the powerup should be destroyed
+     * @return true if the powerup should be destroyed, false otherwise
+     */
+    public boolean shouldBeDestroyed() {
+        return shouldBeDestroyed;
     }
 
     /*
@@ -117,37 +141,11 @@ public class ActivePowerUp extends Sprite {
     }
 
     /*
-     * Getter for the body
-     */
-    public Body getBody() {
-        return body;
-    }
-
-    /*
-     * Boolean to determine whether the powerup is visible
-     */
-    public boolean isVisible() {
-        return this.isVisible;
-    }
-
-    /*
      * Makes the powerup invisible
      */
     public void makeInvisible() {
         this.isVisible = false;
     }
 
-    /*
-     * Marks the powerup for destruction
-     */
-    public void markForDestruction() {
-        this.shouldBeDestroyed = true;
-    }
 
-    /*
-     * Boolean to determine whether the powerup should be destroyed
-     */
-    public boolean shouldBeDestroyed() {
-        return this.shouldBeDestroyed;
-    }
 }

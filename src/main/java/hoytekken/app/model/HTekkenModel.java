@@ -18,7 +18,6 @@ import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.model.components.powerup.PowerUpCreator;
 import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
@@ -103,30 +102,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-
-        // if (activePowerUp != null) {
-        //     activePowerUp.update(dt);
-        //     if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
-        //         bodiesToDestroy.add(activePowerUp.getBody());
-        //         activePowerUp = null;
-        //     }
-        // }
-        // if (activePowerUp == null) {
-        //     timeSinceLastPowerUp += dt;
-        //     if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-        //         activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-        //         activePowerUp.makeVisible();
-        //         timeSinceLastPowerUp = 0;
-        //     }
-        // }
-
-        // while (!bodiesToDestroy.isEmpty()) {
-        //     Body b = bodiesToDestroy.poll();
-        //     if (b != null && b.getUserData() instanceof ActivePowerUp) {
-        //         gameWorld.destroyBody(b);
-        //     }
-        // }
-
         updatePowerUps(dt);
         playerOne.update(dt);
         playerTwo.update(dt);
