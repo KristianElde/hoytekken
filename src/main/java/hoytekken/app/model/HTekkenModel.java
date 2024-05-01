@@ -102,30 +102,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-
-        if (activePowerUp != null) {
-            activePowerUp.update(dt);
-            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
-                bodiesToDestroy.add(activePowerUp.getBody());
-                activePowerUp = null;
-            }
-        }
-        if (activePowerUp == null) {
-            timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-                activePowerUp.makeVisible();
-                timeSinceLastPowerUp = 0;
-            }
-        }
-
-        while (!bodiesToDestroy.isEmpty()) {
-            Body b = bodiesToDestroy.poll();
-            if (b != null && b.getUserData() instanceof ActivePowerUp) {
-                gameWorld.destroyBody(b);
-            }
-        }
-
+        updatePowerUps(dt);
         playerOne.update(dt);
         playerTwo.update(dt);
 
@@ -341,5 +318,30 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         else return false;
     }
 
+    private void updatePowerUps(float dt) {
+
+        if (activePowerUp != null) {
+            activePowerUp.update(dt);
+            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
+                bodiesToDestroy.add(activePowerUp.getBody());
+                activePowerUp = null;
+            }
+        }
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp.makeVisible();
+                timeSinceLastPowerUp = 0;
+            }
+        }
+
+        while (!bodiesToDestroy.isEmpty()) {
+            Body b = bodiesToDestroy.poll();
+            if (b != null && b.getUserData() instanceof ActivePowerUp) {
+                gameWorld.destroyBody(b);
+            }
+        }
+    }
     
 }

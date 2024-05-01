@@ -31,10 +31,10 @@ public interface ViewableModel extends IViewAndControl{
     World getGameWorld();
 
     /**
-     * Getter for the player
+     * Getter for the player of the given type
      * 
      * @param player the player number
-     * @return the player
+     * @return the player 
      */
     ViewablePlayer getPlayer(PlayerType player);
 
