@@ -349,7 +349,9 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void gainExtraLife() {
-        this.lives++;
+        if (lives < MAX_LIVES) {
+            lives++;
+        }
     }
 
     @Override
