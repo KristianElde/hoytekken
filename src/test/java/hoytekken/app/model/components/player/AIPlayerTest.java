@@ -2,6 +2,7 @@ package hoytekken.app.model.components.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -85,6 +86,18 @@ public class AIPlayerTest {
     }
 
     @Test
+    void moveAIPlayerWithUpdate() {
+        float initX = AIPlayer.getBody().getPosition().x;
+
+        AIPlayer.update(DELTA_TIME);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        float newX = AIPlayer.getBody().getPosition().x;
+
+        assertNotEquals(initX, newX);
+    }
+
+    @Test
     void AIPlayerDoDamageTest() {
         float initX = AIPlayer.getBody().getPosition().x;
         movePlayersBeside(KICK_RANGE);
@@ -109,6 +122,14 @@ public class AIPlayerTest {
         world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
         assertEquals(89, AIPlayer.getHealth());
+    }
+
+    @Test
+    void AIPlayerUpdateTest() {
+        AIPlayer.update(DELTA_TIME);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        assertEquals(99, opposition.getHealth());
     }
 
 }
