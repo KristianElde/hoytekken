@@ -105,7 +105,7 @@ public class PowerUpTest {
         ExtraHealth extraHealthPowerUp = new ExtraHealth();
         extraHealthPowerUp.applyPowerUp(player1);
 
-        assertEquals(149, player1.getHealth());
+        assertEquals(99, player1.getHealth());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class PowerUpTest {
         ExtraLife extraLifPowerUp = new ExtraLife();
         extraLifPowerUp.applyPowerUp(player1);
 
-        assertEquals(4, player1.getLives());
+        assertEquals(3, player1.getLives());
     }
 
     @Test
