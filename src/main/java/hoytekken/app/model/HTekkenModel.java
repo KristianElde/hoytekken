@@ -49,7 +49,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private final float directionSpeed = 0.5f;
 
     // Map
-    private String map;
     private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
     private final static String DEFAULT_MAP = "defaultMap.tmx";
@@ -74,7 +73,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * @param map string for chosen map
      */
     public HTekkenModel(String map, EventBus eventBus) {
-        this.map = map;
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
@@ -265,7 +263,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void setGameMap(String mapName) {
         String gameMap = gameMaps.get(mapName);
         if (gameMap != null) {
-            this.map = gameMap;
             this.tiledmap = mapLoader.load(gameMap);
             new Box2DWorldGenerator(gameWorld, tiledmap);
         } else {
