@@ -54,11 +54,4 @@ public interface IViewAndControl {
      */
     boolean setNumberOfPlayers(Boolean onePlayer);
 
-    /**
-     * Method to get the player
-     * 
-     * @param player the player number
-     * @return the IPlayer object
-     */
-    IPlayer getPlayer(PlayerType player);
 }
