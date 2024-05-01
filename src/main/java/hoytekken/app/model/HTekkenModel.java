@@ -72,7 +72,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * 
      * @param map string for chosen map
      */
-    public HTekkenModel(String map, EventBus eventBus) {
+    public HTekkenModel(EventBus eventBus) {
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
@@ -92,9 +92,9 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Constructor for the model, uses default map
      */
-    public HTekkenModel(EventBus eventBus) {
-        this(HTekkenModel.DEFAULT_MAP, eventBus);
-    }
+    // public HTekkenModel(EventBus eventBus) {
+    //     this(HTekkenModel.DEFAULT_MAP, eventBus);
+    // }
 
     @Override
     public void updateModel(float dt) {
