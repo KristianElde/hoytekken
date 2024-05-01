@@ -68,7 +68,7 @@ public class Player extends Sprite implements IPlayer {
     private float stateTimer;
     private float timeSinceAction = 0;
 
-    // Animation
+    // Animation for kick
     private final Animation<TextureRegion> kickAnimation;
     private Array<TextureRegion> kickFrames = new Array<TextureRegion>();
 
