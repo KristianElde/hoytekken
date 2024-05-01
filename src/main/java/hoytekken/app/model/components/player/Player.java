@@ -40,8 +40,8 @@ public class Player extends Sprite implements IPlayer {
     // Constants for attack and defense
     private int PUNCH_DAMAGE = 10;
     private int KICK_DAMAGE = 7;
-    private static final float PUNCH_RANGE = 1.8f;
-    private static final float KICK_RANGE = 2.2f;
+    private static final float PUNCH_RANGE = 1.2f;
+    private static final float KICK_RANGE = 1.8f;
 
     // Player Texture & World
     private final World world;
