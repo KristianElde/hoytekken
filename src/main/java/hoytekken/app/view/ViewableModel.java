@@ -17,7 +17,7 @@ import hoytekken.app.model.components.powerup.PowerUp;
 public interface ViewableModel extends IViewAndControl{
 
     /**
-     * Updates the model
+     * Updates the model. Takes care of players movements and position, powerups and gamestate
      * 
      * @param dt time slice float
      */
