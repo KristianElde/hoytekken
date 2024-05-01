@@ -242,13 +242,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         IPlayer attackingPlayer = getPlayer(attacker);
         IPlayer victimPlayer = attacker == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
-        switch (actionType) {
-            case KICK:
-                return attackingPlayer.kick(victimPlayer);
-            case PUNCH:
-                return attackingPlayer.punch(victimPlayer);
-        }
-        return false;
+        return switch (actionType) {
+            case KICK -> attackingPlayer.kick(victimPlayer);
+            case PUNCH -> attackingPlayer.punch(victimPlayer);
+        };
     }
 
     @Override

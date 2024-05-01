@@ -1,10 +1,6 @@
 package hoytekken.app.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -112,6 +108,13 @@ public class ModelTest {
     }
 
     @Test
+    void modelUpdatesPlayersTest() {
+        model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
+        model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertDoesNotThrow(() -> model.updateModel(0));
+    }
+
+    @Test
     void performAttackActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
@@ -147,19 +150,32 @@ public class ModelTest {
 
     @Test
     void jumpCounterTest() {
-        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        assertThrows(IllegalArgumentException.class, () -> model.getJumpCounter(null));
+        PlayerType p1 = PlayerType.PLAYER_ONE;
+        PlayerType p2 = PlayerType.PLAYER_TWO;
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(1, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        assertEquals(0, model.getJumpCounter(p1));
+        assertEquals(0, model.getJumpCounter(p2));
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(1, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(1, model.getJumpCounter(p2));
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(2, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(2, model.getJumpCounter(p2));
 
-        model.resetDoubleJump(PlayerType.PLAYER_ONE);
-        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(2, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(2, model.getJumpCounter(p2));
+
+        model.resetDoubleJump(p1);
+        assertEquals(0, model.getJumpCounter(p1));
+        model.resetDoubleJump(p2);
+        assertEquals(0, model.getJumpCounter(p2));
     }
 
     @Test

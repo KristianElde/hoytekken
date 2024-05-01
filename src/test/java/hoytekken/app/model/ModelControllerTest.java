@@ -56,6 +56,7 @@ public class ModelControllerTest {
     void testForceDirection() {
         ForceDirection initialP1 = model.getDirection(PlayerType.PLAYER_ONE);
         ForceDirection initialP2 = model.getDirection(PlayerType.PLAYER_TWO);
+        assertThrows(IllegalArgumentException.class, () -> model.getDirection(null));
         ForceDirection initialExpected = ForceDirection.STATIC;
 
         //assert initial force direction is STATIC
@@ -65,6 +66,7 @@ public class ModelControllerTest {
         //assert method sets direction correctly
         model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
         model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertFalse(model.setDirection(null, ForceDirection.STATIC));
 
         ForceDirection p1 = model.getDirection(PlayerType.PLAYER_ONE);
         ForceDirection p2 = model.getDirection(PlayerType.PLAYER_TWO);
