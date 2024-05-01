@@ -46,13 +46,6 @@ public interface ViewableModel extends IViewAndControl{
     TiledMap getTiledMap();
 
     /**
-     * Gets the gamestate that the game is currently in
-     * 
-     * @return a GameState-object that represents the current gamestate
-     */
-    GameState getGameState();
-
-    /**
      * Gets the powerup that is currently active
      * 
      * @return the active powerup
