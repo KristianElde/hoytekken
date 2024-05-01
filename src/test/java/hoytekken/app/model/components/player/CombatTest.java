@@ -22,6 +22,7 @@ import hoytekken.app.Hoytekken;
  * Unit tests for the Player class
  */
 public class CombatTest {
+    private static final float PUNCH_RANGE = 1.2f;
     private World world;
     private Player playerOne;
     private Player playerTwo;
@@ -42,11 +43,11 @@ public class CombatTest {
         playerOne = new Player(world, PlayerType.PLAYER_ONE, 99);
         playerTwo = new Player(world, PlayerType.PLAYER_TWO, 99);
 
-        // TODO: Remove this hardcoded position, needed for withinRange
-        playerOne.move(8f * Hoytekken.PPM, 0);
-        playerTwo.move(-2f * Hoytekken.PPM, 0);
-
-        world.step(1 / 60f, 6, 2);
+        while(!playerOne.isWithinRange(playerTwo, PUNCH_RANGE)){
+            playerOne.move(1f * Hoytekken.PPM, 0);
+            playerTwo.move(-1f * Hoytekken.PPM, 0);
+            world.step(1 / 60f, 6, 2);
+        }
     }
 
     @Test
@@ -60,7 +61,7 @@ public class CombatTest {
     void punch() {
         // Test that the player can punch
         assertTrue(playerOne.punch(playerTwo));
-        assertTrue(playerTwo.getHealth() == 99 - 10, "Player two should have 94 health after being punched");
+        assertTrue(playerTwo.getHealth() == 99 - 10, "Player two should have 89 health after being punched");
     }
 
     @Test
