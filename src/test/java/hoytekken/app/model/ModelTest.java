@@ -108,6 +108,13 @@ public class ModelTest {
     }
 
     @Test
+    void modelUpdatesPlayersTest() {
+        model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
+        model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertDoesNotThrow(() -> model.updateModel(0));
+    }
+
+    @Test
     void performAttackActionPunchTest() {
         model.performAttackAction(PlayerType.PLAYER_ONE, ActionType.PUNCH);
 
