@@ -1,10 +1,6 @@
 package hoytekken.app.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -25,7 +21,9 @@ import hoytekken.app.controller.ActionType;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.PlayerType;
 
 public class ModelTest {
@@ -58,7 +56,7 @@ public class ModelTest {
         Vector2 p2Pos = new Vector2(p2.getBody().getPosition().x, p2.getBody().getPosition().y);
 
         float distance = p1Pos.dst(p2Pos);
-        float range = playerWidth * 1.8f;
+        float range = playerWidth * 1.2f;
         return distance <= range;
     }
 
@@ -73,7 +71,6 @@ public class ModelTest {
     void sanityTest() {
         assertNotNull(model.getGameState());
         assertNotNull(model.getGameWorld());
-        assertNotNull(model.getMap());
         assertNotNull(player1);
         assertNotNull(player1);
         assertNotEquals(player1, player2);
@@ -107,6 +104,13 @@ public class ModelTest {
         model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
         assertEquals(ForceDirection.LEFT, model.getDirection(PlayerType.PLAYER_ONE));
         assertEquals(ForceDirection.RIGHT, model.getDirection(PlayerType.PLAYER_TWO));
+    }
+
+    @Test
+    void modelUpdatesPlayersTest() {
+        model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
+        model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
+        assertDoesNotThrow(() -> model.updateModel(0));
     }
 
     @Test
@@ -145,19 +149,32 @@ public class ModelTest {
 
     @Test
     void jumpCounterTest() {
-        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        assertThrows(IllegalArgumentException.class, () -> model.getJumpCounter(null));
+        PlayerType p1 = PlayerType.PLAYER_ONE;
+        PlayerType p2 = PlayerType.PLAYER_TWO;
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(1, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        assertEquals(0, model.getJumpCounter(p1));
+        assertEquals(0, model.getJumpCounter(p2));
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(1, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(1, model.getJumpCounter(p2));
 
-        model.jump(PlayerType.PLAYER_ONE);
-        assertEquals(2, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(2, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(2, model.getJumpCounter(p2));
 
-        model.resetDoubleJump(PlayerType.PLAYER_ONE);
-        assertEquals(0, model.getJumpCounter(PlayerType.PLAYER_ONE));
+        model.jump(p1);
+        assertEquals(2, model.getJumpCounter(p1));
+        model.jump(p2);
+        assertEquals(2, model.getJumpCounter(p2));
+
+        model.resetDoubleJump(p1);
+        assertEquals(0, model.getJumpCounter(p1));
+        model.resetDoubleJump(p2);
+        assertEquals(0, model.getJumpCounter(p2));
     }
 
     @Test
@@ -214,13 +231,18 @@ public class ModelTest {
     @Test
     void gameMapTest() {
         assertNotNull(model.getGameMaps());
-        assertNotNull(model.getMap());
-        model.setGameMap("map2");
-        assertEquals("secondKMVmap.tmx", model.getMap());
-        model.setGameMap("map1");
-        assertEquals("defaultMap.tmx", model.getMap());
-        model.setGameMap("map3");
-        assertEquals("thirdKMVmap.tmx", model.getMap());
+    }
+
+    @Test
+    void setNumberOfPlayersTest() {
+        //two players set in @BeforeEach
+        assertTrue(model.getPlayer(PlayerType.PLAYER_TWO) instanceof Player, "Player Two should be a Player object");
+        
+        assertFalse(model.setNumberOfPlayers(false), "Should return false if number of players is already set to 2");
+        
+        boolean changedNumPlayers = model.setNumberOfPlayers(true);
+        assertTrue(changedNumPlayers, "Should return true if number of players is changed to 1");
+        assertTrue(model.getPlayer(PlayerType.PLAYER_TWO) instanceof AIPlayer, "Player Two should be an AIPlayer object");
     }
 
 }

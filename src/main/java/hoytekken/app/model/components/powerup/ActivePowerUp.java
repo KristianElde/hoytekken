@@ -1,5 +1,9 @@
 package hoytekken.app.model.components.powerup;
 
+import static org.mockito.Mockito.times;
+
+import java.util.LinkedList;
+
 import com.badlogic.gdx.graphics.Texture;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -12,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.IPlayer;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
 /**
  * Class represents the currently active power up in the game
@@ -42,6 +47,7 @@ public class ActivePowerUp extends Sprite {
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
+        //this.factory = (RandomPowerUpFactory) factory;
         
         setRegion(texture);
         defineBody();
@@ -89,11 +95,42 @@ public class ActivePowerUp extends Sprite {
     }
 
     /*
+     * Method to get the body of the powerup
+     * @return the body of the powerup
+     */
+    public Body getBody() {
+        return body;
+    }
+
+    /*
+     * Marks the powerup for destruction
+     */
+    public void markForDestruction() {
+        shouldBeDestroyed = true;
+    }
+
+    /*
      * Makes the powerup visible
      */
     public void makeVisible() {
         isVisible = true;
         powerUpInterval = 0;
+    }
+
+    /*
+     * Checks if the powerup is visible
+     * @return true if the powerup is visible, false otherwise
+     */
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    /*
+     * Checks if the powerup should be destroyed
+     * @return true if the powerup should be destroyed, false otherwise
+     */
+    public boolean shouldBeDestroyed() {
+        return shouldBeDestroyed;
     }
 
     /*
@@ -104,37 +141,11 @@ public class ActivePowerUp extends Sprite {
     }
 
     /*
-     * Getter for the body
-     */
-    public Body getBody() {
-        return body;
-    }
-
-    /*
-     * Boolean to determine whether the powerup is visible
-     */
-    public boolean isVisible() {
-        return this.isVisible;
-    }
-
-    /*
      * Makes the powerup invisible
      */
     public void makeInvisible() {
         this.isVisible = false;
     }
 
-    /*
-     * Marks the powerup for destruction
-     */
-    public void markForDestruction() {
-        this.shouldBeDestroyed = true;
-    }
 
-    /*
-     * Boolean to determine whether the powerup should be destroyed
-     */
-    public boolean shouldBeDestroyed() {
-        return this.shouldBeDestroyed;
-    }
 }

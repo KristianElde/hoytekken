@@ -40,7 +40,7 @@ public class InstructionsScreen extends BaseScreen {
                 {"Movement", "Keys: A, W, D", "Keys: Left, Up, Right"},
                 {"Punch", "Key: Q", "Key: P"},
                 {"Kick", "Key: E", "Key: K"},
-                {"Block", "Key: S", "Key: B"}
+                {"Block", "Key: S", "Key: Down"}
         };
 
         for (String[] instructionSet : instructions) {

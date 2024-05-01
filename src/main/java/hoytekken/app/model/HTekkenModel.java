@@ -49,10 +49,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private final float directionSpeed = 0.5f;
 
     // Map
-    private String map;
     private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
-    private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
@@ -73,8 +71,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * 
      * @param map string for chosen map
      */
-    public HTekkenModel(String map, EventBus eventBus) {
-        this.map = map;
+    public HTekkenModel(EventBus eventBus) {
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
@@ -91,41 +88,11 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.eventBus = eventBus;
     }
 
-    /**
-     * Constructor for the model, uses default map
-     */
-    public HTekkenModel(EventBus eventBus) {
-        this(HTekkenModel.DEFAULT_MAP, eventBus);
-    }
-
     @Override
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
         movePlayers();
-
-        if (activePowerUp != null) {
-            activePowerUp.update(dt);
-            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
-                bodiesToDestroy.add(activePowerUp.getBody());
-                activePowerUp = null;
-            }
-        }
-        if (activePowerUp == null) {
-            timeSinceLastPowerUp += dt;
-            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
-                activePowerUp.makeVisible();
-                timeSinceLastPowerUp = 0;
-            }
-        }
-
-        while (!bodiesToDestroy.isEmpty()) {
-            Body b = bodiesToDestroy.poll();
-            if (b != null && b.getUserData() instanceof ActivePowerUp) {
-                gameWorld.destroyBody(b);
-            }
-        }
-
+        updatePowerUps(dt);
         playerOne.update(dt);
         playerTwo.update(dt);
 
@@ -143,11 +110,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     @Override
     public IPlayer getPlayer(PlayerType player) {
         return player == PlayerType.PLAYER_ONE ? playerOne : playerTwo;
-    }
-
-    @Override
-    public String getMap() {
-        return this.map;
     }
 
     @Override
@@ -242,13 +204,10 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         IPlayer attackingPlayer = getPlayer(attacker);
         IPlayer victimPlayer = attacker == PlayerType.PLAYER_ONE ? playerTwo : playerOne;
 
-        switch (actionType) {
-            case KICK:
-                return attackingPlayer.kick(victimPlayer);
-            case PUNCH:
-                return attackingPlayer.punch(victimPlayer);
-        }
-        return false;
+        return switch (actionType) {
+            case KICK -> attackingPlayer.kick(victimPlayer);
+            case PUNCH -> attackingPlayer.punch(victimPlayer);
+        };
     }
 
     @Override
@@ -296,7 +255,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void setGameMap(String mapName) {
         String gameMap = gameMaps.get(mapName);
         if (gameMap != null) {
-            this.map = gameMap;
             this.tiledmap = mapLoader.load(gameMap);
             new Box2DWorldGenerator(gameWorld, tiledmap);
         } else {
@@ -324,6 +282,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         }
     }
 
+    @Override
     public EventBus getEventBus() {
         return eventBus;
     }
@@ -343,5 +302,29 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         else return false;
     }
 
+    private void updatePowerUps(float dt) {
+        if (activePowerUp != null) {
+            activePowerUp.update(dt);
+            if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
+                bodiesToDestroy.add(activePowerUp.getBody());
+                activePowerUp = null;
+            }
+        }
+        if (activePowerUp == null) {
+            timeSinceLastPowerUp += dt;
+            if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp.makeVisible();
+                timeSinceLastPowerUp = 0;
+            }
+        }
+
+        while (!bodiesToDestroy.isEmpty()) {
+            Body b = bodiesToDestroy.poll();
+            if (b != null && b.getUserData() instanceof ActivePowerUp) {
+                gameWorld.destroyBody(b);
+            }
+        }
+    }
     
 }

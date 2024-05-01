@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,6 +67,14 @@ public class HTekkenControllerTest {
             player1.move(100, 0);
             model.getGameWorld().step(1 / 60f, 6, 2);
         }
+    }
+
+    @Test
+    void keyDownInstructionsTest() {
+        model.setGameState(GameState.INSTRUCTIONS);
+        assertFalse(controller.keyDown(0));
+        assertFalse(controller.keyDown(Input.Keys.DOWN));
+        assertFalse(controller.keyDown(Input.Keys.UP));
     }
 
     @Test

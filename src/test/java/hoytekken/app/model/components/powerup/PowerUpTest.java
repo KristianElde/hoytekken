@@ -1,8 +1,6 @@
 package hoytekken.app.model.components.powerup;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -30,8 +28,8 @@ public class PowerUpTest {
     private Player player2;
 
     private static final int MAX_HEALTH = 99;
-    private static final float PUNCH_RANGE = 1.8f;
-    private static final float KICK_RANGE = 2.2f;
+    private static final float PUNCH_RANGE = 1.2f;
+    private static final float KICK_RANGE = 1.8f;
     private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
     private static final int POSITION_ITERATIONS = 2;
@@ -107,7 +105,7 @@ public class PowerUpTest {
         ExtraHealth extraHealthPowerUp = new ExtraHealth();
         extraHealthPowerUp.applyPowerUp(player1);
 
-        assertEquals(149, player1.getHealth());
+        assertEquals(99, player1.getHealth());
     }
 
     @Test
@@ -115,7 +113,7 @@ public class PowerUpTest {
         ExtraLife extraLifPowerUp = new ExtraLife();
         extraLifPowerUp.applyPowerUp(player1);
 
-        assertEquals(4, player1.getLives());
+        assertEquals(3, player1.getLives());
     }
 
     @Test

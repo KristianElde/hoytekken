@@ -26,8 +26,8 @@ public class AIPlayerTest {
     private AIPlayer AIPlayer;
 
     private static final int MAX_HEALTH = 99;
-    private static final float PUNCH_RANGE = 1.8f;
-    private static final float KICK_RANGE = 2.2f;
+    private static final float PUNCH_RANGE = 1.2f;
+    private static final float KICK_RANGE = 1.8f;
     private static final float DELTA_TIME = 0.1f;
     private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
