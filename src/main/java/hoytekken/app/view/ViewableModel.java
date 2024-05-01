@@ -17,7 +17,7 @@ import hoytekken.app.model.components.powerup.PowerUp;
 public interface ViewableModel extends IViewAndControl{
 
     /**
-     * Updates the model
+     * Updates the model. Takes care of players movements and position, powerups and gamestate
      * 
      * @param dt time slice float
      */
@@ -39,25 +39,11 @@ public interface ViewableModel extends IViewAndControl{
     ViewablePlayer getPlayer(PlayerType player);
 
     /**
-     * Getter for the map
-     * 
-     * @return the map path string
-     */
-    String getMap();
-
-    /**
      * Getter for the tiled map
      * 
      * @return the tiled map
      */
     TiledMap getTiledMap();
-
-    /**
-     * Gets the gamestate that the game is currently in
-     * 
-     * @return a GameState-object that represents the current gamestate
-     */
-    GameState getGameState();
 
     /**
      * Gets the powerup that is currently active

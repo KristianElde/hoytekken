@@ -49,10 +49,8 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     private final float directionSpeed = 0.5f;
 
     // Map
-    private String map;
     private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
-    private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
@@ -73,8 +71,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
      * 
      * @param map string for chosen map
      */
-    public HTekkenModel(String map, EventBus eventBus) {
-        this.map = map;
+    public HTekkenModel(EventBus eventBus) {
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
@@ -89,13 +86,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
         this.eventBus = eventBus;
-    }
-
-    /**
-     * Constructor for the model, uses default map
-     */
-    public HTekkenModel(EventBus eventBus) {
-        this(HTekkenModel.DEFAULT_MAP, eventBus);
     }
 
     @Override
@@ -120,11 +110,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     @Override
     public IPlayer getPlayer(PlayerType player) {
         return player == PlayerType.PLAYER_ONE ? playerOne : playerTwo;
-    }
-
-    @Override
-    public String getMap() {
-        return this.map;
     }
 
     @Override
@@ -270,7 +255,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     public void setGameMap(String mapName) {
         String gameMap = gameMaps.get(mapName);
         if (gameMap != null) {
-            this.map = gameMap;
             this.tiledmap = mapLoader.load(gameMap);
             new Box2DWorldGenerator(gameWorld, tiledmap);
         } else {
@@ -319,7 +303,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     private void updatePowerUps(float dt) {
-
         if (activePowerUp != null) {
             activePowerUp.update(dt);
             if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
