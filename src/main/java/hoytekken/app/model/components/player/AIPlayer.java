@@ -9,8 +9,6 @@ import com.badlogic.gdx.physics.box2d.World;
  * Extends {@code Player.Class} and introduces automated decision making
  */
 public class AIPlayer extends Player {
-    private static final float PUNCH_RANGE = 1.8f;
-    private static final float KICK_RANGE = 2.2f;
     private static final float IDLE_ACCELERATION = 0.15f;
     private static final float CHASE_ACCELERATION = 0.5f;
     
