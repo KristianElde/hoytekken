@@ -89,13 +89,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         this.eventBus = eventBus;
     }
 
-    /**
-     * Constructor for the model, uses default map
-     */
-    // public HTekkenModel(EventBus eventBus) {
-    //     this(HTekkenModel.DEFAULT_MAP, eventBus);
-    // }
-
     @Override
     public void updateModel(float dt) {
         gameWorld.step(1 / 60f, 6, 2);
