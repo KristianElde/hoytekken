@@ -51,7 +51,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     // Map
     private final TmxMapLoader mapLoader;
     private TiledMap tiledmap;
-    private final static String DEFAULT_MAP = "defaultMap.tmx";
     private final static HashMap<String, String> gameMaps = new HashMap<>() {
         {
             put("map1", "defaultMap.tmx");
