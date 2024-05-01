@@ -56,7 +56,7 @@ public class ModelTest {
         Vector2 p2Pos = new Vector2(p2.getBody().getPosition().x, p2.getBody().getPosition().y);
 
         float distance = p1Pos.dst(p2Pos);
-        float range = playerWidth * 1.8f;
+        float range = playerWidth * 1.2f;
         return distance <= range;
     }
 
