@@ -100,34 +100,6 @@ public class ActivePowerUp extends Sprite {
             }
         }
     }
-    // public void update(float dt, LinkedList<Body> bodiesToDestroy) {
-    //     powerUpInterval += dt;
-
-    //     if (isVisible && powerUpInterval >= POWERUP_INTERVAL) {
-    //         makeInvisible();
-    //     }
-
-    //     if (!isVisible) {
-    //         timeSinceLastPowerUp += dt;
-    //         if (timeSinceLastPowerUp >= POWERUP_SPACE) {
-    //             timeSinceLastPowerUp = 0;
-    //             if (body != null) {
-    //                 bodiesToDestroy.add(body);
-    //                 body = null;
-    //             }
-    //             spawnPowerUp();
-    //         }
-        
-    //     }
-
-    // }
-
-    // private void spawnPowerUp() {
-    //     ActivePowerUp powerUp = new ActivePowerUp(factory, world);
-    //     powerUp.makeVisible();
-        
-
-    // }
 
     /*
      * Makes the powerup visible
