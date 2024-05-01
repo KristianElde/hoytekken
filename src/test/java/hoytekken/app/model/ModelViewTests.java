@@ -105,15 +105,6 @@ public class ModelViewTests {
     }
 
     @Test
-    void testGetMap() {
-        //assert view has access to map and it is initialized as deafault map
-        String map = model.getMap();
-        assertNotNull(map, "Map object should be initialized.");
-        assertEquals("defaultMap.tmx", map, "Map should be defaultMap.tmx.");
-
-    }
-
-    @Test
     void testGetTiledMap() {
         //assert view has access to tiledmap and it is not loaded before game starts
         assertNull(model.getTiledMap(), "Tiledmap should not be loaded before game starts.");

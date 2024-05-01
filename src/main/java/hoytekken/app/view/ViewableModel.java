@@ -39,13 +39,6 @@ public interface ViewableModel extends IViewAndControl{
     ViewablePlayer getPlayer(PlayerType player);
 
     /**
-     * Getter for the map
-     * 
-     * @return the map path string
-     */
-    String getMap();
-
-    /**
      * Getter for the tiled map
      * 
      * @return the tiled map

@@ -123,11 +123,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     @Override
-    public String getMap() {
-        return this.map;
-    }
-
-    @Override
     public TiledMap getTiledMap() {
         return tiledmap;
     }
@@ -319,7 +314,6 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     }
 
     private void updatePowerUps(float dt) {
-
         if (activePowerUp != null) {
             activePowerUp.update(dt);
             if (!activePowerUp.isVisible() || activePowerUp.shouldBeDestroyed()) {
