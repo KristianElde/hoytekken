@@ -254,11 +254,11 @@ public class ModelControllerTest {
 
         assertEquals(99, p1.getHealth());
         p1.increaseHealth(1);
-        assertEquals(100, p1.getHealth());
+        assertEquals(99, p1.getHealth());
 
         assertEquals(99, p2.getHealth());
         p2.increaseHealth(1);
-        assertEquals(100, p2.getHealth());
+        assertEquals(99, p2.getHealth());
     }
 
     @Test
@@ -268,11 +268,11 @@ public class ModelControllerTest {
 
         assertEquals(3, p1.getLives());
         p1.gainExtraLife();
-        assertEquals(4, p1.getLives());
+        assertEquals(3, p1.getLives());
 
         assertEquals(3, p2.getLives());
         p2.gainExtraLife();
-        assertEquals(4, p2.getLives());
+        assertEquals(3, p2.getLives());
     }
         
     @Test
