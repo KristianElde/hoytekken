@@ -40,8 +40,8 @@ public class Player extends Sprite implements IPlayer {
     // Constants for attack and defense
     private int PUNCH_DAMAGE = 10;
     private int KICK_DAMAGE = 7;
-    private static final float PUNCH_RANGE = 1.2f;
-    private static final float KICK_RANGE = 1.8f;
+    protected static final float PUNCH_RANGE = 1.2f;
+    protected static final float KICK_RANGE = 1.8f;
 
     // Player Texture & World
     private final World world;
@@ -68,8 +68,9 @@ public class Player extends Sprite implements IPlayer {
     private float stateTimer;
     private float timeSinceAction = 0;
 
-    // Animation
+    // Animation for kick
     private final Animation<TextureRegion> kickAnimation;
+    private Array<TextureRegion> kickFrames = new Array<TextureRegion>();
 
     //Sounds
     private final Sound punchSound = new Sound("sounds\\Punch.mp3");
@@ -83,6 +84,7 @@ public class Player extends Sprite implements IPlayer {
      * @param health the health of the player
      */
     public Player(World world, PlayerType type, int health) {
+        // Set the texture of the player
         super(type == PlayerType.PLAYER_ONE
                 ? atlas.findRegion("Character_1_normalStand(60x27)")
                 : atlas2.findRegion("Character_2_normalStand(60x27)"));
@@ -96,21 +98,24 @@ public class Player extends Sprite implements IPlayer {
         this.stateTimer = 0;
         this.runningRight = true;
 
-        Array<TextureRegion> frames = new Array<>();
+        // Set the kick animation
+        kickAnimation = new Animation<>(0.1f, getKickFrames(kickFrames));
+        kickFrames.clear();
 
-        // Kicking animation
-        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
-        frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
-        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
-        kickAnimation = new Animation<>(0.1f, frames);
-        frames.clear();
-
+        // Set the player stand texture
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
         setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
         setRegion(playerStand);
         body.getFixtureList().get(0).setFriction(PLAYER_FRICTION_CONSTANT);
+    }
+
+    private Array<TextureRegion> getKickFrames(Array<TextureRegion> frames) {
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
+        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+        return frames;
     }
 
     private void definePlayer() {
