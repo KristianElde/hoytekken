@@ -100,12 +100,13 @@ public class Player extends Sprite implements IPlayer {
         Array<TextureRegion> frames = new Array<>();
 
         // Kicking animation
-        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
-        frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
-        frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
-        kickAnimation = new Animation<>(0.1f, frames);
-        frames.clear();
+            frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+            frames.add(new TextureRegion(getTexture(), 360, 0, 666, 1080));
+            frames.add(new TextureRegion(getTexture(), 1512, 0, 666, 1080));
+            kickAnimation = new Animation<>(0.1f, frames);
+            frames.clear();
 
+        // Set the player stand texture
         this.playerStand = new TextureRegion(getTexture(), 1026, 0, 486, 1080);
 
         definePlayer();
