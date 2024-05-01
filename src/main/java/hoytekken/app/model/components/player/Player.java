@@ -367,9 +367,6 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void increaseHealth(int increaseAmount) {
-        // this.maxHealth += increaseAmount;
-        // this.health += increaseAmount;
-
         if (this.health + increaseAmount > this.maxHealth) {
             this.health = this.maxHealth;
         } else {
