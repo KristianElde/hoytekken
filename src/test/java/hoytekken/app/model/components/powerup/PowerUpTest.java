@@ -28,8 +28,8 @@ public class PowerUpTest {
     private Player player2;
 
     private static final int MAX_HEALTH = 99;
-    private static final float PUNCH_RANGE = 1.8f;
-    private static final float KICK_RANGE = 2.2f;
+    private static final float PUNCH_RANGE = 1.2f;
+    private static final float KICK_RANGE = 1.8f;
     private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
     private static final int POSITION_ITERATIONS = 2;
