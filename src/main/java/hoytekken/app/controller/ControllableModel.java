@@ -46,4 +46,12 @@ public interface ControllableModel extends IViewAndControl{
      * @return true if the action was performed, false otherwise
      */
     boolean performAttackAction(PlayerType attacker, ActionType action);
+
+    /**
+     * Get the player of the given type
+     * 
+     * @param player the player type to get
+     * @return the player of the given type
+     */
+    IPlayer getPlayer(PlayerType player);
 }
