@@ -15,7 +15,7 @@
 ### 1.2. Møteleder
 
     Sune er fortsatt møteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene 
-    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte 
+    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete oppgaver å jobbe med. Vi begynte 
     også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
@@ -50,30 +50,78 @@
 
 ## 2. Prosjektmetodikk
 
-    Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller forkasting av mindre relevante oppgaver.
+    Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. 
+    Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har 
+    gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller 
+    forkasting av mindre relevante oppgaver.
 
-    Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde prosjektets tempo og kvalitet.
+    Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes 
+    mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. 
+    Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde 
+    prosjektets tempo og kvalitet.
      
-    Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
+    Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige 
+    for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. 
+    Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
 
-    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
+    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, 
+    noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende 
+    prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
 
-    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
+    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en 
+    dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
    
 
 ## 3. Gruppedynamikk
 
-    
+    I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist
+    seg å være en av de sterkeste sidene ved vårt teamarbeid. Effektiviteten og samarbeidet innad i gruppen har bidratt 
+    til en positiv og engasjerende arbeids-atmosfære, noe som har vært essensielt for fremdriften og moralen i prosjektet. 
+    Den positive stemningen i gruppen har også lagt grunnlaget for en kultur hvor det er lav terskel for å fremme 
+    forslag til forbedringer, kreative løsninger og innovative ideer. Dette har vist seg å være en verdifull ressurs for
+    prosjektets utvikling, da det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har vi oppnådd en
+    dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt og motivert til å bidra med sitt beste.
+
+    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode 
+    stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeid.
 
 ## 4. Kommunikasjon
-
+    
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre 
+    oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å 
+    oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har 
+    vært  uklart har fungert bra. I tillegg har vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
   
 
 ## 5. Retrospektiv
 
-    
+    I løpet av våre retrospektiv har vi satt søkelyset på å evaluere prosjektstrukturen, internkommunikasjonen i teamet, fordelingen av 
+    arbeid og commits-balanse. Gjennom anvendelsen av Kanban og regelmessige møter har vi etablert en solid struktur som har optimalisert 
+    vår arbeidsflyt og oppgavehåndtering.
+
+    Internkommunikasjonen har blitt betydelig forbedret ved bruk av Discord og Trello, hvor alle teammedlemmer ble holdt løpende informert og engasjert. 
+
+    Arbeidsfordelingen har blitt mer rettferdig og effektiv, takket være klarere definerte roller og ansvarsområder. Underveis i prosjektet 
+    har analysen av commits vist en ujevn fordeling, men med forbedringer mot slutten av prosjektet, har dette blitt jevnet ut ved bedre fordeling 
+    av oppgaver og mer effektiv kommunikasjon.
+
+    Disse tiltakene har ikke bare forbedret vår samlede ytelse, men også styrket samarbeidet og tilfredsheten innad i teamet. Hele prosjektet sett i ettertid har vært en 
+    lærerik og givende opplevelse, og vi er stolte av det endelige resultatet.
+
 
 ## 6. Arbeidsfordeling
+
+    Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å 
+    involvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
+
+    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte 
+    gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og 
+    Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort 
+    arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og 
+    Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemmene par-programmert en del, 
+    og dette har gjort at den ene i parret kanskje har færre commits enn fortjent.
+
+    Med alt dette tatt i betraktning har vi en ganske jevn arbeidsfordeling.
 
 
 ## 7. Forbedringspunkter fra retrospektiv
@@ -96,12 +144,14 @@
 
     Vi har også prioritert å fikse kjente bugs. Dette har vi kommet et godt stykke på vei med, og har nå fikset de fleste av disse.
 
-    Siden sist har vi også videreutviklet AI-spilleren til et litt mer avansert nivå. Den har nå et litt mer uforutsigbart handlingsmønster, som gjør at den er ganske mye morsommere å spille mot.
+    Siden sist har vi også videreutviklet AI-spilleren til et litt mer avansert nivå. Den har nå et litt mer uforutsigbart handlingsmønster, 
+    som gjør at den er ganske mye morsommere å spille mot.
    
 
 ## Prioriterte oppgaver fremover
 
-    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede presentasjonen av prosjektet vårt.
+    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede 
+    presentasjonen av prosjektet vårt.
 
 
 # Produkt og kode
@@ -123,7 +173,7 @@
     Hva har vi gjort:
     - Spillere kan fortsatt klistre seg til vegger (beholdt som en feature), men vi har gjort endring slik at spiller ikke får jumpcounter blir resatt når dette skjer. 
     - PowerUps spawner ikke lenger inni platformer. Vi sjekker betingelser for å se om senter av powerupens body er inni et platform objekt når vi velger en random posisjon på brettet. Hvis det er en kollisjon her så blir posisjoneringsmetoden kalt på nytt.
-    - (Fikse at powerups ikke overskrider max verdier)!!!!!!
+    - Fikset at power ups ikke kan overskride max-verdier for liv og hp.
     - Forbedret AI, satt ned hastigheten for å gjøre den mindre "intens", har også lagt til flere valg for random behavior for å gjøre AI litt mer intelligent.
     - Ryddet i modellen og generelt i kodebasen, delt opp kompleks kode i flere hjelpemetoder og ryddet i noen konstruktører. Har også fjernet kode var overflødig.
 
@@ -134,7 +184,7 @@
 
 ## README.md
 
-    Readme.md er opp til dato for spesifkasjoner for å kjøre programmet.
+    Readme.md er opp til dato for spesifikasjoner for å kjøre programmet.
     Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet
     til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet
     skal kompilere på Linux også.
