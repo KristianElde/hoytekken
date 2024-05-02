@@ -125,21 +125,4 @@ public class AIPlayerTest {
         assertEquals(89, AIPlayer.getHealth());
     }
 
-    // @Test
-    // void AIPlayerUpdateTest() {
-    // movePlayersBeside(PUNCH_RANGE);
-    // assertTrue(AIPlayer.isWithinRange(opposition, PUNCH_RANGE));
-
-    // Vector2 thisPos = new Vector2(AIPlayer.getBody().getPosition().x,
-    // AIPlayer.getBody().getPosition().y);
-    // Vector2 thatPos = new Vector2(opposition.getBody().getPosition().x,
-    // opposition.getBody().getPosition().y);
-    // float distance = thisPos.dst(thatPos);
-
-    // AIPlayer.update(DELTA_TIME);
-    // world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-
-    // assertEquals(89, opposition.getHealth());
-    // }
-
 }
