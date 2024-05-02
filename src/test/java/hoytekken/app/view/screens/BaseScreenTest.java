@@ -145,4 +145,18 @@ public class BaseScreenTest {
         assertDoesNotThrow(() -> screen.handleEvent(gameStateEvent));
     }
 
+    @Test
+    void handleStateSwitch() {
+        BaseScreen menuScreen = new MenuScreen(gameMock, modelMock);
+        BaseScreen selScreen = new SelectionScreen(gameMock, modelMock);
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.MAIN_MENU)));
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.INSTRUCTIONS)));
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.SELECTION)));
+        assertDoesNotThrow(
+                () -> selScreen.handleStateSwitch(new GameStateEvent(GameState.INSTRUCTIONS, GameState.MAIN_MENU)));
+    }
+
 }
