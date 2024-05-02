@@ -101,7 +101,13 @@
 
     Internkommunikasjonen har blitt betydelig forbedret ved bruk av Discord og Trello, hvor alle teammedlemmer ble holdt løpende informert og engasjert. 
 
-    
+    Arbeidsfordelingen har blitt mer rettferdig og effektiv, takket være klarere definerte roller og ansvarsområder. Underveis i prosjektet 
+    har analysen av commits vist en ujevn fordeling, men med forbedringer mot slutten av prosjektet, har dette blitt jevnet ut ved bedre fordeling 
+    av oppgaver og mer effektiv kommunikasjon.
+
+    Disse tiltakene har ikke bare forbedret vår samlede ytelse, men også styrket samarbeidet og tilfredsheten innad i teamet. Hele prosjektet sett i ettertid har vært en 
+    lærerik og givende opplevelse, og vi er stolte av det endelige resultatet.
+
 
 ## 6. Arbeidsfordeling
 
