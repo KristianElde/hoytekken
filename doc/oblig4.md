@@ -81,6 +81,8 @@
 
 ## Prioriterte oppgaver fremover
 
+    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede presentasjonen av prosjektet vårt.
+
 
 # Produkt og kode
 
