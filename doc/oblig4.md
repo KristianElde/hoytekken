@@ -41,6 +41,8 @@
 
      Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller forkasting av mindre relevante oppgaver.
 
+     Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde prosjektets tempo og kvalitet.
+
    
 
 ## 3. Gruppedynamikk
