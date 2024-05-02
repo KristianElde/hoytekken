@@ -59,8 +59,12 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM),
-        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM), 0);
+        float x = (float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM;
+        float y = (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM;
+        float angle = 0;
+
+        body.setTransform(x, y, angle);
+
     }
 
     private void positionTexture() {
