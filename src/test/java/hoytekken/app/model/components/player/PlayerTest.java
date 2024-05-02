@@ -76,6 +76,7 @@ public class PlayerTest {
         assertEquals(initY, player.getBody().getPosition().y, margin);
     }
 
+
     @Test
     void testDamageTaken() {
         int initHealth = player.getHealth();

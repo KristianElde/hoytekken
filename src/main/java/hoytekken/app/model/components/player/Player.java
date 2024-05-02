@@ -32,9 +32,10 @@ public class Player extends Sprite implements IPlayer {
     private static final int PLAYER_START_Y = 14;
 
     // Constants for player shape
+    private static  final float offset = 0.01f;
     private static final Vector2[] feetVerts = new Vector2[] {
-            new Vector2(-PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
-            new Vector2(PLAYER_WIDTH / 2, -PLAYER_HEIGHT / 2),
+            new Vector2(-PLAYER_WIDTH / 2 + offset, -PLAYER_HEIGHT / 2),
+            new Vector2(PLAYER_WIDTH / 2 - offset, -PLAYER_HEIGHT / 2),
     };
 
     // Constants for attack and defense

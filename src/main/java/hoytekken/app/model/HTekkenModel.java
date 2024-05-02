@@ -69,16 +69,14 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Constructor for the model
      * 
-     * @param map string for chosen map
+     * @param eventBus for the model
      */
     public HTekkenModel(EventBus eventBus) {
         this.gameWorld = new World(GRAVITY_VECTOR, true);
         this.gameState = GameState.MAIN_MENU;
 
         this.playerOne = new Player(gameWorld, PlayerType.PLAYER_ONE, 99);
-        //this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
         this.playerTwo = null;
-        //playerTwo.flipLeft();
 
         mapLoader = new TmxMapLoader();
 

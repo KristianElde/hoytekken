@@ -3,6 +3,7 @@ package hoytekken.app.model;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
+import hoytekken.app.model.components.powerup.ActivePowerUp;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,7 +73,7 @@ public class ModelTest {
         assertNotNull(model.getGameState());
         assertNotNull(model.getGameWorld());
         assertNotNull(player1);
-        assertNotNull(player1);
+        assertNotNull(player2);
         assertNotEquals(player1, player2);
     }
 
@@ -90,6 +91,17 @@ public class ModelTest {
             model.updateModel(0);
         }
         assertEquals(GameState.GAME_OVER, model.getGameState());
+    }
+
+    @Test
+    void activePowerUpTests() {
+        model.setGameMap("map1");
+        model.updateModel(10);
+        ActivePowerUp pup = model.getActivePowerUp();
+        assertNotNull(pup);
+        assertDoesNotThrow(() -> model.applyPowerUp(PlayerType.PLAYER_ONE, model.getActivePowerUp()));
+        assertDoesNotThrow(() -> model.destroyPowerUpList());
+
     }
 
     @Test
