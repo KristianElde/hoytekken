@@ -25,13 +25,14 @@ public abstract class BaseScreen implements Screen, IEventListener {
     /**
      * Constructor for the base screen. Initializes the following:
      * <ul>
-     *   <li>{@code this.game} Hoytekken</li>
-     *   <li>{@code this.model} ViewableModel</li>
-     *   <li>{@code this.gameCam} OrthographicCamera</li>
-     *   <li>{@code this.gamePort} FitViewport</li>
+     * <li>{@code this.game} Hoytekken</li>
+     * <li>{@code this.model} ViewableModel</li>
+     * <li>{@code this.gameCam} OrthographicCamera</li>
+     * <li>{@code this.gamePort} FitViewport</li>
      * </ul>
-     * @param game the game object
-     * @param model the viewable model
+     * 
+     * @param game    the game object
+     * @param model   the viewable model
      * @param scaling whether the viewport should scale
      */
     public BaseScreen(Hoytekken game, ViewableModel model, boolean scaling) {
@@ -46,12 +47,14 @@ public abstract class BaseScreen implements Screen, IEventListener {
     /**
      * Constructor for the base screen. Initializes the following:
      * <ul>
-     *   <li>{@code this.game} Hoytekken</li>
-     *   <li>{@code this.model} ViewableModel</li>
-     *   <li>{@code this.gameCam} OrthographicCamera</li>
-     *   <li>{@code this.gamePort} FitViewport, (ViewPort not scaled to {@code Hoytekken.PPM})</li>
+     * <li>{@code this.game} Hoytekken</li>
+     * <li>{@code this.model} ViewableModel</li>
+     * <li>{@code this.gameCam} OrthographicCamera</li>
+     * <li>{@code this.gamePort} FitViewport, (ViewPort not scaled to
+     * {@code Hoytekken.PPM})</li>
      * </ul>
-     * @param game the game object
+     * 
+     * @param game  the game object
      * @param model the viewable model
      */
     public BaseScreen(Hoytekken game, ViewableModel model) {
@@ -65,24 +68,29 @@ public abstract class BaseScreen implements Screen, IEventListener {
         }
     }
 
-    private int getWinningPlayer() throws IllegalStateException{
+    private int getWinningPlayer() throws IllegalStateException {
         boolean playerOneWon = model.getPlayer(PlayerType.PLAYER_ONE).isAlive();
         boolean playerTwoWon = model.getPlayer(PlayerType.PLAYER_TWO).isAlive();
 
-        if (playerOneWon && playerTwoWon) throw new IllegalStateException("Both players cannot win at the same time");
-        if (!playerOneWon && !playerTwoWon) throw new IllegalStateException("No player has won");
+        if (playerOneWon && playerTwoWon)
+            throw new IllegalStateException("Both players cannot win at the same time");
+        if (!playerOneWon && !playerTwoWon)
+            throw new IllegalStateException("No player has won");
 
         return playerOneWon && !playerTwoWon ? 1 : 2;
     }
 
     /**
      * Initializes the camera and viewport.
+     * 
      * @param scaling whether the viewport should scale
      */
     protected void initializeCameraAndViewport(boolean scaling) {
         gameCam = new OrthographicCamera();
-        if (scaling) gamePort = new FitViewport(Hoytekken.V_WIDTH/Hoytekken.PPM, Hoytekken.V_HEIGHT/Hoytekken.PPM, gameCam);
-        else gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
+        if (scaling)
+            gamePort = new FitViewport(Hoytekken.V_WIDTH / Hoytekken.PPM, Hoytekken.V_HEIGHT / Hoytekken.PPM, gameCam);
+        else
+            gamePort = new FitViewport(Hoytekken.V_WIDTH, Hoytekken.V_HEIGHT, gameCam);
     }
 
     /**
@@ -130,15 +138,19 @@ public abstract class BaseScreen implements Screen, IEventListener {
     }
 
     /**
-     * Updates the screen's state and handles transitions based on the game's current state.
+     * Updates the screen's state and handles transitions based on the game's
+     * current state.
      * This includes:
      * <ul>
-     *   <li>Updating the camera's position and properties.</li>
-     *   <li>Handling state transitions, such as switching screens when the game state changes.</li>
+     * <li>Updating the camera's position and properties.</li>
+     * <li>Handling state transitions, such as switching screens when the game state
+     * changes.</li>
      * </ul>
-     * Subclass {@code GameScreen}, should override this method to provide specific update logic.
+     * Subclass {@code GameScreen}, should override this method to provide specific
+     * update logic.
      *
      * @param delta The time in seconds since the last frame was rendered.
+     * @return {@code true} if the screen was updated successfully, {@code false}
      */
     protected boolean update(float delta) {
         this.gameCam.update();
@@ -147,10 +159,12 @@ public abstract class BaseScreen implements Screen, IEventListener {
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
-    public void render(float delta) {}
+    public void render(float delta) {
+    }
 
     @Override
     public void resize(int width, int height) {
@@ -158,15 +172,19 @@ public abstract class BaseScreen implements Screen, IEventListener {
     }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
-    public void hide() {}
+    public void hide() {
+    }
 
     @Override
-    public void dispose() {}
-    
+    public void dispose() {
+    }
+
 }
