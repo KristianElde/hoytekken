@@ -79,6 +79,7 @@ public class BaseScreenTest {
         testInitCameraAndViewPort(screen);
         handleEventTest(screen);
         assertDoesNotThrow(() -> screen.update(1f));
+        assertTrue(screen.update(1f));
     }
 
     private void assertScreenInitialization(BaseScreen screen) {
