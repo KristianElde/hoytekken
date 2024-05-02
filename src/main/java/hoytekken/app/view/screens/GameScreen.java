@@ -85,7 +85,6 @@ public class GameScreen extends BaseScreen {
     public void dispose() {
         map.dispose();
         renderer.dispose();
-        b2dr.dispose();
         hud.getStage().dispose();
     }
 
