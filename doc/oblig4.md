@@ -44,6 +44,8 @@
     Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde prosjektets tempo og kvalitet.
      
     Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
+
+    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
    
 
 ## 3. Gruppedynamikk
