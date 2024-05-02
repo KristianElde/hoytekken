@@ -73,6 +73,15 @@
 
 ## Prioriteringer til nå
 
+    Siden forrige innlevering har en av de høyest prioriterte oppgavene vært å forbedre test-coverage. Vi er veldig fornøyde 
+    med å kunne si at vi har økt test-coverage fra 0% til nesten 70% siden forrige innlevering!
+
+    Vi har også prioritert animasjoner høyt siden forrige innlevering. Vi har nå animasjoner for spark, slag og blokk. Disse 
+    animasjonene fungerer nå som de skal, og de forbedrer helhetsopplevelsen av spillet betraktelig.
+
+    En tredje ting som har vært viktig siden sist er implementering av power ups. Dette fungerer nå på et basic nivå.
+
+    Vi har også lagt inn lyder som samsvarer med angrepshandlingene til spillerne.
    
 
 ## Prioriterte oppgaver fremover
