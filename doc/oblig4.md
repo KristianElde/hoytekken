@@ -50,7 +50,7 @@
 
 ### 1.7 Kodestilansvarlig
 
-
+    Denne rollen er tildelt Mathias, og har fungert bra. Rollen har blitt viktigere og viktigere jo større kodebasen har blitt, og han har løst dette på en god og ryddig måte. Han har underveis kommet med gode forbedringer til koden, både hvordan funksjoner kan være implementert annerledes og ryddet opp ting som ikke lenger trengs. 
 
 ## 2. Prosjektmetodikk
 
