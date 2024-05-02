@@ -10,5 +10,5 @@ public interface IEventListener {
      * 
      * @param event the event to handle
      */
-    void handleEvent(IEvent event) throws IllegalArgumentException;
+    void handleEvent(IEvent event);
 }
