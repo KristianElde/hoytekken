@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
@@ -29,6 +30,7 @@ public class ActivePowerUp extends Sprite {
     private Body body;
     private final Texture texture;
     private final PowerUp powerUp;
+    private final TiledMap map;
 
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
@@ -41,14 +43,14 @@ public class ActivePowerUp extends Sprite {
      * @param factory the power up factory
      * @param world   the world object
      */
-    public ActivePowerUp(PowerUpFactory factory, World world) {
+    public ActivePowerUp(PowerUpFactory factory, World world, TiledMap map) {
 
         this.world = world;
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
-        //this.factory = (RandomPowerUpFactory) factory;
-        
+        this.map = map;
+
         setRegion(texture);
         defineBody();
         setBounds(0, 0, POWERUP_SIZE, POWERUP_SIZE);
