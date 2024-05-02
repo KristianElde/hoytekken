@@ -2,6 +2,7 @@ package hoytekken.app.view.screens;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -74,7 +75,19 @@ public class BaseScreenTest {
     private void testBaseScreen(BaseScreen screen) {
         assertNotNull(screen);
         testSuperImplementations(screen);
+        assertScreenInitialization(screen);
         assertDoesNotThrow(() -> screen.update(1f));
+    }
+
+    private void assertScreenInitialization(BaseScreen screen) {
+        assertNotNull(screen.game, "Game object should be initialized.");
+        assertNotNull(screen.model, "Model object should be initialized.");
+        assertNotNull(screen.gameCam, "Camera object should be initialized.");
+        assertNotNull(screen.gamePort, "Viewport object should be initialized.");
+        assertInstanceOf(OrthographicCamera.class, screen.gameCam);
+        assertInstanceOf(FitViewport.class, screen.gamePort);
+        assertEquals(Hoytekken.V_WIDTH / 2f, screen.gameCam.position.x, "Camera X position should be centered.");
+        assertEquals(Hoytekken.V_HEIGHT / 2f, screen.gameCam.position.y, "Camera Y position should be centered.");
     }
 
     private void testSuperImplementations(BaseScreen screen) {
