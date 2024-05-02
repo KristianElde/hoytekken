@@ -62,9 +62,11 @@ public abstract class BaseScreen implements Screen, IEventListener {
     }
 
     @Override
-    public void handleEvent(IEvent event) {
+    public void handleEvent(IEvent event) throws IllegalArgumentException {
         if (event instanceof GameStateEvent) {
             handleStateSwitch((GameStateEvent) event);
+        } else {
+            throw new IllegalArgumentException("Event type not supported");
         }
     }
 
