@@ -50,6 +50,15 @@
 
 ## 2. Prosjektmetodikk
 
+    Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller forkasting av mindre relevante oppgaver.
+
+    Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde prosjektets tempo og kvalitet.
+     
+    Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
+
+    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
+
+    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
    
 
 ## 3. Gruppedynamikk
@@ -75,13 +84,24 @@
 
 ## Progresjon i forhold til MVP
 
+    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et godt stykke forbi dette.
+    Ettersom at vi nå er ferdig, er det ikke lenger aktuelt å endre på prioriteringsrekkefølgen for 
+    MVP-kravene. Vi har heller ikke sett behovet for å legge til noen krav frem mot siste innlevering.
 
 
 ## Prioriteringer til nå
 
+    Siden forrige innlevering har en av de høyest prioriterte oppgavene vært å forbedre test-coverage. Vi er veldig fornøyde 
+    med å kunne si at vi har fått test coverage opp til 75%.
+
+    Vi har også prioritert å fikse kjente bugs. Dette har vi kommet et godt stykke på vei med, og har nå fikset de fleste av disse.
+
+    Siden sist har vi også videreutviklet AI-spilleren til et litt mer avansert nivå. Den har nå et litt mer uforutsigbart handlingsmønster, som gjør at den er ganske mye morsommere å spille mot.
    
 
 ## Prioriterte oppgaver fremover
+
+    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede presentasjonen av prosjektet vårt.
 
 
 # Produkt og kode

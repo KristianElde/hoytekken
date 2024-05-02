@@ -8,6 +8,12 @@ import com.badlogic.gdx.graphics.Texture;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
@@ -29,6 +35,7 @@ public class ActivePowerUp extends Sprite {
     private Body body;
     private final Texture texture;
     private final PowerUp powerUp;
+    private final TiledMap map;
 
     private boolean isVisible = true;
     private boolean shouldBeDestroyed = false;
@@ -41,14 +48,14 @@ public class ActivePowerUp extends Sprite {
      * @param factory the power up factory
      * @param world   the world object
      */
-    public ActivePowerUp(PowerUpFactory factory, World world) {
+    public ActivePowerUp(PowerUpFactory factory, World world, TiledMap map) {
 
         this.world = world;
         this.powerUp = factory.getNext();
         this.type = powerUp.getClass().getSimpleName();
         this.texture = powerUp.getTexture();
-        //this.factory = (RandomPowerUpFactory) factory;
-        
+        this.map = map;
+
         setRegion(texture);
         defineBody();
         setBounds(0, 0, POWERUP_SIZE, POWERUP_SIZE);
@@ -57,8 +64,28 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
-        body.setTransform(((float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM),
-        ((float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM), 0);
+        if (this.map == null) return;
+        float x = (float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM;
+        float y = (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM;
+        float angle = 0;
+        MapLayers layers = map.getLayers();
+        for (MapLayer layer : layers) {
+            if (layer instanceof TiledMapTileLayer) continue;
+            for (RectangleMapObject tempRect : layer.getObjects().getByType(RectangleMapObject.class)) {
+                Rectangle rect = tempRect.getRectangle();
+                float rectX = rect.getX()/Hoytekken.PPM;
+                float rectY = rect.getY()/Hoytekken.PPM;
+                float rectWidth = (rect.getWidth()/Hoytekken.PPM);
+                float rectHeight = (rect.getHeight()/Hoytekken.PPM);
+
+                if (x + POWERUP_SIZE / 2 > rectX && x - POWERUP_SIZE / 2 < rectX + rectWidth && y + POWERUP_SIZE / 2 > rectY && y - POWERUP_SIZE / 2 < rectY + rectHeight) {
+                    positionBody();
+                    return;
+                }
+            }
+        }
+        body.setTransform(x, y, angle);
+
     }
 
     private void positionTexture() {
