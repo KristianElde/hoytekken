@@ -62,17 +62,21 @@ public class BaseScreenTest {
         assertNotNull(modelMock, "Mock model object should be initialized.");
         assertNotNull(gameMock.batch, "Mock SpriteBatch object should be initialized.");
     }
+
+    @Test
+    void testBaseScreens() {
+        testBaseScreen(new MenuScreen(gameMock, modelMock));
+        testBaseScreen(new InstructionsScreen(gameMock, modelMock));
+        testBaseScreen(new GameOverScreen(gameMock, modelMock, 1));
+        testBaseScreen(new SelectionScreen(gameMock, modelMock));
+    }
+
+    private void testBaseScreen(BaseScreen screen) {
+        assertNotNull(screen);
+
+        assertDoesNotThrow(() -> screen.update(1f));
+    }
     /*
-     * @Test
-     * void sanityTest() {
-     * assertEquals(1, 1, "Sanity check to verify that tests are working.");
-     * assertNotNull(application, "Headless application should be initialized.");
-     * assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
-     * assertNotNull(gameMock, "Mock game object should be initialized.");
-     * assertNotNull(modelMock, "Mock model object should be initialized.");
-     * assertNotNull(gameMock.batch,
-     * "Mock SpriteBatch object should be initialized.");
-     * }
      * 
      * @Test
      * void testInitializeScreens() {
