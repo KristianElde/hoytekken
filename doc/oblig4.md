@@ -37,7 +37,10 @@
 
 ### 1.5 Lyd og grafikk
 
-  
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe 
+    baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har 
+    vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder ble også 
+    laget av begge.
 
 ### 1.6 Strukturansvarlig
 
