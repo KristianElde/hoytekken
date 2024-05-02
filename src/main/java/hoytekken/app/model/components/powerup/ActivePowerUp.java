@@ -10,8 +10,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
@@ -68,7 +70,12 @@ public class ActivePowerUp extends Sprite {
         MapLayers layers = map.getLayers();
         for (MapLayer layer : layers) {
             if (layer instanceof TiledMapTileLayer) continue;
-
+            for (RectangleMapObject tempRect : layer.getObjects().getByType(RectangleMapObject.class)) {
+                Rectangle rect = tempRect.getRectangle();
+                float rectX = rect.getX()/Hoytekken.PPM;
+                float rectY = rect.getY()/Hoytekken.PPM;
+                float rectWidth = (rect.getWidth()/Hoytekken.PPM);
+                float rectHeight = (rect.getHeight()/Hoytekken.PPM);
         }
 
         body.setTransform(x, y, angle);
