@@ -122,6 +122,10 @@ public class BaseScreenTest {
         screen.resize(1200, 900);
         assertEquals(1200, screen.gamePort.getScreenWidth(), "Screen width should be 1200.");
         assertEquals(1200 / newAspectRatio, screen.gamePort.getScreenHeight(), "Screen height should be 900.");
+
+        // assert does not throw exception
+        assertDoesNotThrow(() -> screen.resize(0, 0), "Resize should not throw an exception.");
+        assertDoesNotThrow(() -> screen.resize(100000, 100000), "Resize should not throw an exception.");
     }
     /*
      * 
