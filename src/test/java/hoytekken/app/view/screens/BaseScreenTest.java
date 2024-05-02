@@ -73,8 +73,17 @@ public class BaseScreenTest {
 
     private void testBaseScreen(BaseScreen screen) {
         assertNotNull(screen);
-
+        testSuperImplementations(screen);
         assertDoesNotThrow(() -> screen.update(1f));
+    }
+
+    private void testSuperImplementations(BaseScreen screen) {
+        // assert super implementations does not throw exceptions
+        assertDoesNotThrow(screen::show, "Show should not throw an exception.");
+        assertDoesNotThrow(screen::hide, "Hide should not throw an exception.");
+        assertDoesNotThrow(screen::pause, "Pause should not throw an exception.");
+        assertDoesNotThrow(screen::resume, "Resume should not throw an exception.");
+        assertDoesNotThrow(screen::dispose, "Dispose should not throw an exception.");
     }
     /*
      * 
