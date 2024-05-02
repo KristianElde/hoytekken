@@ -24,7 +24,10 @@
 
 ### 1.3. Trello-ansvarlig
 
-  
+    Jonas regnes fortsatt som trello-ansvarlig, men alle har hatt ansvar for å oppdatere trello med oppgaver de har holdt 
+    på med og er ferdige med.
+    Dette ser vi på som en suksess og en naturlig utvikling som har gitt oss en god måte å holde oversikt over 
+    oppgaver som skal gjøres og er gjort.
 
 ### 1.4. Testansvarlig
 
