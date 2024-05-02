@@ -1,6 +1,6 @@
 package hoytekken.app.model.components.player;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -62,6 +62,7 @@ public class CombatTest {
         // Test that the player can punch
         assertTrue(playerOne.punch(playerTwo));
         assertTrue(playerTwo.getHealth() == 99 - 10, "Player two should have 89 health after being punched");
+
     }
 
     @Test
@@ -72,6 +73,8 @@ public class CombatTest {
 
         // Test that the player doesnt take damage while blocking
         playerOne.punch(playerTwo);
-        assertTrue(playerTwo.getHealth() == 99, "Player two should have 99 health after being punched while blocking");
+        assertEquals(99, playerTwo.getHealth(), "Player two should have 99 health after being punched while blocking");
+        playerOne.kick(playerTwo);
+        assertEquals(99, playerTwo.getHealth(), "Player two should have 99 health after being kicked while blocking");
     }
 }
