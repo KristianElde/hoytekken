@@ -50,15 +50,26 @@
 
 ## 2. Prosjektmetodikk
 
-    Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller forkasting av mindre relevante oppgaver.
+    Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. 
+    Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har 
+    gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller 
+    forkasting av mindre relevante oppgaver.
 
-    Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde prosjektets tempo og kvalitet.
+    Kanban-brettet har fungert som en visuell manifestasjon av arbeidsprosessen vår, hvor hver oppgave er representert av kort som flyttes 
+    mellom kolonnene. Dette har ikke bare økt vår forståelse av arbeidsflyten, men også forbedret måten vi håndterer arbeidsmengden på. 
+    Ved å implementere WIP-grenser har vi effektivt unngått overbelastning og minimert forsinkelser, noe som har vært essensielt for å holde 
+    prosjektets tempo og kvalitet.
      
-    Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
+    Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige 
+    for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. 
+    Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
 
-    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
+    Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, 
+    noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende 
+    prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
 
-    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
+    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en 
+    dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
    
 
 ## 3. Gruppedynamikk
@@ -71,13 +82,15 @@
     prosjektets utvikling, da det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har vi oppnådd en
     dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt og motivert til å bidra med sitt beste.
 
-    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeid.
+    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode 
+    stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeid.
 
 ## 4. Kommunikasjon
     
     Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre 
     oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å 
-    oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har vært  uklart har fungert bra. I tillegg har vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
+    oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har 
+    vært  uklart har fungert bra. I tillegg har vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
   
 
 ## 5. Retrospektiv
@@ -86,9 +99,17 @@
 
 ## 6. Arbeidsfordeling
 
-    Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å innvolvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
+    Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å 
+    involvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
 
-    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemenne par-programmert en del, og dette har gjort at den ene i parret kanskje har færre commits enn fortjent.
+    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte 
+    gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og 
+    Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort 
+    arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og 
+    Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemmene par-programmert en del, 
+    og dette har gjort at den ene i parret kanskje har færre commits enn fortjent.
+
+    Med alt dette tatt i betraktning har vi en ganske jevn arbeidsfordeling.
 
 
 
@@ -112,12 +133,14 @@
 
     Vi har også prioritert å fikse kjente bugs. Dette har vi kommet et godt stykke på vei med, og har nå fikset de fleste av disse.
 
-    Siden sist har vi også videreutviklet AI-spilleren til et litt mer avansert nivå. Den har nå et litt mer uforutsigbart handlingsmønster, som gjør at den er ganske mye morsommere å spille mot.
+    Siden sist har vi også videreutviklet AI-spilleren til et litt mer avansert nivå. Den har nå et litt mer uforutsigbart handlingsmønster, 
+    som gjør at den er ganske mye morsommere å spille mot.
    
 
 ## Prioriterte oppgaver fremover
 
-    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede presentasjonen av prosjektet vårt.
+    Ettersom at dette er siste innlevering vil vi ikke ha noen prioriterte oppgaver fremover utover det å forberede 
+    presentasjonen av prosjektet vårt.
 
 
 # Produkt og kode
