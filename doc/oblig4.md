@@ -124,7 +124,6 @@
     Med alt dette tatt i betraktning har vi en ganske jevn arbeidsfordeling.
 
 
-
 ## 7. Forbedringspunkter fra retrospektiv
 
 
