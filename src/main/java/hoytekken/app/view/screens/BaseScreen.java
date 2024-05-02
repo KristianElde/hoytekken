@@ -140,9 +140,10 @@ public abstract class BaseScreen implements Screen, IEventListener {
      *
      * @param delta The time in seconds since the last frame was rendered.
      */
-    protected void update(float delta) {
+    protected boolean update(float delta) {
         this.gameCam.update();
-        //handleStateSwitch();
+        // handleStateSwitch();
+        return true;
     }
 
     @Override
