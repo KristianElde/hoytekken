@@ -76,8 +76,16 @@ public class ActivePowerUp extends Sprite {
                 float rectY = rect.getY()/Hoytekken.PPM;
                 float rectWidth = (rect.getWidth()/Hoytekken.PPM);
                 float rectHeight = (rect.getHeight()/Hoytekken.PPM);
-        }
 
+                if (    x + POWERUP_SIZE / 2 > rectX &&
+                        x - POWERUP_SIZE / 2 < rectX + rectWidth &&
+                        y + POWERUP_SIZE / 2 > rectY &&
+                        y - POWERUP_SIZE / 2 < rectY + rectHeight) {
+                    positionBody();
+                    return;
+                }
+            }
+        }
         body.setTransform(x, y, angle);
 
     }
