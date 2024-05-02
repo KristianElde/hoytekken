@@ -71,10 +71,7 @@
     prosjektets utvikling, da det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har vi oppnådd en
     dynamisk arbeidsprosess hvor alle teammedlemmer føler seg verdsatt og motivert til å bidra med sitt beste.
 
-    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets
-    fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet
-    som fundamentale faktorer for vår suksess, og vil fortsette å prioritere
-    disse aspektene i videre arbeid.
+    Samlet sett har gruppedynamikken spilt en avgjørende rolle for prosjektets fremgang og kvalitet. Vi anser den gode stemningen og det effektive samarbeidet som fundamentale faktorer for vår suksess, og vil fortsette å prioritere disse aspektene i videre arbeid.
 
 ## 4. Kommunikasjon
     
