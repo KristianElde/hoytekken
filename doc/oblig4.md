@@ -64,11 +64,9 @@
 
 ## Progresjon i forhold til MVP
 
-    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et stykke forbi dette, og arbeidet går nå i hovedsak ut på å 
-    forbedre features som allerede er implementert i sin enkleste form.
-
-    Ettersom at vi har kommet forbi MVP stadiet er det ikke lenger aktuelt å endre på prioriteringsrekkefølgen for 
-    MVP-kravene. Vi har heller ikke sett behovet for å legge til noen krav.
+    Vi har nå dekket alle kravene i MVP'en. Vi har også kommet et godt stykke forbi dette.
+    Ettersom at vi nå er ferdig, er det ikke lenger aktuelt å endre på prioriteringsrekkefølgen for 
+    MVP-kravene. Vi har heller ikke sett behovet for å legge til noen krav frem mot siste innlevering.
 
 
 ## Prioriteringer til nå
