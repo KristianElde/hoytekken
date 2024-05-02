@@ -1,10 +1,6 @@
 package hoytekken.app.view.screens;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -14,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,16 +19,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class BaseScreenTest {
     private static HeadlessApplication application;
     private static Hoytekken gameMock;
     private static ViewableModel modelMock;
-
-    private EventBus eventbus = new EventBus();
-    private MenuScreen menuScreen;
+    private final EventBus eventbus = new EventBus();
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -48,7 +46,6 @@ public class BaseScreenTest {
     @BeforeEach
     void setUpBeforeEach() {
         when(modelMock.getEventBus()).thenReturn(eventbus);
-        menuScreen = new MenuScreen(gameMock, modelMock);
     }
 
     @AfterAll
@@ -59,7 +56,6 @@ public class BaseScreenTest {
 
     @Test
     void sanityTest() {
-        assertEquals(1, 1, "Sanity check to verify that tests are working.");
         assertNotNull(application, "Headless application should be initialized.");
         assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
         assertNotNull(gameMock, "Mock game object should be initialized.");
@@ -68,34 +64,51 @@ public class BaseScreenTest {
     }
 
     @Test
-    void testInitializeScreens() {
-
-        // Assert objects are initialized
-        assertNotNull(menuScreen.game, "Game object should be initialized.");
-        assertNotNull(menuScreen.model, "Model object should be initialized.");
-        assertNotNull(menuScreen.gameCam, "Camera object should be initialized.");
-        assertNotNull(menuScreen.gamePort, "Viewport object should be initialized.");
-
-        // Assert correct types are used
-        assertTrue(menuScreen.gamePort instanceof FitViewport, "gamePort should be of type FitViewport.");
-        assertTrue(menuScreen.gameCam instanceof OrthographicCamera, "gameCam should be of type OrthographicCamera.");
-
-        // Assert that the camera is centered
-        assertEquals(Hoytekken.V_WIDTH / 2f, menuScreen.gameCam.position.x, "Camera X position should be centered.");
-        assertEquals(Hoytekken.V_HEIGHT / 2f, menuScreen.gameCam.position.y, "Camera Y position should be centered.");
-
+    void testBaseScreens() {
+        testBaseScreen(new MenuScreen(gameMock, modelMock));
+        testBaseScreen(new InstructionsScreen(gameMock, modelMock));
+        testBaseScreen(new GameOverScreen(gameMock, modelMock, 1));
+        testBaseScreen(new SelectionScreen(gameMock, modelMock));
     }
 
-    @Test
-    void testResizeScreen() {
-        // MenuScreen menuScreen = new MenuScreen(gameMock, modelMock);
+    private void testBaseScreen(BaseScreen screen) {
+        assertNotNull(screen);
+        testSuperImplementations(screen);
+        assertScreenInitialization(screen);
+        testResizeScreen(screen);
+        testInitCameraAndViewPort(screen);
+        handleEventTest(screen);
+        assertDoesNotThrow(() -> screen.update(1f));
+        assertTrue(screen.update(1f));
+    }
 
+    private void assertScreenInitialization(BaseScreen screen) {
+        assertNotNull(screen.game, "Game object should be initialized.");
+        assertNotNull(screen.model, "Model object should be initialized.");
+        assertNotNull(screen.gameCam, "Camera object should be initialized.");
+        assertNotNull(screen.gamePort, "Viewport object should be initialized.");
+        assertInstanceOf(OrthographicCamera.class, screen.gameCam);
+        assertInstanceOf(FitViewport.class, screen.gamePort);
+        assertEquals(Hoytekken.V_WIDTH / 2f, screen.gameCam.position.x, "Camera X position should be centered.");
+        assertEquals(Hoytekken.V_HEIGHT / 2f, screen.gameCam.position.y, "Camera Y position should be centered.");
+    }
+
+    private void testSuperImplementations(BaseScreen screen) {
+        // assert super implementations does not throw exceptions
+        assertDoesNotThrow(screen::show, "Show should not throw an exception.");
+        assertDoesNotThrow(screen::hide, "Hide should not throw an exception.");
+        assertDoesNotThrow(screen::pause, "Pause should not throw an exception.");
+        assertDoesNotThrow(screen::resume, "Resume should not throw an exception.");
+        assertDoesNotThrow(screen::dispose, "Dispose should not throw an exception.");
+    }
+
+    private void testResizeScreen(BaseScreen screen) {
         // assert aspect ratio is maintained
-        float originalAspectRatio = menuScreen.gamePort.getWorldWidth() / menuScreen.gamePort.getWorldHeight();
-        menuScreen.resize(800, 600);
+        float originalAspectRatio = screen.gamePort.getWorldWidth() / screen.gamePort.getWorldHeight();
+        screen.resize(800, 600);
 
-        float newWidth = menuScreen.gamePort.getScreenWidth();
-        float newHeight = menuScreen.gamePort.getScreenHeight();
+        float newWidth = screen.gamePort.getScreenWidth();
+        float newHeight = screen.gamePort.getScreenHeight();
         float newAspectRatio = newWidth / newHeight;
 
         assertEquals(originalAspectRatio, newAspectRatio, 0.01, "Aspect ratio should be maintained after resize.");
@@ -104,31 +117,45 @@ public class BaseScreenTest {
         assertEquals(newWidth / newAspectRatio, newHeight, "Height should be adjusted to maintain aspect ratio.");
 
         // assert screens are resized for different parameters
-        menuScreen.resize(1000, 800);
-        assertEquals(1000, menuScreen.gamePort.getScreenWidth(), "Screen width should be 1000.");
-        assertEquals(1000 / newAspectRatio, menuScreen.gamePort.getScreenHeight(), "Screen height should be 800.");
+        screen.resize(1000, 800);
+        assertEquals(1000, screen.gamePort.getScreenWidth(), "Screen width should be 1000.");
+        assertEquals(1000 / newAspectRatio, screen.gamePort.getScreenHeight(), "Screen height should be 800.");
 
-        menuScreen.resize(1200, 900);
-        assertEquals(1200, menuScreen.gamePort.getScreenWidth(), "Screen width should be 1200.");
-        assertEquals(1200 / newAspectRatio, menuScreen.gamePort.getScreenHeight(), "Screen height should be 900.");
+        screen.resize(1200, 900);
+        assertEquals(1200, screen.gamePort.getScreenWidth(), "Screen width should be 1200.");
+        assertEquals(1200 / newAspectRatio, screen.gamePort.getScreenHeight(), "Screen height should be 900.");
 
         // assert does not throw exception
-        assertDoesNotThrow(() -> menuScreen.resize(0, 0), "Resize should not throw an exception.");
-        assertDoesNotThrow(() -> menuScreen.resize(100000, 100000), "Resize should not throw an exception.");
+        assertDoesNotThrow(() -> screen.resize(0, 0), "Resize should not throw an exception.");
+        assertDoesNotThrow(() -> screen.resize(100000, 100000), "Resize should not throw an exception.");
+    }
 
+    private void testInitCameraAndViewPort(BaseScreen screen) {
+        Viewport current = screen.gamePort;
+        screen.initializeCameraAndViewport(true);
+        assertNotNull(screen.gameCam);
+        assertNotNull((screen.gamePort));
+        // make sure viewport is updated
+        assertNotEquals(current, screen.gamePort);
+    }
+
+    private void handleEventTest(BaseScreen screen) {
+        GameStateEvent gameStateEvent = new GameStateEvent(GameState.MAIN_MENU, GameState.INSTRUCTIONS);
+        assertDoesNotThrow(() -> screen.handleEvent(gameStateEvent));
     }
 
     @Test
-    void testSuperImplementations() {
-        // MenuScreen menuScreen = new MenuScreen(gameMock, modelMock);
-
-        // assert super implementations does not throw exceptions
-        assertDoesNotThrow(() -> menuScreen.show(), "Show should not throw an exception.");
-        assertDoesNotThrow(() -> menuScreen.hide(), "Hide should not throw an exception.");
-        assertDoesNotThrow(() -> menuScreen.pause(), "Pause should not throw an exception.");
-        assertDoesNotThrow(() -> menuScreen.resume(), "Resume should not throw an exception.");
-        assertDoesNotThrow(() -> menuScreen.dispose(), "Dispose should not throw an exception.");
-
+    void handleStateSwitch() {
+        BaseScreen menuScreen = new MenuScreen(gameMock, modelMock);
+        BaseScreen selScreen = new SelectionScreen(gameMock, modelMock);
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.MAIN_MENU)));
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.INSTRUCTIONS)));
+        assertDoesNotThrow(
+                () -> menuScreen.handleStateSwitch(new GameStateEvent(GameState.MAIN_MENU, GameState.SELECTION)));
+        assertDoesNotThrow(
+                () -> selScreen.handleStateSwitch(new GameStateEvent(GameState.INSTRUCTIONS, GameState.MAIN_MENU)));
     }
 
 }

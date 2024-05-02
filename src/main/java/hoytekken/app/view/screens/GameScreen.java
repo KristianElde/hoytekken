@@ -21,7 +21,6 @@ public class GameScreen extends BaseScreen {
 
     private final Hud hud;
 
-
     /**
      * Constructor for the game screen
      * 
@@ -43,10 +42,11 @@ public class GameScreen extends BaseScreen {
     }
 
     @Override
-    protected void update(float delta) {
+    protected boolean update(float delta) {
         model.updateModel(delta);
         renderer.setView(gameCam);
         super.update(delta);
+        return true;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class GameScreen extends BaseScreen {
         // game.batch.draw(img, 0, 0);
         this.model.getPlayer(PlayerType.PLAYER_ONE).draw(game.batch);
         this.model.getPlayer(PlayerType.PLAYER_TWO).draw(game.batch);
-        //this.model.getActivePowerUp().draw(game.batch);
+        // this.model.getActivePowerUp().draw(game.batch);
 
         ActivePowerUp activePowerUp = this.model.getActivePowerUp();
         if (activePowerUp != null && activePowerUp.isVisible()) {
