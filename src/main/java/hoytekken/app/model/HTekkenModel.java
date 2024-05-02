@@ -84,7 +84,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
 
         this.gameWorld.setContactListener(new CollisionDetector(this));
 
-        this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+        this.activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), getGameWorld(), getTiledMap());
         this.eventBus = eventBus;
     }
 
@@ -313,7 +313,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
         if (activePowerUp == null) {
             timeSinceLastPowerUp += dt;
             if (timeSinceLastPowerUp >= powerUpSpawnInterval) {
-                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), gameWorld);
+                activePowerUp = new ActivePowerUp(new RandomPowerUpFactory(), getGameWorld(), getTiledMap());
                 activePowerUp.makeVisible();
                 timeSinceLastPowerUp = 0;
             }
