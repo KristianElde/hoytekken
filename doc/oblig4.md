@@ -88,7 +88,7 @@
 
     Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å innvolvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
 
-    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemenne par-programmert
+    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemenne par-programmert en del, og dette har gjort at den ene i parret kanskje har færre commits enn fortjent.
 
 
 ## 7. Forbedringspunkter fra retrospektiv
