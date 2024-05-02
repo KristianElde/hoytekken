@@ -7,7 +7,6 @@ import hoytekken.app.controller.HtekkenController;
 import hoytekken.app.model.HTekkenModel;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.view.screens.MenuScreen;
-import hoytekken.app.view.screens.SelectionScreen;
 
 /**
  * ApplicationListener/Game class for the game
@@ -28,6 +27,6 @@ public class Hoytekken extends Game {
         new HtekkenController(model);
 
         setScreen(new MenuScreen(this, model));
-        //setScreen(new SelectionScreen(this, model));
+        // setScreen(new SelectionScreen(this, model));
     }
 }

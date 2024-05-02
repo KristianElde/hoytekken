@@ -72,7 +72,7 @@ public class Player extends Sprite implements IPlayer {
     private final Animation<TextureRegion> kickAnimation;
     private Array<TextureRegion> kickFrames = new Array<TextureRegion>();
 
-    //Sounds
+    // Sounds
     private final Sound punchSound = new Sound("sounds\\Punch.mp3");
     private final Sound kickSound = new Sound("sounds\\Kick.mp3");
 
@@ -158,12 +158,12 @@ public class Player extends Sprite implements IPlayer {
 
     @Override
     public void update(float dt) {
-        //update timeSinceAction timer
+        // update timeSinceAction timer
         if (!PlayerState.STANDING.equals(currentState)) {
             timeSinceAction += dt;
         }
 
-        //check if player has fallen off the map, respawn if player has lives left
+        // check if player has fallen off the map, respawn if player has lives left
         if (fallenOffTheMap() && this.lives > 0) {
             takeDamage(maxHealth);
             resetPosition();
@@ -171,12 +171,12 @@ public class Player extends Sprite implements IPlayer {
             takeDamage(maxHealth);
         }
 
-        //update image position to match body position
+        // update image position to match body position
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
         setRegion(getFrame(dt));
 
-        //reset animation when player animation is done
+        // reset animation when player animation is done
         if (timeSinceAction > 0.3f) {
             resetAnimation();
             timeSinceAction = 0;

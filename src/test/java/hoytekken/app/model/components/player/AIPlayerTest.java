@@ -2,6 +2,7 @@ package hoytekken.app.model.components.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -10,17 +11,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
+
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
-import hoytekken.app.model.components.player.Player;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.Hoytekken;
 
 public class AIPlayerTest {
     private World world;
@@ -38,8 +37,8 @@ public class AIPlayerTest {
     @BeforeAll
     static void setUpBeforeAll() {
         HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
-        ApplicationListener listener = new ApplicationAdapter() {
-        };
+        Hoytekken listener = new Hoytekken();
+
         new HeadlessApplication(listener, config);
     }
 
@@ -85,6 +84,18 @@ public class AIPlayerTest {
         float deltaX = initX - newX;
 
         assertTrue(deltaX != 0);
+    }
+
+    @Test
+    void moveAIPlayerWithUpdate() {
+        float initX = AIPlayer.getBody().getPosition().x;
+
+        AIPlayer.update(DELTA_TIME);
+        world.step(TIME_STEPS, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        float newX = AIPlayer.getBody().getPosition().x;
+
+        assertNotEquals(initX, newX);
     }
 
     @Test
