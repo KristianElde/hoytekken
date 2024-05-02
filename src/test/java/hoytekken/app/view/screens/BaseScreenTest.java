@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
@@ -77,6 +78,7 @@ public class BaseScreenTest {
         testSuperImplementations(screen);
         assertScreenInitialization(screen);
         testResizeScreen(screen);
+        testInitCameraAndViewPort(screen);
         assertDoesNotThrow(() -> screen.update(1f));
     }
 
@@ -126,6 +128,15 @@ public class BaseScreenTest {
         // assert does not throw exception
         assertDoesNotThrow(() -> screen.resize(0, 0), "Resize should not throw an exception.");
         assertDoesNotThrow(() -> screen.resize(100000, 100000), "Resize should not throw an exception.");
+    }
+
+    private void testInitCameraAndViewPort(BaseScreen screen) {
+        Viewport current = screen.gamePort;
+        screen.initializeCameraAndViewport(true);
+        assertNotNull(screen.gameCam);
+        assertNotNull((screen.gamePort));
+        // make sure viewport is updated
+        assertNotEquals(current, screen.gamePort);
     }
     /*
      * 
