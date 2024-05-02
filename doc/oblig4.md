@@ -95,6 +95,10 @@
 
 ## 5. Retrospektiv
 
+    I løpet av våre retrospektiv har vi satt søkelyset på å evaluere prosjektstrukturen, internkommunikasjonen i teamet, fordelingen av 
+    arbeid og commits-balanse. Gjennom anvendelsen av Kanban og regelmessige møter har vi etablert en solid struktur som har optimalisert 
+    vår arbeidsflyt og oppgavehåndtering. 
+
     
 
 ## 6. Arbeidsfordeling
