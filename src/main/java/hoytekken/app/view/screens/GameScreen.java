@@ -17,8 +17,7 @@ import hoytekken.app.view.ViewableModel;
 public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
-    private Box2DDebugRenderer b2dr;
-
+    
     private final Hud hud;
 
     /**
@@ -31,14 +30,13 @@ public class GameScreen extends BaseScreen {
         super(game, model, true);
 
         hud = new Hud(game.batch);
-        initializeMapAndRenderers();
+        initializeMapAndRenderer();
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
-    private void initializeMapAndRenderers() {
+    private void initializeMapAndRenderer() {
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-        b2dr = new Box2DDebugRenderer();
     }
 
     @Override
@@ -59,7 +57,6 @@ public class GameScreen extends BaseScreen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
 
         game.batch.setProjectionMatrix(gameCam.combined);
 
@@ -86,9 +83,8 @@ public class GameScreen extends BaseScreen {
 
     @Override
     public void dispose() {
+        super.dispose();
         map.dispose();
-        renderer.dispose();
-        b2dr.dispose();
         hud.getStage().dispose();
     }
 

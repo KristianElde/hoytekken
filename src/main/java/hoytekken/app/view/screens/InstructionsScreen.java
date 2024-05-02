@@ -66,6 +66,7 @@ public class InstructionsScreen extends BaseScreen {
 
     @Override
     public void dispose() {
+        super.dispose();
         stage.dispose();
     }
 

@@ -127,4 +127,12 @@ public class SelectionScreen extends BaseScreen {
         drawPlayerSelection();
         game.batch.end();
     }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        for (Texture texture : mapTextures) {
+            texture.dispose();
+        }
+    }
 }

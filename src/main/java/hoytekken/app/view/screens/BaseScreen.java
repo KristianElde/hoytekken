@@ -103,32 +103,32 @@ public abstract class BaseScreen implements Screen, IEventListener {
         switch (newState) {
             case MAIN_MENU:
                 if (!(this instanceof MenuScreen)) {
-                    model.getEventBus().removeListener(this);
+                    this.dispose();
                     game.setScreen(new MenuScreen(game, model));
                 }
                 break;
             case SELECTION:
                 if (!(this instanceof SelectionScreen)) {
-                    model.getEventBus().removeListener(this);
+                    this.dispose();
                     game.setScreen(new SelectionScreen(game, model));
                 }
                 break;
             case INSTRUCTIONS:
                 if (!(this instanceof InstructionsScreen)) {
-                    model.getEventBus().removeListener(this);
+                    this.dispose();
                     game.setScreen(new InstructionsScreen(game, model));
                 }
                 break;
             case ACTIVE_GAME:
                 if (!(this instanceof GameScreen)) {
-                    model.getEventBus().removeListener(this);
+                    this.dispose();
                     game.setScreen(new GameScreen(game, model));
                 }
                 break;
             case GAME_OVER:
                 if (!(this instanceof GameOverScreen)) {
                     int winningPlayer = getWinningPlayer();
-                    model.getEventBus().removeListener(this);
+                    this.dispose();
                     game.setScreen(new GameOverScreen(game, model, winningPlayer));
                 }
                 break;
@@ -185,6 +185,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
 
     @Override
     public void dispose() {
+        model.getEventBus().removeListener(this);
     }
 
 }
