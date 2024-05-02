@@ -66,6 +66,13 @@
     
 
 ## 4. Kommunikasjon
+    
+    Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre 
+    oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å 
+    oppdatere hverandre på statusen til våre respektive oppgaver.
+    Siden sist innlevering har vi innført en kort kodegjennomgang på møtene våre når det har vært noe uklart. Dette har 
+    fungert bra.
+    I tillegg møter vi ofte hverandre på lesesal, slik at man kan spørre og diskutere mindre ting.
 
   
 
