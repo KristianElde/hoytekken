@@ -64,6 +64,7 @@ public class ActivePowerUp extends Sprite {
     }
 
     private void positionBody() {
+        if (this.map == null) return;
         float x = (float) Math.random() * Hoytekken.V_WIDTH / Hoytekken.PPM;
         float y = (float) Math.random() * Hoytekken.V_HEIGHT / Hoytekken.PPM;
         float angle = 0;
@@ -77,10 +78,7 @@ public class ActivePowerUp extends Sprite {
                 float rectWidth = (rect.getWidth()/Hoytekken.PPM);
                 float rectHeight = (rect.getHeight()/Hoytekken.PPM);
 
-                if (    x + POWERUP_SIZE / 2 > rectX &&
-                        x - POWERUP_SIZE / 2 < rectX + rectWidth &&
-                        y + POWERUP_SIZE / 2 > rectY &&
-                        y - POWERUP_SIZE / 2 < rectY + rectHeight) {
+                if (x + POWERUP_SIZE / 2 > rectX && x - POWERUP_SIZE / 2 < rectX + rectWidth && y + POWERUP_SIZE / 2 > rectY && y - POWERUP_SIZE / 2 < rectY + rectHeight) {
                     positionBody();
                     return;
                 }
