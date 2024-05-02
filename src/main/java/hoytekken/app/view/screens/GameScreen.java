@@ -30,14 +30,13 @@ public class GameScreen extends BaseScreen {
         super(game, model, true);
 
         hud = new Hud(game.batch);
-        initializeMapAndRenderers();
+        initializeMapAndRenderer();
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
     }
 
-    private void initializeMapAndRenderers() {
+    private void initializeMapAndRenderer() {
         map = model.getTiledMap();
         renderer = new OrthoCachedTiledMapRenderer(map, 1 / Hoytekken.PPM);
-        b2dr = new Box2DDebugRenderer();
     }
 
     @Override
