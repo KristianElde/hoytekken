@@ -31,7 +31,9 @@
 
 ### 1.4. Testansvarlig
 
-
+    Denne rollen er tildelt Kristian, og han har gjort en god jobb med å øke test-coverage på prosjektet. Andre 
+    har selvfølgelig også vært involvert i å lage tester, men Kristian har altså hovedansvaret for det, noe som 
+    har fungert godt.
 
 ### 1.5 Lyd og grafikk
 
