@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -24,7 +25,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
+import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class BaseScreenTest {
@@ -79,6 +83,7 @@ public class BaseScreenTest {
         assertScreenInitialization(screen);
         testResizeScreen(screen);
         testInitCameraAndViewPort(screen);
+        handleEventTest(screen);
         assertDoesNotThrow(() -> screen.update(1f));
     }
 
@@ -137,6 +142,13 @@ public class BaseScreenTest {
         assertNotNull((screen.gamePort));
         // make sure viewport is updated
         assertNotEquals(current, screen.gamePort);
+    }
+
+    private void handleEventTest(BaseScreen screen) {
+        IEvent event = null;
+        assertThrows(IllegalArgumentException.class, () -> screen.handleEvent(event));
+        GameStateEvent gameStateEvent = new GameStateEvent(GameState.MAIN_MENU, GameState.INSTRUCTIONS);
+        assertDoesNotThrow(() -> screen.handleEvent(gameStateEvent));
     }
     /*
      * 
