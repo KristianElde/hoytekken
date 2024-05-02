@@ -57,7 +57,6 @@ public class GameScreen extends BaseScreen {
 
         renderer.render();
 
-        b2dr.render(this.model.getGameWorld(), gameCam.combined);
 
         game.batch.setProjectionMatrix(gameCam.combined);
 
