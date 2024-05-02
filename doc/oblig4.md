@@ -46,6 +46,8 @@
     Den ukentlige gjennomgangen av Kanban-brettet har også spilt en kritisk rolle i prosjektstyringen. Disse møtene har vært nødvendige for å evaluere fremgangen, justere WIP-grenser og prioriteringer etter behov, og sikre at alle teammedlemmer er på samme side. Tilbakemeldingssyklusene har styrket teamets evne til kontinuerlig forbedring og tilpasning gjennom prosjektets levetid.
 
     Et avgjørende aspekt av vår bruk av Kanban har vært å prioritere nøkkelkomponenter og funksjoner for rask implementering og testing, noe som har gjort at viktige funksjoner har kunnet utvikles tidlig i prosessen. Dette har ikke bare sikret at vi har en fungerende prototype tidlig, men også at tid fra en brukerhistorie er formulert til den er implementert og testet, er betydelig redusert.
+
+    Oppsummert, Kanban har vist seg å være en uvurderlig metode for vårt prosjekt. Det har gitt oss struktur, effektivitet, og en dynamisk tilpasningsevne som har støttet våre mål om å utvikle et robust og vel-dokumentert produkt.
    
 
 ## 3. Gruppedynamikk
