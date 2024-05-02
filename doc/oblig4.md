@@ -2,40 +2,51 @@
 
 **Team:** _Karan med varan_ – _Sune_ – _Mathias_ – _Kristian_ – _Vetle_ – _Jonas_ – _Lauritz_
 
-# Rapport – innlevering 3
-
-**Team:** _Karan med varan_ – _Sune_ – _Mathias_ – _Kristian_ – _Vetle_ – _Jonas_ – _Lauritz_
-
 # Prosjektrapport
 
 ## 1. Roller
 
 ### 1.1. Prosjektleder
 
+    Selv om vi ikke har utnevnt noen til denne rollen direkte, er det likevel blitt naturlig at noen har tatt på seg
+    lederrollen. Mathias har hatt god oversikt over hva som skal til for å få prosjektet i mål, og dermed har han 
+    fått denne rollen. Dette har utviklet seg naturlig utover prosjektet.
 
 ### 1.2. Møteleder
 
-
+    Sune er fortsatt møteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene 
+    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte 
+    også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
 
-  
+    Jonas regnes fortsatt som trello-ansvarlig, men alle har hatt ansvar for å oppdatere trello med oppgaver de har holdt 
+    på med og er ferdige med.
+    Dette ser vi på som en suksess og en naturlig utvikling som har gitt oss en god måte å holde oversikt over 
+    oppgaver som skal gjøres og er gjort.
 
 ### 1.4. Testansvarlig
 
-
+    Denne rollen er tildelt Kristian, og han har gjort en god jobb med å øke test-coverage på prosjektet. Andre 
+    har selvfølgelig også vært involvert i å lage tester, men Kristian har altså hovedansvaret for det, noe som 
+    har fungert godt.
 
 ### 1.5 Lyd og grafikk
 
-  
+    Rollen ble tildelt til Lauritz, men har også vært noe flytende i gruppa. Vetle fikk f.eks. ansvar for å designe 
+    baner, noe han har gjort strålende. Lauritz har designet spiller-figurene og animasjoner for disse, noe som har 
+    vært tidkrevende og lite belønnende mtp. commits, men vi er veldig fornøyd med arbeidet hans. Lyder ble også 
+    laget av begge.
 
 ### 1.6 Strukturansvarlig
 
-
+    Rollen ble tildelt Vetle, men har også vært naturlig fordelt over hele gruppen. Alle har vært flinke til å holde 
+    seg til git-strukturen, og har vært flinke til å lage branches for det de jobber med.
+    Commits/merges har også blitt jevnere siden forrige innlevering. Gjennom prosjektet har det vært en trend at noen har til vane å committe oftere enn andre, men dette vil være naturlig. 
 
 ### 1.7 Kodestilansvarlig
 
-
+    Denne rollen er tildelt Mathias, og har fungert bra. Rollen har blitt viktigere og viktigere jo større kodebasen har blitt, og han har løst dette på en god og ryddig måte. Han har underveis kommet med gode forbedringer til koden, både hvordan funksjoner kan være implementert annerledes og ryddet opp ting som ikke lenger trengs. 
 
 ## 2. Prosjektmetodikk
 
