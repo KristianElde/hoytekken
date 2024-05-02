@@ -12,6 +12,9 @@
 
 ### 1.1. Prosjektleder
 
+    Selv om vi ikke har utnevnt noen til denne rollen direkte, er det likevel blitt naturlig at noen har tatt på seg
+    lederrollen. Mathias har hatt god oversikt over hva som skal til for å få prosjektet i mål, og dermed har han 
+    fått denne rollen. Dette har utviklet seg naturlig utover prosjektet.
 
 ### 1.2. Møteleder
 
