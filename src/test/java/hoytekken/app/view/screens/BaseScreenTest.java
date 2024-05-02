@@ -53,6 +53,15 @@ public class BaseScreenTest {
         application.exit();
         application = null;
     }
+
+    @Test
+    void sanityTest() {
+        assertNotNull(application, "Headless application should be initialized.");
+        assertNotNull(Gdx.gl, "Mock GL20 object should be initialized.");
+        assertNotNull(gameMock, "Mock game object should be initialized.");
+        assertNotNull(modelMock, "Mock model object should be initialized.");
+        assertNotNull(gameMock.batch, "Mock SpriteBatch object should be initialized.");
+    }
     /*
      * @Test
      * void sanityTest() {
