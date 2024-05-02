@@ -97,7 +97,9 @@
 
     I løpet av våre retrospektiv har vi satt søkelyset på å evaluere prosjektstrukturen, internkommunikasjonen i teamet, fordelingen av 
     arbeid og commits-balanse. Gjennom anvendelsen av Kanban og regelmessige møter har vi etablert en solid struktur som har optimalisert 
-    vår arbeidsflyt og oppgavehåndtering. 
+    vår arbeidsflyt og oppgavehåndtering.
+
+    Internkommunikasjonen har blitt betydelig forbedret ved bruk av Discord og Trello, hvor alle teammedlemmer ble holdt løpende informert og engasjert. 
 
     
 
