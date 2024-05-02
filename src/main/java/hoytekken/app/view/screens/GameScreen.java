@@ -17,8 +17,7 @@ import hoytekken.app.view.ViewableModel;
 public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
-    private Box2DDebugRenderer b2dr;
-
+    
     private final Hud hud;
 
     /**
