@@ -18,7 +18,9 @@
 
 ### 1.2. Møteleder
 
-
+    Sune er fortsatt møteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene 
+    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte 
+    også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
 
