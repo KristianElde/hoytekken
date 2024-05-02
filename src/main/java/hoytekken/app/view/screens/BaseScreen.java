@@ -62,7 +62,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
     }
 
     @Override
-    public void handleEvent(IEvent event) throws IllegalArgumentException {
+    public void handleEvent(IEvent event) {
         if (event instanceof GameStateEvent) {
             handleStateSwitch((GameStateEvent) event);
         } else {
