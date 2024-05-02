@@ -39,6 +39,8 @@
 
 ## 2. Prosjektmetodikk
 
+     Ved å se tilbake på bruken av Kanban-metoden gjennom vårt prosjekt vårt, har vi sett hvor effektiv denne tilnærmingen har vært for oss. Vi har benyttet Trello som vårt Kanban-brett, strukturert med kolonner som Backlog, Doing, Review, Done, Archive og Discarded. Dette oppsettet har gjort det mulig for oss å flytte oppgaver fra venstre til høyre, fra planlegging til fullføring, og til slutt arkivering eller forkasting av mindre relevante oppgaver.
+
    
 
 ## 3. Gruppedynamikk
