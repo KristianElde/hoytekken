@@ -114,6 +114,14 @@ public class BaseScreenTest {
         assertNotEquals(600, newHeight, "Height should not be 600.");
         assertEquals(newWidth / newAspectRatio, newHeight, "Height should be adjusted to maintain aspect ratio.");
 
+        // assert screens are resized for different parameters
+        screen.resize(1000, 800);
+        assertEquals(1000, screen.gamePort.getScreenWidth(), "Screen width should be 1000.");
+        assertEquals(1000 / newAspectRatio, screen.gamePort.getScreenHeight(), "Screen height should be 800.");
+
+        screen.resize(1200, 900);
+        assertEquals(1200, screen.gamePort.getScreenWidth(), "Screen width should be 1200.");
+        assertEquals(1200 / newAspectRatio, screen.gamePort.getScreenHeight(), "Screen height should be 900.");
     }
     /*
      * 
