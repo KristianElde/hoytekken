@@ -44,7 +44,9 @@
 
 ### 1.6 Strukturansvarlig
 
-
+    Rollen ble tildelt Vetle, men har også vært naturlig fordelt over hele gruppen. Alle har vært flinke til å holde 
+    seg til git-strukturen, og har vært flinke til å lage branches for det de jobber med.
+    Commits/merges har også blitt jevnere siden forrige innlevering. Gjennom prosjektet har det vært en trend at noen har til vane å committe oftere enn andre, men dette vil være naturlig. 
 
 ### 1.7 Kodestilansvarlig
 
