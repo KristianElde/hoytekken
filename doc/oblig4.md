@@ -77,7 +77,7 @@
     
     Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre 
     oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å 
-    oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har vært  uklart har fungert bra. I tillegg møter vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
+    oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har vært  uklart har fungert bra. I tillegg har vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
   
 
 ## 5. Retrospektiv
@@ -86,13 +86,9 @@
 
 ## 6. Arbeidsfordeling
 
-    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe 
-    vi kommenterte sist også, men siden den gang har det blitt mye jevnere. Det har nå kommet til det punktet hvor antall 
-    commits reflekterer hyppigheten man velger å committe. Arbeidsfordelingen har jevnet seg veldig ut, og er nå på et fint 
-    punkt.git c
+    Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å innvolvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
 
-    Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features 
-    som vi ikke har endt opp med å bruke.
+    Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemenne par-programmert
 
 
 ## 7. Forbedringspunkter fra retrospektiv
@@ -142,7 +138,7 @@
     Hva har vi gjort:
     - Spillere kan fortsatt klistre seg til vegger (beholdt som en feature), men vi har gjort endring slik at spiller ikke får jumpcounter blir resatt når dette skjer. 
     - PowerUps spawner ikke lenger inni platformer. Vi sjekker betingelser for å se om senter av powerupens body er inni et platform objekt når vi velger en random posisjon på brettet. Hvis det er en kollisjon her så blir posisjoneringsmetoden kalt på nytt.
-    - (Fikse at powerups ikke overskrider max verdier)!!!!!!
+    - Fikset at power ups ikke kan overskride max-verdier for liv og hp.
     - Forbedret AI, satt ned hastigheten for å gjøre den mindre "intens", har også lagt til flere valg for random behavior for å gjøre AI litt mer intelligent.
     - Ryddet i modellen og generelt i kodebasen, delt opp kompleks kode i flere hjelpemetoder og ryddet i noen konstruktører. Har også fjernet kode var overflødig.
 
