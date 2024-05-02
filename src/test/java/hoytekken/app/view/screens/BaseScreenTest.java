@@ -76,6 +76,7 @@ public class BaseScreenTest {
         assertNotNull(screen);
         testSuperImplementations(screen);
         assertScreenInitialization(screen);
+        testResizeScreen(screen);
         assertDoesNotThrow(() -> screen.update(1f));
     }
 
@@ -97,6 +98,22 @@ public class BaseScreenTest {
         assertDoesNotThrow(screen::pause, "Pause should not throw an exception.");
         assertDoesNotThrow(screen::resume, "Resume should not throw an exception.");
         assertDoesNotThrow(screen::dispose, "Dispose should not throw an exception.");
+    }
+
+    private void testResizeScreen(BaseScreen screen) {
+        // assert aspect ratio is maintained
+        float originalAspectRatio = screen.gamePort.getWorldWidth() / screen.gamePort.getWorldHeight();
+        screen.resize(800, 600);
+
+        float newWidth = screen.gamePort.getScreenWidth();
+        float newHeight = screen.gamePort.getScreenHeight();
+        float newAspectRatio = newWidth / newHeight;
+
+        assertEquals(originalAspectRatio, newAspectRatio, 0.01, "Aspect ratio should be maintained after resize.");
+        assertEquals(800, newWidth, "Screen width should be 800.");
+        assertNotEquals(600, newHeight, "Height should not be 600.");
+        assertEquals(newWidth / newAspectRatio, newHeight, "Height should be adjusted to maintain aspect ratio.");
+
     }
     /*
      * 
