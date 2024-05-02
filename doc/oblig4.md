@@ -2,10 +2,6 @@
 
 **Team:** _Karan med varan_ – _Sune_ – _Mathias_ – _Kristian_ – _Vetle_ – _Jonas_ – _Lauritz_
 
-# Rapport – innlevering 3
-
-**Team:** _Karan med varan_ – _Sune_ – _Mathias_ – _Kristian_ – _Vetle_ – _Jonas_ – _Lauritz_
-
 # Prosjektrapport
 
 ## 1. Roller
