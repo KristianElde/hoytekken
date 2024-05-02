@@ -15,7 +15,7 @@
 ### 1.2. Møteleder
 
     Sune er fortsatt møteleder, noe som har fungert bra. Det å ha god orden og struktur i møtene, har gjort møtene 
-    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete opgaver å jobbe med. Vi begynte 
+    effektive og oversiktlig. Det har også ført til at de andre har fått konkrete oppgaver å jobbe med. Vi begynte 
     også med en kort kodegjennomgang dersom noe var uklart, noe som har fungert bra.
 
 ### 1.3. Trello-ansvarlig
@@ -65,7 +65,7 @@
 
     I forbindelse med gjennomføringen av vårt prosjekt har gruppedynamikken vist
     seg å være en av de sterkeste sidene ved vårt teamarbeid. Effektiviteten og samarbeidet innad i gruppen har bidratt 
-    til en positiv og engasjerende arbeidsatmosfære, noe som har vært essensielt for fremdriften og moralen i prosjektet. 
+    til en positiv og engasjerende arbeids-atmosfære, noe som har vært essensielt for fremdriften og moralen i prosjektet. 
     Den positive stemningen i gruppen har også lagt grunnlaget for en kultur hvor det er lav terskel for å fremme 
     forslag til forbedringer, kreative løsninger og innovative ideer. Dette har vist seg å være en verdifull ressurs for
     prosjektets utvikling, da det oppmuntrer til åpen dialog og samarbeid. Gjennom denne tilnærmingen har vi oppnådd en
@@ -89,6 +89,7 @@
     Arbeidsfordelingen under prosjektet har vært ganske jevn. Selv om det alltid vil være noen som gjør litt mer har vi klart å innvolvere alle på gruppa mye, og alle har bidratt mye. Dette kommer tydelig fram av commit fordelingen.
 
     Når det gjelder commit-fordelingen vil vi legge ved noen forklaringer til hvorfor den er noe ujevn. For det første har enkelte gruppemedlemmer litt commits på andre mailer enn sin primære. Både Jonas(12 commits på dothehey@pm.me) og Kristian(16 commits på krjoh3811@uib.no) har noen commits ekstra av denne grunn. I tillegg til dette har enkelte medlemmer gjort arbeid som kan være tidkrevende og viktig, men ikke commit-intensivt. For eksempel har Lauritz tegnet pixel art for spillerne, og Vetle har laget maps ved hjelp av et verktøy som heter, tiled. I tillegg til dette har noen av medlemenne par-programmert en del, og dette har gjort at den ene i parret kanskje har færre commits enn fortjent.
+
 
 
 ## 7. Forbedringspunkter fra retrospektiv
@@ -149,7 +150,7 @@
 
 ## README.md
 
-    Readme.md er opp til dato for spesifkasjoner for å kjøre programmet.
+    Readme.md er opp til dato for spesifikasjoner for å kjøre programmet.
     Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet
     til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet
     skal kompilere på Linux også.
