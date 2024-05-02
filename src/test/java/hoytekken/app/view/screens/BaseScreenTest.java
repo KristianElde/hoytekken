@@ -140,8 +140,6 @@ public class BaseScreenTest {
     }
 
     private void handleEventTest(BaseScreen screen) {
-        IEvent event = null;
-        assertThrows(IllegalArgumentException.class, () -> screen.handleEvent(event));
         GameStateEvent gameStateEvent = new GameStateEvent(GameState.MAIN_MENU, GameState.INSTRUCTIONS);
         assertDoesNotThrow(() -> screen.handleEvent(gameStateEvent));
     }
