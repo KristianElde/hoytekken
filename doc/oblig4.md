@@ -78,7 +78,6 @@
     Under prosjektet har kommunikasjonen vært effektiv, spesielt gjennom bruk av Discord og Trello for å holde hverandre 
     oppdatert. Vi har hatt regelmessige møter for å diskutere fremdrift og eventuelle utfordringer, og har vært flinke til å 
     oppdatere hverandre på statusen til våre respektive oppgaver. Kodegjennomgang på møtene våre når det har vært noe som har vært  uklart har fungert bra. I tillegg møter vi møttes ofte på lesesal, slik at vi har kunnet spørre om og diskutert mindre ting.
-
   
 
 ## 5. Retrospektiv
@@ -86,6 +85,14 @@
     
 
 ## 6. Arbeidsfordeling
+
+    Når det kommer til arbeidsfordelingen i kodebasen vår, kan fordelingen av commits fortsatt virke litt skjev. Dette var noe 
+    vi kommenterte sist også, men siden den gang har det blitt mye jevnere. Det har nå kommet til det punktet hvor antall 
+    commits reflekterer hyppigheten man velger å committe. Arbeidsfordelingen har jevnet seg veldig ut, og er nå på et fint 
+    punkt.git c
+
+    Andre faktorer som har spilt inn på antall commits er blant annet parprogrammering som flere av oss har gjort og features 
+    som vi ikke har endt opp med å bruke.
 
 
 ## 7. Forbedringspunkter fra retrospektiv
