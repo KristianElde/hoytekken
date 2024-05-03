@@ -194,10 +194,10 @@
     behavior for å gjøre AI litt mer intelligent.
     - Ryddet i modellen og generelt i kodebasen, delt opp kompleks kode i flere hjelpemetoder og ryddet i noen 
     konstruktører. Har også fjernet kode var overflødig.
+    - Det er nå mulig å endre fra 2 spiller modus til 1 spiller med AI. Dette er mulig å endre i selction screen. 
 
-
-    Andre feil som ble oppdaget:
-    - 
+    Andre feil som har blitt oppdaget:
+    - AI kan ikke hoppe.
     
 
 ## README.md
@@ -253,5 +253,6 @@
 
 ## kjente feil
 
-   
+    - Det er mulig å slå og sparke bakover. 
+    - AI kan ikke hoppe.
     
