@@ -177,15 +177,13 @@ public class Player extends Sprite implements IPlayer {
         }
 
         setRegion(getFrame(dt));
-        setNewBounds(); //TODO: add
+        setNewBounds();
 
-        //update image position to match body position
+        // update image position to match body position
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
 
-        
-
-        //reset animation when player animation is done
+        // reset animation when player animation is done
         if (timeSinceAction > 0.3f) {
             resetAnimation();
             timeSinceAction = 0;
