@@ -23,12 +23,12 @@ import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, IControllableModel, HandleCollisions {
+public class HTekkenModel implements IViewableModel, IControllableModel, HandleCollisions {
     // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 

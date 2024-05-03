@@ -15,7 +15,7 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.interfaces.IEvent;
 import hoytekken.app.model.components.eventBus.records.ClickedScreenEvent;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * class represents a selection screen
@@ -34,7 +34,7 @@ public class SelectionScreen extends BaseScreen {
      * @param game  the game object
      * @param model ViewableModel model for the game
      */
-    public SelectionScreen(Hoytekken game, ViewableModel model) {
+    public SelectionScreen(Hoytekken game, IViewableModel model) {
         super(game, model);
         loadMapTextures();
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);

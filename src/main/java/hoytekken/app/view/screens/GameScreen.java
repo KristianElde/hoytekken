@@ -8,7 +8,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * class represents an active game screen
@@ -25,7 +25,7 @@ public class GameScreen extends BaseScreen {
      * @param game  the game object
      * @param model the viewable model
      */
-    public GameScreen(Hoytekken game, ViewableModel model) {
+    public GameScreen(Hoytekken game, IViewableModel model) {
         super(game, model, true);
 
         hud = new Hud(game.batch);

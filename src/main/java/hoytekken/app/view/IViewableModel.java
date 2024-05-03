@@ -11,7 +11,7 @@ import hoytekken.app.model.components.powerup.ActivePowerUp;
 /**
  * Interface for the viewable model
  */
-public interface ViewableModel extends IViewAndControl {
+public interface IViewableModel extends IViewAndControl {
 
     /**
      * Updates the model. Takes care of players movements and position, powerups and

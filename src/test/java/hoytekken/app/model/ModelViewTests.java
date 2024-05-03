@@ -26,7 +26,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.player.enums.PlayerType;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 public class ModelViewTests {
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
@@ -34,7 +34,7 @@ public class ModelViewTests {
     private static final int MAX_HP = 99;
     private static final int MAX_LIVES = 3;
 
-    private ViewableModel model;
+    private IViewableModel model;
 
     @BeforeAll
     static void setUpBeforeAll() {

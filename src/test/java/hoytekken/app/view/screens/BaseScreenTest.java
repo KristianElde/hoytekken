@@ -22,12 +22,12 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.eventBus.records.GameStateEvent;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 public class BaseScreenTest {
     private static HeadlessApplication application;
     private static Hoytekken gameMock;
-    private static ViewableModel modelMock;
+    private static IViewableModel modelMock;
     private final EventBus eventbus = new EventBus();
 
     @BeforeAll
@@ -38,7 +38,7 @@ public class BaseScreenTest {
         // Mock dependencies
         Gdx.gl = mock(GL20.class);
         gameMock = mock(Hoytekken.class);
-        modelMock = mock(ViewableModel.class);
+        modelMock = mock(IViewableModel.class);
         gameMock.batch = mock(SpriteBatch.class);
     }
 

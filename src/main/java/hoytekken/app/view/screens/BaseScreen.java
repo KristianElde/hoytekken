@@ -10,14 +10,14 @@ import hoytekken.app.model.components.eventBus.interfaces.IEvent;
 import hoytekken.app.model.components.eventBus.interfaces.IEventListener;
 import hoytekken.app.model.components.eventBus.records.GameStateEvent;
 import hoytekken.app.model.components.player.enums.PlayerType;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * Base class for all screens.
  */
 public abstract class BaseScreen implements Screen, IEventListener {
     protected Hoytekken game;
-    protected ViewableModel model;
+    protected IViewableModel model;
 
     protected OrthographicCamera gameCam;
     protected FitViewport gamePort;
@@ -35,7 +35,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
      * @param model   the viewable model
      * @param scaling whether the viewport should scale
      */
-    public BaseScreen(Hoytekken game, ViewableModel model, boolean scaling) {
+    public BaseScreen(Hoytekken game, IViewableModel model, boolean scaling) {
         this.game = game;
         this.model = model;
 
@@ -57,7 +57,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
      * @param game  the game object
      * @param model the viewable model
      */
-    public BaseScreen(Hoytekken game, ViewableModel model) {
+    public BaseScreen(Hoytekken game, IViewableModel model) {
         this(game, model, false);
     }
 
