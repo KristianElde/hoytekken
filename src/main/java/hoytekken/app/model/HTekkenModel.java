@@ -14,7 +14,7 @@ import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.records.GameStateEvent;
 import hoytekken.app.model.components.player.Player;
 import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.model.components.player.interfaces.IPlayer;

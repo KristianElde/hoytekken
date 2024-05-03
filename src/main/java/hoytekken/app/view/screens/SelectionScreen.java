@@ -13,8 +13,8 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
-import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
 import hoytekken.app.model.components.eventBus.interfaces.IEvent;
+import hoytekken.app.model.components.eventBus.records.ClickedScreenEvent;
 import hoytekken.app.view.ViewableModel;
 
 /**

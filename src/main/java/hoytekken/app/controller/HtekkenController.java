@@ -8,7 +8,7 @@ import hoytekken.app.controller.enums.ActionType;
 import hoytekken.app.controller.interfaces.IControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
-import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
+import hoytekken.app.model.components.eventBus.records.ClickedScreenEvent;
 import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.player.enums.PlayerType;
 

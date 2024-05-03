@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.eventBus.GameStateEvent;
+import hoytekken.app.model.components.eventBus.records.GameStateEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class BaseScreenTest {
