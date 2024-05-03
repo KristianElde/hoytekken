@@ -203,6 +203,7 @@
     Programmet kompilerer og kjører på både mac os og Windows, ikke hatt mulighet
     til å teste dette på Linux, men pakke/fil struktur er sjekket for caseing mtp små/store bokstaver så spillet
     skal kompilere på Linux også.
+    Her står også alle kilder til ressurser som er brukt i prosjektet.
 
 ## Klassediagram
 
