@@ -77,7 +77,7 @@ public abstract class BaseScreen implements Screen, IEventListener {
         if (!playerOneWon && !playerTwoWon)
             throw new IllegalStateException("No player has won");
 
-        return playerOneWon && !playerTwoWon ? 1 : 2;
+        return playerOneWon ? 1 : 2;
     }
 
     /**
