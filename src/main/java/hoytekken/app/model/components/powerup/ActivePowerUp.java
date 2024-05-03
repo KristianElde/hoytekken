@@ -107,7 +107,7 @@ public class ActivePowerUp extends Sprite {
         body.createFixture(fdef).setUserData(this.type + "powerUp");
     }
 
-    /*
+    /**
      * Updates the powerup
      * includes updating the timer for the powerup and removing it
      */
@@ -120,7 +120,7 @@ public class ActivePowerUp extends Sprite {
         }
     }
 
-    /*
+    /**
      * Method to get the body of the powerup
      * 
      * @return the body of the powerup
@@ -129,14 +129,14 @@ public class ActivePowerUp extends Sprite {
         return body;
     }
 
-    /*
+    /**
      * Marks the powerup for destruction
      */
     public void markForDestruction() {
         shouldBeDestroyed = true;
     }
 
-    /*
+    /**
      * Makes the powerup visible
      */
     public void makeVisible() {
@@ -144,7 +144,7 @@ public class ActivePowerUp extends Sprite {
         powerUpInterval = 0;
     }
 
-    /*
+    /**
      * Checks if the powerup is visible
      * 
      * @return true if the powerup is visible, false otherwise
@@ -153,7 +153,7 @@ public class ActivePowerUp extends Sprite {
         return isVisible;
     }
 
-    /*
+    /**
      * Checks if the powerup should be destroyed
      * 
      * @return true if the powerup should be destroyed, false otherwise
@@ -162,14 +162,14 @@ public class ActivePowerUp extends Sprite {
         return shouldBeDestroyed;
     }
 
-    /*
+    /**
      * Applies the powerup to the player
      */
     public void apply(IPlayer player) {
         powerUp.applyPowerUp(player);
     }
 
-    /*
+    /**
      * Makes the powerup invisible
      */
     public void makeInvisible() {
