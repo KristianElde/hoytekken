@@ -56,7 +56,7 @@ https://openai.com/chatgpt
 Credit: Not required
 
 Player Characters:
-Created on free online editor: https://www.pixilart.com/ 
+Created on free online editor: https://www.piskelapp.com/
 Credit: Thoresen, Lauritz A.
 Rights: Free to use.
 
