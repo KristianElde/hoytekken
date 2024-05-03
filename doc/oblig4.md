@@ -135,10 +135,9 @@
 
 ## 7. Forbedringspunkter fra retrospektiv
 
-    - Internkommunikasjon kan alltids bli bedre, 
+    - Internkommunikasjon kan alltids bli bedre.
     - Starte tidligere med å skrive tester. 
     - Tørre og spørre hverandre om hjelp.
-    - 
 
 
 # Krav og spesifikasjon
