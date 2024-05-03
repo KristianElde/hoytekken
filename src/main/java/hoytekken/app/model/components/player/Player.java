@@ -176,16 +176,35 @@ public class Player extends Sprite implements IPlayer {
             takeDamage(maxHealth);
         }
 
-        // update image position to match body position
+        setRegion(getFrame(dt));
+        setNewBounds(); //TODO: add
+
+        //update image position to match body position
         setPosition(body.getPosition().x - getWidth() / 2,
                 body.getPosition().y - getHeight() / 2);
-        setRegion(getFrame(dt));
 
-        // reset animation when player animation is done
+        
+
+        //reset animation when player animation is done
         if (timeSinceAction > 0.3f) {
             resetAnimation();
             timeSinceAction = 0;
         }
+    }
+
+    private void setNewBounds() {
+        PlayerState state = getState();
+        float width;
+
+        if (state == PlayerState.BLOCKING) {
+            width = PLAYER_WIDTH * 0.8f;
+        } else if (state == PlayerState.PUNCHING || state == PlayerState.KICKING) {
+            width = PLAYER_WIDTH * 1.3f;
+        } else {
+            width = PLAYER_WIDTH;
+        }
+
+        setBounds(0, 0, width, PLAYER_HEIGHT);
     }
 
     private PlayerState resetAnimation() {
