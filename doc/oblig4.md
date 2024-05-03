@@ -251,4 +251,5 @@
 ## kjente feil
 
     - Det er mulig å slå og sparke bakover. 
+    - AI kan ikke hoppe.
     
