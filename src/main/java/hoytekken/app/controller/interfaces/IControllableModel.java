@@ -1,15 +1,15 @@
-package hoytekken.app.controller;
+package hoytekken.app.controller.interfaces;
 
-
+import hoytekken.app.controller.enums.ActionType;
 import hoytekken.app.model.IViewAndControl;
 import hoytekken.app.model.components.ForceDirection;
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
 
 /**
  * Interface for the model that can be controlled
  */
-public interface ControllableModel extends IViewAndControl{
+public interface IControllableModel extends IViewAndControl {
 
     /**
      * Set the direction of the given player

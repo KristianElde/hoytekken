@@ -22,6 +22,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.model.components.player.interfaces.IPlayer;
+
 /**
  * Unit tests for the Player class
  */
@@ -75,7 +77,6 @@ public class PlayerTest {
         assertEquals(initX, player.getBody().getPosition().x, margin);
         assertEquals(initY, player.getBody().getPosition().y, margin);
     }
-
 
     @Test
     void testDamageTaken() {

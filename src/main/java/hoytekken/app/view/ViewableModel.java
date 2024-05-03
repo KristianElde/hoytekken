@@ -4,20 +4,18 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.model.IViewAndControl;
-import hoytekken.app.model.components.GameState;
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.PlayerType;
-import hoytekken.app.model.components.player.ViewablePlayer;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IViewablePlayer;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.model.components.powerup.PowerUp;
 
 /**
  * Interface for the viewable model
  */
-public interface ViewableModel extends IViewAndControl{
+public interface ViewableModel extends IViewAndControl {
 
     /**
-     * Updates the model. Takes care of players movements and position, powerups and gamestate
+     * Updates the model. Takes care of players movements and position, powerups and
+     * gamestate
      * 
      * @param dt time slice float
      */
@@ -34,9 +32,9 @@ public interface ViewableModel extends IViewAndControl{
      * Getter for the player of the given type
      * 
      * @param player the player number
-     * @return the player 
+     * @return the player
      */
-    ViewablePlayer getPlayer(PlayerType player);
+    IViewablePlayer getPlayer(PlayerType player);
 
     /**
      * Getter for the tiled map

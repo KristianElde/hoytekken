@@ -2,7 +2,6 @@ package hoytekken.app.model;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -26,9 +25,8 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.view.ViewableModel;
-
 
 public class ModelViewTests {
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
@@ -68,7 +66,7 @@ public class ModelViewTests {
 
     @Test
     void testUpdateModel() {
-        //assert the update method does not throw for different time deltas
+        // assert the update method does not throw for different time deltas
         assertDoesNotThrow(() -> model.updateModel(0.1f), "Update should not throw.");
         assertDoesNotThrow(() -> model.updateModel(10.0f), "Update should not throw.");
         assertDoesNotThrow(() -> model.updateModel(0.0f), "Update should not throw.");
@@ -76,11 +74,11 @@ public class ModelViewTests {
 
     @Test
     void testGetPlayer() {
-        //assert view has access to ViewablePlayer objects
+        // assert view has access to ViewablePlayer objects
         assertNotNull(model.getPlayer(PlayerType.PLAYER_ONE), "Player object should be initialized.");
         assertNotNull(model.getPlayer(PlayerType.PLAYER_TWO), "Player object should be initialized.");
 
-        //assert View has access to correct player attributes
+        // assert View has access to correct player attributes
         assertDoesNotThrow(() -> model.getPlayer(PlayerType.PLAYER_ONE).getHealth());
         assertDoesNotThrow(() -> model.getPlayer(PlayerType.PLAYER_TWO).getHealth());
         assertDoesNotThrow(() -> model.getPlayer(PlayerType.PLAYER_ONE).getLives());
@@ -88,38 +86,39 @@ public class ModelViewTests {
         assertDoesNotThrow(() -> model.getPlayer(PlayerType.PLAYER_ONE).isAlive());
         assertDoesNotThrow(() -> model.getPlayer(PlayerType.PLAYER_TWO).isAlive());
 
-        //assert players are not the same
+        // assert players are not the same
         assertNotEquals(model.getPlayer(PlayerType.PLAYER_ONE), model.getPlayer(PlayerType.PLAYER_TWO));
 
-        //assert players are alive
+        // assert players are alive
         assertTrue(model.getPlayer(PlayerType.PLAYER_ONE).isAlive(), "Player should be alive.");
         assertTrue(model.getPlayer(PlayerType.PLAYER_TWO).isAlive(), "Player should be alive.");
 
-        //assert players have health
+        // assert players have health
         assertTrue(model.getPlayer(PlayerType.PLAYER_ONE).getHealth() == MAX_HP, "Player should start with 99 health.");
         assertTrue(model.getPlayer(PlayerType.PLAYER_TWO).getHealth() == MAX_HP, "Player should start with 99 health.");
 
-        //assert players have lives
+        // assert players have lives
         assertTrue(model.getPlayer(PlayerType.PLAYER_ONE).getLives() == MAX_LIVES, "Player should start with 3 lives.");
         assertTrue(model.getPlayer(PlayerType.PLAYER_TWO).getLives() == MAX_LIVES, "Player should start with 3 lives.");
     }
 
     @Test
     void testGetTiledMap() {
-        //assert view has access to tiledmap and it is not loaded before game starts
+        // assert view has access to tiledmap and it is not loaded before game starts
         assertNull(model.getTiledMap(), "Tiledmap should not be loaded before game starts.");
     }
 
     @Test
     void testGetGameState() {
-        //assert view has access to gamestate and it is initialized as main menu
+        // assert view has access to gamestate and it is initialized as main menu
         assertNotNull(model.getGameState(), "Gamestate should be initialized.");
-        assertEquals(GameState.MAIN_MENU ,model.getGameState(), "Intial game stata should me main menu.");
+        assertEquals(GameState.MAIN_MENU, model.getGameState(), "Intial game stata should me main menu.");
     }
 
     @Test
     void testGetGameWorld() {
-        //assert view has access to game world and it is initialized with gravity and bodies
+        // assert view has access to game world and it is initialized with gravity and
+        // bodies
         assertNotNull(model.getGameWorld(), "Game world should be initialized.");
 
         World gameWorld = model.getGameWorld();

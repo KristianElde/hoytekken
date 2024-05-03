@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
-import hoytekken.app.model.components.eventBus.IEvent;
+import hoytekken.app.model.components.eventBus.interfaces.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 /**
@@ -27,22 +27,23 @@ public class SelectionScreen extends BaseScreen {
 
     private float cellHeight;
     private float cellWidth;
-    
+
     /**
      * Constructor for the SelectionScreen
-     * @param game the game object
+     * 
+     * @param game  the game object
      * @param model ViewableModel model for the game
      */
     public SelectionScreen(Hoytekken game, ViewableModel model) {
         super(game, model);
         loadMapTextures();
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-        
+
     }
 
-    private void loadMapTextures() {        
+    private void loadMapTextures() {
         int index = 1;
-        while(index < 5) {
+        while (index < 5) {
             mapTextures.add(new Texture(Gdx.files.internal("map" + index + ".png")));
             index++;
         }
@@ -50,7 +51,8 @@ public class SelectionScreen extends BaseScreen {
 
     private void drawMapSelections() {
 
-        // Calculate cell width and height based on the screen size and desired grid layout
+        // Calculate cell width and height based on the screen size and desired grid
+        // layout
         cellWidth = gamePort.getWorldWidth() / 2; // 2 columns
         cellHeight = gamePort.getWorldHeight() / 3; // 3 rows
 
@@ -60,7 +62,7 @@ public class SelectionScreen extends BaseScreen {
 
         int mapIndex = 0;
 
-        while(mapIndex < 4) {
+        while (mapIndex < 4) {
             Texture mapTexture = mapTextures.get(mapIndex);
             float x = startX + (mapIndex % 2) * cellWidth;
             float y = startY + (mapIndex / 2) * cellHeight;
@@ -68,17 +70,18 @@ public class SelectionScreen extends BaseScreen {
             game.batch.draw(mapTexture, x, y, cellWidth, cellHeight);
 
             mapIndex++;
-        }  
+        }
     }
 
     private void drawPlayerSelection() {
         BitmapFont font = new BitmapFont();
         font.setColor(Color.WHITE);
         GlyphLayout layout = new GlyphLayout();
-        String text = isOnePlayerSelected ? "1 player selected, click here to change to 2 players" : "2 players selected, click here to change to 1 player";
+        String text = isOnePlayerSelected ? "1 player selected, click here to change to 2 players"
+                : "2 players selected, click here to change to 1 player";
         layout.setText(font, text);
         float x = (gamePort.getWorldWidth() - layout.width) / 2;
-        float y = gamePort.getWorldHeight() - (gamePort.getWorldHeight()/10) - layout.height; 
+        float y = gamePort.getWorldHeight() - (gamePort.getWorldHeight() / 10) - layout.height;
         font.draw(game.batch, layout, x, y);
     }
 
@@ -99,18 +102,22 @@ public class SelectionScreen extends BaseScreen {
 
         if (y < cellHeight) {
             isOnePlayerSelected = !isOnePlayerSelected;
-        } else if (y < 2*cellHeight) {
-            if (x < cellWidth) model.setGameMap("map3");
-            else model.setGameMap("map4");
+        } else if (y < 2 * cellHeight) {
+            if (x < cellWidth)
+                model.setGameMap("map3");
+            else
+                model.setGameMap("map4");
             model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
-        } else if (y < 3*cellHeight){
-            if (x < cellWidth) model.setGameMap("map1");
-            else model.setGameMap("map2");
+        } else if (y < 3 * cellHeight) {
+            if (x < cellWidth)
+                model.setGameMap("map1");
+            else
+                model.setGameMap("map2");
             model.setNumberOfPlayers(isOnePlayerSelected);
             model.setGameState(GameState.ACTIVE_GAME);
         }
-        
+
     }
 
     @Override

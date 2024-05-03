@@ -22,7 +22,6 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
 import hoytekken.app.model.components.eventBus.GameStateEvent;
-import hoytekken.app.model.components.eventBus.IEvent;
 import hoytekken.app.view.ViewableModel;
 
 public class BaseScreenTest {

@@ -1,4 +1,4 @@
-package hoytekken.app.model.components.eventBus;
+package hoytekken.app.model.components.eventBus.interfaces;
 
 /**
  * Interface that represents an event listener

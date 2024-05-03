@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,8 +23,8 @@ import hoytekken.app.Hoytekken;
 import hoytekken.app.model.HTekkenModel;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
 
 public class HTekkenControllerTest {
     HTekkenModel model;

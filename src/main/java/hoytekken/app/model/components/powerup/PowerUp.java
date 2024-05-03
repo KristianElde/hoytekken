@@ -2,7 +2,8 @@ package hoytekken.app.model.components.powerup;
 
 import com.badlogic.gdx.graphics.Texture;
 
-import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
+import hoytekken.app.model.components.powerup.enums.PowerUpType;
 
 /**
  * Abstract class for power-ups.

@@ -17,9 +17,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.model.components.player.IPlayer;
 import hoytekken.app.model.components.player.Player;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
+import hoytekken.app.model.components.powerup.enums.PowerUpType;
 
 public class PowerUpTest {
 
@@ -29,7 +30,7 @@ public class PowerUpTest {
 
     private static final int MAX_HEALTH = 99;
     private static final float PUNCH_RANGE = 1.2f;
-    private static final float KICK_RANGE = 1.8f;
+    // private static final float KICK_RANGE = 1.8f;
     private static final float TIME_STEPS = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 6;
     private static final int POSITION_ITERATIONS = 2;

@@ -20,6 +20,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.player.enums.PlayerType;
 
 public class AIPlayerTest {
     private World world;

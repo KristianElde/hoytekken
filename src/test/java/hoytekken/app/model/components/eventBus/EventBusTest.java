@@ -9,20 +9,23 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import hoytekken.app.model.components.eventBus.interfaces.IEvent;
+import hoytekken.app.model.components.eventBus.interfaces.IEventListener;
+
 public class EventBusTest {
     private EventBus eventBus;
     private IEventListener mockListener;
     private IEvent mockEvent;
-    
+
     @BeforeEach
     public void setUp() {
         eventBus = new EventBus();
-        mockListener = mock(IEventListener.class); 
+        mockListener = mock(IEventListener.class);
         mockEvent = mock(IEvent.class);
     }
 
     @Test
-    public void sanityTest(){
+    public void sanityTest() {
         assertTrue(true);
         assertNotNull(eventBus);
         assertNotNull(mockListener);
@@ -30,12 +33,12 @@ public class EventBusTest {
     }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
         assertEquals(0, eventBus.getListeners().size());
     }
 
     @Test
-    public void testAddListener(){
+    public void testAddListener() {
         assertEquals(0, eventBus.getListeners().size());
         eventBus.addListener(mockListener);
 
@@ -44,7 +47,7 @@ public class EventBusTest {
     }
 
     @Test
-    public void testRemoveListener(){
+    public void testRemoveListener() {
         assertEquals(0, eventBus.getListeners().size());
         eventBus.addListener(mockListener);
 
@@ -57,7 +60,7 @@ public class EventBusTest {
     }
 
     @Test
-    public void testEmitEvent(){
+    public void testEmitEvent() {
         eventBus.addListener(mockListener);
         eventBus.emitEvent(mockEvent);
         verify(mockListener, times(1)).handleEvent(mockEvent);

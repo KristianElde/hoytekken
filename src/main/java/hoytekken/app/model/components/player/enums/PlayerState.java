@@ -1,4 +1,4 @@
-package hoytekken.app.model.components.player;
+package hoytekken.app.model.components.player.enums;
 
 /**
  * Enum for player states

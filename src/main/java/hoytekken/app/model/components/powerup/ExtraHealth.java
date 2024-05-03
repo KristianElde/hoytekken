@@ -3,7 +3,7 @@ package hoytekken.app.model.components.powerup;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
 
 /**
  * Power up that increases the player's health
