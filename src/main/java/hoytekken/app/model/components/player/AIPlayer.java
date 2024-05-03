@@ -4,6 +4,9 @@ import java.util.Random;
 
 import com.badlogic.gdx.physics.box2d.World;
 
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
+
 /**
  * AIPlayer class that represents an AI player
  * Extends {@code Player.Class} and introduces automated decision making
@@ -11,10 +14,10 @@ import com.badlogic.gdx.physics.box2d.World;
 public class AIPlayer extends Player {
     private static final float IDLE_ACCELERATION = 0.15f;
     private static final float CHASE_ACCELERATION = 0.5f;
-    
+
     private final IPlayer target;
 
-    //AI Actions
+    // AI Actions
     private boolean chase = false;
     private boolean idleMovement = false;
     private boolean block = false;
@@ -36,8 +39,9 @@ public class AIPlayer extends Player {
 
     /**
      * Constructor for AIPlayer
-     * @param world the game world
-     * @param type the player type
+     * 
+     * @param world  the game world
+     * @param type   the player type
      * @param health the player health
      * @param target the target player
      */
@@ -56,8 +60,10 @@ public class AIPlayer extends Player {
         checkTimers();
 
         // update active timers
-        if (block) blockTimer += dt;
-        else lastBlockTimer += dt;
+        if (block)
+            blockTimer += dt;
+        else
+            lastBlockTimer += dt;
 
         if (idleMovement) {
             idleMovement();
@@ -68,60 +74,72 @@ public class AIPlayer extends Player {
         }
     }
 
-    //Randomly choose between 0 and 1
+    // Randomly choose between 0 and 1
     private int randomChoice() {
         return new Random().nextInt(2);
     }
 
-    //Make decision based on target position
+    // Make decision based on target position
     private void makeDecision() {
         int decide = randomChoice();
 
-        if (isWithinRange(target, PUNCH_RANGE) && !block) attackOrDefend(true, decide);
-        else if (isWithinRange(target, KICK_RANGE) && !block) attackOrDefend(false, decide);
-        else if (!(idleMovement || chase)) chooseMovement();
+        if (isWithinRange(target, PUNCH_RANGE) && !block)
+            attackOrDefend(true, decide);
+        else if (isWithinRange(target, KICK_RANGE) && !block)
+            attackOrDefend(false, decide);
+        else if (!(idleMovement || chase))
+            chooseMovement();
     }
 
-    //Attack or defend based if target is within range
+    // Attack or defend based if target is within range
     private void attackOrDefend(boolean punchRange, int decide) {
         if (decide == 0) {
-            if (punchRange) punch(target);
-            else kick(target);
-        } else if (lastBlockTimer > LAST_BLOCK_TIME_LIMIT) startBlock();
+            if (punchRange)
+                punch(target);
+            else
+                kick(target);
+        } else if (lastBlockTimer > LAST_BLOCK_TIME_LIMIT)
+            startBlock();
     }
 
     // check timers and stop actions if necessary
     private void checkTimers() {
-        if (block && blockTimer > BLOCK_TIME_LIMIT) stopBlock();
-        if (idleMovement && movementTimer > IDLE_TIME_LIMIT) idleMovement = false;
-        if (chase && movementTimer > CHASE_TIME_LIMIT) chase = false;
+        if (block && blockTimer > BLOCK_TIME_LIMIT)
+            stopBlock();
+        if (idleMovement && movementTimer > IDLE_TIME_LIMIT)
+            idleMovement = false;
+        if (chase && movementTimer > CHASE_TIME_LIMIT)
+            chase = false;
     }
 
-    //stop block action
+    // stop block action
     private void stopBlock() {
         block = false;
         lastBlockTimer = 0;
         changeBlockingState();
     }
 
-    //start block action
+    // start block action
     private void startBlock() {
         block = true;
         blockTimer = 0;
         changeBlockingState();
     }
 
-    //Choose between idle movement and chase
+    // Choose between idle movement and chase
     private void chooseMovement() {
         movementTimer = 0;
-        if (randomChoice() == 0) idleMovement = true;
-        else chase = true;
+        if (randomChoice() == 0)
+            idleMovement = true;
+        else
+            chase = true;
     }
 
-    //Move left and right
+    // Move left and right
     private void idleMovement() {
         int choice = randomChoice();
-        if (!(moveTicks % 30 == 0)) choice = lastDir;
+        if (!(moveTicks % 30 == 0))
+            choice = lastDir;
 
         if (choice == 0) {
             lastDir = 0;
@@ -134,7 +152,7 @@ public class AIPlayer extends Player {
         moveTicks++;
     }
 
-    //Move towards target
+    // Move towards target
     private void moveTowardsTarget() {
         float dirX = Float.compare(target.getBody().getPosition().x, getBody().getPosition().x);
         move(dirX * CHASE_ACCELERATION, 0);

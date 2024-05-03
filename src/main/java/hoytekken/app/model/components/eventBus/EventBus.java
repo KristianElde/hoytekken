@@ -2,11 +2,15 @@ package hoytekken.app.model.components.eventBus;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import hoytekken.app.model.components.eventBus.interfaces.IEvent;
+import hoytekken.app.model.components.eventBus.interfaces.IEventListener;
+
 /**
  * Class that represents an event bus
  */
 public class EventBus {
-    // List of listeners, CopyOnWriteArrayList is used to avoid ConcurrentModificationException
+    // List of listeners, CopyOnWriteArrayList is used to avoid
+    // ConcurrentModificationException
     private CopyOnWriteArrayList<IEventListener> listeners = new CopyOnWriteArrayList<>();
 
     /**

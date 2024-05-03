@@ -2,10 +2,6 @@ package hoytekken.app.model;
 
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.Player;
-import hoytekken.app.model.components.player.PlayerType;
-
 import java.util.HashMap;
 
 /**
@@ -15,6 +11,7 @@ public interface IViewAndControl {
 
     /**
      * Gets the event bus, stored in model
+     * 
      * @return the event bus
      */
     EventBus getEventBus();
@@ -49,6 +46,7 @@ public interface IViewAndControl {
 
     /**
      * Method sets number of players
+     * 
      * @param onePlayer true if one player, false if two players
      * @return true if the number of players was set, false otherwise
      */

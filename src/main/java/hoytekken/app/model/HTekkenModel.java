@@ -7,27 +7,28 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import hoytekken.app.controller.ActionType;
-import hoytekken.app.controller.ControllableModel;
+
+import hoytekken.app.controller.enums.ActionType;
+import hoytekken.app.controller.interfaces.IControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.player.AIPlayer;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.eventBus.GameStateEvent;
-import hoytekken.app.model.components.player.IPlayer;
+import hoytekken.app.model.components.eventBus.records.GameStateEvent;
 import hoytekken.app.model.components.player.Player;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
 import hoytekken.app.model.components.powerup.RandomPowerUpFactory;
 import hoytekken.app.model.components.tools.Box2DWorldGenerator;
 import hoytekken.app.model.components.tools.CollisionDetector;
 import hoytekken.app.model.components.tools.HandleCollisions;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * The model for the game
  */
-public class HTekkenModel implements ViewableModel, ControllableModel, HandleCollisions {
+public class HTekkenModel implements IViewableModel, IControllableModel, HandleCollisions {
     // Gravity vector
     private static final Vector2 GRAVITY_VECTOR = new Vector2(0, -14);
 
@@ -178,7 +179,7 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
     /**
      * Sets the speed of the player based on the direction
      * 
-     * @param player to set the speed for
+     * @param player    to set the speed for
      * @param direction the speed goes
      * 
      */
@@ -291,13 +292,12 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             this.playerTwo = new AIPlayer(gameWorld, PlayerType.PLAYER_TWO, 99, this.playerOne);
             this.playerTwo.flipLeft();
             return true;
-        }
-        else if (!onePlayer && !(this.playerTwo instanceof Player)){
+        } else if (!onePlayer && !(this.playerTwo instanceof Player)) {
             this.playerTwo = new Player(gameWorld, PlayerType.PLAYER_TWO, 99);
             this.playerTwo.flipLeft();
             return true;
-        }
-        else return false;
+        } else
+            return false;
     }
 
     private void updatePowerUps(float dt) {
@@ -324,5 +324,5 @@ public class HTekkenModel implements ViewableModel, ControllableModel, HandleCol
             }
         }
     }
-    
+
 }

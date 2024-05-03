@@ -4,12 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * class represents an active game screen
@@ -17,7 +16,7 @@ import hoytekken.app.view.ViewableModel;
 public class GameScreen extends BaseScreen {
     private TiledMap map;
     private OrthoCachedTiledMapRenderer renderer;
-    
+
     private final Hud hud;
 
     /**
@@ -26,7 +25,7 @@ public class GameScreen extends BaseScreen {
      * @param game  the game object
      * @param model the viewable model
      */
-    public GameScreen(Hoytekken game, ViewableModel model) {
+    public GameScreen(Hoytekken game, IViewableModel model) {
         super(game, model, true);
 
         hud = new Hud(game.batch);
@@ -56,7 +55,6 @@ public class GameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-
 
         game.batch.setProjectionMatrix(gameCam.combined);
 

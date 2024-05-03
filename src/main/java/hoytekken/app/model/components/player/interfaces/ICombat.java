@@ -1,4 +1,4 @@
-package hoytekken.app.model.components.player;
+package hoytekken.app.model.components.player.interfaces;
 
 /**
  * Interface for the combat actions that a player can perform
@@ -26,7 +26,8 @@ public interface ICombat {
 
     /**
      * Toggles the players isBlocking field variable.
-     * @return  bool on if it was successful
+     * 
+     * @return bool on if it was successful
      */
     boolean changeBlockingState();
 

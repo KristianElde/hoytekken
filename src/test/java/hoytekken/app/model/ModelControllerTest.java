@@ -21,22 +21,23 @@ import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 
-import hoytekken.app.controller.ControllableModel;
+import hoytekken.app.controller.interfaces.IControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
 import hoytekken.app.model.components.eventBus.EventBus;
-import hoytekken.app.model.components.player.IPlayer;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
+import hoytekken.app.model.components.player.interfaces.IPlayer;
 
 public class ModelControllerTest {
-    private ControllableModel model;
+    private IControllableModel model;
 
     @BeforeAll
     static void setUpBeforeAll() {
         HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
-        ApplicationListener listener = new ApplicationAdapter() {};
-            new HeadlessApplication(listener, config);
-            Gdx.gl = mock(GL20.class);
+        ApplicationListener listener = new ApplicationAdapter() {
+        };
+        new HeadlessApplication(listener, config);
+        Gdx.gl = mock(GL20.class);
     }
 
     @BeforeEach
@@ -59,11 +60,11 @@ public class ModelControllerTest {
         assertThrows(IllegalArgumentException.class, () -> model.getDirection(null));
         ForceDirection initialExpected = ForceDirection.STATIC;
 
-        //assert initial force direction is STATIC
+        // assert initial force direction is STATIC
         assertEquals(initialExpected, initialP1, "Initial force direction should be STATIC.");
         assertEquals(initialExpected, initialP2, "Initial force direction should be STATIC.");
 
-        //assert method sets direction correctly
+        // assert method sets direction correctly
         model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.LEFT);
         model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.RIGHT);
         assertFalse(model.setDirection(null, ForceDirection.STATIC));
@@ -83,18 +84,18 @@ public class ModelControllerTest {
         assertEquals(ForceDirection.RIGHT, p1Updated, "Player one force direction should be RIGHT.");
         assertEquals(ForceDirection.LEFT, p2Updated, "Player two force direction should be LEFT.");
 
-        //assert method returns true when setting direction
+        // assert method returns true when setting direction
         assertTrue(model.setDirection(PlayerType.PLAYER_ONE, ForceDirection.STATIC));
         assertTrue(model.setDirection(PlayerType.PLAYER_TWO, ForceDirection.STATIC));
     }
 
     @Test
     void testJump() {
-        //assert players can jump
+        // assert players can jump
         assertTrue(model.jump(PlayerType.PLAYER_ONE), "Player one should be able to jump.");
         assertTrue(model.jump(PlayerType.PLAYER_TWO), "Player two should be able to jump.");
 
-        //assert players can't jump when blocking
+        // assert players can't jump when blocking
         model.getPlayer(PlayerType.PLAYER_ONE).changeBlockingState();
         model.getPlayer(PlayerType.PLAYER_TWO).changeBlockingState();
 
@@ -104,27 +105,26 @@ public class ModelControllerTest {
         model.getPlayer(PlayerType.PLAYER_ONE).changeBlockingState();
         model.getPlayer(PlayerType.PLAYER_TWO).changeBlockingState();
 
-        //assert players can jump a second time
+        // assert players can jump a second time
         assertTrue(model.jump(PlayerType.PLAYER_ONE), "Player one should be able to jump a second time.");
         assertTrue(model.jump(PlayerType.PLAYER_TWO), "Player two should be able to jump a second time.");
 
-
-        //assert players can't jump a third time
+        // assert players can't jump a third time
         assertFalse(model.jump(PlayerType.PLAYER_ONE), "Player one should not be able to jump a third time.");
         assertFalse(model.jump(PlayerType.PLAYER_TWO), "Player two should not be able to jump a third time.");
     }
 
     @Test
     void testGameState() {
-        //assert gamestate is not null
+        // assert gamestate is not null
         assertNotNull(model.getGameState(), "Gamestate should not be null.");
         GameState initialGameState = model.getGameState();
         GameState expectedGameState = GameState.MAIN_MENU;
 
-        //assert initial gamestate is MAIN_MENU
+        // assert initial gamestate is MAIN_MENU
         assertEquals(expectedGameState, initialGameState, "Initial gamestate should be MAIN_MENU.");
 
-        //assert gamestate can be changed
+        // assert gamestate can be changed
         assertDoesNotThrow(() -> model.setGameState(GameState.ACTIVE_GAME));
         assertEquals(GameState.ACTIVE_GAME, model.getGameState(), "Gamestate should be ACTIVE_GAME.");
     }
@@ -140,10 +140,10 @@ public class ModelControllerTest {
         assertEquals("fourthKMVmap1.tmx", maps.get("map4"));
         assertDoesNotThrow(() -> model.getGameMaps());
     }
-    
+
     @Test
     void testSetGameMap() {
-        //assert method throws when map is not found
+        // assert method throws when map is not found
         assertThrows(IllegalArgumentException.class, () -> model.setGameMap("map5"));
         assertDoesNotThrow(() -> model.setGameMap("map1"));
         assertDoesNotThrow(() -> model.setGameMap("map2"));
@@ -155,14 +155,14 @@ public class ModelControllerTest {
     void testGetPlayers() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
-        
+
         assertNotNull(p1, "Player one should not be null.");
         assertNotNull(p2, "Player two should not be null.");
 
         assertEquals(99, p1.getHealth(), "Player one should have 99 health.");
         assertEquals(99, p2.getHealth(), "Player two should have 99 health.");
 
-        //skrive tester for metoder IPlayer metoder som skal være tilgengelige
+        // skrive tester for metoder IPlayer metoder som skal være tilgengelige
     }
 
     @Test
@@ -170,14 +170,14 @@ public class ModelControllerTest {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
 
-        //assert players can change blocking state
+        // assert players can change blocking state
         p1.changeBlockingState();
         p2.changeBlockingState();
 
         assertTrue(p1.getIsBlocking(), "Player one should be blocking.");
         assertTrue(p2.getIsBlocking(), "Player two should be blocking.");
 
-        //assert players can change blocking state back
+        // assert players can change blocking state back
         p1.changeBlockingState();
         p2.changeBlockingState();
 
@@ -186,7 +186,7 @@ public class ModelControllerTest {
 
     }
 
-    @Test 
+    @Test
     void testFallenOffTheMap() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
@@ -223,7 +223,7 @@ public class ModelControllerTest {
         assertDoesNotThrow(() -> p1.punch(p2));
         assertDoesNotThrow(() -> p2.punch(p1));
     }
-    
+
     @Test
     void testGetBody() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
@@ -232,8 +232,8 @@ public class ModelControllerTest {
         assertNotNull(p1.getBody(), "Player one body should not be null.");
         assertNotNull(p2.getBody(), "Player two body should not be null.");
     }
-    
-    @Test 
+
+    @Test
     void testIncreaseDamage() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
         IPlayer p2 = model.getPlayer(PlayerType.PLAYER_TWO);
@@ -244,7 +244,7 @@ public class ModelControllerTest {
 
         assertEquals(10, p2.getPunchDamage());
         p2.increaseDamage(10);
-        assertEquals(20, p2.getPunchDamage()); 
+        assertEquals(20, p2.getPunchDamage());
     }
 
     @Test
@@ -274,7 +274,7 @@ public class ModelControllerTest {
         p2.gainExtraLife();
         assertEquals(3, p2.getLives());
     }
-        
+
     @Test
     void testIsAlive() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
@@ -282,8 +282,8 @@ public class ModelControllerTest {
 
         assertTrue(p1.isAlive());
         assertTrue(p2.isAlive());
-        
-        //Because players have at least three lives. 
+
+        // Because players have at least three lives.
         p1.takeDamage(99);
         p1.takeDamage(99);
         p1.takeDamage(99);
@@ -296,7 +296,7 @@ public class ModelControllerTest {
         assertFalse(p2.isAlive());
 
     }
-    
+
     @Test
     void testGetLives() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
@@ -305,7 +305,7 @@ public class ModelControllerTest {
         assertEquals(3, p1.getLives());
         assertEquals(3, p2.getLives());
     }
-    
+
     @Test
     void testGetjumpingHeight() {
         IPlayer p1 = model.getPlayer(PlayerType.PLAYER_ONE);
@@ -314,5 +314,5 @@ public class ModelControllerTest {
         assertEquals(5, p1.getJumpingHeight());
         assertEquals(5, p2.getJumpingHeight());
     }
-    
+
 }

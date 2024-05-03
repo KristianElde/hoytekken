@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import hoytekken.app.Hoytekken;
+import hoytekken.app.model.components.player.enums.PlayerType;
 
 /**
  * Unit tests for the Player class
@@ -43,7 +44,7 @@ public class CombatTest {
         playerOne = new Player(world, PlayerType.PLAYER_ONE, 99);
         playerTwo = new Player(world, PlayerType.PLAYER_TWO, 99);
 
-        while(!playerOne.isWithinRange(playerTwo, PUNCH_RANGE)){
+        while (!playerOne.isWithinRange(playerTwo, PUNCH_RANGE)) {
             playerOne.move(1f * Hoytekken.PPM, 0);
             playerTwo.move(-1f * Hoytekken.PPM, 0);
             world.step(1 / 60f, 6, 2);

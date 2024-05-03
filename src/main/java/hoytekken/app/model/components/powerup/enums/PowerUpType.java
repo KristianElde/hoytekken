@@ -1,4 +1,4 @@
-package hoytekken.app.model.components.powerup;
+package hoytekken.app.model.components.powerup.enums;
 
 /**
  * Enum for power up types

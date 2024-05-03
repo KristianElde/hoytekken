@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * class represents a game over screen
@@ -23,7 +23,7 @@ public class GameOverScreen extends BaseScreen {
      * @param game  the game object
      * @param model the viewable model
      */
-    public GameOverScreen(Hoytekken game, ViewableModel model, int winningPlayer) {
+    public GameOverScreen(Hoytekken game, IViewableModel model, int winningPlayer) {
         super(game, model);
 
         stage = new Stage(gamePort, game.batch);

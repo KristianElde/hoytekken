@@ -14,7 +14,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
 
 public class CollisionDetectorTest {
     private CollisionDetector collisionDetector;
@@ -33,20 +33,20 @@ public class CollisionDetectorTest {
     private ContactImpulse mockImpulse = Mockito.mock(ContactImpulse.class);
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         model = Mockito.mock(HandleCollisions.class);
         collisionDetector = new CollisionDetector(model);
 
-        //Configure the mock contact to return the mock fixtures
+        // Configure the mock contact to return the mock fixtures
         Mockito.when(mockContact.getFixtureA()).thenReturn(mockFixtureA);
         Mockito.when(mockContact.getFixtureB()).thenReturn(mockFixtureB);
     }
 
     @Test
     void sanityTest() {
-        assert(true);
+        assert (true);
         assertEquals(1, 1);
-         assertNotNull(model);
+        assertNotNull(model);
         assertDoesNotThrow(() -> new CollisionDetector(model));
         assertNotNull(collisionDetector);
         assertNotNull(mockContact);

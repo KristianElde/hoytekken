@@ -4,18 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
+import hoytekken.app.controller.enums.ActionType;
+import hoytekken.app.controller.interfaces.IControllableModel;
 import hoytekken.app.model.components.ForceDirection;
 import hoytekken.app.model.components.GameState;
-import hoytekken.app.model.components.eventBus.ClickedScreenEvent;
+import hoytekken.app.model.components.eventBus.records.ClickedScreenEvent;
 import hoytekken.app.model.components.player.AIPlayer;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
 
 /**
  * Controller for the game
  * handles input from the user
  */
 public class HtekkenController extends InputAdapter {
-    ControllableModel model;
+    IControllableModel model;
 
     // Player types
     private final PlayerType playerOne = PlayerType.PLAYER_ONE;
@@ -27,7 +29,7 @@ public class HtekkenController extends InputAdapter {
      * 
      * @param model the model to control
      */
-    public HtekkenController(ControllableModel model) {
+    public HtekkenController(IControllableModel model) {
         this.model = model;
         Gdx.input.setInputProcessor(this);
     }
@@ -54,9 +56,13 @@ public class HtekkenController extends InputAdapter {
      * @param keycode id of key
      */
     private boolean handleMainMenuInput(int keycode) {
-        if (keycode == Input.Keys.I) {model.setGameState(GameState.INSTRUCTIONS);}
-        else if (keycode == Input.Keys.ESCAPE) {Gdx.app.exit();}
-        else {return false;}
+        if (keycode == Input.Keys.I) {
+            model.setGameState(GameState.INSTRUCTIONS);
+        } else if (keycode == Input.Keys.ESCAPE) {
+            Gdx.app.exit();
+        } else {
+            return false;
+        }
         return true;
     }
 
@@ -68,8 +74,8 @@ public class HtekkenController extends InputAdapter {
     private boolean handleActiveGameInput(int keycode) {
         boolean p1handled = handleP1Input(keycode);
         boolean p2handled = false;
-        
-        if (!(model.getPlayer(playerTwo) instanceof AIPlayer)) 
+
+        if (!(model.getPlayer(playerTwo) instanceof AIPlayer))
             p2handled = handleP2Input(keycode);
 
         return p1handled || p2handled;
@@ -148,7 +154,9 @@ public class HtekkenController extends InputAdapter {
             case MAIN_MENU -> model.setGameState(GameState.SELECTION);
             case GAME_OVER -> Gdx.app.getApplicationListener().create();
             case SELECTION -> this.model.getEventBus().emitEvent(new ClickedScreenEvent(screenX, screenY));
-            default -> {return false;}
+            default -> {
+                return false;
+            }
         }
         return true;
     }

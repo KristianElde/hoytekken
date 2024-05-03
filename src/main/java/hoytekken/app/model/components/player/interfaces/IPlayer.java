@@ -1,11 +1,11 @@
-package hoytekken.app.model.components.player;
+package hoytekken.app.model.components.player.interfaces;
 
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
  * Interface defining common behavior for a player in the game.
  */
-public interface IPlayer extends ICombat, IPowerUp, ViewablePlayer {
+public interface IPlayer extends ICombat, IPowerUp, IViewablePlayer {
 
     /**
      * Updates the player entity's state and position over time.

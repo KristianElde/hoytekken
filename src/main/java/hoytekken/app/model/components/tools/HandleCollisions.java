@@ -1,6 +1,6 @@
 package hoytekken.app.model.components.tools;
 
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
 
 /**
@@ -15,7 +15,6 @@ public interface HandleCollisions {
      */
     boolean resetDoubleJump(PlayerType player);
 
-
     /**
      * adds a body to the list of bodies that are queued for removal
      */
@@ -24,13 +23,14 @@ public interface HandleCollisions {
     /**
      * Method to apply a power up to the player
      * 
-     * @param player the player to apply the power up to
+     * @param player  the player to apply the power up to
      * @param powerUp the power up to apply
      */
     void applyPowerUp(PlayerType player, ActivePowerUp powerUp);
 
     /**
      * Method to get the active power up
+     * 
      * @return the active power up
      */
     ActivePowerUp getActivePowerUp();

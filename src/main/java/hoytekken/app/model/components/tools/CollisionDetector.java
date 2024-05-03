@@ -2,8 +2,8 @@ package hoytekken.app.model.components.tools;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 
-import hoytekken.app.model.components.player.PlayerFixtures;
-import hoytekken.app.model.components.player.PlayerType;
+import hoytekken.app.model.components.player.enums.PlayerFixtures;
+import hoytekken.app.model.components.player.enums.PlayerType;
 import hoytekken.app.model.components.powerup.ActivePowerUp;
 
 /**
@@ -113,20 +113,18 @@ public class CollisionDetector extends AbstractCollision {
      * @param userDataB the user data of fixture B
      */
     private void handlePowerUpCollision(Object userDataA, Object userDataB) {
-        if(userDataA.toString().contains("PLAYER_ONE_BODY") && userDataB.toString().contains("powerUp")
-            || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
+        if (userDataA.toString().contains("PLAYER_ONE_BODY") && userDataB.toString().contains("powerUp")
+                || userDataB.toString().contains("PLAYER_ONE_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
             model.applyPowerUp(PlayerType.PLAYER_ONE, powerUp);
             model.destroyPowerUpList();
 
         } else if (userDataA.toString().contains("PLAYER_TWO_BODY") && userDataB.toString().contains("powerUp")
-            || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
+                || userDataB.toString().contains("PLAYER_TWO_BODY") && userDataA.toString().contains("powerUp")) {
             ActivePowerUp powerUp = model.getActivePowerUp();
             model.applyPowerUp(PlayerType.PLAYER_TWO, powerUp);
             model.destroyPowerUpList();
         }
     }
-
-    
 
 }

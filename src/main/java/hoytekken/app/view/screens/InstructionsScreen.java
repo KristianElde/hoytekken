@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import hoytekken.app.Hoytekken;
-import hoytekken.app.view.ViewableModel;
+import hoytekken.app.view.IViewableModel;
 
 /**
  * Class representing the instructions screen.
@@ -23,7 +23,7 @@ public class InstructionsScreen extends BaseScreen {
      * @param game the game object
      * @param mode the viewable model
      */
-    public InstructionsScreen(Hoytekken game, ViewableModel mode) {
+    public InstructionsScreen(Hoytekken game, IViewableModel mode) {
         super(game, mode);
 
         stage = new Stage(gamePort, game.batch);
@@ -36,11 +36,11 @@ public class InstructionsScreen extends BaseScreen {
         table.center().setFillParent(true);
 
         String[][] instructions = {
-                {"Actions", "Player1", "Player2"},
-                {"Movement", "Keys: A, W, D", "Keys: Left, Up, Right"},
-                {"Punch", "Key: Q", "Key: P"},
-                {"Kick", "Key: E", "Key: K"},
-                {"Block", "Key: S", "Key: Down"}
+                { "Actions", "Player1", "Player2" },
+                { "Movement", "Keys: A, W, D", "Keys: Left, Up, Right" },
+                { "Punch", "Key: Q", "Key: P" },
+                { "Kick", "Key: E", "Key: K" },
+                { "Block", "Key: S", "Key: Down" }
         };
 
         for (String[] instructionSet : instructions) {

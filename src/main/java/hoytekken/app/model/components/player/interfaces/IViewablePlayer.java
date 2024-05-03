@@ -1,9 +1,9 @@
-package hoytekken.app.model.components.player;
+package hoytekken.app.model.components.player.interfaces;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 
-public interface ViewablePlayer {
-    
+public interface IViewablePlayer {
+
     /**
      * Retrieves the health of the player.
      * 
